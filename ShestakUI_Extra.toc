@@ -1,0 +1,10 @@
+﻿## Interface: 40000
+## Title: ShestakUI Extra
+## Notes: Extra mods for ShestakUI
+## Author: Shestak
+## Version: 0.0.4
+## Credits: Fernir, Gsuz, Hydra, fraz0816, Slushe, Elv22, Tukz, Epic
+## RequiredDeps: ShestakUI
+## SavedVariables: ExtraOptionsDB
+
+ShestakUI_Extra.xml

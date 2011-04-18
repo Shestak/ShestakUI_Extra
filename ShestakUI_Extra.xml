@@ -1,0 +1,21 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Config\Settings.lua"/>
+	
+	<Script file="Modules\Misc\Align.lua"/>
+	<Script file="Modules\Misc\ArenaCalc.lua"/>
+	<Script file="Modules\Misc\BuffAutomator.lua"/>
+	<Script file="Modules\Misc\ClickCast.lua"/>
+	<Script file="Modules\Misc\FPSAnnounce.lua"/>
+	<Script file="Modules\Misc\ItemCount.lua"/>
+	<Script file="Modules\Misc\MicroMenu.lua"/>
+	<Script file="Modules\Misc\MoveBlizzard.lua"/>	
+	<Script file="Modules\Misc\SwitchSpec.lua"/>
+	<Script file="Modules\Misc\Temp.lua"/>
+	
+	<Script file="Modules\Skins\BloodShieldTracker.lua"/>
+	<Script file="Modules\Skins\CombustionHelper.lua"/>
+	<Script file="Modules\Skins\Recount.lua"/>
+	<Script file="Modules\Skins\RollTracker.lua"/>
+	<Script file="Modules\Skins\Skada.lua"/>
+	<Script file="Modules\Skins\TinyDPS.lua"/>
+</Ui>

@@ -1,0 +1,11 @@
+﻿local T, C, L = unpack(ShestakUI)
+if T.client ~= "zhTW" then return end
+
+----------------------------------------------------------------------------------------
+--	Localization for zhTW client
+----------------------------------------------------------------------------------------
+-- Mark bar
+L_EXTRA_BUTTON_CLEAR = "清除目標"
+
+-- Item count
+L_EXTRA_ITEM_COUNT = "Item count: "

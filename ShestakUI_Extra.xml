@@ -1,12 +1,22 @@
 ﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Locales\English.lua"/>
+	<Script file="Locales\Russian.lua"/>
+	<Script file="Locales\German.lua"/>
+	<Script file="Locales\French.lua"/>
+	<Script file="Locales\Spanish.lua"/>
+	<Script file="Locales\Korean.lua"/>
+	<Script file="Locales\Chinese.lua"/>
+	<Script file="Locales\Taiwan.lua"/>
+
 	<Script file="Config\Settings.lua"/>
-	
+
 	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\FPSAnnounce.lua"/>
 	<Script file="Modules\Misc\ItemCount.lua"/>
+	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MicroMenu.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>	
 	<Script file="Modules\Misc\SwitchSpec.lua"/>

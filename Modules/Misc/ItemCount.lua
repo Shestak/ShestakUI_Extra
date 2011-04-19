@@ -12,7 +12,7 @@ GameTooltip:HookScript("OnTooltipSetItem", function(self)
 		local item_count = ""
 		
 		if UIItemTooltip.count and num > 1 then
-			item_count = "|cffffffff".."Item count: "..num
+			item_count = "|cffffffff"..L_EXTRA_ITEM_COUNT..num
 		end
 		
 		self:AddLine(item_count)

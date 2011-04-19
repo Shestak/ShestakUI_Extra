@@ -3,7 +3,7 @@
 ## Notes: Extra mods for ShestakUI
 ## Author: Shestak
 ## Version: 0.0.4
-## Credits: Fernir, Gsuz, Hydra, fraz0816, Slushe, Elv22, Tukz, Epic
+## Credits: Fernir, Gsuz, Hydra, fraz0816, Slushe, Elv22, Tukz, Epic, Smelly
 ## RequiredDeps: ShestakUI
 ## SavedVariables: ExtraOptionsDB
 

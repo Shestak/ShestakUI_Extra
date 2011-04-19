@@ -17,6 +17,7 @@ C["extra_general"] = {
 	["buff_automator"] = false,						-- 
 	["item_count"] = true,							-- Item count in tooltip 
 	["switch_spec"] = false,						-- Talent spec panel
+	["mark_bar"] = false,							-- Mark bar
 }
 
 ----------------------------------------------------------------------------------------
@@ -38,4 +39,5 @@ C["extra_position"] = {
 	["micro_menu"] = {"TOPLEFT", UIParent, "TOPLEFT", 2, -2},		-- Micro menu
 	["arena_calc"] = {"CENTER", UIParent, "CENTER", 0, 0},			-- Arena calculator
 	["switch_spec"] = {"CENTER", UIParent, "CENTER", 0, -200},		-- Talent spec panel
+	["mark_bar"] = {"CENTER", UIParent, "CENTER", 100, 50},			-- Mark bar
 }

@@ -33,31 +33,38 @@ spec.t:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_s
 local specfunc = CreateFrame("Frame")	
 specfunc:RegisterEvent("PLAYER_TALENT_UPDATE")
 specfunc:RegisterEvent("PLAYER_ENTERING_WORLD")
-specfunc:SetScript("OnEvent", function(self) 
-	local pointsSpent = {}
-	for i = 1, 3 do
-		_, _, _, _, pointsSpent[i] = GetTalentTabInfo(i)
-		if (pointsSpent[i] > 10) then
-			maxTree = i
-		end
+specfunc:SetScript("OnEvent", function(self)
+	if not GetPrimaryTalentTree() then
+		spec.t:SetText(NO.." "..TALENTS)
+		return
 	end
-	local name = select(2, GetTalentTabInfo(maxTree))
-	spec.t:SetText(name.." "..panelcolor..pointsSpent[1].."/"..pointsSpent[2].."/"..pointsSpent[3])
-	spec.t:SetWidth(123)
-	spec.t:SetHeight(C.media.pixel_font_size)
+
+	local tree = {}
+
+	for i = 1, 3 do
+		tree[i] = select(5, GetTalentTabInfo(i))
+	end
+
+	local name = select(2, GetTalentTabInfo(GetPrimaryTalentTree()))
+
+	spec.t:SetText(name..": "..panelcolor..tree[1].."/"..tree[2].."/"..tree[3])
 	spec:SetScript("OnEnter", function(self)
-		spec.t:SetText(cm.."Switch Spec")
+		if T.level > 29 then
+			spec.t:SetText(L_EXTRA_SWITCH_SPEC)
+		end
 		self:SetBackdropBorderColor(T.color.r, T.color.g, T.color.b)
 	end)
 	spec:SetScript("OnLeave", function(self)
-		spec.t:SetText(name.." "..panelcolor..pointsSpent[1].."/"..pointsSpent[2].."/"..pointsSpent[3])
+		spec.t:SetText(name..": "..panelcolor..tree[1].."/"..tree[2].."/"..tree[3])
 		self:SetBackdropBorderColor(unpack(C.media.border_color))
 	end)
 end)
 spec:SetScript("OnClick", function(self) 
-	local i = GetActiveTalentGroup()
-	if i == 1 then SetActiveTalentGroup(2) end
-	if i == 2 then SetActiveTalentGroup(1) end
+	if GetActiveTalentGroup() == 1 then
+		SetActiveTalentGroup(2)
+	else
+		SetActiveTalentGroup(1)
+	end
 end)
 
 -- Toggle Button

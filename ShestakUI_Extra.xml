@@ -26,6 +26,7 @@
 	<Script file="Modules\Skins\CombustionHelper.lua"/>
 	<Script file="Modules\Skins\Recount.lua"/>
 	<Script file="Modules\Skins\RollTracker.lua"/>
+	<Script file="Modules\Skins\ShieldMonitor.lua"/>
 	<Script file="Modules\Skins\Skada.lua"/>
 	<Script file="Modules\Skins\TinyDPS.lua"/>
 </Ui>

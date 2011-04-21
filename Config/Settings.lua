@@ -30,6 +30,7 @@ C["extra_skins"] = {
 	["tiny_dps"] = false,							-- TinyDPS skin
 	["recount"] = false,							-- Recount skin
 	["skada"] = false,								-- Skada skin
+	["shield_monitor"] = false,						-- ShieldMonitor skin
 }
 
 ----------------------------------------------------------------------------------------

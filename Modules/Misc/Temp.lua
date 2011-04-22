@@ -22,7 +22,7 @@ ComboDisplay = function(self, event, unit)
 		if i <= cp then
 			cpoints[i]:SetAlpha(1)
 		else
-			cpoints[i]:SetAlpha(0.35)
+			cpoints[i]:SetAlpha(0.2)
 		end
 	end
 	
@@ -52,7 +52,6 @@ for i = 1, 5 do
 	self.CPoints[i] = CreateFrame("StatusBar", self:GetName().."_Combo"..i, self.CPoints)
 	self.CPoints[i]:SetWidth((217 - 4) / 5)
 	self.CPoints[i]:SetHeight(7)
-	self.CPoints[i]:SetAlpha(0.35)
 	self.CPoints[i]:SetStatusBarTexture(C.media.texture)
 	if i == 1 then
 		self.CPoints[i]:SetPoint("LEFT", self.CPoints)
@@ -61,7 +60,7 @@ for i = 1, 5 do
 	end
 end
 
-self.CPoints[1]:SetStatusBarColor(0.9, 0.1, 0.1)		
+self.CPoints[1]:SetStatusBarColor(0.9, 0.1, 0.1)
 self.CPoints[2]:SetStatusBarColor(0.9, 0.1, 0.1)
 self.CPoints[3]:SetStatusBarColor(0.9, 0.9, 0.1)
 self.CPoints[4]:SetStatusBarColor(0.9, 0.9, 0.1)

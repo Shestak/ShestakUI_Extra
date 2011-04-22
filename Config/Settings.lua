@@ -31,6 +31,7 @@ C["extra_skins"] = {
 	["recount"] = false,							-- Recount skin
 	["skada"] = false,								-- Skada skin
 	["shield_monitor"] = false,						-- ShieldMonitor skin
+	["minimap_buttons"] = true,						-- Skin addons icons on minimap
 }
 
 ----------------------------------------------------------------------------------------

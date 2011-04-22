@@ -18,6 +18,7 @@
 	<Script file="Modules\Misc\ItemCount.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MicroMenu.lua"/>
+	<Script file="Modules\Misc\MinimapButtons.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>	
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
 	<Script file="Modules\Misc\Temp.lua"/>

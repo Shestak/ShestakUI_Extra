@@ -12,3 +12,6 @@ L_EXTRA_ITEM_COUNT = "Item count: "
 
 -- Switch spec panel
 L_EXTRA_SWITCH_SPEC = "Switch Spec"
+
+-- Announce fps
+L_EXTRA_ANNOUNCE_FPS = "My current FPS is "

@@ -19,7 +19,7 @@ function FPSAnnounce:CHAT_MSG_GUILD(msg, ...)
 	if msg == "!fps" then
 		if (difftime(time(), sentTime) >= throttleSpam) then
 			sentTime = time()
-			SendChatMessage("My current FPS is " .. floor(GetFramerate()), "GUILD")
+			SendChatMessage(L_EXTRA_ANNOUNCE_FPS..floor(GetFramerate()), "GUILD")
 		end
 	end
 end

@@ -2,11 +2,11 @@
 if C.extra_general.buff_automator ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Personal Buff automator(by Gsuz)
+--	Personal buff automator(by Gsuz)
 ----------------------------------------------------------------------------------------
 if T.level ~= 85 then return end
 
-local frame = CreateFrame("FRAME", "AutomatorFrame")
+local frame = CreateFrame("Frame", "AutomatorFrame")
 
 -- Settings for each class and spec in the format of : Class'TalentTree'
 -- PRIEST1 is Disc Priest while MAGE2 is Fire Mage

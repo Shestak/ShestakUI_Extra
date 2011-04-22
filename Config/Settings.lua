@@ -8,13 +8,13 @@
 --	General options
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
-	["click_cast"] = false,							-- 
+	["click_cast"] = false,							-- Click2cast mod
 	["move_blizzard"] = true,						-- Move Blizzard frames
 	["micro_menu"] = false,							-- Micro menu
 	["arena_calc"] = true,							-- Arena calculator(/calc)
-	["align"] = true,								-- (/align)
+	["align"] = true,								-- Grid on screen(/align)
 	["fps_announce"] = true,						-- Announce fps in guild chat(!fps)
-	["buff_automator"] = false,						-- 
+	["buff_automator"] = false,						-- Personal buff automator
 	["item_count"] = true,							-- Item count in tooltip 
 	["switch_spec"] = false,						-- Talent spec panel
 	["mark_bar"] = false,							-- Mark bar

@@ -18,6 +18,7 @@ C["extra_general"] = {
 	["item_count"] = true,							-- Item count in tooltip 
 	["switch_spec"] = false,						-- Talent spec panel
 	["mark_bar"] = false,							-- Mark bar
+	["color_picker"] = true,						-- Improved ColorPickerFrame
 }
 
 ----------------------------------------------------------------------------------------

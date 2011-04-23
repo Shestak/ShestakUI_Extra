@@ -14,6 +14,7 @@
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
+	<Script file="Modules\Misc\ColorPicker.lua"/>
 	<Script file="Modules\Misc\FPSAnnounce.lua"/>
 	<Script file="Modules\Misc\ItemCount.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>

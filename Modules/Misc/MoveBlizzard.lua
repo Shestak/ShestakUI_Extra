@@ -42,7 +42,6 @@ for i, v in pairs({
 	"InterfaceOptionsFrame",
 	"AudioOptionsFrame",
 	"VideoOptionsFrame",
-	"ColorPickerFrame",
 	"aLoadFrame",
 })
 do

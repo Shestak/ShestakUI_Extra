@@ -33,6 +33,7 @@ C["extra_skins"] = {
 	["skada"] = false,								-- Skada skin
 	["shield_monitor"] = false,						-- ShieldMonitor skin
 	["minimap_buttons"] = true,						-- Skin addons icons on minimap
+	["cool_line"] = false,							-- CoolLine skin
 }
 
 ----------------------------------------------------------------------------------------

@@ -25,6 +25,7 @@
 	
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>
 	<Script file="Modules\Skins\CombustionHelper.lua"/>
+	<Script file="Modules\Skins\CoolLine.lua"/>
 	<Script file="Modules\Skins\Recount.lua"/>
 	<Script file="Modules\Skins\RollTracker.lua"/>
 	<Script file="Modules\Skins\ShieldMonitor.lua"/>

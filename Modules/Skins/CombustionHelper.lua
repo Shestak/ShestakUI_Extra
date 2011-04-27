@@ -10,10 +10,20 @@ CBHSkin:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("CombustionHelper") then return end
 
 	combuscale = 1
+	comburefreshmode = false
+	combuchat = false
+	combureportpyro = false
+	combureportmunching = false
+
+	--combureport = false
+	--combureportthreshold = false
+	--combuignitereport = false
+	--combusettingstable.bartexture = C.media.texture
+	--combusettingstable.bgcolornormal = unpack(C.media.backdrop_color)
+	--combusettingstable.edgecolornormal = unpack(C.media.border_color)
 	
 	CombustionFrame:SetTemplate("Transparent")
 	LBtrackFrame:SetTemplate("Transparent")
-	LBtrackdownFrame:SetTemplate("Transparent")
 	
 	--CombustionFrame:HookScript("OnUpdate", function(self)
 	--	self:SetBackdropColor(unpack(C.media.overlay_color))
@@ -43,7 +53,6 @@ CBHSkin:SetScript("OnEvent", function(self, event, addon)
 
 		for _, bar in ipairs({LBbar, Ignbar, Pyrobar, FFBbar, Critbar, Combubar}) do
 			bar:SetHeight(C.font.stylization_font_size)
-			bar:SetTexture(C.media.texture)
 		end
 		
 		CombustionFrame:SetWidth((LBLabel:GetWidth() * 2) + 42)
@@ -57,13 +66,13 @@ CBHSkin:SetScript("OnEvent", function(self, event, addon)
 		for _, bar in ipairs({LBtrack1Bar, LBtrack2Bar, LBtrack3Bar}) do
 			bar:SetHeight(C.font.stylization_font_size)
 			bar:SetWidth(LBtrackFrame:GetWidth() - 15)
-			bar:SetTexture(C.media.texture)
 		end
 	else
 		combubarwidth = 132
 		
 		CombustionFrame:SetWidth(132)
 		CombustionFrame:SetHeight(77)
+		LBtrackFrame:SetWidth(132)
 
 		for _, label in ipairs({LBLabel, IgniteLabel, PyroLabel, FFBLabel, LBTextFrameLabel, IgnTextFrameLabel, PyroTextFrameLabel, FFBTextFrameLabel, StatusTextFrameLabel, LBtrack1, LBtrack2, LBtrack3, LBtrack1Timer, LBtrack2Timer, LBtrack3Timer}) do
 			label:SetTextHeight(C.font.stylization_font_size + 5)
@@ -91,13 +100,11 @@ CBHSkin:SetScript("OnEvent", function(self, event, addon)
 		for _, bar in ipairs({LBbar, Ignbar, Pyrobar, FFBbar, Critbar, Combubar}) do
 			bar:SetHeight(C.font.stylization_font_size + 5)
 			bar:SetWidth(118)
-			bar:SetTexture(C.media.texture)
 		end
 		
 		for _, bar in ipairs({LBtrack1Bar, LBtrack2Bar, LBtrack3Bar}) do
 			bar:SetHeight(C.font.stylization_font_size)
 			bar:SetWidth(LBtrackFrame:GetWidth() - 15)
-			bar:SetTexture(C.media.texture)
 		end
 		
 		StatusTextFrameLabel:SetWidth(CombustionFrame:GetWidth() - 10)
@@ -108,12 +115,12 @@ CBHSkin:SetScript("OnEvent", function(self, event, addon)
 		LBtrackFrame:SetPoint("BOTTOMLEFT", CombustionFrame, "TOPLEFT", 0, 3)
 		LBtrackFrame:SetPoint("BOTTOMRIGHT", CombustionFrame, "TOPRIGHT", 0, 3)
 	elseif combulbdown == true then
-		LBtrackdownFrame:SetPoint("TOPLEFT", CombustionFrame, "BOTTOMLEFT", 0, -3)
-		LBtrackdownFrame:SetPoint("TOPRIGHT", CombustionFrame, "BOTTOMRIGHT", 0, -3)
+		LBtrackFrame:SetPoint("TOPLEFT", CombustionFrame, "BOTTOMLEFT", 0, -3)
+		LBtrackFrame:SetPoint("TOPRIGHT", CombustionFrame, "BOTTOMRIGHT", 0, -3)
 	elseif combulbright == true then
-		LBtrackdownFrame:SetPoint("TOPLEFT", CombustionFrame, "TOPRIGHT", 3, 0)
+		LBtrackFrame:SetPoint("TOPLEFT", CombustionFrame, "TOPRIGHT", 3, 0)
 	elseif combulbleft == true then
-		LBtrackdownFrame:SetPoint("TOPRIGHT", CombustionFrame, "TOPLEFT", -3, 0)
+		LBtrackFrame:SetPoint("TOPRIGHT", CombustionFrame, "TOPLEFT", -3, 0)
 	else
 		LBtrackFrame:SetPoint("BOTTOMLEFT", CombustionFrame, "TOPLEFT", 0, 3)
 		LBtrackFrame:SetPoint("BOTTOMRIGHT", CombustionFrame, "TOPRIGHT", 0, 3)

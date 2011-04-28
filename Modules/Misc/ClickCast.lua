@@ -85,7 +85,7 @@ scrolls:SetScrollChild(framess)
 
 local titlef = mainf:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
 titlef:SetPoint("BOTTOMLEFT", scrollf, "TOPLEFT", 0, 10)
-titlef:SetText("Frames")
+titlef:SetText(L_EXTRA_BINDER_FRAMES)
 titlef:Hide()
 
 local titles = mainf:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
@@ -178,7 +178,7 @@ function SpellBinder:makeSpellsList(delete)
 			tex:SetHeight(22)
 			tex:SetTexture(spell.texture)
 			tex:SetPoint("LEFT", 4, 0)
-			--tex:SetTexCoord(.1, .9, .1, .9)
+			tex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			local fs = _G[i.."_fs"] or bf:CreateFontString(i.."_fs", "OVERLAY", "GameFontNormal")
 			fs:SetText(spell.modifier..spell.origbutton)
 			fs:SetPoint("RIGHT", -4, 0)
@@ -301,18 +301,18 @@ local openbinder = CreateFrame("Button", "SpellBinderOpenButton", SpellBookFrame
 openbinder:SetWidth(120)
 openbinder:SetHeight(22)
 openbinder:SetPoint("TOP", -160, 0)
-openbinder:SetText("Open spell binder")
+openbinder:SetText(L_EXTRA_BINDER_OPEN)
 openbinder:SetScript("OnClick", function(self) 
 	if InCombatLockdown() then mainf:Hide()	return end
 
 	if mainf:IsVisible() then
 		mainf:Hide()
 		sbOpen = false
-		self:SetText("Open spell binder")
+		self:SetText(L_EXTRA_BINDER_OPEN)
 	else 
 		mainf:Show()
 		sbOpen = true
-		self:SetText("Close spell binder")
+		self:SetText(L_EXTRA_BINDER_CLOSE)
 	end
 	local method = sbOpen and "Show" or "Hide"
 	local buttons = spellbuttons
@@ -329,7 +329,7 @@ closeb:SetPoint("TOPRIGHT", -8, -8)
 closeb:SetScript("OnClick", function()
 	mainf:Hide()
 	sbOpen = false
-	openbinder:SetText("Open spell binder")
+	openbinder:SetText(L_EXTRA_BINDER_OPEN)
 end)
 
 local deleteb = SpellBinder:NewButton(DELETE, mainf)

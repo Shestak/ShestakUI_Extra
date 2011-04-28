@@ -15,3 +15,8 @@ L_EXTRA_SWITCH_SPEC = "Переключить набор"
 
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "My current FPS is "
+
+-- Click2cast
+L_EXTRA_BINDER_FRAMES = "Frames"
+L_EXTRA_BINDER_OPEN = "Open spell binder"
+L_EXTRA_BINDER_CLOSE = "Close spell binder"

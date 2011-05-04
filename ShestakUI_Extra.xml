@@ -23,6 +23,7 @@
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
 	<Script file="Modules\Misc\Temp.lua"/>
 	
+	<Script file="Modules\Skins\BlizzardFrames.lua"/>
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>
 	<Script file="Modules\Skins\CombustionHelper.lua"/>
 	<Script file="Modules\Skins\CoolLine.lua"/>

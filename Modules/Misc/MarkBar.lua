@@ -4,13 +4,10 @@ if C.extra_general.mark_bar ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Mark Bar(by Smelly)
 ----------------------------------------------------------------------------------------
-local button_width = T.Scale(30)
-local button_height = T.Scale(30)
+local button_size = 30
 
 local MarkBarBG = CreateFrame("Frame", "MarkBarBackground", UIParent)
-MarkBarBG:CreatePanel("Default", (button_width * 4) + 9, (button_height * 3) - 4, unpack(C.extra_position.mark_bar))
-MarkBarBG:SetBackdropColor(0, 0, 0, 0)
-MarkBarBG:SetBackdropBorderColor(0, 0, 0, 0)
+MarkBarBG:CreatePanel("Invisible", (button_size * 4) + 9, (button_size * 3) - 4, unpack(C.extra_position.mark_bar))
 MarkBarBG:SetFrameLevel(0)
 MarkBarBG:Hide()
 
@@ -18,7 +15,7 @@ local icon = CreateFrame("Button", "Icon", MarkBarBG)
 local mark = CreateFrame("Button", "Menu", MarkBarBG)
 for i = 1, 8 do
 	mark[i] = CreateFrame("Button", "mark"..i, MarkBarBG)
-	mark[i]:CreatePanel("Transparent", button_width, button_height, "LEFT", MarkBarBG, "LEFT", 0, 0)
+	mark[i]:CreatePanel("Transparent", button_size, button_size, "LEFT", MarkBarBG, "LEFT", 0, 0)
 	if i == 1 then
 		mark[i]:SetPoint("TOPLEFT", MarkBarBG, "TOPLEFT", 0, 0)
 	elseif i == 5 then
@@ -33,7 +30,7 @@ for i = 1, 8 do
 	
 	icon[i] = CreateFrame("Button", "icon"..i, MarkBarBG)
 	icon[i]:SetNormalTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
-	icon[i]:Size(25, 25)
+	icon[i]:Size(button_size - 5, button_size - 5)
 	icon[i]:Point("CENTER", mark[i])
 	
 	-- Set up each button
@@ -58,9 +55,9 @@ end
 
 -- Create Button for clear target
 local ClearTargetButton = CreateFrame("Button", "ClearTargetButton", MarkBarBackground)
-ClearTargetButton:CreatePanel("Transparent", (button_width * 4) + 9, 20, "TOPLEFT", mark[5], "BOTTOMLEFT", 0, -3)
-ClearTargetButton:SetScript("OnEnter", ButtonEnter)
-ClearTargetButton:SetScript("OnLeave", ButtonLeave)
+ClearTargetButton:CreatePanel("Transparent", (button_size * 4) + 9, 20, "TOPLEFT", mark[5], "BOTTOMLEFT", 0, -3)
+ClearTargetButton:SetScript("OnEnter", T.SetModifiedBackdrop)
+ClearTargetButton:SetScript("OnLeave", T.SetOriginalBackdrop)
 ClearTargetButton:SetScript("OnMouseUp", function() SetRaidTarget("target", 0) end)
 ClearTargetButton:SetFrameStrata("HIGH")
 

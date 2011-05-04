@@ -40,7 +40,6 @@ for i, v in pairs({
 	"PVPParentFrame",
 	"GameMenuFrame",
 	"InterfaceOptionsFrame",
-	"AudioOptionsFrame",
 	"VideoOptionsFrame",
 	"aLoadFrame",
 })

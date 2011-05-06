@@ -25,12 +25,7 @@ C["extra_general"] = {
 --	Skins options (Maybe not work correctly!!!)
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
-	["barber_shop"] = false,					-- BarberShop skin
-	["macro_frame"] = false,					-- Macro Frame skin
-	["spellbook"] = false,						-- Spellbook skin
-	["character_frame"] = false,				-- Character Frame skin
-	["auction_house"] = false,					-- Auction House skin
-	["talent_frame"] = false,					-- Talent Frame skin
+	["blizzard_frames"] = false,					-- Blizzard frames skin
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["combustion_helper"] = false,				-- CombustionHelper skin
 	["roll_tracker"] = false,					-- RollTracker skin

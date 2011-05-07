@@ -187,14 +187,20 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for i = 1, MAX_TRADE_SKILL_REAGENTS do
 				local button = _G["TradeSkillReagent"..i]
 				local icon = _G["TradeSkillReagent"..i.."IconTexture"]
+				local count = _G["TradeSkillReagent"..i.."Count"]
+
 				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				icon:SetDrawLayer("OVERLAY")
-				icon.backdrop = CreateFrame("Frame", nil, button)
-				icon.backdrop:SetFrameLevel(button:GetFrameLevel() - 1)
-				icon.backdrop:SetTemplate("Default")
-				icon.backdrop:Point("TOPLEFT", icon, "TOPLEFT", -2, 2)
-				icon.backdrop:Point("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 2, -2)
+				if not icon.backdrop then
+					icon.backdrop = CreateFrame("Frame", nil, button)
+					icon.backdrop:SetFrameLevel(button:GetFrameLevel() - 1)
+					icon.backdrop:SetTemplate("Default")
+					icon.backdrop:Point("TOPLEFT", icon, "TOPLEFT", -2, 2)
+					icon.backdrop:Point("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 2, -2)
+				end
 				icon:SetParent(icon.backdrop)
+				count:SetParent(icon.backdrop)
+				count:SetDrawLayer("OVERLAY")
 
 				if i > 2 and once == false then
 					local point, anchoredto, point2, x, y = button:GetPoint()
@@ -478,15 +484,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local button = _G["PlayerTalentFramePetPanelHeaderIcon"]
 			local icon = _G["PlayerTalentFramePetPanelHeaderIconIcon"]
 			local panel = _G["PlayerTalentFramePetPanel"]
-			--local d = select(4, button:GetRegions())
 
 			if first then
 				button:StripTextures()
 			end
 
 			if icon then
-				--d:ClearAllPoints()
-				--pointsSpent = select(5, GetTalentTabInfo(1, Partycheck, true, 1))
 				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				button:SetFrameLevel(button:GetFrameLevel() + 1)
 				button:ClearAllPoints()
@@ -506,13 +509,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local panel = _G["PlayerTalentFramePetModel"]
 
 			PlayerTalentFramePetDiet:Hide()
-
-			--[[local petFoodList = {GetPetFoodTypes()}
-			if #petFoodList > 0 then
-				diet = petFoodList[1]
-			else
-				diet = "None"
-			end]]
 
 			if first then
 				button:StripTextures()

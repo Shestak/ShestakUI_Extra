@@ -152,7 +152,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ArchaeologyFrameInset:StripTextures(true)
 		ArchaeologyFrame:SetTemplate("Transparent")
 
-		SkinButton(ArchaeologyFrameArtifactPageSolveFrameSolveButton, true)
+		ArchaeologyFrameArtifactPageSolveFrameSolveButton:SkinButton(true)
 		SkinDropDownBox(ArchaeologyFrameRaceFilter, 125)
 
 		ArchaeologyFrameRankBar:StripTextures()
@@ -706,19 +706,33 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			"PlayerTalentFrame",
 			"PlayerTalentFrameInset",
 			"PlayerTalentFrameTalents",
-			"PlayerTalentFramePanel1",
-			"PlayerTalentFramePanel2",
-			"PlayerTalentFramePanel3",
 			"PlayerTalentFramePanel1HeaderIcon",
 			"PlayerTalentFramePanel2HeaderIcon",
 			"PlayerTalentFramePanel3HeaderIcon",
 			"PlayerTalentFramePetTalents",
-			"PlayerTalentFramePetPanel"
 		}
 
 		for _, object in pairs(StripAllTextures) do
 			_G[object]:StripTextures()
 		end
+
+		local function StripTalentFramePanelTextures(object)
+			for i = 1, object:GetNumRegions() do
+				local region = select(i, object:GetRegions())
+				if region:GetObjectType() == "Texture" then
+					if region:GetName():find("Branch") then
+						region:SetDrawLayer("OVERLAY")
+					else
+						region:SetTexture(nil)
+					end
+				end
+			end
+		end
+
+		StripTalentFramePanelTextures(PlayerTalentFramePanel1)
+		StripTalentFramePanelTextures(PlayerTalentFramePanel2)
+		StripTalentFramePanelTextures(PlayerTalentFramePanel3)
+		StripTalentFramePanelTextures(PlayerTalentFramePetPanel)
 
 		for i = 1, 3 do
 			_G["PlayerTalentFramePanel"..i.."SelectTreeButton"]:SetFrameLevel(_G["PlayerTalentFramePanel"..i.."SelectTreeButton"]:GetFrameLevel() + 5)
@@ -730,10 +744,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			"PlayerTalentFramePanel1InactiveShadow",
 			"PlayerTalentFramePanel2InactiveShadow",
 			"PlayerTalentFramePanel3InactiveShadow",
-			"PlayerTalentFramePanel1Arrow",
-			"PlayerTalentFramePanel2Arrow",
-			"PlayerTalentFramePanel3Arrow",
-			"PlayerTalentFramePetPanelArrow",
 			"PlayerTalentFramePanel1SummaryRoleIcon",
 			"PlayerTalentFramePanel2SummaryRoleIcon",
 			"PlayerTalentFramePanel3SummaryRoleIcon",
@@ -743,6 +753,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		for _, texture in pairs(KillTextures) do
 			_G[texture]:Kill()
 		end
+
+		for i = 1, 3 do
+			_G["PlayerTalentFramePanel"..i.."Arrow"]:SetFrameStrata("HIGH")
+		end
+		PlayerTalentFramePetPanelArrow:SetFrameStrata("HIGH")
 
 		PlayerTalentFrame:SetTemplate("Transparent")
 		PlayerTalentFramePanel1:CreateBackdrop("Transparent")
@@ -1374,7 +1389,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- General
 		MacroFrame:Width(360)
 		MacroFrame:StripTextures()
-		--MacroFrame:SetTemplate("Transparent")
 		local MacroBG = CreateFrame("Frame", "MacroBG", MacroFrame)
 		MacroBG:CreatePanel("Transparent", 360, 470, "TOPLEFT", MacroFrame, "TOPLEFT", 0, -12)
 		MacroFrame:SetFrameStrata("DIALOG")
@@ -1518,7 +1532,133 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 	-- Stuff not in Blizzard load-on-demand
 	if addon == "ShestakUI_Extra" then
-		--Trade Frame
+		-- Help frame
+		do
+			local frames = {
+				"HelpFrameLeftInset",
+				"HelpFrameMainInset",
+				"HelpFrameKnowledgebase",
+				"HelpFrameHeader",
+				"HelpFrameKnowledgebaseErrorFrame",
+			}
+
+			local buttons = {
+				"HelpFrameAccountSecurityOpenTicket",
+				"HelpFrameReportLagLoot",
+				"HelpFrameReportLagAuctionHouse",
+				"HelpFrameReportLagMail",
+				"HelpFrameReportLagMovement",
+				"HelpFrameReportLagSpell",
+				"HelpFrameReportLagChat",
+				"HelpFrameReportAbuseOpenTicket",
+				"HelpFrameOpenTicketHelpTopIssues",
+				"HelpFrameOpenTicketHelpOpenTicket",
+				"HelpFrameKnowledgebaseSearchButton",
+				"HelpFrameKnowledgebaseNavBarHomeButton",
+				"HelpFrameCharacterStuckStuck",
+				"GMChatOpenLog",
+				"HelpFrameTicketSubmit",
+				"HelpFrameTicketCancel",
+			}
+
+			-- Main frames
+			for i = 1, #frames do
+				_G[frames[i]]:StripTextures(true)
+				_G[frames[i]]:CreateBackdrop("Default")
+			end
+
+			HelpFrameHeader:SetFrameLevel(HelpFrameHeader:GetFrameLevel() + 2)
+			HelpFrameKnowledgebaseErrorFrame:SetFrameLevel(HelpFrameKnowledgebaseErrorFrame:GetFrameLevel() + 2)
+
+			HelpFrameTicketScrollFrame:StripTextures()
+			HelpFrameTicketScrollFrame:CreateBackdrop("Default")
+			HelpFrameTicketScrollFrame.backdrop:Point("TOPLEFT", -4, 4)
+			HelpFrameTicketScrollFrame.backdrop:Point("BOTTOMRIGHT", 6, -4)
+			for i = 1, HelpFrameTicket:GetNumChildren() do
+				local child = select(i, HelpFrameTicket:GetChildren())
+				if not child:GetName() then
+					child:StripTextures()
+				end
+			end
+
+			SkinScrollBar(HelpFrameKnowledgebaseScrollFrame2ScrollBar)
+
+			-- Sub buttons
+			for i = 1, #buttons do
+				_G[buttons[i]]:StripTextures(true)
+				_G[buttons[i]]:SkinButton(true)
+
+				if _G[buttons[i]].text then
+					_G[buttons[i]].text:ClearAllPoints()
+					_G[buttons[i]].text:SetPoint("CENTER")
+					_G[buttons[i]].text:SetJustifyH("CENTER")
+				end
+			end
+
+			-- Main buttons
+			for i = 1, 6 do
+				local b = _G["HelpFrameButton"..i]
+				b:SkinButton(true)
+				b.text:ClearAllPoints()
+				b.text:SetPoint("CENTER")
+				b.text:SetJustifyH("CENTER")
+			end
+
+			-- Table options
+			for i = 1, HelpFrameKnowledgebaseScrollFrameScrollChild:GetNumChildren() do
+				local b = _G["HelpFrameKnowledgebaseScrollFrameButton"..i]
+				b:StripTextures(true)
+				b:SkinButton(true)
+			end
+
+			-- Misc items
+			HelpFrameKnowledgebaseSearchBox:ClearAllPoints()
+			HelpFrameKnowledgebaseSearchBox:Point("TOPLEFT", HelpFrameMainInset, "TOPLEFT", 13, -10)
+			HelpFrameKnowledgebaseNavBarOverlay:Kill()
+			HelpFrame:StripTextures(true)
+			HelpFrame:CreateBackdrop("Transparent")
+			SkinEditBox(HelpFrameKnowledgebaseSearchBox)
+			SkinScrollBar(HelpFrameKnowledgebaseScrollFrameScrollBar)
+			SkinCloseButton(HelpFrameCloseButton, HelpFrame.backdrop)
+			SkinCloseButton(HelpFrameKnowledgebaseErrorFrameCloseButton, HelpFrameKnowledgebaseErrorFrame.backdrop)			
+
+			-- Hearth Stone Button
+			HelpFrameCharacterStuckHearthstone:StyleButton()
+			HelpFrameCharacterStuckHearthstone:SetTemplate("Default", true)
+			HelpFrameCharacterStuckHearthstone.IconTexture:ClearAllPoints()
+			HelpFrameCharacterStuckHearthstone.IconTexture:Point("TOPLEFT", 2, -2)
+			HelpFrameCharacterStuckHearthstone.IconTexture:Point("BOTTOMRIGHT", -2, 2)
+			HelpFrameCharacterStuckHearthstone.IconTexture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+
+			local function navButtonFrameLevel(self)
+				for i = 1, #self.navList do
+					local navButton = self.navList[i]
+					local lastNav = self.navList[i-1]
+					if navButton and lastNav then
+						navButton:SetFrameLevel(lastNav:GetFrameLevel() - 2)
+						navButton:ClearAllPoints()
+						navButton:Point("LEFT", lastNav, "RIGHT", 3, 0)
+					end
+				end
+			end
+
+			hooksecurefunc("NavBar_AddButton", function(self, buttonData)
+				local navButton = self.navList[#self.navList]
+
+				if not navButton.skinned then
+					navButton:SkinButton(true)
+					navButton.skinned = true
+
+					navButton:HookScript("OnClick", function()
+						navButtonFrameLevel(self)
+					end)
+				end
+
+				navButtonFrameLevel(self)
+			end)
+		end
+
+		-- Trade Frame
 		do
 			TradeFrame:StripTextures(true)
 			TradeFrame:CreateBackdrop("Transparent")

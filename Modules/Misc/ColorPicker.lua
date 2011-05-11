@@ -18,14 +18,14 @@ local function SkinEditBox(f)
 	f:SetTemplate("Default")
 end
 
-function UpdateAlphaText()
+local function UpdateAlphaText()
 	local a = OpacitySliderFrame:GetValue()
 	a = a * 100
 	a = math.floor(a + 0.05)
 	ColorPPBoxA:SetText(string.format("%d", a))
 end
 
-function UpdateAlpha(tbox)
+local function UpdateAlpha(tbox)
 	local a = tbox:GetNumber()
 	if a > 100 then
 		a = 100
@@ -37,7 +37,7 @@ function UpdateAlpha(tbox)
 	editingText = nil
 end
 
-function UpdateColorTexts(r, g, b)
+local function UpdateColorTexts(r, g, b)
 	if not r then r, g, b = ColorPickerFrame:GetColorRGB() end
 	r = r * 255
 	g = g * 255

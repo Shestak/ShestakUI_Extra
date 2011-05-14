@@ -35,6 +35,7 @@ C["extra_skins"] = {
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["minimap_buttons"] = true,					-- Skin addons icons on minimap
 	["cool_line"] = false,						-- CoolLine skin
+	["mfclip"] = false,							-- MFClip skin
 }
 
 ----------------------------------------------------------------------------------------

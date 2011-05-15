@@ -90,6 +90,7 @@ local function SkinEditBox(frame)
 	if _G[frame:GetName().."Left"] then _G[frame:GetName().."Left"]:Kill() end
 	if _G[frame:GetName().."Middle"] then _G[frame:GetName().."Middle"]:Kill() end
 	if _G[frame:GetName().."Right"] then _G[frame:GetName().."Right"]:Kill() end
+	if _G[frame:GetName().."Mid"] then _G[frame:GetName().."Mid"]:Kill() end
 	frame:CreateBackdrop("Default")
 
 	if frame:GetName() and frame:GetName():find("Silver") or frame:GetName():find("Copper") then
@@ -157,6 +158,157 @@ local SkinBlizz = CreateFrame("Frame")
 SkinBlizz:RegisterEvent("ADDON_LOADED")
 SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 	if IsAddOnLoaded("Skinner") or IsAddOnLoaded("Aurora") then return end
+
+	-- LF Guild
+	if addon == "Blizzard_LookingForGuildUI" then
+		local checkbox = {
+			"LookingForGuildPvPButton",
+			"LookingForGuildWeekendsButton",
+			"LookingForGuildWeekdaysButton",
+			"LookingForGuildRPButton",
+			"LookingForGuildRaidButton",
+			"LookingForGuildQuestButton",
+			"LookingForGuildDungeonButton",
+		}
+
+		-- Checkboxes
+		for _, v in pairs(checkbox) do
+			SkinCheckBox(_G[v])
+		end
+
+		SkinCheckBox(LookingForGuildTankButton.checkButton)
+		SkinCheckBox(LookingForGuildHealerButton.checkButton)
+		SkinCheckBox(LookingForGuildDamagerButton.checkButton)
+
+		-- Other frames
+		LookingForGuildFrameInset:StripTextures(false)
+		LookingForGuildFrame:StripTextures()
+		LookingForGuildFrame:SetTemplate("Transparent")
+		LookingForGuildBrowseButton_LeftSeparator:Kill()
+		LookingForGuildRequestButton_RightSeparator:Kill()
+		SkinScrollBar(LookingForGuildBrowseFrameContainerScrollBar)
+		LookingForGuildBrowseButton:SkinButton()
+		LookingForGuildRequestButton:SkinButton()
+		SkinCloseButton(LookingForGuildFrameCloseButton)
+		LookingForGuildCommentInputFrame:CreateBackdrop("Transparent")
+		LookingForGuildCommentInputFrame:StripTextures(false)
+
+		-- Container buttons
+		for i = 1, 4 do
+			local b = _G["LookingForGuildBrowseFrameContainerButton"..i]
+			local t = _G["LookingForGuildAppsFrameContainerButton"..i]
+			b:SkinButton(true)
+			t:SkinButton(true)
+		end
+
+		-- Tabs
+		for i= 1, 3 do
+			SkinTab(_G["LookingForGuildFrameTab"..i])
+		end
+	end
+
+	-- Inspect Frame
+	if addon == "Blizzard_InspectUI" then
+		InspectFrame:StripTextures(true)
+		InspectFrameInset:StripTextures(true)
+		InspectTalentFramePointsBar:StripTextures()
+		InspectFrame:CreateBackdrop("Transparent")
+		InspectFrame.backdrop:SetAllPoints()
+		SkinCloseButton(InspectFrameCloseButton)
+
+		for i = 1, 4 do
+			SkinTab(_G["InspectFrameTab"..i])
+		end
+
+		InspectModelFrameBorderTopLeft:Kill()
+		InspectModelFrameBorderTopRight:Kill()
+		InspectModelFrameBorderTop:Kill()
+		InspectModelFrameBorderLeft:Kill()
+		InspectModelFrameBorderRight:Kill()
+		InspectModelFrameBorderBottomLeft:Kill()
+		InspectModelFrameBorderBottomRight:Kill()
+		InspectModelFrameBorderBottom:Kill()
+		InspectModelFrameBorderBottom2:Kill()
+		InspectModelFrameBackgroundOverlay:Kill()
+		InspectModelFrame:CreateBackdrop("Default")
+
+		local slots = {
+			"HeadSlot",
+			"NeckSlot",
+			"ShoulderSlot",
+			"BackSlot",
+			"ChestSlot",
+			"ShirtSlot",
+			"TabardSlot",
+			"WristSlot",
+			"HandsSlot",
+			"WaistSlot",
+			"LegsSlot",
+			"FeetSlot",
+			"Finger0Slot",
+			"Finger1Slot",
+			"Trinket0Slot",
+			"Trinket1Slot",
+			"MainHandSlot",
+			"SecondaryHandSlot",
+			"RangedSlot",
+		}
+
+		for _, slot in pairs(slots) do
+			local icon = _G["Inspect"..slot.."IconTexture"]
+			local slot = _G["Inspect"..slot]
+			slot:StripTextures()
+			slot:StyleButton(false)
+			icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			icon:ClearAllPoints()
+			icon:Point("TOPLEFT", 2, -2)
+			icon:Point("BOTTOMRIGHT", -2, 2)
+
+			slot:SetFrameLevel(slot:GetFrameLevel() + 2)
+			slot:CreateBackdrop("Default")
+			slot.backdrop:SetAllPoints()
+		end
+
+		SkinRotateButton(InspectModelFrameRotateLeftButton)
+		SkinRotateButton(InspectModelFrameRotateRightButton)
+		InspectModelFrameRotateRightButton:Point("TOPLEFT", InspectModelFrameRotateLeftButton, "TOPRIGHT", 3, 0)
+
+		InspectPVPFrameBottom:Kill()
+		InspectGuildFrameBG:Kill()
+		InspectPVPFrame:HookScript("OnShow", function() InspectPVPFrameBG:Kill() end)
+
+		for i = 1, 3 do
+			_G["InspectPVPTeam"..i]:StripTextures()
+			_G["InspectTalentFrameTab"..i]:StripTextures()
+		end
+
+		InspectTalentFrame.bg = CreateFrame("Frame", nil, InspectTalentFrame)
+		InspectTalentFrame.bg:SetTemplate("Default")
+		InspectTalentFrame.bg:Point("TOPLEFT", InspectTalentFrameBackgroundTopLeft, "TOPLEFT", -2, 2)
+		InspectTalentFrame.bg:Point("BOTTOMRIGHT", InspectTalentFrameBackgroundBottomRight, "BOTTOMRIGHT", -20, 52)
+		InspectTalentFrame.bg:SetFrameLevel(InspectTalentFrame.bg:GetFrameLevel() - 2)
+
+		for i = 1, MAX_NUM_TALENTS do
+			local button = _G["InspectTalentFrameTalent"..i]
+			local icon = _G["InspectTalentFrameTalent"..i.."IconTexture"]
+			if button then
+				button:StripTextures()
+				button:StyleButton()
+				button:SetTemplate("Default")
+				button.SetHighlightTexture = T.dummy
+				button.SetPushedTexture = T.dummy
+				button:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				button:GetPushedTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				button:GetHighlightTexture():SetAllPoints(icon)
+				button:GetPushedTexture():SetAllPoints(icon)
+
+				icon:ClearAllPoints()
+				icon:Point("TOPLEFT", 2, -2)
+				icon:Point("BOTTOMRIGHT", -2, 2)
+				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			end
+		end
+	end
 
 	-- Binding
 	if addon == "Blizzard_BindingUI" then
@@ -867,7 +1019,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		for i = 1, 3 do
-			_G["PlayerTalentFramePanel"..i.."Arrow"]:SetFrameStrata("HIGH")
+			_G["PlayerTalentFramePanel"..i.."Arrow"]:SetFrameLevel(_G["PlayerTalentFramePanel"..i.."Arrow"]:GetFrameLevel() + 2)
 		end
 		PlayerTalentFramePetPanelArrow:SetFrameStrata("HIGH")
 
@@ -1835,7 +1987,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for i = 1, INBOXITEMS_TO_DISPLAY do
 				local bg = _G["MailItem"..i]
 				bg:StripTextures()
-				bg:CreateBackdrop("Default")
+				bg:CreateBackdrop("Transparent")
 				bg.backdrop:Point("TOPLEFT", 2, 1)
 				bg.backdrop:Point("BOTTOMRIGHT", -2, 2)
 
@@ -1867,7 +2019,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			-- Send mail
 			SendMailScrollFrame:StripTextures(true)
-			SendMailScrollFrame:SetTemplate("Default")
+			SendMailScrollFrame:SetTemplate("Transparent")
 
 			SkinScrollBar(SendMailScrollFrameScrollBar)
 
@@ -2217,6 +2369,46 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					end
 				end
 			end)
+		end
+
+		-- Greeting Frame
+		do
+			QuestFrameGreetingPanel:HookScript("OnShow", function()
+				QuestFrameGreetingPanel:StripTextures()
+				QuestFrameGreetingGoodbyeButton:SkinButton(true)
+				GreetingText:SetTextColor(1, 1, 1)
+				CurrentQuestsText:SetTextColor(1, 1, 0)
+				QuestGreetingFrameHorizontalBreak:Kill()
+				AvailableQuestsText:SetTextColor(1, 1, 0)
+
+				for i = 1, MAX_NUM_QUESTS do
+					local button = _G["QuestTitleButton"..i]
+					if button:GetFontString() then
+						if button:GetFontString():GetText() and button:GetFontString():GetText():find("|cff000000") then
+							button:GetFontString():SetText(string.gsub(button:GetFontString():GetText(), "|cff000000", "|cffFFFF00"))
+						end
+					end
+				end
+			end)
+		end
+
+		-- Item Text Frame
+		do
+			ItemTextFrame:StripTextures(true)
+			ItemTextScrollFrame:StripTextures()
+			ItemTextFrame:SetTemplate("Transparent")
+			SkinCloseButton(ItemTextCloseButton)
+			SkinNextPrevButton(ItemTextPrevPageButton)
+			SkinNextPrevButton(ItemTextNextPageButton)
+		end
+
+		-- Taxi Frame
+		do
+			TaxiFrame:StripTextures()
+			TaxiFrame:CreateBackdrop("Transparent")
+			TaxiRouteMap:CreateBackdrop("Default")
+			TaxiRouteMap.backdrop:SetAllPoints()
+			SkinCloseButton(TaxiFrameCloseButton)
 		end
 
 		-- LFD frame
@@ -3376,5 +3568,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			CharacterFrame:SetTemplate("Transparent")
 			CharacterFrame:SetFrameStrata("DIALOG")
 		end
+
+		-- Other buttons
+		OpenAllButton:SkinButton()
+		OpenAllButton2:SkinButton()
+		DressUpFrameUndressButton:SkinButton()
 	end
 end)

@@ -39,10 +39,10 @@ local function SkinTab(tab)
 	tab.backdrop:Point("TOPLEFT", 10, -3)
 	tab.backdrop:Point("BOTTOMRIGHT", -10, 3)
 
-	local name = tab:GetName()
-	_G[name.."Text"]:ClearAllPoints()
-	_G[name.."Text"]:SetPoint("CENTER")
-	_G[name.."Text"].SetPoint = T.dummy
+	--local name = tab:GetName()
+	--_G[name.."Text"]:ClearAllPoints()
+	--_G[name.."Text"]:SetPoint("CENTER")
+	--_G[name.."Text"].SetPoint = T.dummy
 end
 
 local function SkinNextPrevButton(btn, horizonal)
@@ -441,7 +441,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."Icon"].backdrop:Point("BOTTOMRIGHT", _G["ArchaeologyFrameCompletedPageArtifact"..i.."Icon"], "BOTTOMRIGHT", 2, -2)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."Icon"].backdrop:SetFrameLevel(artifact:GetFrameLevel() - 2)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."Icon"]:SetDrawLayer("OVERLAY")
-				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactName"]:SetTextColor(1, 1, 0)
+				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactName"]:SetTextColor(1, 0.8, 0)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactSubText"]:SetTextColor(0.6, 0.6, 0.6)
 			end
 		end
@@ -457,23 +457,23 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		for i = 1, ArchaeologyFrameCompletedPage:GetNumRegions() do
 			local region = select(i, ArchaeologyFrameCompletedPage:GetRegions())
 			if region:GetObjectType() == "FontString" then
-				region:SetTextColor(1, 1, 0)
+				region:SetTextColor(1, 0.8, 0)
 			end
 		end
 
 		for i = 1, ArchaeologyFrameSummaryPage:GetNumRegions() do
 			local region = select(i, ArchaeologyFrameSummaryPage:GetRegions())
 			if region:GetObjectType() == "FontString" then
-				region:SetTextColor(1, 1, 0)
+				region:SetTextColor(1, 0.8, 0)
 			end
 		end
 
 		ArchaeologyFrameCompletedPage.infoText:SetTextColor(1, 1, 1)
-		ArchaeologyFrameHelpPageTitle:SetTextColor(1, 1, 0)
-		ArchaeologyFrameHelpPageDigTitle:SetTextColor(1, 1, 0)
+		ArchaeologyFrameHelpPageTitle:SetTextColor(1, 0.8, 0)
+		ArchaeologyFrameHelpPageDigTitle:SetTextColor(1, 0.8, 0)
 		ArchaeologyFrameHelpPageHelpScrollHelpText:SetTextColor(1, 1, 1)
 
-		ArchaeologyFrameArtifactPageHistoryTitle:SetTextColor(1, 1, 0)
+		ArchaeologyFrameArtifactPageHistoryTitle:SetTextColor(1, 0.8, 0)
 		ArchaeologyFrameArtifactPageIcon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 		ArchaeologyFrameArtifactPageIcon.backdrop = CreateFrame("Frame", nil, ArchaeologyFrameArtifactPage)
 		ArchaeologyFrameArtifactPageIcon.backdrop:SetTemplate("Default")
@@ -2377,9 +2377,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				QuestFrameGreetingPanel:StripTextures()
 				QuestFrameGreetingGoodbyeButton:SkinButton(true)
 				GreetingText:SetTextColor(1, 1, 1)
-				CurrentQuestsText:SetTextColor(1, 1, 0)
+				CurrentQuestsText:SetTextColor(1, 0.8, 0)
 				QuestGreetingFrameHorizontalBreak:Kill()
-				AvailableQuestsText:SetTextColor(1, 1, 0)
+				AvailableQuestsText:SetTextColor(1, 0.8, 0)
 
 				for i = 1, MAX_NUM_QUESTS do
 					local button = _G["QuestTitleButton"..i]
@@ -2562,10 +2562,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 
 			hooksecurefunc("QuestFrameProgressItems_Update", function()
-				QuestProgressTitleText:SetTextColor(1, 1, 0)
+				QuestProgressTitleText:SetTextColor(1, 0.8, 0)
 				QuestProgressText:SetTextColor(1, 1, 1)
-				QuestProgressRequiredItemsText:SetTextColor(1, 1, 0)
-				QuestProgressRequiredMoneyText:SetTextColor(1, 1, 0)
+				QuestProgressRequiredItemsText:SetTextColor(1, 0.8, 0)
+				QuestProgressRequiredMoneyText:SetTextColor(1, 0.8, 0)
 			end)
 
 			QuestNPCModel:StripTextures()
@@ -2595,11 +2595,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PetitionFrameCancelButton:SkinButton()
 			SkinCloseButton(PetitionFrameCloseButton)
 
-			PetitionFrameCharterTitle:SetTextColor(1, 1, 0)
+			PetitionFrameCharterTitle:SetTextColor(1, 0.8, 0)
 			PetitionFrameCharterName:SetTextColor(1, 1, 1)
-			PetitionFrameMasterTitle:SetTextColor(1, 1, 0)
+			PetitionFrameMasterTitle:SetTextColor(1, 0.8, 0)
 			PetitionFrameMasterName:SetTextColor(1, 1, 1)
-			PetitionFrameMemberTitle:SetTextColor(1, 1, 0)
+			PetitionFrameMemberTitle:SetTextColor(1, 0.8, 0)
 
 			for i = 1, 9 do
 				_G["PetitionFrameMemberName"..i]:SetTextColor(1, 1, 1)
@@ -2659,7 +2659,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			QuestInfoItemHighlight:StripTextures()
 			QuestInfoItemHighlight:SetTemplate("Default")
-			QuestInfoItemHighlight:SetBackdropBorderColor(1, 1, 0)
+			QuestInfoItemHighlight:SetBackdropBorderColor(1, 0.8, 0)
 			QuestInfoItemHighlight:SetBackdropColor(0, 0, 0, 0)
 			QuestInfoItemHighlight:Size(142, 40)
 
@@ -2680,7 +2680,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						numVisibleObjectives = numVisibleObjectives+1
 						objective = _G["QuestInfoObjective"..numVisibleObjectives]
 						if finished then
-							objective:SetTextColor(1, 1, 0)
+							objective:SetTextColor(1, 0.8, 0)
 						else
 							objective:SetTextColor(0.6, 0.6, 0.6)
 						end
@@ -2690,7 +2690,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			hooksecurefunc("QuestInfo_Display", function(template, parentFrame, acceptButton, material)
 				local textColor = {1, 1, 1}
-				local titleTextColor = {1, 1, 0}
+				local titleTextColor = {1, 0.8, 0}
 
 				-- Headers
 				QuestInfoTitleHeader:SetTextColor(unpack(titleTextColor))
@@ -2717,7 +2717,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					if requiredMoney > GetMoney() then
 						QuestInfoRequiredMoneyText:SetTextColor(0.6, 0.6, 0.6)
 					else
-						QuestInfoRequiredMoneyText:SetTextColor(1, 1, 0)
+						QuestInfoRequiredMoneyText:SetTextColor(1, 0.8, 0)
 					end
 				end
 			end)
@@ -3128,7 +3128,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						icon:ClearAllPoints()
 						icon:SetAllPoints()
 
-						button:SetFrameLevel(button:GetFrameLevel() + 2)
+						--button:SetFrameLevel(button:GetFrameLevel() + 2)
 						if not button.backdrop then
 							button:CreateBackdrop("Default", true)
 						end
@@ -3201,7 +3201,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			}
 
 			for _, header in pairs(professionheaders) do
-				_G[header.."Missing"]:SetTextColor(1, 1, 0)
+				_G[header.."Missing"]:SetTextColor(1, 0.8, 0)
 				_G[header].missingText:SetTextColor(0.6, 0.6, 0.6)
 			end
 

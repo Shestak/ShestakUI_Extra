@@ -25,6 +25,12 @@ end
 -- Spec
 local spec = CreateFrame("Button", "Spec", UIParent)
 spec:CreatePanel("Transparent", 125, 20, unpack(C.extra_position.switch_spec))
+spec:EnableMouse(true)
+spec:SetMovable(true)
+spec:SetClampedToScreen(true)
+spec:RegisterForDrag("LeftButton")
+spec:SetScript("OnDragStart", function(self) self:StartMoving() end)
+spec:SetScript("OnDragStop", function(self) self:StopMovingOrSizing() end)
 
 spec.t = spec:CreateFontString(spec, "OVERLAY")
 spec.t:SetPoint("CENTER")

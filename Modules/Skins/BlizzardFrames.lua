@@ -30,9 +30,17 @@ local function SkinTab(tab)
 
 	for _, object in pairs(tabs) do
 		local tex = _G[tab:GetName()..object]
-		tex:SetTexture(nil)
+		if tex then
+			tex:SetTexture(nil)
+		end
 	end
-	tab:GetHighlightTexture():SetTexture(nil)
+
+	if tab.GetHighlightTexture and tab:GetHighlightTexture() then
+		tab:GetHighlightTexture():SetTexture(nil)
+	else
+		tab:StripTextures()
+	end
+
 	tab.backdrop = CreateFrame("Frame", nil, tab)
 	tab.backdrop:SetTemplate("Transparent")
 	tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
@@ -150,6 +158,16 @@ local function SkinCloseButton(f, point)
 	else
 		f:Point("TOPRIGHT", -4, -4)
 	end
+
+	for i = 1, f:GetNumRegions() do
+		local region = select(i, f:GetRegions())
+		if region:GetObjectType() == "Texture" then
+			if region:GetTexture() == "Interface\\DialogFrame\\UI-DialogBox-Corner" then
+				region:Kill()
+			end
+		end
+	end
+
 	f:HookScript("OnEnter", T.SetModifiedBackdrop)
 	f:HookScript("OnLeave", T.SetOriginalBackdrop)
 end
@@ -158,6 +176,507 @@ local SkinBlizz = CreateFrame("Frame")
 SkinBlizz:RegisterEvent("ADDON_LOADED")
 SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 	if IsAddOnLoaded("Skinner") or IsAddOnLoaded("Aurora") then return end
+
+	-- ReforgingUI
+	if addon == "Blizzard_ReforgingUI" then
+		ReforgingFrame:StripTextures()
+		ReforgingFrame:SetTemplate("Transparent")
+
+		ReforgingFrameTopInset:StripTextures()
+		ReforgingFrameInset:StripTextures()
+		ReforgingFrameBottomInset:StripTextures()
+
+		ReforgingFrameRestoreButton:SkinButton(true)
+		ReforgingFrameReforgeButton:SkinButton(true)
+
+		SkinDropDownBox(ReforgingFrameFilterOldStat, 180)
+		SkinDropDownBox(ReforgingFrameFilterNewStat, 180)
+
+		ReforgingFrameItemButton:StripTextures()
+		ReforgingFrameItemButton:SetTemplate("Default", true)
+		ReforgingFrameItemButton:StyleButton()
+		ReforgingFrameItemButtonIconTexture:ClearAllPoints()
+		ReforgingFrameItemButtonIconTexture:Point("TOPLEFT", 2, -2)
+		ReforgingFrameItemButtonIconTexture:Point("BOTTOMRIGHT", -2, 2)
+
+		hooksecurefunc("ReforgingFrame_Update", function(self)
+			local currentReforge, icon, name, quality, bound, cost = GetReforgeItemInfo()
+			if icon then
+				ReforgingFrameItemButtonIconTexture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			else
+				ReforgingFrameItemButtonIconTexture:SetTexture(nil)
+			end
+		end)
+
+		SkinCloseButton(ReforgingFrameCloseButton)
+	end
+
+	-- Calendar
+	if addon == "Blizzard_Calendar" then
+		local frames = {
+			"CalendarFrame",
+		}
+
+		for _, frame in pairs(frames) do
+			_G[frame]:StripTextures()
+		end
+
+		CalendarFrame:SetTemplate("Transparent")
+		SkinCloseButton(CalendarCloseButton)
+		CalendarCloseButton:Point("TOPRIGHT", CalendarFrame, "TOPRIGHT", -4, -4)
+
+		SkinNextPrevButton(CalendarPrevMonthButton)
+		SkinNextPrevButton(CalendarNextMonthButton)
+
+		-- Dropdown button
+		do
+			local frame = CalendarFilterFrame
+			local button = CalendarFilterButton
+
+			frame:StripTextures()
+			frame:Width(155)
+
+			_G[frame:GetName().."Text"]:ClearAllPoints()
+			_G[frame:GetName().."Text"]:Point("RIGHT", button, "LEFT", -2, 0)
+
+			button:ClearAllPoints()
+			button:Point("RIGHT", frame, "RIGHT", -10, 3)
+			button.SetPoint = T.dummy
+
+			SkinNextPrevButton(button, true)
+
+			frame:CreateBackdrop("Default")
+			frame.backdrop:Point("TOPLEFT", 20, 2)
+			frame.backdrop:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+		end
+
+		-- Backdrop
+		local bg = CreateFrame("Frame", "CalendarFrameBackdrop", CalendarFrame)
+		bg:SetTemplate("Default")
+		bg:Point("TOPLEFT", 10, -72)
+		bg:Point("BOTTOMRIGHT", -8, 3)
+
+		CalendarContextMenu:SetTemplate("Default")
+		CalendarContextMenu.SetBackdropColor = T.dummy
+		CalendarContextMenu.SetBackdropBorderColor = T.dummy
+
+		-- Boost frame levels
+		for i = 1, 42 do
+			_G["CalendarDayButton"..i]:SetFrameLevel(_G["CalendarDayButton"..i]:GetFrameLevel() + 1)
+		end
+
+		-- CreateEventFrame
+		CalendarCreateEventFrame:StripTextures()
+		CalendarCreateEventFrame:SetTemplate("Transparent")
+		CalendarCreateEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarCreateEventTitleFrame:StripTextures()
+
+		CalendarCreateEventCreateButton:SkinButton(true)
+		CalendarCreateEventMassInviteButton:SkinButton(true)
+		CalendarCreateEventInviteButton:SkinButton(true)
+		CalendarCreateEventInviteButton:Point("TOPLEFT", CalendarCreateEventInviteEdit, "TOPRIGHT", 4, 1)
+		CalendarCreateEventInviteEdit:Width(CalendarCreateEventInviteEdit:GetWidth() - 2)
+
+		CalendarCreateEventInviteList:StripTextures()
+		CalendarCreateEventInviteList:SetTemplate("Default")
+
+		SkinEditBox(CalendarCreateEventInviteEdit)
+		SkinEditBox(CalendarCreateEventTitleEdit)
+		SkinDropDownBox(CalendarCreateEventTypeDropDown, 120)
+
+		CalendarCreateEventDescriptionContainer:StripTextures()
+		CalendarCreateEventDescriptionContainer:SetTemplate("Default")
+
+		SkinCloseButton(CalendarCreateEventCloseButton)
+
+		SkinCheckBox(CalendarCreateEventLockEventCheck)
+
+		SkinDropDownBox(CalendarCreateEventHourDropDown, 68)
+		SkinDropDownBox(CalendarCreateEventMinuteDropDown, 68)
+		SkinDropDownBox(CalendarCreateEventAMPMDropDown, 68)
+		SkinDropDownBox(CalendarCreateEventRepeatOptionDropDown, 120)
+		CalendarCreateEventIcon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+		CalendarCreateEventIcon.SetTexCoord = T.dummy
+
+		CalendarCreateEventInviteListSection:StripTextures()
+
+		CalendarClassButtonContainer:HookScript("OnShow", function()
+			for i, class in ipairs(CLASS_SORT_ORDER) do
+				local button = _G["CalendarClassButton"..i]
+				button:StripTextures()
+				button:CreateBackdrop("Default")
+
+				local tcoords = CLASS_ICON_TCOORDS[class]
+				local buttonIcon = button:GetNormalTexture()
+				buttonIcon:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes")
+				buttonIcon:SetTexCoord(tcoords[1] + 0.015, tcoords[2] - 0.02, tcoords[3] + 0.018, tcoords[4] - 0.02)
+			end
+
+			CalendarClassButton1:Point("TOPLEFT", CalendarClassButtonContainer, "TOPLEFT", 5, 0)
+
+			CalendarClassTotalsButton:StripTextures()
+			CalendarClassTotalsButton:CreateBackdrop("Default")
+		end)
+
+		-- Texture Picker Frame
+		CalendarTexturePickerFrame:StripTextures()
+		CalendarTexturePickerTitleFrame:StripTextures()
+
+		CalendarTexturePickerFrame:SetTemplate("Transparent")
+
+		SkinScrollBar(CalendarTexturePickerScrollBar)
+		CalendarTexturePickerAcceptButton:SkinButton(true)
+		CalendarTexturePickerCancelButton:SkinButton(true)
+
+		-- Mass Invite Frame
+		CalendarMassInviteFrame:StripTextures()
+		CalendarMassInviteFrame:SetTemplate("Transparent")
+		CalendarMassInviteTitleFrame:StripTextures()
+
+		SkinCloseButton(CalendarMassInviteCloseButton)
+		CalendarMassInviteGuildAcceptButton:SkinButton()
+		CalendarMassInviteArenaButton2:SkinButton()
+		CalendarMassInviteArenaButton3:SkinButton()
+		CalendarMassInviteArenaButton5:SkinButton()
+		SkinDropDownBox(CalendarMassInviteGuildRankMenu, 130)
+
+		SkinEditBox(CalendarMassInviteGuildMinLevelEdit)
+		SkinEditBox(CalendarMassInviteGuildMaxLevelEdit)
+
+		-- Raid View
+		CalendarViewRaidFrame:StripTextures()
+		CalendarViewRaidFrame:SetTemplate("Transparent")
+		CalendarViewRaidFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarViewRaidTitleFrame:StripTextures()
+		SkinCloseButton(CalendarViewRaidCloseButton)
+
+		-- Holiday View
+		CalendarViewHolidayFrame:StripTextures(true)
+		CalendarViewHolidayFrame:SetTemplate("Transparent")
+		CalendarViewHolidayFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarViewHolidayTitleFrame:StripTextures()
+		SkinCloseButton(CalendarViewHolidayCloseButton)
+	end
+
+	-- AchievementUI
+	if addon == "Blizzard_AchievementUI" then
+		local frames = {
+			"AchievementFrame",
+			"AchievementFrameCategories",
+			"AchievementFrameSummary",
+			"AchievementFrameHeader",
+			"AchievementFrameSummaryCategoriesHeader",
+			"AchievementFrameSummaryAchievementsHeader",
+			"AchievementFrameStatsBG",
+			"AchievementFrameAchievements",
+			"AchievementFrameComparison",
+			"AchievementFrameComparisonHeader",
+			"AchievementFrameComparisonSummaryPlayer",
+			"AchievementFrameComparisonSummaryFriend",
+		}
+
+		for _, frame in pairs(frames) do
+			_G[frame]:StripTextures(true)
+		end
+
+		local noname_frames = {
+			"AchievementFrameStats",
+			"AchievementFrameSummary",
+			"AchievementFrameAchievements",
+			"AchievementFrameComparison"
+		}
+
+		for _, frame in pairs(noname_frames) do
+			for i = 1, _G[frame]:GetNumChildren() do
+				local child = select(i, _G[frame]:GetChildren())
+				if child and not child:GetName() then
+					child:SetBackdrop(nil)
+				end
+			end
+		end
+
+		AchievementFrame:CreateBackdrop("Transparent")
+		AchievementFrame.backdrop:Point("TOPLEFT", 0, 6)
+		AchievementFrame.backdrop:SetPoint("BOTTOMRIGHT")
+		AchievementFrameHeaderTitle:ClearAllPoints()
+		AchievementFrameHeaderTitle:Point("TOPLEFT", AchievementFrame.backdrop, "TOPLEFT", -22, -8)
+		AchievementFrameHeaderPoints:ClearAllPoints()
+		AchievementFrameHeaderPoints:Point("LEFT", AchievementFrameHeaderTitle, "RIGHT", 2, 0)
+
+		-- Backdrops
+		AchievementFrameCategoriesContainer:CreateBackdrop("Transparent")
+		AchievementFrameCategoriesContainer.backdrop:Point("TOPLEFT", 0, 4)
+		AchievementFrameCategoriesContainer.backdrop:Point("BOTTOMRIGHT", -2, -3)
+		AchievementFrameAchievementsContainer:CreateBackdrop("Transparent")
+		AchievementFrameAchievementsContainer.backdrop:Point("TOPLEFT", -3, 2)
+		AchievementFrameAchievementsContainer.backdrop:Point("BOTTOMRIGHT", -3, -3)
+
+		SkinCloseButton(AchievementFrameCloseButton, AchievementFrame.backdrop)
+		SkinDropDownBox(AchievementFrameFilterDropDown)
+		AchievementFrameFilterDropDown:Point("TOPRIGHT", AchievementFrame, "TOPRIGHT", -44, 5)
+
+		-- ScrollBars
+		SkinScrollBar(AchievementFrameCategoriesContainerScrollBar)
+		SkinScrollBar(AchievementFrameAchievementsContainerScrollBar)
+		SkinScrollBar(AchievementFrameStatsContainerScrollBar)
+		SkinScrollBar(AchievementFrameComparisonContainerScrollBar)
+		SkinScrollBar(AchievementFrameComparisonStatsContainerScrollBar)
+
+		-- Tabs
+		for i = 1, 3 do
+			SkinTab(_G["AchievementFrameTab"..i])
+			_G["AchievementFrameTab"..i]:SetFrameLevel(_G["AchievementFrameTab"..i]:GetFrameLevel() + 2)
+		end
+
+		local function SkinStatusBar(bar)
+			bar:StripTextures()
+			bar:SetStatusBarTexture(C.media.texture)
+			bar:SetStatusBarColor(0, 0.7, 0.1)
+			bar:CreateBackdrop("Default")
+
+			if _G[bar:GetName().."Title"] then
+				_G[bar:GetName().."Title"]:SetPoint("LEFT", 4, 0)
+			end
+
+			if _G[bar:GetName().."Label"] then
+				_G[bar:GetName().."Label"]:SetPoint("LEFT", 4, 0)
+			end
+
+			if _G[bar:GetName().."Text"] then
+				_G[bar:GetName().."Text"]:SetPoint("RIGHT", -4, 0)
+			end
+		end
+
+		SkinStatusBar(AchievementFrameSummaryCategoriesStatusBar)
+		SkinStatusBar(AchievementFrameComparisonSummaryPlayerStatusBar)
+		SkinStatusBar(AchievementFrameComparisonSummaryFriendStatusBar)
+		AchievementFrameComparisonSummaryFriendStatusBar.text:ClearAllPoints()
+		AchievementFrameComparisonSummaryFriendStatusBar.text:SetPoint("CENTER")
+		AchievementFrameComparisonHeader:Point("BOTTOMRIGHT", AchievementFrameComparison, "TOPRIGHT", 45, -20)
+
+		for i = 1, 8 do
+			local frame = _G["AchievementFrameSummaryCategoriesCategory"..i]
+			local button = _G["AchievementFrameSummaryCategoriesCategory"..i.."Button"]
+			local highlight = _G["AchievementFrameSummaryCategoriesCategory"..i.."ButtonHighlight"]
+			SkinStatusBar(frame)
+			button:StripTextures()
+			highlight:StripTextures()
+
+			_G[highlight:GetName().."Middle"]:SetTexture(1, 1, 1, 0.3)
+			_G[highlight:GetName().."Middle"]:SetAllPoints(frame)
+		end
+
+		AchievementFrame:HookScript("OnShow", function()
+			for i = 1, 20 do
+				local frame = _G["AchievementFrameCategoriesContainerButton"..i]
+				local lastframe = _G["AchievementFrameCategoriesContainerButton"..i-1]
+
+				frame:StripTextures()
+				frame:StyleButton()
+			end
+		end)
+
+		hooksecurefunc("AchievementFrameSummary_UpdateAchievements", function()
+			for i = 1, ACHIEVEMENTUI_MAX_SUMMARY_ACHIEVEMENTS do
+				local frame = _G["AchievementFrameSummaryAchievement"..i]
+				_G["AchievementFrameSummaryAchievement"..i.."Highlight"]:Kill()
+				frame:StripTextures()
+
+				_G["AchievementFrameSummaryAchievement"..i.."Description"]:SetTextColor(0.6, 0.6, 0.6)
+
+				if not frame.backdrop then
+					frame:CreateBackdrop("Default", true)
+					frame.backdrop:Point("TOPLEFT", 2, -2)
+					frame.backdrop:Point("BOTTOMRIGHT", -2, 2)
+
+					_G["AchievementFrameSummaryAchievement"..i.."IconBling"]:Kill()
+					_G["AchievementFrameSummaryAchievement"..i.."IconOverlay"]:Kill()
+					_G["AchievementFrameSummaryAchievement"..i.."Icon"]:SetTemplate("Default")
+					_G["AchievementFrameSummaryAchievement"..i.."Icon"]:Height(_G["AchievementFrameSummaryAchievement"..i.."Icon"]:GetHeight() - 14)
+					_G["AchievementFrameSummaryAchievement"..i.."Icon"]:Width(_G["AchievementFrameSummaryAchievement"..i.."Icon"]:GetWidth() - 14)
+					_G["AchievementFrameSummaryAchievement"..i.."Icon"]:ClearAllPoints()
+					_G["AchievementFrameSummaryAchievement"..i.."Icon"]:Point("LEFT", 6, 0)
+					_G["AchievementFrameSummaryAchievement"..i.."IconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+					_G["AchievementFrameSummaryAchievement"..i.."IconTexture"]:ClearAllPoints()
+					_G["AchievementFrameSummaryAchievement"..i.."IconTexture"]:Point("TOPLEFT", 2, -2)
+					_G["AchievementFrameSummaryAchievement"..i.."IconTexture"]:Point("BOTTOMRIGHT", -2, 2)
+				end
+			end
+		end)
+
+		for i = 1, 7 do
+			local frame = _G["AchievementFrameAchievementsContainerButton"..i]
+			_G["AchievementFrameAchievementsContainerButton"..i.."Highlight"]:Kill()
+			frame:StripTextures()
+
+			frame:CreateBackdrop("Default", true)
+			frame.backdrop:Point("TOPLEFT", 2, -2)
+			frame.backdrop:Point("BOTTOMRIGHT", -2, 2)
+			frame.SetBackdropBorderColor = T.dummy
+
+			_G["AchievementFrameAchievementsContainerButton"..i.."Description"]:SetTextColor(0.6, 0.6, 0.6)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Description"].SetTextColor = T.dummy
+			_G["AchievementFrameAchievementsContainerButton"..i.."HiddenDescription"]:SetTextColor(1, 1, 1)
+			_G["AchievementFrameAchievementsContainerButton"..i.."HiddenDescription"].SetTextColor = T.dummy
+
+			_G["AchievementFrameAchievementsContainerButton"..i.."HiddenDescription"]:SetParent(frame.backdrop)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Description"]:SetParent(frame.backdrop)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:SetParent(frame.backdrop)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Shield"]:SetParent(frame.backdrop)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Label"]:SetParent(frame.backdrop)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Reward"]:SetParent(frame.backdrop)
+
+			_G["AchievementFrameAchievementsContainerButton"..i.."IconBling"]:Kill()
+			_G["AchievementFrameAchievementsContainerButton"..i.."IconOverlay"]:Kill()
+			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:SetTemplate("Default")
+			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:Height(_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:GetHeight() - 14)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:Width(_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:GetWidth() - 14)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:ClearAllPoints()
+			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:Point("LEFT", 6, 0)
+			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:ClearAllPoints()
+			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:Point("TOPLEFT", 2, -2)
+			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:Point("BOTTOMRIGHT", -2, 2)
+		end
+
+		local compares = {
+			"Player",
+			"Friend"
+		}
+
+		for _, compare in pairs(compares) do
+			for i = 1, 9 do
+				local frame = "AchievementFrameComparisonContainerButton"..i..compare
+
+				_G[frame]:StripTextures()
+				_G[frame.."Background"]:Kill()
+
+				_G[frame]:CreateBackdrop("Default", true)
+				_G[frame].backdrop:Point("TOPLEFT", 2, -2)
+				_G[frame].backdrop:Point("BOTTOMRIGHT", -2, 2)
+				_G[frame].SetBackdropBorderColor = T.dummy
+
+				if _G[frame.."Description"] then
+					_G[frame.."Description"]:SetTextColor(0.6, 0.6, 0.6)
+					_G[frame.."Description"].SetTextColor = T.dummy
+					_G[frame.."Description"]:SetParent(_G[frame].backdrop)
+				end
+
+				_G[frame.."Icon"]:SetParent(_G[frame].backdrop)
+				_G[frame.."Shield"]:SetParent(_G[frame].backdrop)
+
+				if compare == "Friend" then
+					_G[frame.."Shield"]:Point("TOPRIGHT", _G["AchievementFrameComparisonContainerButton"..i.."Friend"], "TOPRIGHT", -20, -9)
+				end
+
+				if _G[frame.."Label"] then
+					_G[frame.."Label"]:SetParent(_G[frame].backdrop)
+				end
+
+				_G[frame.."IconBling"]:Kill()
+				_G[frame.."IconOverlay"]:Kill()
+				_G[frame.."Icon"]:SetTemplate("Default")
+				_G[frame.."Icon"]:Height(_G[frame.."Icon"]:GetHeight() - 14)
+				_G[frame.."Icon"]:Width(_G[frame.."Icon"]:GetWidth() - 14)
+				_G[frame.."Icon"]:ClearAllPoints()
+				_G[frame.."Icon"]:Point("LEFT", 6, 0)
+				_G[frame.."IconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				_G[frame.."IconTexture"]:ClearAllPoints()
+				_G[frame.."IconTexture"]:Point("TOPLEFT", 2, -2)
+				_G[frame.."IconTexture"]:Point("BOTTOMRIGHT", -2, 2)
+			end
+		end
+
+		for i = 1, 20 do
+			local frame = _G["AchievementFrameStatsContainerButton"..i]
+			frame:StyleButton()
+
+			_G["AchievementFrameStatsContainerButton"..i.."BG"]:SetTexture(1, 1, 1, 0.2)
+			_G["AchievementFrameStatsContainerButton"..i.."HeaderLeft"]:Kill()
+			_G["AchievementFrameStatsContainerButton"..i.."HeaderRight"]:Kill()
+			_G["AchievementFrameStatsContainerButton"..i.."HeaderMiddle"]:Kill()
+
+			local frame = "AchievementFrameComparisonStatsContainerButton"..i
+			_G[frame]:StripTextures()
+			_G[frame]:StyleButton()
+
+			_G[frame.."BG"]:SetTexture(1, 1, 1, 0.2)
+			_G[frame.."HeaderLeft"]:Kill()
+			_G[frame.."HeaderRight"]:Kill()
+			_G[frame.."HeaderMiddle"]:Kill()
+		end
+
+		hooksecurefunc("AchievementButton_GetProgressBar", function(index)
+			local frame = _G["AchievementFrameProgressBar"..index]
+			if frame then
+				if not frame.skinned then
+					frame:StripTextures()
+					frame:SetStatusBarTexture(C.media.texture)
+					frame:SetStatusBarColor(0, 0.7, 0.1)
+					frame:SetFrameLevel(frame:GetFrameLevel() + 3)
+
+					frame.bg1 = frame:CreateTexture(nil, "BACKGROUND")
+					frame.bg1:SetDrawLayer("BACKGROUND", -7)
+					frame.bg1:SetTexture(unpack(C.media.backdrop_color))
+					frame.bg1:Point("TOPLEFT", -T.mult * 3, T.mult * 3)
+					frame.bg1:Point("BOTTOMRIGHT", T.mult * 3, -T.mult * 3)
+
+					frame.bg2 = frame:CreateTexture(nil, "BACKGROUND")
+					frame.bg2:SetDrawLayer("BACKGROUND", -6)
+					frame.bg2:SetTexture(unpack(C.media.border_color))
+					frame.bg2:Point("TOPLEFT", -T.mult * 2, T.mult * 2)
+					frame.bg2:Point("BOTTOMRIGHT", T.mult * 2, -T.mult * 2)
+
+					frame.bg3 = frame:CreateTexture(nil, "BACKGROUND")
+					frame.bg3:SetDrawLayer("BACKGROUND", -5)
+					frame.bg3:SetTexture(unpack(C.media.backdrop_color))
+					frame.bg3:Point("TOPLEFT", -T.mult, T.mult)
+					frame.bg3:Point("BOTTOMRIGHT", T.mult, -T.mult)
+
+					frame.text:ClearAllPoints()
+					frame.text:SetPoint("CENTER", frame, "CENTER", 0, -2)
+					frame.text:SetJustifyH("CENTER")
+					frame.skinned = true
+				end
+			end
+		end)
+
+		--[[hooksecurefunc("AchievementObjectives_DisplayCriteria", function(objectivesFrame, id)
+			local numCriteria = GetAchievementNumCriteria(id)
+			local textStrings, metas = 0, 0
+			for i = 1, numCriteria do
+				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString = GetAchievementCriteriaInfo(id, i)
+
+				if ( criteriaType == CRITERIA_TYPE_ACHIEVEMENT and assetID ) then
+					metas = metas + 1
+					local metaCriteria = AchievementButton_GetMeta(metas)
+					if ( objectivesFrame.completed and completed ) then
+						metaCriteria.label:SetShadowOffset(0, 0)
+						metaCriteria.label:SetTextColor(1, 1, 1, 1)
+					elseif ( completed ) then
+						metaCriteria.label:SetShadowOffset(1, -1)
+						metaCriteria.label:SetTextColor(0, 1, 0, 1)
+					else
+						metaCriteria.label:SetShadowOffset(1, -1)
+						metaCriteria.label:SetTextColor(0.6, 0.6, 0.6, 1)
+					end
+				elseif criteriaType ~= 1 then
+					textStrings = textStrings + 1
+					local criteria = AchievementButton_GetCriteria(textStrings)
+					if ( objectivesFrame.completed and completed ) then
+						criteria.name:SetTextColor(1, 1, 1, 1)
+						criteria.name:SetShadowOffset(0, 0)
+					elseif ( completed ) then
+						criteria.name:SetTextColor(0, 1, 0, 1)
+						criteria.name:SetShadowOffset(1, -1)
+					else
+						criteria.name:SetTextColor(0.6, 0.6, 0.6, 1)
+						criteria.name:SetShadowOffset(1, -1)
+					end
+				end
+			end
+		end)]]
+	end
 
 	-- LF Guild
 	if addon == "Blizzard_LookingForGuildUI" then
@@ -1267,6 +1786,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
+	-- GlyphUI
 	if addon == "Blizzard_GlyphUI" then
 		-- Glyph Tab
 		GlyphFrameSparkleFrame:CreateBackdrop("Default")
@@ -1791,11 +2311,17 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		for i = 1, 8 do
 			_G["ClassTrainerScrollFrameButton"..i]:StripTextures()
+			_G["ClassTrainerScrollFrameButton"..i]:StyleButton()
 			_G["ClassTrainerScrollFrameButton"..i.."Icon"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			_G["ClassTrainerScrollFrameButton"..i]:CreateBackdrop()
 			_G["ClassTrainerScrollFrameButton"..i].backdrop:Point("TOPLEFT", _G["ClassTrainerScrollFrameButton"..i.."Icon"], "TOPLEFT", -2, 2)
 			_G["ClassTrainerScrollFrameButton"..i].backdrop:Point("BOTTOMRIGHT", _G["ClassTrainerScrollFrameButton"..i.."Icon"], "BOTTOMRIGHT", 2, -2)
 			_G["ClassTrainerScrollFrameButton"..i.."Icon"]:SetParent(_G["ClassTrainerScrollFrameButton"..i].backdrop)
+
+			_G["ClassTrainerScrollFrameButton"..i].selectedTex:SetTexture(1, 1, 1, 0.3)
+			_G["ClassTrainerScrollFrameButton"..i].selectedTex:ClearAllPoints()
+			_G["ClassTrainerScrollFrameButton"..i].selectedTex:Point("TOPLEFT", 2, -2)
+			_G["ClassTrainerScrollFrameButton"..i].selectedTex:Point("BOTTOMRIGHT", -2, 2)
 		end
 
 		for _, object in pairs(StripAllTextures) do
@@ -1866,6 +2392,52 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 	-- Stuff not in Blizzard load-on-demand
 	if addon == "ShestakUI_Extra" then
+		-- Achievement Popup Frames
+		do
+			local function SkinAchievePopUp()
+				for i = 1, MAX_ACHIEVEMENT_ALERTS do
+					local frame = _G["AchievementAlertFrame"..i]
+
+					if frame then
+						frame:SetAlpha(1)
+						frame.SetAlpha = T.dummy
+						if not frame.backdrop then
+							frame:CreateBackdrop("Transparent")
+							frame.backdrop:Point("TOPLEFT", _G[frame:GetName().."Background"], "TOPLEFT", -2, -6)
+							frame.backdrop:Point("BOTTOMRIGHT", _G[frame:GetName().."Background"], "BOTTOMRIGHT", -2, 6)
+						end
+
+						-- Background
+						_G["AchievementAlertFrame"..i.."Background"]:SetTexture(nil)
+
+						_G["AchievementAlertFrame"..i.."Glow"]:Kill()
+						_G["AchievementAlertFrame"..i.."Shine"]:Kill()
+
+						-- Text
+						_G["AchievementAlertFrame"..i.."Unlocked"]:SetTextColor(1, 1, 1)
+						--_G["AchievementAlertFrame"..i.."Unlocked"]:SetFont(C.media.normal_font, 12)
+						--_G["AchievementAlertFrame"..i.."Name"]:SetFont(C.media.normal_font, 14)
+
+						-- Icon
+						_G["AchievementAlertFrame"..i.."IconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+						_G["AchievementAlertFrame"..i.."IconOverlay"]:Kill()
+
+						_G["AchievementAlertFrame"..i.."IconTexture"]:ClearAllPoints()
+						_G["AchievementAlertFrame"..i.."IconTexture"]:Point("LEFT", frame, 7, 0)
+
+						if not _G["AchievementAlertFrame"..i.."IconTexture"].b then
+							_G["AchievementAlertFrame"..i.."IconTexture"].b = CreateFrame("Frame", nil, _G["AchievementAlertFrame"..i])
+							_G["AchievementAlertFrame"..i.."IconTexture"].b:SetFrameLevel(0)
+							_G["AchievementAlertFrame"..i.."IconTexture"].b:SetTemplate("Default")
+							_G["AchievementAlertFrame"..i.."IconTexture"].b:Point("TOPLEFT", _G["AchievementAlertFrame"..i.."IconTexture"], "TOPLEFT", -2, 2)
+							_G["AchievementAlertFrame"..i.."IconTexture"].b:Point("BOTTOMRIGHT", _G["AchievementAlertFrame"..i.."IconTexture"], "BOTTOMRIGHT", 2, -2)
+						end
+					end
+				end
+			end
+			hooksecurefunc("AchievementAlertFrame_FixAnchors", SkinAchievePopUp)
+		end
+
 		-- WorldState Frame
 		do
 			WorldStateScoreScrollFrame:StripTextures()
@@ -1873,6 +2445,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			WorldStateScoreFrame:SetTemplate("Transparent")
 			SkinCloseButton(WorldStateScoreFrameCloseButton)
 			WorldStateScoreFrameInset:Kill()
+			WorldStateScoreFrameLeaveButton:SkinButton()
 
 			for i = 1, WorldStateScoreScrollFrameScrollChildFrame:GetNumChildren() do
 				local b = _G["WorldStateScoreButton"..i]

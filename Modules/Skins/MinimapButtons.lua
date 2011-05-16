@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_skins.minimap_buttons ~= true then return end
+if C.extra_skins.minimap_buttons ~= true or C.minimap.enable ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Skin addons icons on minimap

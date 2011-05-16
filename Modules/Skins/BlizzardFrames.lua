@@ -327,6 +327,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		SkinScrollBar(CalendarTexturePickerScrollBar)
 		CalendarTexturePickerAcceptButton:SkinButton(true)
 		CalendarTexturePickerCancelButton:SkinButton(true)
+		CalendarCreateEventInviteButton:SkinButton(true)
+		CalendarCreateEventRaidInviteButton:SkinButton(true)
 
 		-- Mass Invite Frame
 		CalendarMassInviteFrame:StripTextures()
@@ -356,6 +358,29 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		CalendarViewHolidayFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
 		CalendarViewHolidayTitleFrame:StripTextures()
 		SkinCloseButton(CalendarViewHolidayCloseButton)
+
+		-- Event View
+		CalendarViewEventFrame:StripTextures()
+		CalendarViewEventFrame:SetTemplate("Transparent")
+		CalendarViewEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarViewEventTitleFrame:StripTextures()
+		CalendarViewEventDescriptionContainer:StripTextures()
+		CalendarViewEventDescriptionContainer:SetTemplate("Transparent")
+		CalendarViewEventInviteList:StripTextures()
+		CalendarViewEventInviteList:SetTemplate("Transparent")
+		CalendarViewEventInviteListSection:StripTextures()
+		SkinCloseButton(CalendarViewEventCloseButton)
+
+		local buttons = {
+			"CalendarViewEventAcceptButton",
+			"CalendarViewEventTentativeButton",
+			"CalendarViewEventRemoveButton",
+			"CalendarViewEventDeclineButton",
+		}
+
+		for _, button in pairs(buttons) do
+			_G[button]:SkinButton()
+		end
 	end
 
 	-- AchievementUI
@@ -485,7 +510,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G["AchievementFrameSummaryAchievement"..i.."Description"]:SetTextColor(0.6, 0.6, 0.6)
 
 				if not frame.backdrop then
-					frame:CreateBackdrop("Default", true)
+					frame:CreateBackdrop("Transparent", true)
 					frame.backdrop:Point("TOPLEFT", 2, -2)
 					frame.backdrop:Point("BOTTOMRIGHT", -2, 2)
 
@@ -3230,6 +3255,19 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G["QuestInfoItem"..i.."Count"]:SetDrawLayer("OVERLAY")
 			end
 
+			QuestInfoSkillPointFrame:StripTextures()
+			QuestInfoSkillPointFrame:StyleButton()
+			QuestInfoSkillPointFrame:Width(QuestInfoSkillPointFrame:GetWidth() - 4)
+			QuestInfoSkillPointFrame:SetFrameLevel(QuestInfoSkillPointFrame:GetFrameLevel() + 2)
+			QuestInfoSkillPointFrameIconTexture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			QuestInfoSkillPointFrameIconTexture:SetDrawLayer("OVERLAY")
+			QuestInfoSkillPointFrameIconTexture:Point("TOPLEFT", 2, -2)
+			QuestInfoSkillPointFrameIconTexture:Size(QuestInfoSkillPointFrameIconTexture:GetWidth() - 2, QuestInfoSkillPointFrameIconTexture:GetHeight() - 2)
+			QuestInfoSkillPointFrame:SetTemplate("Default")
+			QuestInfoSkillPointFrameCount:SetDrawLayer("OVERLAY")
+			QuestInfoSkillPointFramePoints:ClearAllPoints()
+			QuestInfoSkillPointFramePoints:Point("BOTTOMRIGHT", QuestInfoSkillPointFrameIconTexture, "BOTTOMRIGHT")
+
 			QuestInfoItemHighlight:StripTextures()
 			QuestInfoItemHighlight:SetTemplate("Default")
 			QuestInfoItemHighlight:SetBackdropBorderColor(1, 0.8, 0)
@@ -3317,12 +3355,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local buttons = {
 				"PVPFrameLeftButton",
 				"PVPFrameRightButton",
-				"PVPHonorFrameWarGameButton",
 				"PVPColorPickerButton1",
 				"PVPColorPickerButton2",
 				"PVPColorPickerButton3",
 				"PVPBannerFrameAcceptButton",
 			}
+
+			if not T.PTRVersion() then
+				tinsert(buttons, "PVPHonorFrameWarGameButton")
+			end
 
 			for i = 1, #buttons do
 				_G[buttons[i]]:StripTextures()
@@ -3401,7 +3442,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:Point("BOTTOMRIGHT", PVPTeamManagementFrameInvalidTeamFrame, "BOTTOMRIGHT")
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:SetFrameLevel(PVPTeamManagementFrameInvalidTeamFrame:GetFrameLevel())
 			PVPFrameConquestBar:StripTextures()
-			PVPFrameConquestBar:SetStatusBarTexture(C.media.texture)
+
+			if not T.PTRVersion() then
+				PVPFrameConquestBar:SetStatusBarTexture(C.media.texture)
+			end
+
 			PVPFrameConquestBar:CreateBackdrop("Default")
 			PVPBannerFrame:CreateBackdrop("Transparent")
 			PVPBannerFrame.backdrop:Point("TOPLEFT", PVPBannerFrame, "TOPLEFT")
@@ -3431,6 +3476,16 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PVPColorPickerButton2:Height(PVPColorPickerButton1:GetHeight())
 			PVPColorPickerButton3:Height(PVPColorPickerButton1:GetHeight())
 
+			-- War Games
+			if T.PTRVersion() then
+				WarGameStartButton:SkinButton(true)
+				WarGamesFrame:StripTextures()
+				SkinScrollBar(WarGamesFrameScrollFrameScrollBar)
+
+				WarGameStartButton:ClearAllPoints()
+				WarGameStartButton:Point("LEFT", PVPFrameLeftButton, "RIGHT", 2, 0)
+			end
+
 			-- Cancel Button FFSlocal
 			local f = PVPBannerFrameCancelButton
 			local l = _G[f:GetName().."Left"]
@@ -3446,8 +3501,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			f.backdrop:SetFrameLevel(f:GetFrameLevel() - 1)
 
 			-- Bottom Tabs
-			for i = 1, 3 do
-				SkinTab(_G["PVPFrameTab"..i])
+			if not T.PTRVersion() then
+				for i = 1, 3 do
+					SkinTab(_G["PVPFrameTab"..i])
+				end
+			else
+				for i = 1, 4 do
+					SkinTab(_G["PVPFrameTab"..i])
+				end
 			end
 
 			-- Reposition tabs

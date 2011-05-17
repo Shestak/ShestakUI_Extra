@@ -325,6 +325,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		CalendarTexturePickerFrame:SetTemplate("Transparent")
 
 		SkinScrollBar(CalendarTexturePickerScrollBar)
+		SkinScrollBar(CalendarViewEventInviteListScrollFrameScrollBar)
 		CalendarTexturePickerAcceptButton:SkinButton(true)
 		CalendarTexturePickerCancelButton:SkinButton(true)
 		CalendarCreateEventInviteButton:SkinButton(true)
@@ -348,21 +349,21 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Raid View
 		CalendarViewRaidFrame:StripTextures()
 		CalendarViewRaidFrame:SetTemplate("Transparent")
-		CalendarViewRaidFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarViewRaidFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, 0)
 		CalendarViewRaidTitleFrame:StripTextures()
 		SkinCloseButton(CalendarViewRaidCloseButton)
 
 		-- Holiday View
 		CalendarViewHolidayFrame:StripTextures(true)
 		CalendarViewHolidayFrame:SetTemplate("Transparent")
-		CalendarViewHolidayFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarViewHolidayFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, 0)
 		CalendarViewHolidayTitleFrame:StripTextures()
 		SkinCloseButton(CalendarViewHolidayCloseButton)
 
 		-- Event View
 		CalendarViewEventFrame:StripTextures()
 		CalendarViewEventFrame:SetTemplate("Transparent")
-		CalendarViewEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarViewEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, 0)
 		CalendarViewEventTitleFrame:StripTextures()
 		CalendarViewEventDescriptionContainer:StripTextures()
 		CalendarViewEventDescriptionContainer:SetTemplate("Transparent")

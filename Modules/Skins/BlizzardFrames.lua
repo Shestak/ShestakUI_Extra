@@ -846,6 +846,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				button:GetHighlightTexture():SetAllPoints(icon)
 				button:GetPushedTexture():SetAllPoints(icon)
 
+				if button.Rank then
+					button.Rank:SetFont(C.media.normal_font, 11, "OUTLINE")
+					button.Rank:ClearAllPoints()
+					button.Rank:SetPoint("BOTTOMRIGHT", 1, 0)
+				end
+
 				icon:ClearAllPoints()
 				icon:Point("TOPLEFT", 2, -2)
 				icon:Point("BOTTOMRIGHT", -2, 2)
@@ -943,6 +949,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			button:StyleButton(true)
 			button:SetTemplate("Default", true)
 
+			-- Reposition tabs
+			button:ClearAllPoints()
+			if i == 1 then
+				button:SetPoint("TOPLEFT", GuildBankFrame, "TOPRIGHT", 1, 0)
+			else
+				local fixpos = i-1
+				button:SetPoint("TOP", _G["GuildBankTab"..fixpos.."Button"], "BOTTOM", 0, -20)
+			end
+
 			texture:ClearAllPoints()
 			texture:Point("TOPLEFT", 2, -2)
 			texture:Point("BOTTOMRIGHT", -2, 2)
@@ -952,6 +967,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		for i = 1, 4 do
 			SkinTab(_G["GuildBankFrameTab"..i])
 		end
+
+		-- Reposition tabs
+		GuildBankFrameTab1:ClearAllPoints()
+		GuildBankFrameTab1:SetPoint("TOPLEFT", GuildBankFrame, "BOTTOMLEFT", 0, 2)
 	end
 
 	-- Archaeology
@@ -1205,7 +1224,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildFactionBar.progress:SetTexture(C.media.texture)
 		GuildFactionBar:CreateBackdrop("Default")
 		GuildFactionBar.backdrop:Point("TOPLEFT", GuildFactionBar.progress, "TOPLEFT", -2, 2)
-		GuildFactionBar.backdrop:Point("BOTTOMRIGHT", GuildFactionBar, "BOTTOMRIGHT", -2, 0)
+		GuildFactionBar.backdrop:Point("BOTTOMRIGHT", GuildFactionBar, "BOTTOMRIGHT", 0, 0)
 
 		GuildXPBarLeft:Kill()
 		GuildXPBarRight:Kill()
@@ -1266,8 +1285,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		-- Detail Frame
 		GuildMemberDetailFrame:SetTemplate("Transparent")
-		GuildMemberNoteBackground:SetTemplate("Default")
-		GuildMemberOfficerNoteBackground:SetTemplate("Default")
+		GuildMemberNoteBackground:SetTemplate("Transparent")
+		GuildMemberOfficerNoteBackground:SetTemplate("Transparent")
 		GuildMemberRankDropdown:SetFrameLevel(GuildMemberRankDropdown:GetFrameLevel() + 5)
 		SkinDropDownBox(GuildMemberRankDropdown, 175)
 
@@ -1296,24 +1315,24 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local backdrop1 = CreateFrame("Frame", nil, GuildInfoFrameInfo)
-		backdrop1:SetTemplate("Default")
+		backdrop1:SetTemplate("Transparent")
 		backdrop1:SetFrameLevel(GuildInfoFrameInfo:GetFrameLevel() - 1)
 		backdrop1:Point("TOPLEFT", GuildInfoFrameInfo, "TOPLEFT", 2, -22)
 		backdrop1:Point("BOTTOMRIGHT", GuildInfoFrameInfo, "BOTTOMRIGHT", 0, 200)
 
 		local backdrop2 = CreateFrame("Frame", nil, GuildInfoFrameInfo)
-		backdrop2:SetTemplate("Default")
+		backdrop2:SetTemplate("Transparent")
 		backdrop2:SetFrameLevel(GuildInfoFrameInfo:GetFrameLevel() - 1)
 		backdrop2:Point("TOPLEFT", GuildInfoFrameInfo, "TOPLEFT", 2, -158)
 		backdrop2:Point("BOTTOMRIGHT", GuildInfoFrameInfo, "BOTTOMRIGHT", 0, 118)
 
 		local backdrop3 = CreateFrame("Frame", nil, GuildInfoFrameInfo)
-		backdrop3:SetTemplate("Default")
+		backdrop3:SetTemplate("Transparent")
 		backdrop3:SetFrameLevel(GuildInfoFrameInfo:GetFrameLevel() - 1)
 		backdrop3:Point("TOPLEFT", GuildInfoFrameInfo, "TOPLEFT", 2, -233)
 		backdrop3:Point("BOTTOMRIGHT", GuildInfoFrameInfo, "BOTTOMRIGHT", 0, 3)
 
-		GuildRecruitmentCommentInputFrame:SetTemplate("Default")
+		GuildRecruitmentCommentInputFrame:SetTemplate("Transparent")
 
 		for _, button in next, GuildInfoFrameApplicantsContainer.buttons do
 			button.selectedTex:Kill()
@@ -1324,7 +1343,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Text Edit Frame
 		GuildTextEditFrame:SetTemplate("Transparent")
 		SkinScrollBar(GuildTextEditScrollFrameScrollBar)
-		GuildTextEditContainer:SetTemplate("Default")
+		GuildTextEditContainer:SetTemplate("Transparent")
 		for i = 1, GuildTextEditFrame:GetNumChildren() do
 			local child = select(i, GuildTextEditFrame:GetChildren())
 			if child:GetName() == "GuildTextEditFrameCloseButton" and child:GetWidth() == 32 then
@@ -1602,6 +1621,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				button:StripTextures()
 			end
 
+			if button.Rank then
+				button.Rank:SetFont(C.media.normal_font, 11, "OUTLINE")
+				button.Rank:ClearAllPoints()
+				button.Rank:SetPoint("BOTTOMRIGHT", 3, -1)
+			end
+
 			if icon then
 				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				button:StyleButton()
@@ -1681,16 +1706,21 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local button = _G["PlayerTalentFramePanel"..i.."HeaderIcon"]
 			local icon = _G["PlayerTalentFramePanel"..i.."HeaderIconIcon"]
 			local panel = _G["PlayerTalentFramePanel"..i]
+			local text = _G["PlayerTalentFramePanel"..i.."HeaderIconPointsSpent"]
 
 			if first then
 				button:StripTextures()
 			end
+
+			_G["PlayerTalentFramePanel"..i.."HeaderIconPointsSpent"]:SetFont(C.media.normal_font, 11, "OUTLINE")
 
 			if icon then
 				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				button:SetFrameLevel(button:GetFrameLevel() + 1)
 				button:ClearAllPoints()
 				button:Point("TOPLEFT", panel, "TOPLEFT", 4, -4)
+				text:SetFont(C.media.normal_font, 11, "OUTLINE")
+				text:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, 2)
 				local frame = CreateFrame("Frame", nil, button)
 				frame:CreateBackdrop("Default", true)
 				frame:SetFrameLevel(button:GetFrameLevel() + 1)
@@ -1735,16 +1765,22 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local button = _G["PlayerTalentFramePetPanelHeaderIcon"]
 			local icon = _G["PlayerTalentFramePetPanelHeaderIconIcon"]
 			local panel = _G["PlayerTalentFramePetPanel"]
+			local d = select(4, button:GetRegions())
 
 			if first then
 				button:StripTextures()
 			end
 
 			if icon then
+				d:ClearAllPoints()
+				pointsSpent = select(5, GetTalentTabInfo(1, Partycheck, true, 1))
 				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 				button:SetFrameLevel(button:GetFrameLevel() + 1)
 				button:ClearAllPoints()
 				button:Point("TOPLEFT", panel, "TOPLEFT", 5, -5)
+				local text = button:FontString(nil, C.media.normal_font, 11, "OUTLINE")
+				text:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", 3, -2)
+				text:SetText(pointsSpent)
 				local frame = CreateFrame("Frame", nil, button)
 				frame:CreateBackdrop("Default", true)
 				frame:SetFrameLevel(button:GetFrameLevel() + 1)
@@ -1761,6 +1797,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			PlayerTalentFramePetDiet:Hide()
 
+			local petFoodList = {GetPetFoodTypes()}
+			if #petFoodList > 0 then
+				diet = petFoodList[1]
+			else
+				diet = "None"
+			end
+
 			if first then
 				button:StripTextures()
 			end
@@ -1770,6 +1813,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				button:SetFrameLevel(button:GetFrameLevel() + 1)
 				button:ClearAllPoints()
 				button:Point("BOTTOMLEFT", panel, "TOPLEFT", 0, 10)
+				local text = button:FontString(nil, C.media.normal_font, 11, "OUTLINE")
+				text:Point("TOPRIGHT", button, "TOPRIGHT", 0, -10)
+				text:SetText(diet)
 				local frame = CreateFrame("Frame", nil, button)
 				frame:CreateBackdrop("Default", true)
 				frame:SetFrameLevel(button:GetFrameLevel() + 1)
@@ -1785,6 +1831,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			if first then
 				button:StripTextures()
+			end
+
+			if button.Rank then
+				button.Rank:SetFont(C.media.normal_font, 11, "OUTLINE")
+				button.Rank:ClearAllPoints()
+				button.Rank:SetPoint("BOTTOMRIGHT", 3, -1)
 			end
 
 			if icon then
@@ -3802,12 +3854,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				end
 			end
 
-			--SpellBookFrame:SetTemplate("Transparent")
-			local SpellBookBG = CreateFrame("Frame", "SpellBookBG", SpellBookFrame)
-			SpellBookBG:CreatePanel("Transparent", 560, 525, "TOPLEFT", SpellBookFrame, "TOPLEFT", 5, -1)
+			SpellBookFrame:CreateBackdrop("Transparent")
+			SpellBookFrame.backdrop:Point("TOPLEFT", 5, -1)
+			SpellBookFrame.backdrop:Point("BOTTOMRIGHT", 15, -1)
 
 			SkinCloseButton(SpellBookFrameCloseButton)
-			SpellBookFrameCloseButton:Point("TOPRIGHT", SpellBookBG, -4, -4)
+			SpellBookFrameCloseButton:Point("TOPRIGHT", SpellBookFrame.backdrop, -4, -4)
 
 			-- Profession Tab
 			local professionbuttons = {
@@ -4111,7 +4163,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						tab.TabBg:Kill()
 
 						if i == 1 then
-							for i=1, tab:GetNumRegions() do
+							for i = 1, tab:GetNumRegions() do
 								local region = select(i, tab:GetRegions())
 								region:SetTexCoord(0.16, 0.86, 0.16, 0.86)
 								region.SetTexCoord = T.dummy

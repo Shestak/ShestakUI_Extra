@@ -99,7 +99,7 @@ local function SkinEditBox(frame)
 	if _G[frame:GetName().."Middle"] then _G[frame:GetName().."Middle"]:Kill() end
 	if _G[frame:GetName().."Right"] then _G[frame:GetName().."Right"]:Kill() end
 	if _G[frame:GetName().."Mid"] then _G[frame:GetName().."Mid"]:Kill() end
-	frame:CreateBackdrop("Default")
+	frame:CreateBackdrop("Overlay")
 
 	if frame:GetName() and frame:GetName():find("Silver") or frame:GetName():find("Copper") then
 		frame.backdrop:Point("BOTTOMRIGHT", -12, -2)
@@ -122,14 +122,14 @@ local function SkinDropDownBox(frame, width)
 
 	SkinNextPrevButton(button, true)
 
-	frame:CreateBackdrop("Default")
+	frame:CreateBackdrop("Overlay")
 	frame.backdrop:Point("TOPLEFT", 20, -2)
 	frame.backdrop:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
 end
 
 local function SkinCheckBox(frame)
 	frame:StripTextures()
-	frame:CreateBackdrop("Default")
+	frame:CreateBackdrop("Overlay")
 	frame.backdrop:Point("TOPLEFT", 4, -4)
 	frame.backdrop:Point("BOTTOMRIGHT", -4, 4)
 
@@ -256,7 +256,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		bg:Point("TOPLEFT", 10, -72)
 		bg:Point("BOTTOMRIGHT", -8, 3)
 
-		CalendarContextMenu:SetTemplate("Default")
+		CalendarContextMenu:SetTemplate("Transparent")
 		CalendarContextMenu.SetBackdropColor = T.dummy
 		CalendarContextMenu.SetBackdropBorderColor = T.dummy
 
@@ -268,24 +268,26 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- CreateEventFrame
 		CalendarCreateEventFrame:StripTextures()
 		CalendarCreateEventFrame:SetTemplate("Transparent")
-		CalendarCreateEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, -24)
+		CalendarCreateEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, 0)
 		CalendarCreateEventTitleFrame:StripTextures()
 
 		CalendarCreateEventCreateButton:SkinButton(true)
 		CalendarCreateEventMassInviteButton:SkinButton(true)
 		CalendarCreateEventInviteButton:SkinButton(true)
-		CalendarCreateEventInviteButton:Point("TOPLEFT", CalendarCreateEventInviteEdit, "TOPRIGHT", 4, 1)
+		CalendarCreateEventInviteButton:Point("TOPLEFT", CalendarCreateEventInviteEdit, "TOPRIGHT", 4, 2)
 		CalendarCreateEventInviteEdit:Width(CalendarCreateEventInviteEdit:GetWidth() - 2)
+		CalendarCreateEventInviteEdit:Height(CalendarCreateEventInviteEdit:GetHeight() - 2)
+		CalendarCreateEventInviteEdit:Point("TOPLEFT", CalendarCreateEventInviteList, "BOTTOMLEFT", 2, -3)
 
 		CalendarCreateEventInviteList:StripTextures()
-		CalendarCreateEventInviteList:SetTemplate("Default")
+		CalendarCreateEventInviteList:SetTemplate("Overlay")
 
 		SkinEditBox(CalendarCreateEventInviteEdit)
 		SkinEditBox(CalendarCreateEventTitleEdit)
 		SkinDropDownBox(CalendarCreateEventTypeDropDown, 120)
 
 		CalendarCreateEventDescriptionContainer:StripTextures()
-		CalendarCreateEventDescriptionContainer:SetTemplate("Default")
+		CalendarCreateEventDescriptionContainer:SetTemplate("Overlay")
 
 		SkinCloseButton(CalendarCreateEventCloseButton)
 
@@ -321,19 +323,17 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Texture Picker Frame
 		CalendarTexturePickerFrame:StripTextures()
 		CalendarTexturePickerTitleFrame:StripTextures()
-
 		CalendarTexturePickerFrame:SetTemplate("Transparent")
 
 		SkinScrollBar(CalendarTexturePickerScrollBar)
 		SkinScrollBar(CalendarViewEventInviteListScrollFrameScrollBar)
 		CalendarTexturePickerAcceptButton:SkinButton(true)
 		CalendarTexturePickerCancelButton:SkinButton(true)
-		CalendarCreateEventInviteButton:SkinButton(true)
 		CalendarCreateEventRaidInviteButton:SkinButton(true)
 
 		-- Mass Invite Frame
 		CalendarMassInviteFrame:StripTextures()
-		CalendarMassInviteFrame:SetTemplate("Transparent")
+		CalendarMassInviteFrame:SetTemplate("Overlay")
 		CalendarMassInviteTitleFrame:StripTextures()
 
 		SkinCloseButton(CalendarMassInviteCloseButton)
@@ -366,9 +366,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		CalendarViewEventFrame:Point("TOPLEFT", CalendarFrame, "TOPRIGHT", 3, 0)
 		CalendarViewEventTitleFrame:StripTextures()
 		CalendarViewEventDescriptionContainer:StripTextures()
-		CalendarViewEventDescriptionContainer:SetTemplate("Transparent")
+		CalendarViewEventDescriptionContainer:SetTemplate("Overlay")
 		CalendarViewEventInviteList:StripTextures()
-		CalendarViewEventInviteList:SetTemplate("Transparent")
+		CalendarViewEventInviteList:SetTemplate("Overlay")
 		CalendarViewEventInviteListSection:StripTextures()
 		SkinCloseButton(CalendarViewEventCloseButton)
 
@@ -430,10 +430,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		AchievementFrameHeaderPoints:Point("LEFT", AchievementFrameHeaderTitle, "RIGHT", 2, 0)
 
 		-- Backdrops
-		AchievementFrameCategoriesContainer:CreateBackdrop("Transparent")
+		AchievementFrameCategoriesContainer:CreateBackdrop("Overlay")
 		AchievementFrameCategoriesContainer.backdrop:Point("TOPLEFT", 0, 4)
 		AchievementFrameCategoriesContainer.backdrop:Point("BOTTOMRIGHT", -2, -3)
-		AchievementFrameAchievementsContainer:CreateBackdrop("Transparent")
+		AchievementFrameAchievementsContainer:CreateBackdrop("Overlay")
 		AchievementFrameAchievementsContainer.backdrop:Point("TOPLEFT", -3, 2)
 		AchievementFrameAchievementsContainer.backdrop:Point("BOTTOMRIGHT", -3, -3)
 
@@ -458,7 +458,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			bar:StripTextures()
 			bar:SetStatusBarTexture(C.media.texture)
 			bar:SetStatusBarColor(0, 0.7, 0.1)
-			bar:CreateBackdrop("Default")
+			bar:CreateBackdrop("Overlay")
 
 			if _G[bar:GetName().."Title"] then
 				_G[bar:GetName().."Title"]:SetPoint("LEFT", 4, 0)
@@ -511,7 +511,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G["AchievementFrameSummaryAchievement"..i.."Description"]:SetTextColor(0.6, 0.6, 0.6)
 
 				if not frame.backdrop then
-					frame:CreateBackdrop("Transparent", true)
+					frame:CreateBackdrop("Overlay", true)
 					frame.backdrop:Point("TOPLEFT", 2, -2)
 					frame.backdrop:Point("BOTTOMRIGHT", -2, 2)
 
@@ -535,7 +535,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			_G["AchievementFrameAchievementsContainerButton"..i.."Highlight"]:Kill()
 			frame:StripTextures()
 
-			frame:CreateBackdrop("Default", true)
+			frame:CreateBackdrop("Overlay", true)
 			frame.backdrop:Point("TOPLEFT", 2, -2)
 			frame.backdrop:Point("BOTTOMRIGHT", -2, 2)
 			frame.SetBackdropBorderColor = T.dummy
@@ -737,6 +737,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		SkinCloseButton(LookingForGuildFrameCloseButton)
 		LookingForGuildCommentInputFrame:CreateBackdrop("Transparent")
 		LookingForGuildCommentInputFrame:StripTextures(false)
+		GuildFinderRequestMembershipFrame:SetTemplate("Transparent")
+		GuildFinderRequestMembershipFrameAcceptButton:SkinButton()
+		GuildFinderRequestMembershipFrameCancelButton:SkinButton()
 
 		-- Container buttons
 		for i = 1, 4 do
@@ -920,7 +923,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildBankTransactionsScrollFrame:StripTextures()
 
 		GuildBankFrame.inset = CreateFrame("Frame", nil, GuildBankFrame)
-		GuildBankFrame.inset:SetTemplate("Transparent")
+		GuildBankFrame.inset:SetTemplate("Overlay")
 		GuildBankFrame.inset:Point("TOPLEFT", 30, -65)
 		GuildBankFrame.inset:Point("BOTTOMRIGHT", -20, 63)
 
@@ -985,12 +988,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		ArchaeologyFrameRankBar:StripTextures()
 		ArchaeologyFrameRankBar:SetStatusBarTexture(C.media.texture)
-		ArchaeologyFrameRankBar:CreateBackdrop("Default")
+		ArchaeologyFrameRankBar:CreateBackdrop("Overlay")
 
 		ArchaeologyFrameArtifactPageSolveFrameStatusBar:StripTextures()
 		ArchaeologyFrameArtifactPageSolveFrameStatusBar:SetStatusBarTexture(C.media.texture)
 		ArchaeologyFrameArtifactPageSolveFrameStatusBar:SetStatusBarColor(0.7, 0.2, 0)
-		ArchaeologyFrameArtifactPageSolveFrameStatusBar:CreateBackdrop("Default")
+		ArchaeologyFrameArtifactPageSolveFrameStatusBar:CreateBackdrop("Overlay")
 
 		for i = 1, ARCHAEOLOGY_MAX_COMPLETED_SHOWN do
 			local artifact = _G["ArchaeologyFrameCompletedPageArtifact"..i]
@@ -1223,7 +1226,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		GuildFactionBar:StripTextures()
 		GuildFactionBar.progress:SetTexture(C.media.texture)
-		GuildFactionBar:CreateBackdrop("Default")
+		GuildFactionBar:CreateBackdrop("Overlay")
 		GuildFactionBar.backdrop:Point("TOPLEFT", GuildFactionBar.progress, "TOPLEFT", -2, 2)
 		GuildFactionBar.backdrop:Point("BOTTOMRIGHT", GuildFactionBar, "BOTTOMRIGHT", 0, 0)
 
@@ -1234,7 +1237,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildXPBarShadow:Kill()
 		GuildXPBarCap:Kill()
 		GuildXPBar.progress:SetTexture(C.media.texture)
-		GuildXPBar:CreateBackdrop("Default")
+		GuildXPBar:CreateBackdrop("Overlay")
 		GuildXPBar.backdrop:Point("TOPLEFT", GuildXPBar.progress, "TOPLEFT", -2, 2)
 		GuildXPBar.backdrop:Point("BOTTOMRIGHT", GuildXPBar, "BOTTOMRIGHT", -2, 0)
 
@@ -1286,8 +1289,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		-- Detail Frame
 		GuildMemberDetailFrame:SetTemplate("Transparent")
-		GuildMemberNoteBackground:SetTemplate("Transparent")
-		GuildMemberOfficerNoteBackground:SetTemplate("Transparent")
+		GuildMemberDetailFrame:ClearAllPoints()
+		GuildMemberDetailFrame:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 3, 0)
+		GuildMemberNoteBackground:SetTemplate("Overlay")
+		GuildMemberOfficerNoteBackground:SetTemplate("Overlay")
 		GuildMemberRankDropdown:SetFrameLevel(GuildMemberRankDropdown:GetFrameLevel() + 5)
 		SkinDropDownBox(GuildMemberRankDropdown, 175)
 
@@ -1305,7 +1310,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinCheckBox(_G["GuildNewsFilterButton"..i])
 		end
 
-		GuildNewsFiltersFrame:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 4, -20)
+		GuildNewsFiltersFrame:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 3, 0)
 		SkinScrollBar(GuildNewsContainerScrollBar)
 
 		-- Info Frame
@@ -1316,24 +1321,24 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local backdrop1 = CreateFrame("Frame", nil, GuildInfoFrameInfo)
-		backdrop1:SetTemplate("Transparent")
+		backdrop1:SetTemplate("Overlay")
 		backdrop1:SetFrameLevel(GuildInfoFrameInfo:GetFrameLevel() - 1)
 		backdrop1:Point("TOPLEFT", GuildInfoFrameInfo, "TOPLEFT", 2, -22)
 		backdrop1:Point("BOTTOMRIGHT", GuildInfoFrameInfo, "BOTTOMRIGHT", 0, 200)
 
 		local backdrop2 = CreateFrame("Frame", nil, GuildInfoFrameInfo)
-		backdrop2:SetTemplate("Transparent")
+		backdrop2:SetTemplate("Overlay")
 		backdrop2:SetFrameLevel(GuildInfoFrameInfo:GetFrameLevel() - 1)
 		backdrop2:Point("TOPLEFT", GuildInfoFrameInfo, "TOPLEFT", 2, -158)
 		backdrop2:Point("BOTTOMRIGHT", GuildInfoFrameInfo, "BOTTOMRIGHT", 0, 118)
 
 		local backdrop3 = CreateFrame("Frame", nil, GuildInfoFrameInfo)
-		backdrop3:SetTemplate("Transparent")
+		backdrop3:SetTemplate("Overlay")
 		backdrop3:SetFrameLevel(GuildInfoFrameInfo:GetFrameLevel() - 1)
 		backdrop3:Point("TOPLEFT", GuildInfoFrameInfo, "TOPLEFT", 2, -233)
 		backdrop3:Point("BOTTOMRIGHT", GuildInfoFrameInfo, "BOTTOMRIGHT", 0, 3)
 
-		GuildRecruitmentCommentInputFrame:SetTemplate("Transparent")
+		GuildRecruitmentCommentInputFrame:SetTemplate("Overlay")
 
 		for _, button in next, GuildInfoFrameApplicantsContainer.buttons do
 			button.selectedTex:Kill()
@@ -2173,32 +2178,34 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		-- Custom Backdrops
 		AuctionFrameBrowse.bg1 = CreateFrame("Frame", nil, AuctionFrameBrowse)
-		AuctionFrameBrowse.bg1:SetTemplate("Transparent")
+		AuctionFrameBrowse.bg1:SetTemplate("Overlay")
 		AuctionFrameBrowse.bg1:Point("TOPLEFT", 20, -103)
 		AuctionFrameBrowse.bg1:Point("BOTTOMRIGHT", -575, 40)
 		BrowseFilterScrollFrame:Height(300)
 
 		AuctionFrameBrowse.bg2 = CreateFrame("Frame", nil, AuctionFrameBrowse)
-		AuctionFrameBrowse.bg2:SetTemplate("Transparent")
+		AuctionFrameBrowse.bg2:SetTemplate("Overlay")
 		AuctionFrameBrowse.bg2:Point("TOPLEFT", AuctionFrameBrowse.bg1, "TOPRIGHT", 4, 0)
 		AuctionFrameBrowse.bg2:Point("BOTTOMRIGHT", AuctionFrame, "BOTTOMRIGHT", -8, 40)
+		AuctionFrameBrowse.bg2:SetFrameLevel(AuctionFrameBrowse.bg2:GetFrameLevel() - 2)
 		BrowseScrollFrame:Height(300)
 
 		AuctionFrameBid.bg = CreateFrame("Frame", nil, AuctionFrameBid)
-		AuctionFrameBid.bg:SetTemplate("Transparent")
+		AuctionFrameBid.bg:SetTemplate("Overlay")
 		AuctionFrameBid.bg:Point("TOPLEFT", 22, -72)
 		AuctionFrameBid.bg:Point("BOTTOMRIGHT", 66, 39)
+		AuctionFrameBid.bg:SetFrameLevel(AuctionFrameBid.bg:GetFrameLevel() - 2)
 		BidScrollFrame:Height(332)
 
 		AuctionsScrollFrame:Height(336)
 		AuctionFrameAuctions.bg1 = CreateFrame("Frame", nil, AuctionFrameAuctions)
-		AuctionFrameAuctions.bg1:SetTemplate("Transparent")
+		AuctionFrameAuctions.bg1:SetTemplate("Overlay")
 		AuctionFrameAuctions.bg1:Point("TOPLEFT", 15, -70)
 		AuctionFrameAuctions.bg1:Point("BOTTOMRIGHT", -545, 35)
 		AuctionFrameAuctions.bg1:SetFrameLevel(AuctionFrameAuctions.bg1:GetFrameLevel() - 2)
 
 		AuctionFrameAuctions.bg2 = CreateFrame("Frame", nil, AuctionFrameAuctions)
-		AuctionFrameAuctions.bg2:SetTemplate("Transparent")
+		AuctionFrameAuctions.bg2:SetTemplate("Overlay")
 		AuctionFrameAuctions.bg2:Point("TOPLEFT", AuctionFrameAuctions.bg1, "TOPRIGHT", 3, 0)
 		AuctionFrameAuctions.bg2:Point("BOTTOMRIGHT", AuctionFrame, -8, 35)
 		AuctionFrameAuctions.bg2:SetFrameLevel(AuctionFrameAuctions.bg2:GetFrameLevel() - 2)
@@ -2270,6 +2277,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			"MacroPopupCancelButton",
 		}
 
+		if T.PTRVersion() then
+			tinsert(buttons, "MacroSaveButton")
+			tinsert(buttons, "MacroCancelButton")
+		end
+
 		for i = 1, #buttons do
 			_G[buttons[i]]:StripTextures()
 			_G[buttons[i]]:SkinButton()
@@ -2289,16 +2301,16 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		MacroFrame.backdrop:Point("TOPLEFT", 0, -12)
 		MacroFrame.backdrop:Point("BOTTOMRIGHT", 0, 30)
 		MacroFrameTextBackground:StripTextures()
-		MacroFrameTextBackground:CreateBackdrop("Transparent")
-		MacroButtonScrollFrame:CreateBackdrop("Transparent")
+		MacroFrameTextBackground:CreateBackdrop("Overlay")
+		MacroButtonScrollFrame:CreateBackdrop("Overlay")
 		MacroPopupFrame:StripTextures()
 		MacroPopupFrame:SetTemplate("Transparent")
 		MacroPopupScrollFrame:StripTextures()
-		MacroPopupScrollFrame:CreateBackdrop("Transparent")
+		MacroPopupScrollFrame:CreateBackdrop("Overlay")
 		MacroPopupScrollFrame.backdrop:Point("TOPLEFT", 51, 2)
 		MacroPopupScrollFrame.backdrop:Point("BOTTOMRIGHT", -4, 4)
-		MacroPopupEditBox:CreateBackdrop()
-		MacroPopupEditBox:StripTextures()
+		MacroPopupEditBox:CreateBackdrop("Overlay")
+		MacroPopupEditBox:StripTextures(true)
 		SkinCloseButton(MacroFrameCloseButton)
 		MacroFrameCloseButton:Point("TOPRIGHT", MacroFrame.backdrop, -4, -4)
 
@@ -2369,6 +2381,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 	if addon == "Blizzard_DebugTools" then
 		ScriptErrorsFrame:SetTemplate("Transparent")
 		EventTraceFrame:SetTemplate("Transparent")
+		SkinCloseButton(ScriptErrorsFrameClose)
 		_G["EventTraceTooltip"]:HookScript("OnShow", function(self) self:SetTemplate("Transparent") end)
 
 		local texs = {
@@ -2469,7 +2482,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ItemSocketingFrame:StripTextures()
 		ItemSocketingFrame:SetTemplate("Transparent")
 		ItemSocketingScrollFrame:StripTextures()
-		ItemSocketingScrollFrame:CreateBackdrop("Transparent")
+		ItemSocketingScrollFrame:CreateBackdrop("Overlay")
 
 		for i = 1, MAX_NUM_SOCKETS  do
 			local button = _G["ItemSocketingSocket"..i]
@@ -2598,7 +2611,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				local t = _G["MerchantItem"..i.."ItemButtonIconTexture"]
 				local item_bar = _G["MerchantItem"..i]
 				item_bar:StripTextures(true)
-				item_bar:CreateBackdrop("Transparent")
+				item_bar:CreateBackdrop("Overlay")
 
 				b:StripTextures()
 				b:StyleButton(false)
@@ -2670,7 +2683,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for i = 1, INBOXITEMS_TO_DISPLAY do
 				local bg = _G["MailItem"..i]
 				bg:StripTextures()
-				bg:CreateBackdrop("Transparent")
+				bg:CreateBackdrop("Overlay")
 				bg.backdrop:Point("TOPLEFT", 2, 1)
 				bg.backdrop:Point("BOTTOMRIGHT", -2, 2)
 
@@ -2702,7 +2715,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			-- Send mail
 			SendMailScrollFrame:StripTextures(true)
-			SendMailScrollFrame:SetTemplate("Transparent")
+			SendMailScrollFrame:SetTemplate("Overlay")
 
 			SkinScrollBar(SendMailScrollFrameScrollBar)
 
@@ -2753,7 +2766,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			OpenMailCancelButton:SkinButton()
 
 			OpenMailScrollFrame:StripTextures(true)
-			OpenMailScrollFrame:SetTemplate("Transparent")
+			OpenMailScrollFrame:SetTemplate("Overlay")
 
 			SkinScrollBar(OpenMailScrollFrameScrollBar)
 
@@ -2829,7 +2842,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			-- Main frames
 			for i = 1, #frames do
 				_G[frames[i]]:StripTextures(true)
-				_G[frames[i]]:CreateBackdrop("Transparent")
+				_G[frames[i]]:CreateBackdrop("Overlay")
 			end
 
 			HelpFrameHeader:StripTextures(true)
@@ -2837,7 +2850,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			HelpFrameKnowledgebaseErrorFrame:SetFrameLevel(HelpFrameKnowledgebaseErrorFrame:GetFrameLevel() + 2)
 
 			HelpFrameTicketScrollFrame:StripTextures()
-			HelpFrameTicketScrollFrame:CreateBackdrop("Transparent")
+			HelpFrameTicketScrollFrame:CreateBackdrop("Overlay")
 			HelpFrameTicketScrollFrame.backdrop:Point("TOPLEFT", -4, 4)
 			HelpFrameTicketScrollFrame.backdrop:Point("BOTTOMRIGHT", 6, -4)
 
@@ -3095,7 +3108,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinCloseButton(EncounterJournalCloseButton)
 
 			EncounterJournalInset:StripTextures(true)
-			EncounterJournalInset:CreateBackdrop("Transparent")
+			EncounterJournalInset:CreateBackdrop("Overlay")
 			EncounterJournalInset.backdrop:Point("TOPLEFT", 0, -2)
 			EncounterJournalInset.backdrop:Point("BOTTOMRIGHT", -2, 0)
 			EncounterJournalInset.backdrop:SetFrameLevel(EncounterJournalInset.backdrop:GetFrameLevel() + 1)
@@ -3547,7 +3560,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				ArenaHeader(nil, true, i)
 			end
 
-			PVPBannerFrameEditBox:CreateBackdrop("Default")
+			PVPBannerFrame:ClearAllPoints()
+			PVPBannerFrame:Point("TOPLEFT", PVPFrame, "TOPRIGHT", 3, 0)
+			PVPBannerFrame.SetPoint = T.dummy
+			PVPBannerFrameEditBox:CreateBackdrop("Overlay")
 			PVPBannerFrameEditBox.backdrop:Point("TOPLEFT", PVPBannerFrameEditBox, "TOPLEFT" , -5, -5)
 			PVPBannerFrameEditBox.backdrop:Point("BOTTOMRIGHT", PVPBannerFrameEditBox, "BOTTOMRIGHT", 5, 5)
 			PVPHonorFrameInfoScrollFrameChildFrameDescription:SetTextColor(1, 1, 1)
@@ -3563,7 +3579,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				PVPFrameConquestBar:SetStatusBarTexture(C.media.texture)
 			end
 
-			PVPFrameConquestBar:CreateBackdrop("Default")
+			PVPFrameConquestBar:CreateBackdrop("Overlay")
 			PVPBannerFrame:CreateBackdrop("Transparent")
 			PVPBannerFrame.backdrop:Point("TOPLEFT", PVPBannerFrame, "TOPLEFT")
 			PVPBannerFrame.backdrop:Point("BOTTOMRIGHT", PVPBannerFrame, "BOTTOMRIGHT")
@@ -3610,7 +3626,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			if l then l:SetAlpha(0) end
 			if m then m:SetAlpha(0) end
 			if r then r:SetAlpha(0) end
-			f:CreateBackdrop("Default")
+			f:CreateBackdrop("Overlay")
 			f:SetFrameLevel(PVPBannerFrameAcceptButton:GetFrameLevel() + 1)
 			f.backdrop:Point("TOPLEFT", PVPBannerFrameAcceptButton, "TOPLEFT", PVPBannerFrame:GetWidth() - PVPBannerFrameAcceptButton:GetWidth() - 10, 0)
 			f.backdrop:Point("BOTTOMRIGHT", PVPBannerFrameAcceptButton, "BOTTOMRIGHT", PVPBannerFrame:GetWidth() - PVPBannerFrameAcceptButton:GetWidth() - 10, 0)
@@ -3681,7 +3697,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 			tab:GetHighlightTexture():SetTexture(nil)
 			tab.backdrop = CreateFrame("Frame", nil, tab)
-			tab.backdrop:SetTemplate("Default")
+			tab.backdrop:SetTemplate("Overlay")
 			tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
 			tab.backdrop:Point("TOPLEFT", 3, -8)
 			tab.backdrop:Point("BOTTOMRIGHT", -6, 0)
@@ -3995,7 +4011,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				statusbar:StripTextures()
 				statusbar:SetStatusBarTexture(C.media.texture)
 				statusbar:SetStatusBarColor(0, 0.8, 0)
-				statusbar:CreateBackdrop("Default")
+				statusbar:CreateBackdrop("Overlay")
 
 				statusbar.rankText:ClearAllPoints()
 				statusbar.rankText:SetPoint("CENTER")
@@ -4026,7 +4042,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SpellBookCompanionModelFrame:StripTextures()
 			SpellBookCompanionModelFrameShadowOverlay:StripTextures()
 			SpellBookCompanionsModelFrame:Kill()
-			SpellBookCompanionModelFrame:SetTemplate("Default")
+			SpellBookCompanionModelFrame:SetTemplate("Overlay")
 
 			SkinRotateButton(SpellBookCompanionModelFrameRotateRightButton)
 			SkinRotateButton(SpellBookCompanionModelFrameRotateLeftButton)
@@ -4264,7 +4280,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						statusbar:SetStatusBarTexture(C.media.texture)
 
 						if not statusbar.backdrop then
-							statusbar:CreateBackdrop("Default")
+							statusbar:CreateBackdrop("Overlay")
 						end
 
 						_G["ReputationBar"..i.."Background"]:SetTexture(nil)
@@ -4282,6 +4298,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				ReputationDetailFrame:SetTemplate("Transparent")
 				ReputationDetailFrame:Point("TOPLEFT", ReputationFrame, "TOPRIGHT", 3, 0)
 				SkinCloseButton(ReputationDetailCloseButton)
+				SkinCheckBox(ReputationDetailMainScreenCheckBox)
+				SkinCheckBox(ReputationDetailInactiveCheckBox)
+				SkinCheckBox(ReputationDetailAtWarCheckBox)
 			end
 			ReputationFrame:HookScript("OnShow", UpdateFactionSkins)
 			hooksecurefunc("ReputationFrame_OnEvent", UpdateFactionSkins)
@@ -4306,6 +4325,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				TokenFramePopup:SetTemplate("Transparent")
 				TokenFramePopup:Point("TOPLEFT", TokenFrame, "TOPRIGHT", 3, 0)
 				SkinCloseButton(TokenFramePopupCloseButton)
+				SkinCheckBox(TokenFramePopupBackpackCheckBox)
+				SkinCheckBox(TokenFramePopupInactiveCheckBox)
 			end)
 
 			-- Pet

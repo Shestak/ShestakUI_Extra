@@ -442,6 +442,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		AchievementFrameAchievementsContainer:CreateBackdrop("Overlay")
 		AchievementFrameAchievementsContainer.backdrop:Point("TOPLEFT", -3, 2)
 		AchievementFrameAchievementsContainer.backdrop:Point("BOTTOMRIGHT", -3, -3)
+		AchievementFrameStatsContainer:CreateBackdrop("Overlay")
+		AchievementFrameStatsContainer.backdrop:Point("TOPLEFT", -2, 2)
+		AchievementFrameStatsContainer.backdrop:Point("BOTTOMRIGHT", -2, -3)
+		AchievementFrameComparisonStatsContainer:CreateBackdrop("Overlay")
+		AchievementFrameComparisonStatsContainer.backdrop:Point("TOPLEFT", -3, 2)
+		AchievementFrameComparisonStatsContainer.backdrop:Point("BOTTOMRIGHT", -2, -3)
 
 		SkinCloseButton(AchievementFrameCloseButton, AchievementFrame.backdrop)
 		SkinDropDownBox(AchievementFrameFilterDropDown)
@@ -540,23 +546,38 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local frame = _G["AchievementFrameAchievementsContainerButton"..i]
 			_G["AchievementFrameAchievementsContainerButton"..i.."Highlight"]:Kill()
 			frame:StripTextures()
-
-			frame:CreateBackdrop("Overlay", true)
-			frame.backdrop:Point("TOPLEFT", 2, -2)
-			frame.backdrop:Point("BOTTOMRIGHT", -2, 2)
 			frame.SetBackdropBorderColor = T.dummy
+
+			-- Initiate method of creating a backdrop
+			frame.bg1 = frame:CreateTexture(nil, "BACKGROUND")
+			frame.bg1:SetDrawLayer("BACKGROUND", 4)
+			frame.bg1:SetTexture(C.media.blank)
+			frame.bg1:SetVertexColor(0.1, 0.1, 0.1)
+			frame.bg1:Point("TOPLEFT", T.mult * 4, -T.mult * 4)
+			frame.bg1:Point("BOTTOMRIGHT", -T.mult * 4, T.mult * 4)
+
+			frame.bg2 = frame:CreateTexture(nil, "BACKGROUND")
+			frame.bg2:SetDrawLayer("BACKGROUND", 3)
+			frame.bg2:SetTexture(0, 0, 0)
+			frame.bg2:Point("TOPLEFT", T.mult * 3, -T.mult * 3)
+			frame.bg2:Point("BOTTOMRIGHT", -T.mult * 3, T.mult * 3)
+
+			frame.bg3 = frame:CreateTexture(nil, "BACKGROUND")
+			frame.bg3:SetDrawLayer("BACKGROUND", 2)
+			frame.bg3:SetTexture(unpack(C.media.border_color))
+			frame.bg3:Point("TOPLEFT", T.mult * 2, -T.mult * 2)
+			frame.bg3:Point("BOTTOMRIGHT", -T.mult * 2, T.mult * 2)
+
+			frame.bg4 = frame:CreateTexture(nil, "BACKGROUND")
+			frame.bg4:SetDrawLayer("BACKGROUND", 1)
+			frame.bg4:SetTexture(0, 0, 0)
+			frame.bg4:Point("TOPLEFT", T.mult, -T.mult)
+			frame.bg4:Point("BOTTOMRIGHT", -T.mult, T.mult)
 
 			_G["AchievementFrameAchievementsContainerButton"..i.."Description"]:SetTextColor(0.6, 0.6, 0.6)
 			_G["AchievementFrameAchievementsContainerButton"..i.."Description"].SetTextColor = T.dummy
 			_G["AchievementFrameAchievementsContainerButton"..i.."HiddenDescription"]:SetTextColor(1, 1, 1)
 			_G["AchievementFrameAchievementsContainerButton"..i.."HiddenDescription"].SetTextColor = T.dummy
-
-			_G["AchievementFrameAchievementsContainerButton"..i.."HiddenDescription"]:SetParent(frame.backdrop)
-			_G["AchievementFrameAchievementsContainerButton"..i.."Description"]:SetParent(frame.backdrop)
-			_G["AchievementFrameAchievementsContainerButton"..i.."Icon"]:SetParent(frame.backdrop)
-			_G["AchievementFrameAchievementsContainerButton"..i.."Shield"]:SetParent(frame.backdrop)
-			_G["AchievementFrameAchievementsContainerButton"..i.."Label"]:SetParent(frame.backdrop)
-			_G["AchievementFrameAchievementsContainerButton"..i.."Reward"]:SetParent(frame.backdrop)
 
 			_G["AchievementFrameAchievementsContainerButton"..i.."IconBling"]:Kill()
 			_G["AchievementFrameAchievementsContainerButton"..i.."IconOverlay"]:Kill()
@@ -569,6 +590,19 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:ClearAllPoints()
 			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:Point("TOPLEFT", 2, -2)
 			_G["AchievementFrameAchievementsContainerButton"..i.."IconTexture"]:Point("BOTTOMRIGHT", -2, 2)
+
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:StripTextures()
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:SetTemplate("Default")
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:SetCheckedTexture("Interface\\Buttons\\UI-CheckBox-Check")
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:Size(12, 12)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:GetCheckedTexture():Point("TOPLEFT", -4, 4)
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:GetCheckedTexture():Point("BOTTOMRIGHT", 4, -4)
+
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:ClearAllPoints()
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"]:Point("BOTTOMLEFT", frame, "BOTTOMLEFT", 5, 5)
+
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"].ClearAllPoints = T.dummy
+			_G["AchievementFrameAchievementsContainerButton"..i.."Tracked"].SetPoint = T.dummy
 		end
 
 		local compares = {
@@ -583,7 +617,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G[frame]:StripTextures()
 				_G[frame.."Background"]:Kill()
 
-				_G[frame]:CreateBackdrop("Default", true)
+				_G[frame]:CreateBackdrop("Overlay", true)
 				_G[frame].backdrop:Point("TOPLEFT", 2, -2)
 				_G[frame].backdrop:Point("BOTTOMRIGHT", -2, 2)
 				_G[frame].SetBackdropBorderColor = T.dummy
@@ -1185,9 +1219,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		GuildNewsBossModel:CreateBackdrop("Transparent")
-		GuildNewsBossModelTextFrame:CreateBackdrop("Default")
+		GuildNewsBossModelTextFrame:CreateBackdrop("Overlay")
 		GuildNewsBossModelTextFrame.backdrop:Point("TOPLEFT", GuildNewsBossModel.backdrop, "BOTTOMLEFT", 0, -1)
-		GuildNewsBossModel:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 4, -43)
+		GuildNewsBossModel:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 5, -2)
 
 		local buttons = {
 			"GuildPerksToggleButton",
@@ -3223,6 +3257,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"LFDQueueFrameRandomScrollFrame",
 				"LFDQueueFrameCapBar",
 				"LFDDungeonReadyDialog",
+				"LFDQueueFrameRandomScrollFrameScrollBar",
 			}
 
 			local KillTextures = {
@@ -3658,10 +3693,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PVPBannerFrame:CreateBackdrop("Transparent")
 			PVPBannerFrame.backdrop:Point("TOPLEFT", PVPBannerFrame, "TOPLEFT")
 			PVPBannerFrame.backdrop:Point("BOTTOMRIGHT", PVPBannerFrame, "BOTTOMRIGHT")
-			PVPBannerFrameCustomization1:CreateBackdrop("Default")
+			PVPBannerFrameCustomization1:CreateBackdrop("Overlay")
 			PVPBannerFrameCustomization1.backdrop:Point("TOPLEFT", PVPBannerFrameCustomization1LeftButton, "TOPRIGHT" , 2, 0)
 			PVPBannerFrameCustomization1.backdrop:Point("BOTTOMRIGHT", PVPBannerFrameCustomization1RightButton, "BOTTOMLEFT", -2, 0)
-			PVPBannerFrameCustomization2:CreateBackdrop("Default")
+			PVPBannerFrameCustomization2:CreateBackdrop("Overlay")
 			PVPBannerFrameCustomization2.backdrop:Point("TOPLEFT", PVPBannerFrameCustomization2LeftButton, "TOPRIGHT", 2, 0)
 			PVPBannerFrameCustomization2.backdrop:Point("BOTTOMRIGHT", PVPBannerFrameCustomization2RightButton, "BOTTOMLEFT", -2, 0)
 			SkinCloseButton(PVPBannerFrameCloseButton, PVPBannerFrame)
@@ -3687,10 +3722,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			if T.PTRVersion() then
 				WarGameStartButton:SkinButton(true)
 				WarGamesFrame:StripTextures()
+				WarGamesFrameInfoScrollFrameScrollBar:StripTextures()
 				SkinScrollBar(WarGamesFrameScrollFrameScrollBar)
 
 				WarGameStartButton:ClearAllPoints()
 				WarGameStartButton:Point("LEFT", PVPFrameLeftButton, "RIGHT", 2, 0)
+
+				---???:SetTextColor(1, 1, 1)
 			end
 
 			-- Cancel Button FFSlocal

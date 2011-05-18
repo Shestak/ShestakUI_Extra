@@ -704,7 +704,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end)
 	end
 
-	-- LF Guild
+	-- LookingForGuildUI
 	if addon == "Blizzard_LookingForGuildUI" then
 		local checkbox = {
 			"LookingForGuildPvPButton",
@@ -752,7 +752,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	-- Inspect Frame
+	-- InspectUI
 	if addon == "Blizzard_InspectUI" then
 		InspectFrame:StripTextures(true)
 		InspectFrameInset:StripTextures(true)
@@ -861,7 +861,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	-- Binding
+	-- BindingUI
 	if addon == "Blizzard_BindingUI" then
 		local buttons = {
 			"KeyBindingFrameDefaultButton",
@@ -896,7 +896,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		KeyBindingFrameOkayButton:Point("RIGHT", KeyBindingFrameCancelButton, "LEFT", -3, 0)
 	end
 
-	-- Guild Bank
+	-- GuildBankUI
 	if addon == "Blizzard_GuildBankUI" then
 		GuildBankFrame:StripTextures()
 		GuildBankFrame:SetTemplate("Transparent")
@@ -974,7 +974,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildBankFrameTab1:SetPoint("TOPLEFT", GuildBankFrame, "BOTTOMLEFT", 0, 2)
 	end
 
-	-- Archaeology
+	-- ArchaeologyUI
 	if addon == "Blizzard_ArchaeologyUI" then
 		ArchaeologyFrame:StripTextures(true)
 		ArchaeologyFrameInset:StripTextures(true)
@@ -1051,7 +1051,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		SkinCloseButton(ArchaeologyFrameCloseButton)
 	end
 
-	-- Guild Control
+	-- GuildControlUI
 	if addon == "Blizzard_GuildControlUI" then
 		GuildControlUI:StripTextures()
 		GuildControlUIHbar:StripTextures()
@@ -1124,7 +1124,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildControlUIRankBankFrameRankDropDownButton:Width(20)
 	end
 
-	-- Guild
+	-- GuildUI
 	if addon == "Blizzard_GuildUI" then
 		GuildFrame:StripTextures(true)
 		GuildFrame:SetTemplate("Transparent")
@@ -1386,7 +1386,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	-- TradeSkill
+	-- TradeSkillUI
 	if addon == "Blizzard_TradeSkillUI" then
 		TradeSkillFrame:StripTextures(true)
 		TradeSkillListScrollFrame:StripTextures()
@@ -1470,7 +1470,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		SkinCloseButton(TradeSkillGuildFrameCloseButton)
 	end
 
-	-- Raid Frame
+	-- RaidUI
 	if addon == "Blizzard_RaidUI" then
 		local buttons = {
 			"RaidFrameRaidBrowserButton",
@@ -1516,7 +1516,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	-- Talent Trees
+	-- TalentUI
 	if addon == "Blizzard_TalentUI" then
 		-- Player Talents
 		local buttons = {
@@ -1926,7 +1926,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	-- Auction House
+	-- AuctionUI
 	if addon == "Blizzard_AuctionUI" then
 		SkinCloseButton(AuctionFrameCloseButton)
 		AuctionFrame:StripTextures(true)
@@ -2204,7 +2204,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		AuctionFrameAuctions.bg2:SetFrameLevel(AuctionFrameAuctions.bg2:GetFrameLevel() - 2)
 	end
 
-	-- BarberShop
+	-- BarbershopUI
 	if addon == "Blizzard_BarbershopUI" then
 		local buttons = {
 			"BarberShopFrameOkayButton",
@@ -2257,7 +2257,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		BarberShopAltFormFrame:CreateBackdrop("Transparent")
 	end
 
-	-- Macro Frame
+	-- MacroUI
 	if addon == "Blizzard_MacroUI" then
 		local buttons = {
 			"MacroDeleteButton",
@@ -2365,7 +2365,39 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 	end
 
-	-- Class Trainer Frame
+	-- DebugTools
+	if addon == "Blizzard_DebugTools" then
+		ScriptErrorsFrame:SetTemplate("Transparent")
+		EventTraceFrame:SetTemplate("Transparent")
+		_G["EventTraceTooltip"]:HookScript("OnShow", function(self) self:SetTemplate("Transparent") end)
+
+		local texs = {
+			"TopLeft",
+			"TopRight",
+			"Top",
+			"BottomLeft",
+			"BottomRight",
+			"Bottom",
+			"Left",
+			"Right",
+			"TitleBG",
+			"DialogBG",
+		}
+
+		for i = 1, #texs do
+			_G["ScriptErrorsFrame"..texs[i]]:SetTexture(nil)
+			_G["EventTraceFrame"..texs[i]]:SetTexture(nil)
+		end
+
+		for i = 1, ScriptErrorsFrame:GetNumChildren() do
+			local child = select(i, ScriptErrorsFrame:GetChildren())
+			if child:GetObjectType() == "Button" and not child:GetName() then
+				child:SkinButton()
+			end
+		end
+	end
+
+	-- TrainerUI
 	if addon == "Blizzard_TrainerUI" then
 		local StripAllTextures = {
 			"ClassTrainerFrame",
@@ -2432,7 +2464,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ClassTrainerStatusBar:CreateBackdrop("Default")
 	end
 
-	-- Socketing UI
+	-- ItemSocketingUI
 	if addon == "Blizzard_ItemSocketingUI" then
 		ItemSocketingFrame:StripTextures()
 		ItemSocketingFrame:SetTemplate("Transparent")
@@ -2850,6 +2882,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			HelpFrameKnowledgebaseSearchBox:ClearAllPoints()
 			HelpFrameKnowledgebaseSearchBox:Point("TOPLEFT", HelpFrameMainInset, "TOPLEFT", 13, -10)
 			HelpFrameKnowledgebaseNavBarOverlay:Kill()
+			if T.PTRVersion() then
+				HelpFrameKnowledgebaseNavBar:StripTextures()
+			end
 			HelpFrame:StripTextures(true)
 			HelpFrame:CreateBackdrop("Transparent")
 			SkinEditBox(HelpFrameKnowledgebaseSearchBox)
@@ -3041,6 +3076,34 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					end
 				end
 			end)
+		end
+
+		-- Encounter Journal
+		if T.PTRVersion() then
+		do
+			EncounterJournal:StripTextures(true)
+			EncounterJournal:SetTemplate("Transparent")
+			EncounterJournalNavBar:StripTextures(true)
+			EncounterJournalNavBarOverlay:StripTextures(true)
+
+			EncounterJournalNavBar:CreateBackdrop("Transparent")
+			EncounterJournalNavBar.backdrop:Point("TOPLEFT", -2, 0)
+			EncounterJournalNavBar.backdrop:SetPoint("BOTTOMRIGHT")
+			EncounterJournalNavBarHomeButton:SkinButton(true)
+
+			SkinEditBox(EncounterJournalSearchBox)
+			SkinCloseButton(EncounterJournalCloseButton)
+
+			EncounterJournalInset:StripTextures(true)
+			EncounterJournalInset:CreateBackdrop("Transparent")
+			EncounterJournalInset.backdrop:Point("TOPLEFT", 0, -2)
+			EncounterJournalInset.backdrop:Point("BOTTOMRIGHT", -2, 0)
+			EncounterJournalInset.backdrop:SetFrameLevel(EncounterJournalInset.backdrop:GetFrameLevel() + 1)
+
+			EncounterJournalInstanceSelect:SetFrameLevel(EncounterJournalInstanceSelect:GetFrameLevel() + 1)
+
+			SkinScrollBar(EncounterJournalInstanceSelectScrollFrameScrollBar)
+		end
 		end
 
 		-- Item Text Frame
@@ -3801,7 +3864,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					local icon = _G["SpellButton"..i.."IconTexture"]
 
 					if first then
-						button:StripTextures()
+						for i = 1, button:GetNumRegions() do
+							local region = select(i, button:GetRegions())
+							if region:GetObjectType() == "Texture" then
+								if region:GetTexture() ~= "Interface\\Buttons\\ActionBarFlyoutButton" then
+									region:SetTexture(nil)
+								end
+							end
+						end
 					end
 
 					if _G["SpellButton"..i.."Highlight"] then
@@ -4235,6 +4305,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				TokenFramePopup:StripTextures()
 				TokenFramePopup:SetTemplate("Transparent")
 				TokenFramePopup:Point("TOPLEFT", TokenFrame, "TOPRIGHT", 3, 0)
+				SkinCloseButton(TokenFramePopupCloseButton)
 			end)
 
 			-- Pet

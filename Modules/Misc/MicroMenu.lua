@@ -9,13 +9,17 @@ local microbuttons = {
 	"SpellbookMicroButton",
 	"TalentMicroButton",
 	"QuestLogMicroButton",
-	"MainMenuMicroButton",
 	"PVPMicroButton",
 	"GuildMicroButton",
 	"LFDMicroButton",
 	"HelpMicroButton",
+	"MainMenuMicroButton",
 	"AchievementMicroButton"
 }
+if T.PTRVersion() then
+	tinsert(microbuttons, "EJMicroButton")
+	tinsert(microbuttons, "RaidMicroButton")
+end
 
 local f = CreateFrame("Frame", "MicroParent", UIParent)
 UpdateMicroButtonsParent(f)
@@ -25,7 +29,8 @@ for i, button in pairs(microbuttons) do
 	local pushed = m:GetPushedTexture()
 	local normal = m:GetNormalTexture()
 	local disabled = m:GetDisabledTexture()
-	
+
+	m:SetParent(MicroParent)
 	m.SetParent = T.dummy
 	_G[button.."Flash"]:SetTexture("")
 	m:SetHighlightTexture("")
@@ -70,7 +75,11 @@ do
 end
 
 MicroParent:Point(unpack(C.extra_position.micro_menu))
-MicroParent:Width(((CharacterMicroButton:GetWidth() + 4) * 7) + 2)
+if T.PTRVersion() then
+	MicroParent:Width(((CharacterMicroButton:GetWidth() + 4) * 9) + 12)
+else
+	MicroParent:Width(((CharacterMicroButton:GetWidth() + 4) * 7) + 2)
+end
 MicroParent:Height(CharacterMicroButton:GetHeight() - 28)
 
 CharacterMicroButton:ClearAllPoints()

@@ -42,6 +42,7 @@ for i, v in pairs({
 	"InterfaceOptionsFrame",
 	"VideoOptionsFrame",
 	"aLoadFrame",
+	"EncounterJournal",
 })
 do
 	if _G[v] then

@@ -25,7 +25,7 @@ C["extra_general"] = {
 --	Skins options (Maybe not work correctly!!!)
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
-	["blizzard_frames"] = false,				-- Blizzard frames skin
+	["blizzard_frames"] = true,					-- Blizzard frames skin
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["combustion_helper"] = false,				-- CombustionHelper skin
 	["roll_tracker"] = false,					-- RollTracker skin

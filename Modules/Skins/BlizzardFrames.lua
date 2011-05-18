@@ -137,7 +137,13 @@ local function SkinCheckBox(frame)
 		frame:SetCheckedTexture("Interface\\Buttons\\UI-CheckBox-Check")
 	end
 
-	frame:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
+	if frame.SetDisabledTexture then
+		frame:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
+	end
+
+	frame.SetNormalTexture = T.dummy
+	frame.SetPushedTexture = T.dummy
+	frame.SetHighlightTexture = T.dummy
 end
 
 local function SkinCloseButton(f, point)
@@ -640,6 +646,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					frame:SetStatusBarTexture(C.media.texture)
 					frame:SetStatusBarColor(0, 0.7, 0.1)
 					frame:SetFrameLevel(frame:GetFrameLevel() + 3)
+					frame:Height(frame:GetHeight() - 2)
 
 					frame.bg1 = frame:CreateTexture(nil, "BACKGROUND")
 					frame.bg1:SetDrawLayer("BACKGROUND", -7)
@@ -660,8 +667,16 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					frame.bg3:Point("BOTTOMRIGHT", T.mult, -T.mult)
 
 					frame.text:ClearAllPoints()
-					frame.text:SetPoint("CENTER", frame, "CENTER", 0, -2)
+					frame.text:SetPoint("CENTER", frame, "CENTER", 0, -1)
 					frame.text:SetJustifyH("CENTER")
+
+					if index > 1 then
+						frame:ClearAllPoints()
+						frame:Point("TOP", _G["AchievementFrameProgressBar"..index-1], "BOTTOM", 0, -5)
+						frame.SetPoint = T.dummy
+						frame.ClearAllPoints = T.dummy
+					end
+
 					frame.skinned = true
 				end
 			end
@@ -3136,6 +3151,66 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			TaxiRouteMap:CreateBackdrop("Default")
 			TaxiRouteMap.backdrop:SetAllPoints()
 			SkinCloseButton(TaxiFrameCloseButton)
+		end
+
+		-- LFR frame
+		do
+			local buttons = {
+				"LFRQueueFrameFindGroupButton",
+				"LFRQueueFrameAcceptCommentButton",
+				"LFRBrowseFrameSendMessageButton",
+				"LFRBrowseFrameInviteButton",
+				"LFRBrowseFrameRefreshButton",
+			}
+
+			LFRParentFrame:StripTextures()
+			LFRParentFrame:SetTemplate("Transparent")
+			LFRQueueFrame:StripTextures()
+			LFRBrowseFrame:StripTextures()
+
+			for i = 1, #buttons do
+				_G[buttons[i]]:SkinButton()
+			end
+
+			-- Close button
+			for i = 1, LFRParentFrame:GetNumChildren() do
+				local child = select(i, LFRParentFrame:GetChildren())
+				if child.GetPushedTexture and child:GetPushedTexture() and not child:GetName() then
+					SkinCloseButton(child)
+				end
+			end
+
+			SkinTab(LFRParentFrameTab1)
+			SkinTab(LFRParentFrameTab2)
+
+			-- Reposition tabs
+			LFRParentFrameTab1:ClearAllPoints()
+			LFRParentFrameTab1:SetPoint("TOPLEFT", LFRParentFrame, "BOTTOMLEFT", 0, 2)
+
+			SkinDropDownBox(LFRBrowseFrameRaidDropDown)
+			LFRQueueFrameSpecificListScrollFrame:StripTextures()
+
+			LFRQueueFrameCommentTextButton:CreateBackdrop("Overlay")
+			LFRQueueFrameCommentTextButton:Height(35)
+
+			for i = 1, 7 do
+				local button = "LFRBrowseFrameColumnHeader"..i
+				_G[button.."Left"]:Kill()
+				_G[button.."Middle"]:Kill()
+				_G[button.."Right"]:Kill()
+			end
+
+			for i = 1, NUM_LFR_CHOICE_BUTTONS do
+				local button = _G["LFRQueueFrameSpecificListButton"..i]
+				SkinCheckBox(button.enableButton)
+			end
+
+			SkinCheckBox(LFRQueueFrameRoleButtonTank:GetChildren())
+			SkinCheckBox(LFRQueueFrameRoleButtonHealer:GetChildren())
+			SkinCheckBox(LFRQueueFrameRoleButtonDPS:GetChildren())
+			LFRQueueFrameRoleButtonTank:GetChildren():SetFrameLevel(LFRQueueFrameRoleButtonTank:GetChildren():GetFrameLevel() + 2)
+			LFRQueueFrameRoleButtonHealer:GetChildren():SetFrameLevel(LFRQueueFrameRoleButtonHealer:GetChildren():GetFrameLevel() + 2)
+			LFRQueueFrameRoleButtonDPS:GetChildren():SetFrameLevel(LFRQueueFrameRoleButtonDPS:GetChildren():GetFrameLevel() + 2)
 		end
 
 		-- LFD frame

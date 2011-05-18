@@ -39,6 +39,14 @@ local function UnactiveTalents()
 	return sTree1, sTree2, sTree3, sTree
 end
 
+local function AutoGear()
+	if GetActiveTalentGroup() == 1 then
+		UseEquipmentSet(GetEquipmentSetInfo(set1))
+	else
+		UseEquipmentSet(GetEquipmentSetInfo(set2))
+	end
+end
+
 local function enableDPS()
 	DisableAddOn("ShestakUI_Heal")
 	EnableAddOn("ShestakUI_DPS")
@@ -214,10 +222,6 @@ if Autogearswap == true then
 	gearsetfunc = CreateFrame("Frame", "gearSetfunc", UIParent)
 	gearsetfunc:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	gearsetfunc:SetScript("OnEvent", function(self, event)
-		if GetActiveTalentGroup() == 1 then
-			UseEquipmentSet(GetEquipmentSetInfo(set1))
-		else
-			UseEquipmentSet(GetEquipmentSetInfo(set2))
-		end
+		AutoGear()
 	end) 
 end

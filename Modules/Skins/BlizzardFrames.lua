@@ -3361,6 +3361,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			LFDQueueFrameCapBarCap1:SetTexture(C.media.texture)
 			LFDQueueFrameCapBarCap2:SetTexture(C.media.texture)
 			SkinScrollBar(LFDQueueFrameSpecificListScrollFrameScrollBar)
+			RolePollPopup:SetTemplate("Transparent")
+			LFDDungeonReadyDialog:SetTemplate("Transparent")
 		end
 
 		-- Quest Frame

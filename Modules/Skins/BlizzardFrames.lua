@@ -1512,7 +1512,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		TradeSkillLinkButton:Size(17, 14)
 		TradeSkillLinkButton:Point("LEFT", TradeSkillLinkFrame, "LEFT", 5, -1)
 		SkinEditBox(TradeSkillFrameSearchBox)
+		TradeSkillFrameSearchBox:Height(TradeSkillFrameSearchBox:GetHeight() - 2)
 		SkinEditBox(TradeSkillInputBox)
+		TradeSkillInputBox:Height(TradeSkillInputBox:GetHeight() - 2)
 		SkinNextPrevButton(TradeSkillDecrementButton)
 		SkinNextPrevButton(TradeSkillIncrementButton)
 		TradeSkillIncrementButton:Point("RIGHT", TradeSkillCreateButton, "LEFT", -13, 0)
@@ -1564,7 +1566,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		TradeSkillGuildFrame:SetTemplate("Transparent")
 		TradeSkillGuildFrame:Point("BOTTOMLEFT", TradeSkillFrame, "BOTTOMRIGHT", 3, 19)
 		TradeSkillGuildFrameContainer:StripTextures()
-		TradeSkillGuildFrameContainer:SetTemplate("Default")
+		TradeSkillGuildFrameContainer:SetTemplate("Overlay")
 		SkinCloseButton(TradeSkillGuildFrameCloseButton)
 	end
 
@@ -4251,6 +4253,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 			-- BNet Frame
 			FriendsFrameBroadcastInput:CreateBackdrop("Overlay")
+			FriendsFrameBroadcastInput.backdrop:Point("TOPLEFT", -2, 2)
+			FriendsFrameBroadcastInput.backdrop:Point("BOTTOMRIGHT", 0, 1)
 			ChannelFrameDaughterFrameChannelName:CreateBackdrop("Overlay")
 			ChannelFrameDaughterFrameChannelPassword:CreateBackdrop("Overlay")
 

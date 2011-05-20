@@ -183,6 +183,47 @@ SkinBlizz:RegisterEvent("ADDON_LOADED")
 SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 	if IsAddOnLoaded("Skinner") or IsAddOnLoaded("Aurora") then return end
 
+	-- TimeManager
+	if addon == "Blizzard_TimeManager" then
+		TimeManagerStopwatchFrame:StripTextures()
+		TimeManagerFrame:StripTextures()
+		TimeManagerFrame:CreateBackdrop("Transparent")
+		TimeManagerFrame.backdrop:Point("TOPLEFT", 0, 0)
+		TimeManagerFrame.backdrop:Point("BOTTOMRIGHT", -50, 0)
+
+		TimeManagerStopwatchCheck:SetTemplate("Default")
+		TimeManagerStopwatchCheck:StyleButton(true)
+		TimeManagerStopwatchCheck:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+		TimeManagerStopwatchCheck:GetNormalTexture():Point("TOPLEFT", 2, -2)
+		TimeManagerStopwatchCheck:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+
+		SkinDropDownBox(TimeManagerAlarmHourDropDown, 70)
+		SkinDropDownBox(TimeManagerAlarmMinuteDropDown, 70)
+
+		TimeManagerAlarmEnabledButton:StripTextures(true)
+		TimeManagerAlarmEnabledButton:SkinButton()
+
+		SkinEditBox(TimeManagerAlarmMessageEditBox)
+		TimeManagerAlarmMessageEditBox:Height(TimeManagerAlarmMessageEditBox:GetHeight() - 5)
+
+		SkinCheckBox(TimeManagerMilitaryTimeCheck)
+		SkinCheckBox(TimeManagerLocalTimeCheck)
+		SkinCloseButton(TimeManagerCloseButton)
+
+		StopwatchFrame:StripTextures()
+		StopwatchFrame:CreateBackdrop("Transparent")
+		StopwatchFrame.backdrop:Point("TOPLEFT", 2, -15)
+		StopwatchFrame.backdrop:Point("BOTTOMRIGHT", -2, 2)
+
+		StopwatchTabFrame:StripTextures()
+		StopwatchTabFrame:CreateBackdrop("Transparent")
+		StopwatchTabFrame.backdrop:Point("TOPLEFT", -1, 0)
+		StopwatchTabFrame.backdrop:Point("BOTTOMRIGHT", 1, 2)
+
+		SkinCloseButton(StopwatchCloseButton)
+		--StopwatchCloseButton:Size(13, 13)
+	end
+
 	-- ReforgingUI
 	if addon == "Blizzard_ReforgingUI" then
 		ReforgingFrame:StripTextures()
@@ -2670,6 +2711,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			GuildRegistrarFrame.backdrop:Point("TOPLEFT", 15, -20)
 			GuildRegistrarFrame.backdrop:Point("BOTTOMRIGHT", -30, 65)
 
+			GuildRegistrarFrameEditBox:StripTextures(true)
+			SkinEditBox(GuildRegistrarFrameEditBox)
+			GuildRegistrarFrameEditBox:Height(GuildRegistrarFrameEditBox:GetHeight() - 15)
+
+			GuildRegistrarFramePurchaseButton:SkinButton()
+			GuildRegistrarFrameCancelButton:SkinButton()
 			GuildRegistrarFrameGoodbyeButton:SkinButton()
 
 			SkinCloseButton(GuildRegistrarFrameCloseButton, GuildRegistrarFrame.backdrop)
@@ -2882,6 +2929,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			OpenMailScrollFrame:CreateBackdrop("Overlay")
 			OpenMailScrollFrame.backdrop:Point("TOPLEFT", 12, 0)
 			OpenMailScrollFrame.backdrop:Point("BOTTOMRIGHT", 0, 0)
+
+			OpenMailScrollChildFrame:Point("TOPLEFT", 10, 0)
 
 			SkinScrollBar(OpenMailScrollFrameScrollBar)
 
@@ -3437,8 +3486,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		do
 			ItemTextFrame:StripTextures(true)
 			ItemTextScrollFrame:StripTextures()
-			ItemTextFrame:SetTemplate("Transparent")
-			SkinCloseButton(ItemTextCloseButton)
+			ItemTextFrame:CreateBackdrop("Transparent")
+			ItemTextFrame.backdrop:Point("TOPLEFT", 16, -12)
+			ItemTextFrame.backdrop:Point("BOTTOMRIGHT", -30, 76)
+			SkinCloseButton(ItemTextCloseButton, ItemTextFrame.backdrop)
 			SkinNextPrevButton(ItemTextPrevPageButton)
 			SkinNextPrevButton(ItemTextNextPageButton)
 		end
@@ -3702,12 +3753,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Petition Frame
 		do
 			PetitionFrame:StripTextures(true)
-			PetitionFrame:SetTemplate("Transparent")
+			PetitionFrame:CreateBackdrop("Transparent")
+			PetitionFrame.backdrop:Point("TOPLEFT", 16, -12)
+			PetitionFrame.backdrop:Point("BOTTOMRIGHT", -30, -3)
 
 			PetitionFrameRequestButton:SkinButton()
 			PetitionFrameRenameButton:SkinButton()
 			PetitionFrameCancelButton:SkinButton()
-			SkinCloseButton(PetitionFrameCloseButton)
+			SkinCloseButton(PetitionFrameCloseButton, PetitionFrame.backdrop)
 
 			PetitionFrameCharterTitle:SetTextColor(1, 0.8, 0)
 			PetitionFrameCharterName:SetTextColor(1, 1, 1)
@@ -3725,8 +3778,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PetitionFrameRenameButton:Point("RIGHT", PetitionFrameCancelButton, "LEFT", -3, 0)
 			PetitionFrame:Height(PetitionFrame:GetHeight() - 80)
 
-			PetitionFrameCancelButton:Point("BOTTOMRIGHT", PetitionFrame, "BOTTOMRIGHT", -40, 20)
-			PetitionFrameRequestButton:Point("BOTTOMLEFT", PetitionFrame, "BOTTOMLEFT", 22, 20)
+			PetitionFrameCancelButton:Point("BOTTOMRIGHT", PetitionFrame, "BOTTOMRIGHT", -40, 3)
+			PetitionFrameRequestButton:Point("BOTTOMLEFT", PetitionFrame, "BOTTOMLEFT", 25, 3)
 		end
 
 		-- Quest Log
@@ -3856,8 +3909,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		do
 			DressUpFrame:StripTextures(true)
 			DressUpFrame:CreateBackdrop("Transparent")
-			DressUpFrame.backdrop:Point("TOPLEFT", 6, 0)
-			DressUpFrame.backdrop:Point("BOTTOMRIGHT", -32, 70)
+			DressUpFrame.backdrop:Point("TOPLEFT", 16, -12)
+			DressUpFrame.backdrop:Point("BOTTOMRIGHT", -30, 76)
 
 			DressUpFrameResetButton:SkinButton()
 			DressUpFrameCancelButton:SkinButton()
@@ -3865,6 +3918,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinRotateButton(DressUpModelRotateLeftButton)
 			SkinRotateButton(DressUpModelRotateRightButton)
 			DressUpModelRotateRightButton:Point("TOPLEFT", DressUpModelRotateLeftButton, "TOPRIGHT", 2, 0)
+			DressUpFrameCancelButton:Point("BOTTOMRIGHT", DressUpFrame.backdrop, "BOTTOMRIGHT", -4, 4)
 			DressUpFrameResetButton:Point("RIGHT", DressUpFrameCancelButton, "LEFT", -2, 0)
 		end
 

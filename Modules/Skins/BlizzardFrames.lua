@@ -229,7 +229,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		CalendarFrame:SetTemplate("Transparent")
 		SkinCloseButton(CalendarCloseButton)
-		CalendarCloseButton:Point("TOPRIGHT", CalendarFrame, "TOPRIGHT", -4, -4)
 
 		SkinNextPrevButton(CalendarPrevMonthButton)
 		SkinNextPrevButton(CalendarNextMonthButton)
@@ -931,7 +930,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		KeyBindingFrameHeaderText:ClearAllPoints()
 		KeyBindingFrameHeaderText:Point("TOP", KeyBindingFrame, "TOP", 0, -4)
 		KeyBindingFrame:StripTextures()
-		KeyBindingFrame:SetTemplate("Transparent")
+		KeyBindingFrame:CreateBackdrop("Transparent")
+		KeyBindingFrame.backdrop:Point("TOPLEFT", 0, 0)
+		KeyBindingFrame.backdrop:Point("BOTTOMRIGHT", -40, 10)
 
 		for i = 1, KEY_BINDINGS_DISPLAYED  do
 			local button1 = _G["KeyBindingFrameBinding"..i.."Key1Button"]
@@ -942,6 +943,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			button2:StripTextures(true)
 			button2:StyleButton(false)
 			button2:SetTemplate("Default", true)
+			button2:Point("LEFT", button1, "RIGHT", 1, 0)
 		end
 
 		KeyBindingFrameUnbindButton:Point("RIGHT", KeyBindingFrameOkayButton, "LEFT", -3, 0)
@@ -1364,6 +1366,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		-- Info Frame
 		SkinScrollBar(GuildInfoDetailsFrameScrollBar)
+		SkinScrollBar(GuildInfoFrameApplicantsContainerScrollBar)
 
 		for i = 1, 3 do
 			_G["GuildInfoFrameTab"..i]:StripTextures()
@@ -1637,7 +1640,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		for i = 1, 3 do
-			_G["PlayerTalentFramePanel"..i.."Arrow"]:SetFrameLevel(_G["PlayerTalentFramePanel"..i.."Arrow"]:GetFrameLevel() + 2)
+			_G["PlayerTalentFramePanel"..i.."Arrow"]:SetFrameLevel(_G["PlayerTalentFramePanel"..i.."Arrow"]:GetFrameLevel() + 1)
 		end
 		PlayerTalentFramePetPanelArrow:SetFrameStrata("HIGH")
 
@@ -1748,7 +1751,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		local function TalentSummaryClean(i)
 			frame = _G["PlayerTalentFramePanel"..i.."Summary"]
-			frame:CreateBackdrop("Default")
+			frame:CreateBackdrop("Overlay")
 			frame:SetFrameLevel(frame:GetFrameLevel() + 1)
 			local a, b, _, d, _, _, _, _, _, _, _, _, m, _ = frame:GetRegions()
 			a:Hide()
@@ -1788,7 +1791,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		for i = 1, 3 do
 			TalentSummaryClean(i)
 			TalentHeaderIcon(nil, true, i)
-			for j = 1, 2 do
+			for j = 1, 4 do
 				TalentSummaryButtons(nil, true, true, i, j)
 				TalentSummaryButtons(nil, true, false, i, j)
 			end
@@ -2004,8 +2007,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		AuctionDressUpFrame:Point("TOPLEFT", AuctionFrame, "TOPRIGHT", 3, 0)
 		AuctionDressUpFrameResetButton:SkinButton()
 		AuctionDressUpFrameCloseButton:StripTextures()
-		SkinCloseButton(AuctionDressUpFrameCloseButton)
-		AuctionDressUpFrameCloseButton:Point("TOPRIGHT", AuctionDressUpFrame, -4, -4)
+		SkinCloseButton(AuctionDressUpFrameCloseButton, AuctionDressUpFrame)
 
 		SkinRotateButton(AuctionDressUpModelRotateLeftButton)
 		SkinRotateButton(AuctionDressUpModelRotateRightButton)
@@ -2360,8 +2362,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		MacroPopupScrollFrame.backdrop:Point("BOTTOMRIGHT", -4, 4)
 		MacroPopupEditBox:CreateBackdrop("Overlay")
 		MacroPopupEditBox:StripTextures(true)
-		SkinCloseButton(MacroFrameCloseButton)
-		MacroFrameCloseButton:Point("TOPRIGHT", MacroFrame.backdrop, -4, -4)
+		SkinCloseButton(MacroFrameCloseButton, MacroFrame.backdrop)
 
 		-- Reposition edit button
 		MacroEditButton:ClearAllPoints()
@@ -2529,7 +2530,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 	-- ItemSocketingUI
 	if addon == "Blizzard_ItemSocketingUI" then
 		ItemSocketingFrame:StripTextures()
-		ItemSocketingFrame:SetTemplate("Transparent")
+		ItemSocketingFrame:CreateBackdrop("Transparent")
+		ItemSocketingFrame.backdrop:Point("TOPLEFT", 16, -12)
+		ItemSocketingFrame.backdrop:Point("BOTTOMRIGHT", 0, 20)
 		ItemSocketingScrollFrame:StripTextures()
 		ItemSocketingScrollFrame:CreateBackdrop("Overlay")
 
@@ -2540,7 +2543,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local button_icon = _G["ItemSocketingSocket"..i.."IconTexture"]
 			button:StripTextures()
 			button:StyleButton(false)
-			button:SetTemplate("Default", true)
+			button:SetTemplate("Overlay", true)
 			button_bracket:Kill()
 			button_bg:Kill()
 			button_icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
@@ -2550,16 +2553,16 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			ItemSocketingFrame:HookScript("OnUpdate", function(self)
 				gemColor = GetSocketTypes(i)
 				local color = GEM_TYPE_INFO[gemColor]
-				button:SetBackdropColor(color.r, color.g, color.b, 0.15)
 				button:SetBackdropBorderColor(color.r, color.g, color.b)
+				button.overlay:SetVertexColor(color.r, color.g, color.b, 0.35)
 			end)
 		end
 
 		ItemSocketingFramePortrait:Kill()
 		ItemSocketingSocketButton:ClearAllPoints()
-		ItemSocketingSocketButton:Point("BOTTOMRIGHT", ItemSocketingFrame, "BOTTOMRIGHT", -5, 5)
+		ItemSocketingSocketButton:Point("BOTTOMRIGHT", ItemSocketingFrame.backdrop, "BOTTOMRIGHT", -5, 5)
 		ItemSocketingSocketButton:SkinButton()
-		SkinCloseButton(ItemSocketingCloseButton)
+		SkinCloseButton(ItemSocketingCloseButton, ItemSocketingFrame.backdrop)
 	end
 
 	-- Stuff not in Blizzard load-on-demand
@@ -2610,6 +2613,68 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			hooksecurefunc("AchievementAlertFrame_FixAnchors", SkinAchievePopUp)
 		end
 
+		-- Tabard Frame
+		do
+			local StripAllTextures = {
+				"TabardFrame",
+				"TabardFrameCostFrame",
+				"TabardFrameCustomization1",
+				"TabardFrameCustomization2",
+				"TabardFrameCustomization3",
+				"TabardFrameCustomization4",
+				"TabardFrameCustomization5",
+			}
+
+			for _, object in pairs(StripAllTextures) do
+				_G[object]:StripTextures()
+			end
+
+			TabardFramePortrait:Kill()
+			TabardFrame:CreateBackdrop("Transparent")
+			TabardFrame.backdrop:Point("TOPLEFT", 21, -12)
+			TabardFrame.backdrop:Point("BOTTOMRIGHT", -25, 76)
+
+			SkinCloseButton(TabardFrameCloseButton, TabardFrame.backdrop)
+
+			TabardFrameCancelButton:SkinButton()
+			TabardFrameAcceptButton:SkinButton()
+
+			SkinRotateButton(TabardCharacterModelRotateLeftButton)
+			SkinRotateButton(TabardCharacterModelRotateRightButton)
+			TabardCharacterModelRotateRightButton:ClearAllPoints()
+			TabardCharacterModelRotateRightButton:Point("LEFT", TabardCharacterModelRotateLeftButton, "RIGHT", 3, 0)
+
+			local buttons = {
+				"TabardFrameCustomization1LeftButton",
+				"TabardFrameCustomization2LeftButton",
+				"TabardFrameCustomization3LeftButton",
+				"TabardFrameCustomization4LeftButton",
+				"TabardFrameCustomization5LeftButton",
+				"TabardFrameCustomization1RightButton",
+				"TabardFrameCustomization2RightButton",
+				"TabardFrameCustomization3RightButton",
+				"TabardFrameCustomization4RightButton",
+				"TabardFrameCustomization5RightButton",
+			}
+
+			for i = 1, #buttons do
+				SkinNextPrevButton(_G[buttons[i]])
+			end
+		end
+
+		-- GuildRegistrar Frame
+		do
+			GuildRegistrarFramePortrait:Kill()
+			GuildRegistrarFrame:StripTextures()
+			GuildRegistrarFrame:CreateBackdrop("Transparent")
+			GuildRegistrarFrame.backdrop:Point("TOPLEFT", 15, -20)
+			GuildRegistrarFrame.backdrop:Point("BOTTOMRIGHT", -30, 65)
+
+			GuildRegistrarFrameGoodbyeButton:SkinButton()
+
+			SkinCloseButton(GuildRegistrarFrameCloseButton, GuildRegistrarFrame.backdrop)
+		end
+
 		-- WorldState Frame
 		do
 			WorldStateScoreScrollFrame:StripTextures()
@@ -2645,8 +2710,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 			MerchantBuyBackItem.backdrop:Point("TOPLEFT", -6, 6)
 			MerchantBuyBackItem.backdrop:Point("BOTTOMRIGHT", 6, -6)
-			MerchantFrame.backdrop:Point("TOPLEFT", 6, 0)
-			MerchantFrame.backdrop:Point("BOTTOMRIGHT", 0, 35)
+			MerchantFrame.backdrop:Point("TOPLEFT", 6, -12)
 			MerchantFrame.backdrop:Point("BOTTOMRIGHT", 0, 60)
 
 			-- Skin tabs
@@ -2725,9 +2789,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		do
 			MailFrame:StripTextures(true)
 			MailFrame:CreateBackdrop("Transparent")
-			MailFrame.backdrop:Point("TOPLEFT", 4, 0)
-			MailFrame.backdrop:Point("BOTTOMRIGHT", 2, 74)
-			MailFrame:SetWidth(360)
+			MailFrame.backdrop:Point("TOPLEFT", 16, -12)
+			MailFrame.backdrop:Point("BOTTOMRIGHT", -30, 76)
 
 			for i = 1, INBOXITEMS_TO_DISPLAY do
 				local bg = _G["MailItem"..i]
@@ -2748,7 +2811,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				t:Point("BOTTOMRIGHT", -2, 2)
 			end
 
-			SkinCloseButton(InboxCloseButton)
+			SkinCloseButton(InboxCloseButton, MailFrame.backdrop)
 			SkinNextPrevButton(InboxPrevPageButton)
 			SkinNextPrevButton(InboxNextPageButton)
 
@@ -2764,7 +2827,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			-- Send mail
 			SendMailScrollFrame:StripTextures(true)
-			SendMailScrollFrame:SetTemplate("Overlay")
+			SendMailScrollFrame:CreateBackdrop("Overlay")
+			SendMailScrollFrame.backdrop:Point("TOPLEFT", 12, 0)
+			SendMailScrollFrame.backdrop:Point("BOTTOMRIGHT", 0, 0)
 
 			SkinScrollBar(SendMailScrollFrameScrollBar)
 
@@ -2804,18 +2869,19 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			-- Open mail (cod)
 			OpenMailFrame:StripTextures(true)
 			OpenMailFrame:CreateBackdrop("Transparent")
-			OpenMailFrame.backdrop:Point("TOPLEFT", 4, 0)
-			OpenMailFrame.backdrop:Point("BOTTOMRIGHT", 2, 74)
-			OpenMailFrame:SetWidth(360)
+			OpenMailFrame.backdrop:Point("TOPLEFT", 16, -12)
+			OpenMailFrame.backdrop:Point("BOTTOMRIGHT", -30, 76)
 
-			SkinCloseButton(OpenMailCloseButton)
+			SkinCloseButton(OpenMailCloseButton, OpenMailFrame.backdrop)
 			OpenMailReportSpamButton:SkinButton()
 			OpenMailReplyButton:SkinButton()
 			OpenMailDeleteButton:SkinButton()
 			OpenMailCancelButton:SkinButton()
 
 			OpenMailScrollFrame:StripTextures(true)
-			OpenMailScrollFrame:SetTemplate("Overlay")
+			OpenMailScrollFrame:CreateBackdrop("Overlay")
+			OpenMailScrollFrame.backdrop:Point("TOPLEFT", 12, 0)
+			OpenMailScrollFrame.backdrop:Point("BOTTOMRIGHT", 0, 0)
 
 			SkinScrollBar(OpenMailScrollFrameScrollBar)
 
@@ -3095,15 +3161,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 
 			for i = 1, NUMGOSSIPBUTTONS do
-				obj = select(3,_G["GossipTitleButton"..i]:GetRegions())
+				obj = select(3, _G["GossipTitleButton"..i]:GetRegions())
 				obj:SetTextColor(1, 1, 1)
 			end
 
 			GossipGreetingText:SetTextColor(1, 1, 1)
 			GossipFrame:CreateBackdrop("Transparent")
-			GossipFrame.backdrop:Point("TOPLEFT", GossipFrame, "TOPLEFT", 15, -20)
-			GossipFrame.backdrop:Point("BOTTOMRIGHT", GossipFrame, "BOTTOMRIGHT", -30, 65)
-			SkinCloseButton(GossipFrameCloseButton,GossipFrame.backdrop)
+			GossipFrame.backdrop:Point("TOPLEFT", GossipFrame, "TOPLEFT", 16, -12)
+			GossipFrame.backdrop:Point("BOTTOMRIGHT", GossipFrame, "BOTTOMRIGHT", -30, 69)
+			SkinCloseButton(GossipFrameCloseButton, GossipFrame.backdrop)
 
 			-- Extreme hackage, blizzard makes button text on quest frame use hex color codes for some reason
 			hooksecurefunc("GossipFrameUpdate", function()
@@ -3168,6 +3234,205 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 		end
 
+		-- WorldMap
+		if C.map.enable ~= true then
+			WorldMapFrame:CreateBackdrop("Transparent")
+			WorldMapDetailFrame:SetFrameLevel(WorldMapDetailFrame:GetFrameLevel() + 1)
+			WorldMapDetailFrame.backdrop = CreateFrame("Frame", nil, WorldMapFrame)
+			WorldMapDetailFrame.backdrop:SetTemplate("Default")
+			WorldMapDetailFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -2, 2)
+			WorldMapDetailFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 2, -2)
+			WorldMapDetailFrame.backdrop:SetFrameLevel(WorldMapDetailFrame:GetFrameLevel() - 2)
+
+			SkinCloseButton(WorldMapFrameCloseButton)
+			SkinCloseButton(WorldMapFrameSizeDownButton)
+			SkinCloseButton(WorldMapFrameSizeUpButton)
+			--WorldMapFrameCloseButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -4, -4)
+			--WorldMapFrameSizeDownButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -34, -4)
+			--WorldMapFrameSizeUpButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -34, -4)
+
+			SkinDropDownBox(WorldMapLevelDropDown)
+			SkinDropDownBox(WorldMapZoneMinimapDropDown)
+			SkinDropDownBox(WorldMapContinentDropDown)
+			SkinDropDownBox(WorldMapZoneDropDown)
+			WorldMapZoomOutButton:SkinButton()
+			WorldMapZoomOutButton:Point("LEFT", WorldMapZoneDropDown, "RIGHT", 0, 4)
+			WorldMapLevelUpButton:Point("TOPLEFT", WorldMapLevelDropDown, "TOPRIGHT", -2, 8)
+			WorldMapLevelDownButton:Point("BOTTOMLEFT", WorldMapLevelDropDown, "BOTTOMRIGHT", -2, 2)
+
+			SkinCheckBox(WorldMapTrackQuest)
+			SkinCheckBox(WorldMapQuestShowObjectives)
+			SkinCheckBox(WorldMapShowDigSites)
+
+			-- Minimap
+			local function SmallSkin()
+				WorldMapLevelDropDown:ClearAllPoints()
+				WorldMapLevelDropDown:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -10, -4)
+
+				WorldMapFrame.backdrop:ClearAllPoints()
+				WorldMapFrame.backdrop:Point("TOPLEFT", 2, 2)
+				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", 2, -2)
+			end
+
+			-- Largemap
+			local function LargeSkin()
+				if not InCombatLockdown() then
+					WorldMapFrame:SetParent(UIParent)
+					WorldMapFrame:EnableMouse(false)
+					WorldMapFrame:EnableKeyboard(false)
+					SetUIPanelAttribute(WorldMapFrame, "area", "center")
+					SetUIPanelAttribute(WorldMapFrame, "allowOtherPanels", true)
+				end
+
+				WorldMapFrame.backdrop:ClearAllPoints()
+				WorldMapFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -25, 70)
+				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 25, -30)    
+			end
+
+			local function QuestSkin()
+				if not InCombatLockdown() then
+					WorldMapFrame:SetParent(UIParent)
+					WorldMapFrame:EnableMouse(false)
+					WorldMapFrame:EnableKeyboard(false)
+					SetUIPanelAttribute(WorldMapFrame, "area", "center")
+					SetUIPanelAttribute(WorldMapFrame, "allowOtherPanels", true)
+				end
+
+				WorldMapFrame.backdrop:ClearAllPoints()
+				WorldMapFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -25, 70)
+				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 325, -235)  
+
+				if not WorldMapQuestDetailScrollFrame.backdrop then
+					WorldMapQuestDetailScrollFrame:CreateBackdrop("Overlay")
+					WorldMapQuestDetailScrollFrame.backdrop:Point("TOPLEFT", -22, 2)
+					WorldMapQuestDetailScrollFrame.backdrop:Point("BOTTOMRIGHT", 23, -4)
+				end
+
+				if not WorldMapQuestRewardScrollFrame.backdrop then
+					WorldMapQuestRewardScrollFrame:CreateBackdrop("Overlay")
+					WorldMapQuestRewardScrollFrame.backdrop:Point("BOTTOMRIGHT", 22, -4)
+				end
+
+				if not WorldMapQuestScrollFrame.backdrop then
+					WorldMapQuestScrollFrame:CreateBackdrop("Overlay")
+					WorldMapQuestScrollFrame.backdrop:Point("TOPLEFT", 0, 2)
+					WorldMapQuestScrollFrame.backdrop:Point("BOTTOMRIGHT", 24, -3)
+				end
+			end
+
+			local function FixSkin()
+				WorldMapFrame:StripTextures()
+				if WORLDMAP_SETTINGS.size == WORLDMAP_FULLMAP_SIZE then
+					LargeSkin()
+				elseif WORLDMAP_SETTINGS.size == WORLDMAP_WINDOWED_SIZE then
+					SmallSkin()
+				elseif WORLDMAP_SETTINGS.size == WORLDMAP_QUESTLIST_SIZE then
+					QuestSkin()
+				end
+
+				if not InCombatLockdown() then
+					WorldMapFrame:SetScale(1)
+					WorldMapFrameSizeDownButton:Show()
+					WorldMapFrame:SetFrameStrata("DIALOG")
+				else
+					WorldMapFrameSizeDownButton:Disable()
+					WorldMapFrameSizeUpButton:Disable()
+				end
+
+				WorldMapFrameAreaFrame:SetFrameStrata("FULLSCREEN")
+				WorldMapFrameAreaLabel:SetFont(C.media.normal_font, 50, "OUTLINE")
+				WorldMapFrameAreaLabel:SetShadowOffset(2, -2)
+				WorldMapFrameAreaLabel:SetTextColor(0.90, 0.8294, 0.6407)
+
+				WorldMapFrameAreaDescription:SetFont(C.media.normal_font, 40, "OUTLINE")
+				WorldMapFrameAreaDescription:SetShadowOffset(2, -2)
+
+				WorldMapZoneInfo:SetFont(C.media.normal_font, 27, "OUTLINE")
+				WorldMapZoneInfo:SetShadowOffset(2, -2)
+			end
+
+			WorldMapFrame:HookScript("OnShow", FixSkin)
+			hooksecurefunc("WorldMapFrame_SetFullMapView", LargeSkin)
+			hooksecurefunc("WorldMapFrame_SetQuestMapView", QuestSkin)
+			hooksecurefunc("WorldMap_ToggleSizeUp", FixSkin)
+
+			WorldMapFrame:RegisterEvent("PLAYER_LOGIN")
+			WorldMapFrame:HookScript("OnEvent", function(self, event)
+				if event == "PLAYER_LOGIN" then
+					if not GetCVarBool("miniWorldMap") then
+						ToggleFrame(WorldMapFrame)
+						ToggleFrame(WorldMapFrame)
+					end
+				end
+			end)
+
+			local coords = CreateFrame("Frame", "CoordsFrame", WorldMapFrame)
+			local fontheight = select(2, WorldMapQuestShowObjectivesText:GetFont()) * 1.1
+			coords:SetFrameLevel(90)
+			coords:FontString("PlayerText", C.media.normal_font, fontheight, "OUTLINE")
+			coords:FontString("MouseText", C.media.normal_font, fontheight, "OUTLINE")
+			coords.PlayerText:SetTextColor(WorldMapQuestShowObjectivesText:GetTextColor())
+			coords.MouseText:SetTextColor(WorldMapQuestShowObjectivesText:GetTextColor())
+			coords.PlayerText:SetPoint("BOTTOMLEFT", WorldMapDetailFrame, "BOTTOMLEFT", 5, 5)
+			coords.PlayerText:SetText(PLAYER..": 0,0")
+			coords.MouseText:SetPoint("BOTTOMLEFT", coords.PlayerText, "TOPLEFT", 0, 5)
+			coords.MouseText:SetText(L_MAP_CURSOR..": 0,0")
+			local int = 0
+
+			WorldMapFrame:HookScript("OnUpdate", function(self, elapsed)
+				if InCombatLockdown() then
+					WorldMapFrameSizeDownButton:Disable()
+					WorldMapFrameSizeUpButton:Disable()
+				else
+					WorldMapFrameSizeDownButton:Enable()
+					WorldMapFrameSizeUpButton:Enable()
+				end
+
+				if WORLDMAP_SETTINGS.size == WORLDMAP_FULLMAP_SIZE then
+					WorldMapFrameSizeUpButton:Hide()
+					WorldMapFrameSizeDownButton:Show()
+				elseif WORLDMAP_SETTINGS.size == WORLDMAP_WINDOWED_SIZE then
+					WorldMapFrameSizeUpButton:Show()
+					WorldMapFrameSizeDownButton:Hide()
+				elseif WORLDMAP_SETTINGS.size == WORLDMAP_QUESTLIST_SIZE then
+					WorldMapFrameSizeUpButton:Hide()
+					WorldMapFrameSizeDownButton:Show()
+				end
+
+				int = int + 1
+
+				if int >= 3 then
+					local inInstance, _ = IsInInstance()
+					local x,y = GetPlayerMapPosition("player")
+					x = math.floor(100 * x)
+					y = math.floor(100 * y)
+					if x ~= 0 and y ~= 0 then
+						coords.PlayerText:SetText(PLAYER..": "..x..","..y)
+					else
+						coords.PlayerText:SetText(PLAYER..": ".."|cffff0000"..L_MAP_BOUNDS.."|r")
+					end
+
+					local scale = WorldMapDetailFrame:GetEffectiveScale()
+					local width = WorldMapDetailFrame:GetWidth()
+					local height = WorldMapDetailFrame:GetHeight()
+					local centerX, centerY = WorldMapDetailFrame:GetCenter()
+					local x, y = GetCursorPosition()
+					local adjustedX = (x / scale - (centerX - (width/2))) / width
+					local adjustedY = (centerY + (height/2) - y / scale) / height
+
+					if (adjustedX >= 0  and adjustedY >= 0 and adjustedX <= 1 and adjustedY <= 1) then
+						adjustedX = math.floor(100 * adjustedX)
+						adjustedY = math.floor(100 * adjustedY)
+						coords.MouseText:SetText(L_MAP_CURSOR..": "..adjustedX..","..adjustedY)
+					else
+						coords.MouseText:SetText(L_MAP_CURSOR.."|cffff0000"..L_MAP_BOUNDS.."|r")
+					end
+
+					int = 0
+				end	
+			end)
+		end
+
 		-- Item Text Frame
 		do
 			ItemTextFrame:StripTextures(true)
@@ -3182,9 +3447,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		do
 			TaxiFrame:StripTextures()
 			TaxiFrame:CreateBackdrop("Transparent")
+			TaxiFrame.backdrop:Point("TOPLEFT", -5, 3)
+			TaxiFrame.backdrop:Point("BOTTOMRIGHT", 5, -7)
 			TaxiRouteMap:CreateBackdrop("Default")
-			TaxiRouteMap.backdrop:SetAllPoints()
+			TaxiRouteMap.backdrop:Point("TOPLEFT", -2, 2)
+			TaxiRouteMap.backdrop:Point("BOTTOMRIGHT", 2, -2)
 			SkinCloseButton(TaxiFrameCloseButton)
+			TaxiFrameCloseButton:Point("TOPRIGHT", -4, -1)
 		end
 
 		-- LFR frame
@@ -3198,7 +3467,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			}
 
 			LFRParentFrame:StripTextures()
-			LFRParentFrame:SetTemplate("Transparent")
+			LFRParentFrame:CreateBackdrop("Transparent")
+			LFRParentFrame.backdrop:Point("TOPLEFT", 16, -12)
+			LFRParentFrame.backdrop:Point("BOTTOMRIGHT", -1, 0)
 			LFRQueueFrame:StripTextures()
 			LFRBrowseFrame:StripTextures()
 
@@ -3206,11 +3477,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G[buttons[i]]:SkinButton()
 			end
 
+			LFRQueueFrameFindGroupButton:Point("BOTTOMLEFT", LFRParentFrame.backdrop, "BOTTOMLEFT", 9, 7)
+			LFRQueueFrameAcceptCommentButton:Point("BOTTOMRIGHT", LFRParentFrame.backdrop, "BOTTOMRIGHT", -9, 7)
+
 			-- Close button
 			for i = 1, LFRParentFrame:GetNumChildren() do
 				local child = select(i, LFRParentFrame:GetChildren())
 				if child.GetPushedTexture and child:GetPushedTexture() and not child:GetName() then
-					SkinCloseButton(child)
+					SkinCloseButton(child, LFRParentFrame.backdrop)
 				end
 			end
 
@@ -3219,13 +3493,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			-- Reposition tabs
 			LFRParentFrameTab1:ClearAllPoints()
-			LFRParentFrameTab1:SetPoint("TOPLEFT", LFRParentFrame, "BOTTOMLEFT", 0, 2)
+			LFRParentFrameTab1:SetPoint("TOPLEFT", LFRParentFrame.backdrop, "BOTTOMLEFT", 0, 2)
 
 			SkinDropDownBox(LFRBrowseFrameRaidDropDown)
 			LFRQueueFrameSpecificListScrollFrame:StripTextures()
 
 			LFRQueueFrameCommentTextButton:CreateBackdrop("Overlay")
-			LFRQueueFrameCommentTextButton:Height(35)
+			LFRQueueFrameCommentTextButton.backdrop:Point("TOPLEFT", -6, 2)
+			LFRQueueFrameCommentTextButton.backdrop:Point("BOTTOMRIGHT", 2, 0)
 
 			for i = 1, 7 do
 				local button = "LFRBrowseFrameColumnHeader"..i
@@ -3456,11 +3731,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		-- Quest Log
 		do
-			SkinCloseButton(QuestLogFrameCloseButton)
 			QuestLogFrame:StripTextures()
-			QuestLogFrame:SetTemplate("Transparent")
+			QuestLogFrame:CreateBackdrop("Transparent")
+			QuestLogFrame.backdrop:Point("TOPLEFT", 16, -12)
+			QuestLogFrame.backdrop:Point("BOTTOMRIGHT", 0, 9)
+			SkinCloseButton(QuestLogFrameCloseButton, QuestLogFrame.backdrop)
+
 			QuestLogCount:StripTextures()
-			QuestLogCount:SetTemplate("Default")
 
 			EmptyQuestLogFrame:StripTextures()
 
@@ -3480,8 +3757,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for _, button in pairs(buttons) do
 				_G[button]:SkinButton()
 			end
-			QuestLogFramePushQuestButton:Point("LEFT", QuestLogFrameAbandonButton, "RIGHT", 2, 0)
-			QuestLogFramePushQuestButton:Point("RIGHT", QuestLogFrameTrackButton, "LEFT", -2, 0)
+			QuestLogFramePushQuestButton:Point("LEFT", QuestLogFrameAbandonButton, "RIGHT", 3, 0)
+			QuestLogFramePushQuestButton:Point("RIGHT", QuestLogFrameTrackButton, "LEFT", -3, 0)
 
 			for i = 1, MAX_NUM_ITEMS do
 				_G["QuestInfoItem"..i]:StripTextures()
@@ -3884,10 +4161,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for _, button in pairs(buttons) do
 				_G[button]:SkinButton()
 			end
+
 			-- Reposition buttons
 			WhoFrameWhoButton:Point("RIGHT", WhoFrameAddFriendButton, "LEFT", -2, 0)
 			WhoFrameAddFriendButton:Point("RIGHT", WhoFrameGroupInviteButton, "LEFT", -2, 0)
 			WhoFrameGroupInviteButton:Point("BOTTOMRIGHT", WhoFrame, "BOTTOMRIGHT", -44, 82)
+
 			-- Resize Buttons
 			WhoFrameWhoButton:Size(WhoFrameWhoButton:GetWidth() - 4, WhoFrameWhoButton:GetHeight())
 			WhoFrameAddFriendButton:Size(WhoFrameAddFriendButton:GetWidth() - 4, WhoFrameAddFriendButton:GetHeight())
@@ -3917,9 +4196,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				ChannelRosterScrollFrame:StripTextures()
 			end
 			-- BNet Frame
-			FriendsFrameBroadcastInput:CreateBackdrop("Default")
-			ChannelFrameDaughterFrameChannelName:CreateBackdrop("Default")
-			ChannelFrameDaughterFrameChannelPassword:CreateBackdrop("Default")
+			FriendsFrameBroadcastInput:CreateBackdrop("Overlay")
+			ChannelFrameDaughterFrameChannelName:CreateBackdrop("Overlay")
+			ChannelFrameDaughterFrameChannelPassword:CreateBackdrop("Overlay")
 
 			ChannelFrame:HookScript("OnShow", UpdateChannel)
 			hooksecurefunc("FriendsFrame_OnEvent", UpdateChannel)
@@ -3929,12 +4208,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			ChannelFrameDaughterFrame:CreateBackdrop("Transparent")
 			FriendsFrame:CreateBackdrop("Transparent")
-			FriendsFrame.backdrop:Point("TOPLEFT", FriendsFrame, "TOPLEFT", 11, -12)
-			FriendsFrame.backdrop:Point("BOTTOMRIGHT", FriendsFrame, "BOTTOMRIGHT", -35, 76)
-			SkinCloseButton(ChannelFrameDaughterFrameDetailCloseButton,ChannelFrameDaughterFrame)
+			FriendsFrame.backdrop:Point("TOPLEFT", FriendsFrame, "TOPLEFT", 16, -12)
+			FriendsFrame.backdrop:Point("BOTTOMRIGHT", FriendsFrame, "BOTTOMRIGHT", -30, 76)
+			SkinCloseButton(ChannelFrameDaughterFrameDetailCloseButton, ChannelFrameDaughterFrame)
 			SkinCloseButton(FriendsFrameCloseButton, FriendsFrame.backdrop)
 			SkinDropDownBox(WhoFrameDropDown, 150)
 			SkinDropDownBox(FriendsFrameStatusDropDown, 70)
+			FriendsFrameAddFriendButton:Point("BOTTOMLEFT", FriendsFrame.backdrop, "BOTTOMLEFT", 5, 5)
+			FriendsFrameIgnorePlayerButton:Point("BOTTOMLEFT", FriendsFrame.backdrop, "BOTTOMLEFT", 5, 5)
 
 			-- Bottom Tabs
 			for i = 1, 4 do
@@ -4060,8 +4341,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SpellBookFrame.backdrop:Point("TOPLEFT", 5, -1)
 			SpellBookFrame.backdrop:Point("BOTTOMRIGHT", 15, -1)
 
-			SkinCloseButton(SpellBookFrameCloseButton)
-			SpellBookFrameCloseButton:Point("TOPRIGHT", SpellBookFrame.backdrop, -4, -4)
+			SkinCloseButton(SpellBookFrameCloseButton, SpellBookFrame.backdrop)
 
 			-- Profession Tab
 			local professionbuttons = {
@@ -4467,5 +4747,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		OpenAllButton:SkinButton()
 		OpenAllButton2:SkinButton()
 		DressUpFrameUndressButton:SkinButton()
+		SkinCloseButton(RolePollPopupCloseButton)
 	end
 end)

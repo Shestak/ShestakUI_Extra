@@ -1001,10 +1001,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local button2 = _G["KeyBindingFrameBinding"..i.."Key2Button"]
 			button1:StripTextures(true)
 			button1:StyleButton(false)
-			button1:SetTemplate("Default", true)
+			button1:SetTemplate("Overlay", true)
 			button2:StripTextures(true)
 			button2:StyleButton(false)
-			button2:SetTemplate("Default", true)
+			button2:SetTemplate("Overlay", true)
 			button2:Point("LEFT", button1, "RIGHT", 1, 0)
 		end
 
@@ -3757,12 +3757,17 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			hooksecurefunc("QuestInfo_Display", function(template, parentFrame, acceptButton, material)
 				local textColor = {1, 1, 1}
 				local titleTextColor = {1, 0.8, 0}
+				local titleTextShadow = {0, 0, 0}
 
 				-- Headers
 				QuestInfoTitleHeader:SetTextColor(unpack(titleTextColor))
+				QuestInfoTitleHeader:SetShadowColor(unpack(titleTextShadow))
 				QuestInfoDescriptionHeader:SetTextColor(unpack(titleTextColor))
+				QuestInfoDescriptionHeader:SetShadowColor(unpack(titleTextShadow))
 				QuestInfoObjectivesHeader:SetTextColor(unpack(titleTextColor))
+				QuestInfoObjectivesHeader:SetShadowColor(unpack(titleTextShadow))
 				QuestInfoRewardsHeader:SetTextColor(unpack(titleTextColor))
+				QuestInfoRewardsHeader:SetShadowColor(unpack(titleTextShadow))
 				-- Other text
 				QuestInfoDescriptionText:SetTextColor(unpack(textColor))
 				QuestInfoObjectivesText:SetTextColor(unpack(textColor))

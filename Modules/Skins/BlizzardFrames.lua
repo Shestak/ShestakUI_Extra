@@ -3213,6 +3213,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			GuildRegistrarPurchaseText:SetTextColor(1, 1, 1)
 			AvailableServicesText:SetTextColor(1, 0.8, 0)
+			AvailableServicesText:SetShadowColor(0, 0, 0)
 		end
 
 		-- Tabard Frame
@@ -3609,8 +3610,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			hooksecurefunc("QuestFrameProgressItems_Update", function()
 				QuestProgressTitleText:SetTextColor(1, 0.8, 0)
+				QuestProgressTitleText:SetShadowColor(0, 0, 0)
 				QuestProgressText:SetTextColor(1, 1, 1)
 				QuestProgressRequiredItemsText:SetTextColor(1, 0.8, 0)
+				QuestProgressRequiredItemsText:SetShadowColor(0, 0, 0)
 				QuestProgressRequiredMoneyText:SetTextColor(1, 0.8, 0)
 			end)
 
@@ -3647,10 +3650,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinCloseButton(PetitionFrameCloseButton, PetitionFrame.backdrop)
 
 			PetitionFrameCharterTitle:SetTextColor(1, 0.8, 0)
+			PetitionFrameCharterTitle:SetShadowColor(0, 0, 0)
 			PetitionFrameCharterName:SetTextColor(1, 1, 1)
 			PetitionFrameMasterTitle:SetTextColor(1, 0.8, 0)
+			PetitionFrameMasterTitle:SetShadowColor(0, 0, 0)
 			PetitionFrameMasterName:SetTextColor(1, 1, 1)
 			PetitionFrameMemberTitle:SetTextColor(1, 0.8, 0)
+			PetitionFrameMemberTitle:SetShadowColor(0, 0, 0)
 
 			for i = 1, 9 do
 				_G["PetitionFrameMemberName"..i]:SetTextColor(1, 1, 1)
@@ -4318,6 +4324,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			for _, header in pairs(professionheaders) do
 				_G[header.."Missing"]:SetTextColor(1, 0.8, 0)
+				_G[header.."Missing"]:SetShadowColor(0, 0, 0)
+				_G[header.."Missing"]:SetShadowOffset(1, -1)
 				_G[header].missingText:SetTextColor(0.6, 0.6, 0.6)
 			end
 

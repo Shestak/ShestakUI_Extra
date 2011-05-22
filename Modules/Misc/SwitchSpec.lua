@@ -10,19 +10,14 @@ local cm = "|cff9a1212" -- -
 local dr, dg, db = unpack({0.4, 0.4, 0.4})
 local panelcolor = ("|cff%.2x%.2x%.2x"):format(dr * 255, dg * 255, db * 255)
 
--- Gear Settings
-local Autogearswap = false
-local set1 = 1 -- Gear set that gets equiped with your primary spec
-local set2 = 2 -- Gear set that gets equiped with your secondary spec
-
 -- Functions
 local function HasDualSpec() if GetNumTalentGroups() > 1 then return true end end
 
 local function ActiveTalents()
-	local tree1 = select(5, GetTalentTabInfo(1))
-	local tree2 = select(5, GetTalentTabInfo(2))
-	local tree3 = select(5, GetTalentTabInfo(3))
-	local Tree = GetPrimaryTalentTree(false, false, GetActiveTalentGroup())
+	local tree1 = select(5, GetTalentTabInfo(1)) or 0
+	local tree2 = select(5, GetTalentTabInfo(2)) or 0
+	local tree3 = select(5, GetTalentTabInfo(3)) or 0
+	local Tree = GetPrimaryTalentTree(false, false, GetActiveTalentGroup()) or 0
 	return tree1, tree2, tree3, Tree
 end
 
@@ -32,19 +27,11 @@ local function UnactiveTalents()
 	else
 		secondary = 1
 	end
-	local sTree1 = select(5, GetTalentTabInfo(1, false, false, secondary))
-	local sTree2 = select(5, GetTalentTabInfo(2, false, false, secondary))
-	local sTree3 = select(5, GetTalentTabInfo(3, false, false, secondary))
-	local sTree = GetPrimaryTalentTree(false, false, (secondary))
+	local sTree1 = select(5, GetTalentTabInfo(1, false, false, secondary)) or 0
+	local sTree2 = select(5, GetTalentTabInfo(2, false, false, secondary)) or 0
+	local sTree3 = select(5, GetTalentTabInfo(3, false, false, secondary)) or 0
+	local sTree = GetPrimaryTalentTree(false, false, (secondary)) or 0
 	return sTree1, sTree2, sTree3, sTree
-end
-
-local function AutoGear()
-	if GetActiveTalentGroup() == 1 then
-		UseEquipmentSet(GetEquipmentSetInfo(set1))
-	else
-		UseEquipmentSet(GetEquipmentSetInfo(set2))
-	end
 end
 
 local function enableDPS()
@@ -77,13 +64,13 @@ local int = 1
 local function Update(self, t)
 	int = int - t
 	if int > 0 then return end
-	if not GetPrimaryTalentTree() then spec.t:SetText(NO.." "..TALENTS) return end
+	--if not GetPrimaryTalentTree() then spec.t:SetText(NO.." "..TALENTS) return end
 	local tree1, tree2, tree3, Tree = ActiveTalents()
-	name = select(2, GetTalentTabInfo(Tree))
+	name = select(2, GetTalentTabInfo(Tree)) or NONE
 	spec.t:SetText(name..": "..panelcolor..tree1.."/"..tree2.."/"..tree3)
 	if HasDualSpec() then
 		local sTree1, sTree2, sTree3, sTree = UnactiveTalents()
-		sName = select(2, GetTalentTabInfo(sTree))
+		sName = select(2, GetTalentTabInfo(sTree)) or NONE
 		spec:SetScript("OnEnter", function()
 			spec.t:SetText(cm..sName..": "..panelcolor..sTree1.."/"..sTree2.."/"..sTree3)
 			self:SetBackdropBorderColor(T.color.r, T.color.g, T.color.b)
@@ -216,12 +203,4 @@ for i = 1, 10 do
 		gearSets[i]:SetScript("OnLeave", T.SetOriginalBackdrop)
 		gearSets[i]:SetScript("OnClick", function(self) UseEquipmentSet(GetEquipmentSetInfo(i)) end)
 	end)
-end
-
-if Autogearswap == true then
-	gearsetfunc = CreateFrame("Frame", "gearSetfunc", UIParent)
-	gearsetfunc:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
-	gearsetfunc:SetScript("OnEvent", function(self, event)
-		AutoGear()
-	end) 
 end

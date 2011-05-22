@@ -845,23 +845,39 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		LookingForGuildBrowseButton:SkinButton()
 		LookingForGuildRequestButton:SkinButton()
 		SkinCloseButton(LookingForGuildFrameCloseButton)
-		LookingForGuildCommentInputFrame:CreateBackdrop("Transparent")
+		LookingForGuildCommentInputFrame:CreateBackdrop("Overlay")
 		LookingForGuildCommentInputFrame:StripTextures(false)
+		GuildFinderRequestMembershipFrame:StripTextures(true)
 		GuildFinderRequestMembershipFrame:SetTemplate("Transparent")
 		GuildFinderRequestMembershipFrameAcceptButton:SkinButton()
 		GuildFinderRequestMembershipFrameCancelButton:SkinButton()
+		GuildFinderRequestMembershipFrameInputFrame:StripTextures()
+		GuildFinderRequestMembershipFrameInputFrame:SetTemplate("Overlay")
 
 		-- Container buttons
-		for i = 1, 4 do
+		for i = 1, 5 do
 			local b = _G["LookingForGuildBrowseFrameContainerButton"..i]
 			local t = _G["LookingForGuildAppsFrameContainerButton"..i]
-			b:SkinButton(true)
-			t:SkinButton(true)
+			b:SetBackdrop(nil)
+			t:SetBackdrop(nil)
 		end
 
 		-- Tabs
+		local function SkinHeaderTab(tab)
+			if not tab then return end
+			for _, object in pairs(tabs) do
+				local tex = _G[tab:GetName()..object]
+				tex:SetTexture(nil)
+			end
+			tab:GetHighlightTexture():SetTexture(nil)
+			tab.backdrop = CreateFrame("Frame", nil, tab)
+			tab.backdrop:SetTemplate("Overlay")
+			tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
+			tab.backdrop:Point("TOPLEFT", 3, -8)
+			tab.backdrop:Point("BOTTOMRIGHT", -6, 0)
+		end
 		for i= 1, 3 do
-			SkinTab(_G["LookingForGuildFrameTab"..i])
+			SkinHeaderTab(_G["LookingForGuildFrameTab"..i])
 		end
 	end
 
@@ -1138,6 +1154,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local region = select(i, ArchaeologyFrameCompletedPage:GetRegions())
 			if region:GetObjectType() == "FontString" then
 				region:SetTextColor(1, 0.8, 0)
+				region:SetShadowColor(0, 0, 0)
+				region:SetShadowOffset(1, -1)
 			end
 		end
 
@@ -1145,12 +1163,18 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local region = select(i, ArchaeologyFrameSummaryPage:GetRegions())
 			if region:GetObjectType() == "FontString" then
 				region:SetTextColor(1, 0.8, 0)
+				region:SetShadowColor(0, 0, 0)
+				region:SetShadowOffset(1, -1)
 			end
 		end
 
 		ArchaeologyFrameCompletedPage.infoText:SetTextColor(1, 1, 1)
 		ArchaeologyFrameHelpPageTitle:SetTextColor(1, 0.8, 0)
+		ArchaeologyFrameHelpPageTitle:SetShadowColor(0, 0, 0)
+		ArchaeologyFrameHelpPageTitle:SetShadowOffset(1, -1)
 		ArchaeologyFrameHelpPageDigTitle:SetTextColor(1, 0.8, 0)
+		ArchaeologyFrameHelpPageDigTitle:SetShadowColor(0, 0, 0)
+		ArchaeologyFrameHelpPageDigTitle:SetShadowOffset(1, -1)
 		ArchaeologyFrameHelpPageHelpScrollHelpText:SetTextColor(1, 1, 1)
 
 		ArchaeologyFrameArtifactPageHistoryTitle:SetTextColor(1, 0.8, 0)
@@ -1165,6 +1189,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		ArchaeologyFrameArtifactPageHistoryScrollChildText:SetTextColor(1, 1, 1)
 		SkinCloseButton(ArchaeologyFrameCloseButton)
+		SkinNextPrevButton(ArchaeologyFrameCompletedPageNextPageButton)
+		SkinNextPrevButton(ArchaeologyFrameCompletedPagePrevPageButton)
+
+		ArchaeologyFrameInfoButton:Point("TOPLEFT", ArchaeologyFrame, 4, -4)
 	end
 
 	-- GuildControlUI
@@ -1697,6 +1725,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			"PlayerTalentFramePanel2SummaryRoleIcon",
 			"PlayerTalentFramePanel3SummaryRoleIcon",
 			"PlayerTalentFramePetShadowOverlay",
+			"PlayerTalentFrameHeaderHelpBox",
 		}
 
 		for _, texture in pairs(KillTextures) do
@@ -1814,7 +1843,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		PlayerSpecTab1.SetPoint = T.dummy
 
 		local function TalentSummaryClean(i)
-			frame = _G["PlayerTalentFramePanel"..i.."Summary"]
+			local frame = _G["PlayerTalentFramePanel"..i.."Summary"]
 			frame:CreateBackdrop("Overlay")
 			frame:SetFrameLevel(frame:GetFrameLevel() + 1)
 			local a, b, _, d, _, _, _, _, _, _, _, _, m, _ = frame:GetRegions()
@@ -1822,6 +1851,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			b:Hide()
 			d:Hide()
 			m:Hide()
+
+			_G["PlayerTalentFramePanel"..i.."SummaryIcon"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 		end
 
 		local function TalentHeaderIcon(self, first, i)
@@ -2697,6 +2728,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 							end
 						end
 						_G["DungeonCompletionAlertFrame"..i.."Shine"]:Kill()
+						_G["DungeonCompletionAlertFrame"..i.."GlowFrame"]:Kill()
+						_G["DungeonCompletionAlertFrame"..i.."GlowFrame"].glow:Kill()
 
 						-- Icon
 						_G["DungeonCompletionAlertFrame"..i.."DungeonTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
@@ -3330,7 +3363,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		if T.PTRVersion() then
 		do
 			EncounterJournal:StripTextures(true)
-			EncounterJournal:SetTemplate("Transparent")
+			EncounterJournal:CreateBackdrop("Transparent")
+			EncounterJournal.backdrop:Point("TOPLEFT", -3, 0)
+			EncounterJournal.backdrop:SetPoint("BOTTOMRIGHT", 0, -2)
+
 			EncounterJournalNavBar:StripTextures(true)
 			EncounterJournalNavBarOverlay:StripTextures(true)
 
@@ -3343,14 +3379,42 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinCloseButton(EncounterJournalCloseButton)
 
 			EncounterJournalInset:StripTextures(true)
-			EncounterJournalInset:CreateBackdrop("Overlay")
-			EncounterJournalInset.backdrop:Point("TOPLEFT", 0, -2)
-			EncounterJournalInset.backdrop:Point("BOTTOMRIGHT", -2, 0)
-			EncounterJournalInset.backdrop:SetFrameLevel(EncounterJournalInset.backdrop:GetFrameLevel() + 1)
+			EncounterJournal:HookScript("OnShow", function()
+				if not EncounterJournalInstanceSelect.backdrop then
+					EncounterJournalInstanceSelect:CreateBackdrop("Default")
+					EncounterJournalInstanceSelect.backdrop:Point("TOPLEFT", -2, 2)
+					EncounterJournalInstanceSelect.backdrop:SetPoint("BOTTOMRIGHT", 2, -2)
+				end
 
-			EncounterJournalInstanceSelect:SetFrameLevel(EncounterJournalInstanceSelect:GetFrameLevel() + 1)
+				if not EncounterJournalEncounterFrameInfo.backdrop then
+					EncounterJournalEncounterFrameInfo:CreateBackdrop("Default")
+					EncounterJournalEncounterFrameInfo.backdrop:Point("TOPLEFT", -2, 2)
+					EncounterJournalEncounterFrameInfo.backdrop:SetPoint("BOTTOMRIGHT", 2, -2)
+				end
+
+				EncounterJournalEncounterFrameInfoBossTab:ClearAllPoints()
+				EncounterJournalEncounterFrameInfoBossTab:Point("LEFT", EncounterJournalEncounterFrameInfoEncounterTile, "RIGHT", -10, 4)
+				EncounterJournalEncounterFrameInfoLootTab:ClearAllPoints()
+				EncounterJournalEncounterFrameInfoLootTab:Point("LEFT", EncounterJournalEncounterFrameInfoBossTab, "RIGHT", -24, 0)
+
+				EncounterJournalEncounterFrameInfoBossTab:SetFrameStrata("HIGH")
+				EncounterJournalEncounterFrameInfoLootTab:SetFrameStrata("HIGH")
+
+				EncounterJournalEncounterFrameInfoBossTab:SetScale(0.75)
+				EncounterJournalEncounterFrameInfoLootTab:SetScale(0.75)
+			end)
 
 			SkinScrollBar(EncounterJournalInstanceSelectScrollFrameScrollBar)
+
+			EncounterJournalEncounterFrameInfoBossTab:GetNormalTexture():SetTexture(nil)
+			EncounterJournalEncounterFrameInfoBossTab:GetPushedTexture():SetTexture(nil)
+			EncounterJournalEncounterFrameInfoBossTab:GetDisabledTexture():SetTexture(nil)
+			EncounterJournalEncounterFrameInfoBossTab:GetHighlightTexture():SetTexture(nil)
+
+			EncounterJournalEncounterFrameInfoLootTab:GetNormalTexture():SetTexture(nil)
+			EncounterJournalEncounterFrameInfoLootTab:GetPushedTexture():SetTexture(nil)
+			EncounterJournalEncounterFrameInfoLootTab:GetDisabledTexture():SetTexture(nil)
+			EncounterJournalEncounterFrameInfoLootTab:GetHighlightTexture():SetTexture(nil)
 		end
 		end
 
@@ -3475,6 +3539,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local buttons = {
 				"LFDQueueFrameFindGroupButton",
 				"LFDQueueFrameCancelButton",
+				"LFDQueueFramePartyBackfillBackfillButton",
+				"LFDQueueFramePartyBackfillNoBackfillButton",
 				"LFDQueueFrameNoLFDWhileLFRLeaveQueueButton",
 			}
 
@@ -3677,7 +3743,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			QuestLogFrame:StripTextures()
 			QuestLogFrame:CreateBackdrop("Transparent")
 			QuestLogFrame.backdrop:Point("TOPLEFT", 16, -12)
-			QuestLogFrame.backdrop:Point("BOTTOMRIGHT", 0, 9)
+			QuestLogFrame.backdrop:Point("BOTTOMRIGHT", 0, 11)
 			SkinCloseButton(QuestLogFrameCloseButton, QuestLogFrame.backdrop)
 
 			QuestLogCount:StripTextures()
@@ -3702,6 +3768,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 			QuestLogFramePushQuestButton:Point("LEFT", QuestLogFrameAbandonButton, "RIGHT", 3, 0)
 			QuestLogFramePushQuestButton:Point("RIGHT", QuestLogFrameTrackButton, "LEFT", -3, 0)
+			QuestLogFrameCancelButton:Point("BOTTOMRIGHT", QuestLogFrame.backdrop, "BOTTOMRIGHT", -4, 4)
 
 			for i = 1, MAX_NUM_ITEMS do
 				_G["QuestInfoItem"..i]:StripTextures()
@@ -3797,6 +3864,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						QuestInfoRequiredMoneyText:SetTextColor(1, 0.8, 0)
 					end
 				end
+			end)
+
+			QuestLogFrame:HookScript("OnShow", function()
+				QuestLogScrollFrame:Height(QuestLogScrollFrame:GetHeight() - 3)
+				QuestLogDetailScrollFrame:Height(QuestLogScrollFrame:GetHeight() - 3)
 			end)
 		end
 
@@ -3906,18 +3978,28 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PVPBannerFrameEditBox.backdrop:Point("BOTTOMRIGHT", PVPBannerFrameEditBox, "BOTTOMRIGHT", 5, 5)
 			PVPHonorFrameInfoScrollFrameChildFrameDescription:SetTextColor(1, 1, 1)
 			PVPHonorFrameInfoScrollFrameChildFrameRewardsInfo.description:SetTextColor(1, 1, 1)
-			PVPTeamManagementFrameInvalidTeamFrame:CreateBackdrop("Default")
+			PVPTeamManagementFrameInvalidTeamFrame:CreateBackdrop("Overlay")
 			PVPTeamManagementFrameInvalidTeamFrame:SetFrameLevel(PVPTeamManagementFrameInvalidTeamFrame:GetFrameLevel() + 1)
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:Point("TOPLEFT", PVPTeamManagementFrameInvalidTeamFrame, "TOPLEFT")
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:Point("BOTTOMRIGHT", PVPTeamManagementFrameInvalidTeamFrame, "BOTTOMRIGHT")
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:SetFrameLevel(PVPTeamManagementFrameInvalidTeamFrame:GetFrameLevel())
-			PVPFrameConquestBar:StripTextures()
 
 			if not T.PTRVersion() then
+				PVPFrameConquestBar:StripTextures()
 				PVPFrameConquestBar:SetStatusBarTexture(C.media.texture)
+				PVPFrameConquestBar:CreateBackdrop("Overlay")
+			else
+				PVPFrameConquestBarLeft:Kill()
+				PVPFrameConquestBarRight:Kill()
+				PVPFrameConquestBarMiddle:Kill()
+				PVPFrameConquestBarBG:Kill()
+				PVPFrameConquestBarShadow:Kill()
+				PVPFrameConquestBar.progress:SetTexture(C.media.texture)
+				PVPFrameConquestBar:CreateBackdrop("Overlay")
+				PVPFrameConquestBar.backdrop:Point("TOPLEFT", PVPFrameConquestBar.progress, "TOPLEFT", -2, 2)
+				PVPFrameConquestBar.backdrop:Point("BOTTOMRIGHT", PVPFrameConquestBar, "BOTTOMRIGHT", -2, 2)
 			end
 
-			PVPFrameConquestBar:CreateBackdrop("Overlay")
 			PVPBannerFrame:CreateBackdrop("Transparent")
 			PVPBannerFrame.backdrop:Point("TOPLEFT", PVPBannerFrame, "TOPLEFT")
 			PVPBannerFrame.backdrop:Point("BOTTOMRIGHT", PVPBannerFrame, "BOTTOMRIGHT")
@@ -3956,7 +4038,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				WarGameStartButton:ClearAllPoints()
 				WarGameStartButton:Point("LEFT", PVPFrameLeftButton, "RIGHT", 2, 0)
 
-				---???:SetTextColor(1, 1, 1)
+				WarGamesFrameDescription:SetTextColor(1, 1, 1)
 			end
 
 			-- Cancel Button FFSlocal
@@ -4274,13 +4356,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			-- Skill Line Tabs
 			for i = 1, MAX_SKILLLINE_TABS do
 				local tab = _G["SpellBookSkillLineTab"..i]
+				_G["SpellBookSkillLineTab"..i.."Flash"]:Kill()
 				if tab then
 					tab:StripTextures()
-					tab:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
 					tab:GetNormalTexture():ClearAllPoints()
-
 					tab:GetNormalTexture():Point("TOPLEFT", 2, -2)
 					tab:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+					tab:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
 					tab:CreateBackdrop("Default")
 					tab.backdrop:SetAllPoints()
@@ -4290,6 +4372,20 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					tab:Point(point, relatedTo, point2, 16, -1)
 				end
 			end
+
+			local function SkinSkillLine()
+				for i = 1, MAX_SKILLLINE_TABS do
+					local tab = _G["SpellBookSkillLineTab"..i]
+					local _, _, _, _, isGuild = GetSpellTabInfo(i)
+					if isGuild then
+						tab:GetNormalTexture():ClearAllPoints()
+						tab:GetNormalTexture():Point("TOPLEFT", 2, -2)
+						tab:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+						tab:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+					end
+				end
+			end
+			hooksecurefunc("SpellBookFrame_UpdateSkillLineTabs", SkinSkillLine)
 
 			SpellBookFrame:CreateBackdrop("Transparent")
 			SpellBookFrame.backdrop:Point("TOPLEFT", 5, -1)

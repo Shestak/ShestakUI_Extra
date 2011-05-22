@@ -63,7 +63,9 @@ local function SkinNextPrevButton(btn, horizonal)
 		btn:GetDisabledTexture():SetTexCoord(0.3, 0.29, 0.3, 0.75, 0.65, 0.29, 0.65, 0.75)
 	else
 		btn:GetNormalTexture():SetTexCoord(0.3, 0.29, 0.3, 0.81, 0.65, 0.29, 0.65, 0.81)
-		btn:GetPushedTexture():SetTexCoord(0.3, 0.35, 0.3, 0.81, 0.65, 0.35, 0.65, 0.81)
+		if btn:GetPushedTexture() then
+			btn:GetPushedTexture():SetTexCoord(0.3, 0.35, 0.3, 0.81, 0.65, 0.35, 0.65, 0.81)
+		end
 		if btn:GetDisabledTexture() then
 			btn:GetDisabledTexture():SetTexCoord(0.3, 0.29, 0.3, 0.75, 0.65, 0.29, 0.65, 0.75)
 		end
@@ -72,8 +74,12 @@ local function SkinNextPrevButton(btn, horizonal)
 	btn:GetNormalTexture():ClearAllPoints()
 	btn:GetNormalTexture():Point("TOPLEFT", 2, -2)
 	btn:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
-	btn:GetDisabledTexture():SetAllPoints(btn:GetNormalTexture())
-	btn:GetPushedTexture():SetAllPoints(btn:GetNormalTexture())
+	if btn:GetDisabledTexture() then
+		btn:GetDisabledTexture():SetAllPoints(btn:GetNormalTexture())
+	end
+	if btn:GetPushedTexture() then
+		btn:GetPushedTexture():SetAllPoints(btn:GetNormalTexture())
+	end
 	btn:GetHighlightTexture():SetTexture(1, 1, 1, 0.3)
 	btn:GetHighlightTexture():SetAllPoints(btn:GetNormalTexture())
 end
@@ -185,30 +191,43 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 	-- TimeManager
 	if addon == "Blizzard_TimeManager" then
-		TimeManagerStopwatchFrame:StripTextures()
 		TimeManagerFrame:StripTextures()
 		TimeManagerFrame:CreateBackdrop("Transparent")
 		TimeManagerFrame.backdrop:Point("TOPLEFT", 0, 0)
 		TimeManagerFrame.backdrop:Point("BOTTOMRIGHT", -50, 0)
 
-		TimeManagerStopwatchCheck:SetTemplate("Default")
-		TimeManagerStopwatchCheck:StyleButton(true)
-		TimeManagerStopwatchCheck:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		TimeManagerStopwatchCheck:GetNormalTexture():Point("TOPLEFT", 2, -2)
-		TimeManagerStopwatchCheck:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+		SkinCloseButton(TimeManagerCloseButton, TimeManagerFrame.backdrop)
 
 		SkinDropDownBox(TimeManagerAlarmHourDropDown, 70)
 		SkinDropDownBox(TimeManagerAlarmMinuteDropDown, 70)
-
-		TimeManagerAlarmEnabledButton:StripTextures(true)
-		TimeManagerAlarmEnabledButton:SkinButton()
+		SkinDropDownBox(TimeManagerAlarmAMPMDropDown, 70)
 
 		SkinEditBox(TimeManagerAlarmMessageEditBox)
 		TimeManagerAlarmMessageEditBox:Height(TimeManagerAlarmMessageEditBox:GetHeight() - 5)
 
+		TimeManagerAlarmEnabledButton:SkinButton(true)
+		TimeManagerAlarmEnabledButton:HookScript("OnClick", function(self)
+			self:SkinButton()
+		end)
+
+		TimeManagerFrame:HookScript("OnShow", function(self)
+			TimeManagerAlarmEnabledButton:SkinButton()
+		end)
+
 		SkinCheckBox(TimeManagerMilitaryTimeCheck)
 		SkinCheckBox(TimeManagerLocalTimeCheck)
-		SkinCloseButton(TimeManagerCloseButton)
+
+		TimeManagerStopwatchFrame:StripTextures()
+		TimeManagerStopwatchCheck:SetTemplate("Default")
+		TimeManagerStopwatchCheck:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+		TimeManagerStopwatchCheck:GetNormalTexture():ClearAllPoints()
+		TimeManagerStopwatchCheck:GetNormalTexture():Point("TOPLEFT", 2, -2)
+		TimeManagerStopwatchCheck:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+		local hover = TimeManagerStopwatchCheck:CreateTexture("Frame", nil, TimeManagerStopwatchCheck)
+		hover:SetTexture(1, 1, 1, 0.3)
+		hover:Point("TOPLEFT", TimeManagerStopwatchCheck, 2, -2)
+		hover:Point("BOTTOMRIGHT", TimeManagerStopwatchCheck, -2, 2)
+		TimeManagerStopwatchCheck:SetHighlightTexture(hover)
 
 		StopwatchFrame:StripTextures()
 		StopwatchFrame:CreateBackdrop("Transparent")
@@ -216,12 +235,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		StopwatchFrame.backdrop:Point("BOTTOMRIGHT", -2, 2)
 
 		StopwatchTabFrame:StripTextures()
-		StopwatchTabFrame:CreateBackdrop("Transparent")
-		StopwatchTabFrame.backdrop:Point("TOPLEFT", -1, 0)
-		StopwatchTabFrame.backdrop:Point("BOTTOMRIGHT", 1, 2)
 
 		SkinCloseButton(StopwatchCloseButton)
-		--StopwatchCloseButton:Size(13, 13)
+		SkinNextPrevButton(StopwatchPlayPauseButton)
+		SkinNextPrevButton(StopwatchResetButton)
+		StopwatchPlayPauseButton:Point("RIGHT", StopwatchResetButton, "LEFT", -4, 0)
+		StopwatchResetButton:Point("BOTTOMRIGHT", StopwatchFrame, "BOTTOMRIGHT", -7, 7)
+		StopwatchCloseButton:ClearAllPoints()
+		StopwatchCloseButton:Point("BOTTOMRIGHT", StopwatchFrame.backdrop, "TOPRIGHT", 0, 3)
 	end
 
 	-- ReforgingUI
@@ -3436,6 +3457,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"LFDQueueFrameCapBar",
 				"LFDDungeonReadyDialog",
 				"LFDQueueFrameRandomScrollFrameScrollBar",
+				"LFDQueueFrameNoLFDWhileLFR",
+				"LFDQueueFrameSpecificListScrollFrame",
 			}
 
 			local KillTextures = {
@@ -3451,6 +3474,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local buttons = {
 				"LFDQueueFrameFindGroupButton",
 				"LFDQueueFrameCancelButton",
+				"LFDQueueFrameNoLFDWhileLFRLeaveQueueButton",
 			}
 
 			local checkButtons = {
@@ -3523,11 +3547,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				end
 			end)
 
-			LFDQueueFrameSpecificListScrollFrame:StripTextures()
-			LFDQueueFrameSpecificListScrollFrame:Height(LFDQueueFrameSpecificListScrollFrame:GetHeight() - 8)
+			LFDQueueFrameNoLFDWhileLFR:CreateBackdrop("Overlay")
+			LFDQueueFrameNoLFDWhileLFR.backdrop:Point("TOPLEFT", 2, 5)
+			LFDQueueFrameNoLFDWhileLFR.backdrop:Point("BOTTOMRIGHT", 0, 6)
+			LFDQueueFrameSpecific:Point("TOPLEFT", -5, 0)
+			LFDQueueFrameSpecific:Point("BOTTOMRIGHT", 0, 10)
 			LFDParentFrame:CreateBackdrop("Transparent")
 			LFDParentFrame.backdrop:Point("TOPLEFT", LFDParentFrame, "TOPLEFT")
-			LFDParentFrame.backdrop:Point("BOTTOMRIGHT", LFDParentFrame, "BOTTOMRIGHT")
+			LFDParentFrame.backdrop:Point("BOTTOMRIGHT", LFDParentFrame, "BOTTOMRIGHT", 0, 4)
 			SkinCloseButton(LFDParentFrameCloseButton, LFDParentFrame)
 			SkinCloseButton(LFDDungeonReadyDialogCloseButton, LFDDungeonReadyDialog)
 			SkinDropDownBox(LFDQueueFrameTypeDropDown, 300)
@@ -3541,6 +3568,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinScrollBar(LFDQueueFrameSpecificListScrollFrameScrollBar)
 			RolePollPopup:SetTemplate("Transparent")
 			LFDDungeonReadyDialog:SetTemplate("Transparent")
+			LFDQueueFrameFindGroupButton:Point("BOTTOMLEFT", LFDParentFrame.backdrop, "BOTTOMLEFT", 4, 4)
+			LFDQueueFrameCancelButton:Point("BOTTOMRIGHT", LFDParentFrame.backdrop, "BOTTOMRIGHT", -6, 4)
 		end
 
 		-- Quest Frame
@@ -3591,10 +3620,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			QuestNPCModelTextFrame:StripTextures()
 			QuestNPCModelTextFrame:CreateBackdrop("Overlay")
 			QuestNPCModelTextFrame.backdrop:Point("TOPLEFT", QuestNPCModel.backdrop, "BOTTOMLEFT", 0, -1)
+
 			QuestLogDetailFrame:StripTextures()
-			QuestLogDetailFrame:SetTemplate("Transparent")
+			QuestLogDetailFrame:CreateBackdrop("Transparent")
+			QuestLogDetailFrame.backdrop:Point("TOPLEFT", 16, -12)
+			QuestLogDetailFrame.backdrop:Point("BOTTOMRIGHT", 0, 4)
 			QuestLogDetailScrollFrame:StripTextures()
-			SkinCloseButton(QuestLogDetailFrameCloseButton)
+			SkinCloseButton(QuestLogDetailFrameCloseButton, QuestLogDetailFrame.backdrop)
 
 			hooksecurefunc("QuestFrame_ShowQuestPortrait", function(parentFrame, portrait, text, name, x, y)
 				QuestNPCModel:ClearAllPoints()
@@ -4349,6 +4381,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SpellBookCompanionModelFrameShadowOverlay:StripTextures()
 			SpellBookCompanionsModelFrame:Kill()
 			SpellBookCompanionModelFrame:SetTemplate("Overlay")
+			SpellBookCompanionsFrame:SetFrameLevel(SpellBookCompanionsFrame:GetFrameLevel() + 2)
 
 			SkinRotateButton(SpellBookCompanionModelFrameRotateRightButton)
 			SkinRotateButton(SpellBookCompanionModelFrameRotateLeftButton)

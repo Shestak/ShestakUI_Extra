@@ -15,6 +15,8 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 	self.db.profile.estheal_bar_border = false
 	self.db.profile.status_bar_scale = 1
 	self.db.profile.estheal_bar_scale = 1
+	self.db.profile.estheal_bar_texture = "Smooth"
+	--self.db.profile.minimap.minimapPos = 210.7
 	
 	local ShieldTrackerStatusBar = CreateFrame("Frame", "ShieldTrackerStatusBar", BloodShieldTracker_StatusBar)
 	ShieldTrackerStatusBar:SetPoint("TOPLEFT", BloodShieldTracker_StatusBar, "TOPLEFT", -2, 2)
@@ -27,9 +29,6 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 	ShieldTrackerDamageBar:SetPoint("BOTTOMRIGHT", BloodShieldTracker_DamageBar, "BOTTOMRIGHT", 2, -2)
 	ShieldTrackerDamageBar:SetTemplate("Default")
 	ShieldTrackerDamageBar:SetFrameStrata("BACKGROUND")
-	
-	BloodShieldTracker_StatusBar:SetStatusBarTexture(C.media.texture)
-	BloodShieldTracker_DamageBar:SetStatusBarTexture(C.media.texture)
 	
 	BloodShieldTracker_StatusBar.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
 	BloodShieldTracker_StatusBar.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)

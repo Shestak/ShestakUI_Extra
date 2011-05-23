@@ -2662,7 +2662,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 	-- Stuff not in Blizzard load-on-demand
 	if addon == "ShestakUI_Extra" then
-		-- BankFrame/Container Frame
+		-- Bank/Container Frame
 		if C.bag.enable ~= true or (not IsAddOnLoaded("cargBags") or not IsAddOnLoaded("cargBags_Nivaya")) then
 			-- Container Frame
 			BackpackTokenFrame:StripTextures()
@@ -2695,7 +2695,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				end
 			end
 
-			-- BankFrame Frame
+			-- Bank Frame
 			BankFrame:StripTextures(true)
 			BankFrame:CreateBackdrop("Transparent")
 			BankFrame.backdrop:Point("TOPLEFT", 16, -12)
@@ -3392,9 +3392,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for i = 1, NUMGOSSIPBUTTONS do
 				obj = select(3, _G["GossipTitleButton"..i]:GetRegions())
 				obj:SetTextColor(1, 1, 1)
+				obj:SetShadowOffset(1, -1)
 			end
 
 			GossipGreetingText:SetTextColor(1, 1, 1)
+			GossipGreetingText:SetShadowOffset(1, -1)
 			GossipFrame:CreateBackdrop("Transparent")
 			GossipFrame.backdrop:Point("TOPLEFT", GossipFrame, "TOPLEFT", 16, -12)
 			GossipFrame.backdrop:Point("BOTTOMRIGHT", GossipFrame, "BOTTOMRIGHT", -30, 69)

@@ -945,7 +945,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		SkinRotateButton(InspectModelFrameRotateLeftButton)
 		SkinRotateButton(InspectModelFrameRotateRightButton)
-		InspectModelFrameRotateRightButton:Point("TOPLEFT", InspectModelFrameRotateLeftButton, "TOPRIGHT", 3, 0)
+		InspectModelFrameRotateLeftButton:Point("TOPLEFT", InspectModelFrame.backdrop, "TOPLEFT", 6, -6)
+		InspectModelFrameRotateRightButton:Point("TOPLEFT", InspectModelFrameRotateLeftButton, "TOPRIGHT", 4, 0)
 
 		InspectPVPFrameBottom:Kill()
 		InspectGuildFrameBG:Kill()
@@ -3212,8 +3213,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		do
 			TradeFrame:StripTextures(true)
 			TradeFrame:CreateBackdrop("Transparent")
-			TradeFrame.backdrop:Point("TOPLEFT", 10, -4)
-			TradeFrame.backdrop:Point("BOTTOMRIGHT", -16, 35)
+			TradeFrame.backdrop:Point("TOPLEFT", 16, -12)
+			TradeFrame.backdrop:Point("BOTTOMRIGHT", -20, 45)
 			TradeFrameTradeButton:SkinButton(true)
 			TradeFrameCancelButton:SkinButton(true)
 			SkinCloseButton(TradeFrameCloseButton, TradeFrame.backdrop)
@@ -3229,6 +3230,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				local recipient_button = _G["TradeRecipientItem"..i.."ItemButton"]
 				local player_button_icon = _G["TradePlayerItem"..i.."ItemButtonIconTexture"]
 				local recipient_button_icon = _G["TradeRecipientItem"..i.."ItemButtonIconTexture"]
+				local player_button_count = _G["TradePlayerItem"..i.."ItemButtonCount"]
+				local recipient_button_count = _G["TradeRecipientItem"..i.."ItemButtonCount"]
 
 				if player_button and recipient_button then
 					player:StripTextures()
@@ -3240,25 +3243,29 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					player_button_icon:Point("TOPLEFT", player_button, "TOPLEFT", 2, -2)
 					player_button_icon:Point("BOTTOMRIGHT", player_button, "BOTTOMRIGHT", -2, 2)
 					player_button_icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-					player_button:SetTemplate("Default", true)
+					player_button_icon:SetDrawLayer("OVERLAY")
+					player_button_count:SetDrawLayer("OVERLAY")
+					player_button:SetTemplate("Overlay", true)
 					player_button:StyleButton()
 					player_button.bg = CreateFrame("Frame", nil, player_button)
-					player_button.bg:SetTemplate("Default")
+					player_button.bg:SetTemplate("Overlay")
 					player_button.bg:SetPoint("TOPLEFT", player_button, "TOPRIGHT", 4, 0)
 					player_button.bg:SetPoint("BOTTOMRIGHT", _G["TradePlayerItem"..i.."NameFrame"], "BOTTOMRIGHT", 0, 14)
-					player_button.bg:SetFrameLevel(player_button:GetFrameLevel() - 3)
+					player_button.bg:SetFrameLevel(player_button:GetFrameLevel() - 4)
 
 					recipient_button_icon:ClearAllPoints()
 					recipient_button_icon:Point("TOPLEFT", recipient_button, "TOPLEFT", 2, -2)
 					recipient_button_icon:Point("BOTTOMRIGHT", recipient_button, "BOTTOMRIGHT", -2, 2)
 					recipient_button_icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-					recipient_button:SetTemplate("Default", true)
+					recipient_button_icon:SetDrawLayer("OVERLAY")
+					recipient_button_count:SetDrawLayer("OVERLAY")
+					recipient_button:SetTemplate("Overlay", true)
 					recipient_button:StyleButton()
 					recipient_button.bg = CreateFrame("Frame", nil, recipient_button)
-					recipient_button.bg:SetTemplate("Default")
+					recipient_button.bg:SetTemplate("Overlay")
 					recipient_button.bg:SetPoint("TOPLEFT", recipient_button, "TOPRIGHT", 4, 0)
 					recipient_button.bg:SetPoint("BOTTOMRIGHT", _G["TradeRecipientItem"..i.."NameFrame"], "BOTTOMRIGHT", 0, 14)
-					recipient_button.bg:SetFrameLevel(recipient_button:GetFrameLevel() - 3)
+					recipient_button.bg:SetFrameLevel(recipient_button:GetFrameLevel() - 4)
 				end
 			end
 
@@ -3787,6 +3794,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PetitionFrame.backdrop:Point("TOPLEFT", 16, -12)
 			PetitionFrame.backdrop:Point("BOTTOMRIGHT", -30, -3)
 
+			PetitionFrameSignButton:SkinButton()
 			PetitionFrameRequestButton:SkinButton()
 			PetitionFrameRenameButton:SkinButton()
 			PetitionFrameCancelButton:SkinButton()

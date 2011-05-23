@@ -2662,6 +2662,81 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 	-- Stuff not in Blizzard load-on-demand
 	if addon == "ShestakUI_Extra" then
+		-- BankFrame/Container Frame
+		if C.bag.enable ~= true or (not IsAddOnLoaded("cargBags") or not IsAddOnLoaded("cargBags_Nivaya")) then
+			-- Container Frame
+			BackpackTokenFrame:StripTextures()
+
+			for i = 1, NUM_CONTAINER_FRAMES do
+				local frame = _G["ContainerFrame"..i]
+				local close = _G["ContainerFrame"..i.."CloseButton"]
+				frame:StripTextures(true)
+				frame:CreateBackdrop("Transparent")
+				frame.backdrop:Point("TOPLEFT", 4, -2)
+				frame.backdrop:Point("BOTTOMRIGHT", 0, 2)
+
+				SkinCloseButton(close, frame.backdrop)
+
+				for j = 1, MAX_CONTAINER_ITEMS do
+					local item = _G["ContainerFrame"..i.."Item"..j]
+					local icon = _G["ContainerFrame"..i.."Item"..j.."IconTexture"]
+					local quest = _G["ContainerFrame"..i.."Item"..j.."IconQuestTexture"]
+					item:SetNormalTexture(nil)
+					item:StyleButton()
+					item:SetTemplate()
+
+					icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+					icon:ClearAllPoints()
+					icon:Point("TOPLEFT", 2, -2)
+					icon:Point("BOTTOMRIGHT", -2, 2)
+
+					quest:SetVertexColor(1, 1, 0)
+					quest:SetTexCoord(0.05, 0.955, 0.05, 0.955)
+				end
+			end
+
+			-- BankFrame Frame
+			BankFrame:StripTextures(true)
+			BankFrame:CreateBackdrop("Transparent")
+			BankFrame.backdrop:Point("TOPLEFT", 16, -12)
+			BankFrame.backdrop:Point("BOTTOMRIGHT", -25, 76)
+
+			BankFramePurchaseButton:SkinButton()
+
+			SkinCloseButton(BankCloseButton, BankFrame.backdrop)
+
+			for i = 1, 28 do
+				local item = _G["BankFrame".."Item"..i]
+				local icon = _G["BankFrame".."Item"..i.."IconTexture"]
+				local quest = _G["BankFrame".."Item"..i.."IconQuestTexture"]
+				item:SetNormalTexture(nil)
+				item:StyleButton()
+				item:SetTemplate()
+
+				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				icon:ClearAllPoints()
+				icon:Point("TOPLEFT", 2, -2)
+				icon:Point("BOTTOMRIGHT", -2, 2)
+
+				quest:SetVertexColor(1, 1, 0)
+				quest:SetTexCoord(0.05, 0.955, 0.05, 0.955)
+			end
+
+			for i = 1, 7 do
+				local bag = _G["BankFrame".."Bag"..i]
+				local icon = _G["BankFrame".."Bag"..i.."IconTexture"]
+
+				bag:SetNormalTexture(nil)
+				bag:StyleButton()
+				bag:SetTemplate()
+
+				icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				icon:ClearAllPoints()
+				icon:Point("TOPLEFT", 2, -2)
+				icon:Point("BOTTOMRIGHT", -2, 2)
+			end
+		end
+
 		-- Achievement Popup Frames
 		do
 			local function SkinAchievePopUp()
@@ -2683,9 +2758,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						_G["AchievementAlertFrame"..i.."Shine"]:Kill()
 
 						-- Text
+						_G["AchievementAlertFrame"..i.."Name"]:SetTextColor(1, 0.8, 0)
+						_G["AchievementAlertFrame"..i.."Name"]:SetFont(C.media.normal_font, 14)
 						_G["AchievementAlertFrame"..i.."Unlocked"]:SetTextColor(1, 1, 1)
-						--_G["AchievementAlertFrame"..i.."Unlocked"]:SetFont(C.media.normal_font, 12)
-						--_G["AchievementAlertFrame"..i.."Name"]:SetFont(C.media.normal_font, 14)
+						_G["AchievementAlertFrame"..i.."Unlocked"]:SetFont(C.media.normal_font, 11)
 
 						-- Icon
 						_G["AchievementAlertFrame"..i.."IconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
@@ -3685,7 +3761,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			QuestNPCModel:StripTextures()
 			QuestNPCModel:CreateBackdrop("Transparent")
-			QuestNPCModel:Point("TOPLEFT", QuestLogDetailFrame, "TOPRIGHT", 3, 0)
 			QuestNPCModelTextFrame:StripTextures()
 			QuestNPCModelTextFrame:CreateBackdrop("Overlay")
 			QuestNPCModelTextFrame.backdrop:Point("TOPLEFT", QuestNPCModel.backdrop, "BOTTOMLEFT", 0, -1)
@@ -3699,7 +3774,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			hooksecurefunc("QuestFrame_ShowQuestPortrait", function(parentFrame, portrait, text, name, x, y)
 				QuestNPCModel:ClearAllPoints()
-				QuestNPCModel:SetPoint("TOPLEFT", parentFrame, "TOPRIGHT", x + 10, y)
+				QuestNPCModel:SetPoint("TOPLEFT", parentFrame, "TOPRIGHT", x + 10, y + 48)
 			end)
 		end
 

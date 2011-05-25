@@ -1100,6 +1100,34 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Reposition tabs
 		GuildBankFrameTab1:ClearAllPoints()
 		GuildBankFrameTab1:SetPoint("TOPLEFT", GuildBankFrame, "BOTTOMLEFT", 0, 2)
+
+		-- Popup
+		GuildBankPopupFrame:CreateBackdrop("Transparent")
+		GuildBankPopupFrame.backdrop:Point("TOPLEFT", 5, 0)
+		GuildBankPopupFrame.backdrop:Point("BOTTOMRIGHT", -25, 23)
+		GuildBankPopupFrame:StripTextures()
+		GuildBankPopupFrame:Point("TOPLEFT", GuildBankFrame, "TOPRIGHT", -4, 0)
+
+		GuildBankPopupCancelButton:SkinButton(true)
+		GuildBankPopupOkayButton:SkinButton(true)
+		GuildBankPopupScrollFrame:StripTextures()
+		GuildBankPopupEditBox:StripTextures(true)
+		SkinEditBox(GuildBankPopupEditBox)
+		GuildBankPopupEditBox:Height(GuildBankPopupEditBox:GetHeight() - 5)
+
+		for i = 1, 16 do
+			local button = _G["GuildBankPopupButton"..i]
+			local texture = _G["GuildBankPopupButton"..i.."Icon"]
+
+			button:StripTextures()
+			button:StyleButton(true)
+			button:SetTemplate("Default", true)
+
+			texture:ClearAllPoints()
+			texture:Point("TOPLEFT", 2, -2)
+			texture:Point("BOTTOMRIGHT", -2, 2)
+			texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+		end
 	end
 
 	-- ArchaeologyUI
@@ -1431,7 +1459,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildMemberNoteBackground:SetTemplate("Overlay")
 		GuildMemberOfficerNoteBackground:SetTemplate("Overlay")
 		GuildMemberRankDropdown:SetFrameLevel(GuildMemberRankDropdown:GetFrameLevel() + 5)
-		SkinDropDownBox(GuildMemberRankDropdown, 175)
+		SkinDropDownBox(GuildMemberRankDropdown, 160)
 
 		-- News
 		GuildNewsFrame:StripTextures()
@@ -4731,8 +4759,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				GearManagerDialogPopup:SetTemplate("Transparent")
 				GearManagerDialogPopup:Point("TOPLEFT", PaperDollFrame, "TOPRIGHT", 3, 0)
 				GearManagerDialogPopupScrollFrame:StripTextures()
-				GearManagerDialogPopupEditBox:StripTextures()
+				GearManagerDialogPopupEditBox:StripTextures(true)
 				GearManagerDialogPopupEditBox:SetTemplate("Default")
+				GearManagerDialogPopupEditBox:SetTextInsets(3, 0, 0, 0)
 				GearManagerDialogPopupOkay:SkinButton()
 				GearManagerDialogPopupCancel:SkinButton()
 

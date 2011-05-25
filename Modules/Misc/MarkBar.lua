@@ -61,7 +61,7 @@ end
 
 -- Create Button for clear target
 local ClearTargetButton = CreateFrame("Button", "ClearTargetButton", MarkBarBackground)
-ClearTargetButton:CreatePanel("Transparent", (button_size * 4) + 9, 20, "TOPLEFT", mark[5], "BOTTOMLEFT", 0, -3)
+ClearTargetButton:CreatePanel("Transparent", (button_size * 3) + 6, 20, "TOPLEFT", mark[5], "BOTTOMLEFT", 0, -3)
 ClearTargetButton:SetScript("OnEnter", T.SetModifiedBackdrop)
 ClearTargetButton:SetScript("OnLeave", T.SetOriginalBackdrop)
 ClearTargetButton:SetScript("OnMouseUp", function() SetRaidTarget("target", 0) end)
@@ -70,6 +70,18 @@ ClearTargetButton:SetFrameStrata("HIGH")
 ClearTargetButtonText = T.SetFontString(ClearTargetButton, C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 ClearTargetButtonText:SetText(L_EXTRA_BUTTON_CLEAR)
 ClearTargetButtonText:SetPoint("CENTER")
+
+-- Pull Button for clear target
+local PullTargetButton = CreateFrame("Frame", "PullTargetButton", MarkBarBackground)
+PullTargetButton:CreatePanel("Transparent", button_size, 20, "BOTTOMLEFT", ClearTargetButton, "BOTTOMRIGHT", 3, 0)
+PullTargetButton:SetScript("OnEnter", T.SetModifiedBackdrop)
+PullTargetButton:SetScript("OnLeave", T.SetOriginalBackdrop)
+PullTargetButton:SetScript("OnMouseUp", function() PullCountdown.Pull(3) end)
+PullTargetButton:SetFrameStrata("HIGH")
+
+PullTargetButtonText = T.SetFontString(PullTargetButton, C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+PullTargetButtonText:SetText("PULL")
+PullTargetButtonText:SetPoint("CENTER", 1, 0)
 
 -- Check if we are Raid Leader or Raid Officer / Party
 local function CheckRaidStatus()

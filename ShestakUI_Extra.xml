@@ -15,8 +15,10 @@
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
+	<Script file="Modules\Misc\ExtraActionBar.lua"/>
 	<Script file="Modules\Misc\FPSAnnounce.lua"/>
 	<Script file="Modules\Misc\ItemCount.lua"/>
+	<Script file="Modules\Misc\PullCountdown.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MicroMenu.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>	

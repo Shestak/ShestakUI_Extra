@@ -22,6 +22,15 @@ C["extra_general"] = {
 }
 
 ----------------------------------------------------------------------------------------
+--	Extra ActionBar options
+----------------------------------------------------------------------------------------
+C["extra_bar"] = {
+	["enable"] = false,							-- 
+	["button_size"] = 30,						-- 
+	["button_space"] = 3,						-- 
+}
+
+----------------------------------------------------------------------------------------
 --	Skins options (Maybe not work correctly!!!)
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
@@ -46,4 +55,5 @@ C["extra_position"] = {
 	["arena_calc"] = {"CENTER", UIParent, "CENTER", 0, 0},			-- Arena calculator
 	["switch_spec"] = {"CENTER", UIParent, "CENTER", 0, -200},		-- Talent spec panel
 	["mark_bar"] = {"CENTER", UIParent, "CENTER", 100, 50},			-- Mark bar
+	["extra_bar"] = {"BOTTOM", UIParent, "BOTTOM", 0, 100},			-- Extra bar
 }

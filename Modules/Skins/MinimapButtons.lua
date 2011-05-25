@@ -9,6 +9,7 @@ local buttons = {
 	"MiniMapLFGFrame",
 	"MiniMapTrackingButton",
 	"MiniMapMailFrame",
+	"HelpOpenTicketButton"
 }
 
 local function SkinButton(f)

@@ -48,7 +48,7 @@ end
 
 -- Spec
 local spec = CreateFrame("Button", "Spec", UIParent)
-spec:CreatePanel("Transparent", 125, 20, unpack(C.extra_position.switch_spec))
+spec:CreatePanel("Transparent", 128, 20, unpack(C.extra_position.switch_spec))
 spec:EnableMouse(true)
 spec:SetMovable(true)
 spec:SetClampedToScreen(true)
@@ -127,7 +127,7 @@ end)
 
 -- DPS layout
 local dps = CreateFrame("Button", "DPS", Toggle)
-dps:CreatePanel("Transparent", 28, 19, "BOTTOMRIGHT", Toggle, "TOPRIGHT", 0, 3)
+dps:CreatePanel("Transparent", 30, 19, "BOTTOMRIGHT", Toggle, "TOPRIGHT", 0, 3)
 dps:Hide()
 
 dps.t = dps:CreateFontString(nil, "OVERLAY")
@@ -141,7 +141,7 @@ dps:SetScript("OnClick", function(self) enableDPS() end)
 
 -- Heal layout
 local heal = CreateFrame("Button", "HEAL", DPS)
-heal:CreatePanel("Transparent", 29, 19, "RIGHT", DPS, "LEFT", -3, 0)
+heal:CreatePanel("Transparent", 30, 19, "RIGHT", DPS, "LEFT", -3, 0)
 
 heal.t = heal:CreateFontString(nil, "OVERLAY")
 heal.t:SetPoint("CENTER", 1, 0)

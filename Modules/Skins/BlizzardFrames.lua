@@ -49,7 +49,7 @@ local function SkinTab(tab)
 end
 
 local function SkinNextPrevButton(btn, horizonal)
-	btn:SetTemplate("Default")
+	btn:SetTemplate("Overlay")
 	btn:Size(btn:GetWidth() - 7, btn:GetHeight() - 7)
 
 	if horizonal then
@@ -153,7 +153,7 @@ local function SkinCloseButton(f, point)
 	if f.SetPushedTexture then f:SetPushedTexture("") end
 	if f.SetDisabledTexture then f:SetDisabledTexture("") end
 
-	f:SetTemplate("Default", true)
+	f:SetTemplate("Overlay")
 	f:Size(18, 18)
 
 	local text = f:FontString(nil, C.media.normal_font, 17)
@@ -1224,6 +1224,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildControlUI:StripTextures()
 		GuildControlUIHbar:StripTextures()
 		GuildControlUI:SetTemplate("Transparent")
+		GuildControlUI:ClearAllPoints()
+		GuildControlUI:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 3, 0)
+		GuildControlUI:SetFrameLevel(GuildControlUI:GetFrameLevel() + 2)
 
 		local function SkinGuildRanks()
 			for i = 1, GuildControlGetNumRanks() do
@@ -1265,7 +1268,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildControlUIRankSettingsFrameGoldBox.backdrop:Point("BOTTOMRIGHT", 2, 4)
 		GuildControlUIRankSettingsFrameGoldBox:StripTextures()
 
-		GuildControlUIRankBankFrame:StripTextures()
+		GuildControlUIRankBankFrameInset:StripTextures()
+		GuildControlUIRankBankFrameInsetScrollFrame:StripTextures()
 
 		local once = false
 		hooksecurefunc("GuildControlUI_BankTabPermissions_Update", function()
@@ -1290,6 +1294,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		SkinDropDownBox(GuildControlUIRankBankFrameRankDropDown, 180)
 		GuildControlUIRankBankFrameRankDropDownButton:Width(20)
+
+		SkinCloseButton(GuildControlUICloseButton)
 	end
 
 	-- GuildUI
@@ -1461,6 +1467,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildMemberRankDropdown:SetFrameLevel(GuildMemberRankDropdown:GetFrameLevel() + 5)
 		SkinDropDownBox(GuildMemberRankDropdown, 160)
 
+		GuildMemberRemoveButton:ClearAllPoints()
+		GuildMemberRemoveButton:Point("BOTTOMLEFT", GuildMemberDetailFrame, "BOTTOMLEFT", 9, 4)
+
 		-- News
 		GuildNewsFrame:StripTextures()
 		for i = 1, 17 do
@@ -1527,13 +1536,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		-- Guild Log
 		SkinScrollBar(GuildLogScrollFrameScrollBar)
-		GuildLogFrame:SetTemplate("Transparent")
+		GuildLogFrame:CreateBackdrop("Transparent")
+		GuildLogFrame.backdrop:Point("TOPLEFT", 0, 0)
+		GuildLogFrame.backdrop:Point("BOTTOMRIGHT", -15, 0)
+		GuildLogFrame:Point("TOPLEFT", GuildFrame, "TOPRIGHT", 3, 0)
+		SkinCloseButton(GuildLogFrameCloseButton, GuildLogFrame.backdrop)
 
 		for i = 1, GuildLogFrame:GetNumChildren() do
 			local child = select(i, GuildLogFrame:GetChildren())
-			if child:GetName() == "GuildLogFrameCloseButton" and child:GetWidth() == 32 then
-				SkinCloseButton(child)
-			elseif child:GetName() == "GuildLogFrameCloseButton" then
+			if child:GetName() == "GuildLogFrameCloseButton" and child:GetWidth() > 50 then
 				child:SkinButton(true)
 			end
 		end
@@ -1569,7 +1580,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		TradeSkillFrame:SetTemplate("Transparent")
 		TradeSkillFrame:Height(TradeSkillFrame:GetHeight() + 12)
 		TradeSkillRankFrame:StripTextures()
-		TradeSkillRankFrame:CreateBackdrop("Default")
+		TradeSkillRankFrame:CreateBackdrop("Overlay")
 		TradeSkillRankFrame:SetStatusBarTexture(C.media.texture)
 
 		TradeSkillCreateButton:SkinButton(true)
@@ -1581,7 +1592,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		TradeSkillLinkButton:GetNormalTexture():SetTexCoord(0.25, 0.7, 0.37, 0.75)
 		TradeSkillLinkButton:GetPushedTexture():SetTexCoord(0.25, 0.7, 0.45, 0.8)
 		TradeSkillLinkButton:GetHighlightTexture():Kill()
-		TradeSkillLinkButton:CreateBackdrop("Default")
+		TradeSkillLinkButton:CreateBackdrop("Overlay")
 		TradeSkillLinkButton:Size(17, 14)
 		TradeSkillLinkButton:Point("LEFT", TradeSkillLinkFrame, "LEFT", 5, -1)
 		SkinEditBox(TradeSkillFrameSearchBox)
@@ -1591,6 +1602,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		SkinNextPrevButton(TradeSkillDecrementButton)
 		SkinNextPrevButton(TradeSkillIncrementButton)
 		TradeSkillIncrementButton:Point("RIGHT", TradeSkillCreateButton, "LEFT", -13, 0)
+		TradeSkillDecrementButton:Height(TradeSkillDecrementButton:GetHeight() + 7)
+		TradeSkillIncrementButton:Height(TradeSkillIncrementButton:GetHeight() + 7)
 
 		SkinCloseButton(TradeSkillFrameCloseButton)
 
@@ -2634,7 +2647,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ClassTrainerFrame:CreateBackdrop("Transparent")
 		ClassTrainerFrame.backdrop:Point("TOPLEFT", ClassTrainerFrame, "TOPLEFT")
 		ClassTrainerFrame.backdrop:Point("BOTTOMRIGHT", ClassTrainerFrame, "BOTTOMRIGHT")
-		SkinCloseButton(ClassTrainerFrameCloseButton,ClassTrainerFrame)
+		SkinCloseButton(ClassTrainerFrameCloseButton, ClassTrainerFrame)
 		ClassTrainerFrameSkillStepButton.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 		ClassTrainerFrameSkillStepButton:CreateBackdrop("Default")
 		ClassTrainerFrameSkillStepButton.backdrop:Point("TOPLEFT", ClassTrainerFrameSkillStepButton.icon, "TOPLEFT", -2, 2)
@@ -2643,7 +2656,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		ClassTrainerStatusBar:StripTextures()
 		ClassTrainerStatusBar:SetStatusBarTexture(C.media.texture)
-		ClassTrainerStatusBar:CreateBackdrop("Default")
+		ClassTrainerStatusBar:CreateBackdrop("Overlay")
+		ClassTrainerStatusBar:ClearAllPoints()
+		ClassTrainerStatusBar:Point("RIGHT", ClassTrainerFrameFilterDropDown, "LEFT", 10, 3)
 	end
 
 	-- ItemSocketingUI

@@ -4,7 +4,30 @@ if C.extra_bar.enable ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Extra ActionBar(by )
 ----------------------------------------------------------------------------------------
-local SpellListTest = {45438, 12051, 122, 82676}
+local SpellListTest
+
+if T.class=="PRIEST" then
+	SpellListTest = {}
+elseif T.class=="HUNTER" then
+	SpellListTest = {}
+elseif T.class=="MAGE" then
+	SpellListTest = {45438, 12051, 122, 82676}
+elseif T.class=="WARLOCK" then
+	SpellListTest = {}
+elseif T.class=="PALADIN" then
+	SpellListTest = {}
+elseif T.class=="SHAMAN" then
+	SpellListTest = {}
+elseif T.class=="WARRIOR" then
+	SpellListTest = {}
+elseif T.class=="DEATHKNIGHT" then
+	SpellListTest = {}
+elseif T.class=="ROGUE" then
+	SpellListTest = {}
+elseif T.class=="DRUID" then
+	SpellListTest = {}
+end
+
 local totalspells = table.getn(SpellListTest)
 
 local custombar = CreateFrame("Frame", "CustomActionBar", UIParent, "SecureHandlerStateTemplate")
@@ -24,7 +47,11 @@ if totalspells then
 		
 		-- Positions
 		if i ~= 1 then
-			custombutton[i]:SetPoint("TOPLEFT", custombutton[i-1], "TOPRIGHT", C.extra_bar.button_space, 0)
+			if C.extra_bar.vertical then
+				custombutton[i]:SetPoint("TOPLEFT", custombutton[i-1], "BOTTOMLEFT", 0, -C.extra_bar.button_space)
+			else
+				custombutton[i]:SetPoint("TOPLEFT", custombutton[i-1], "TOPRIGHT", C.extra_bar.button_space, 0)
+			end
 		end
 		
 		-- Textures

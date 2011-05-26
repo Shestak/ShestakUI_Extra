@@ -70,6 +70,7 @@ ClearTargetButton:SetFrameStrata("HIGH")
 ClearTargetButtonText = T.SetFontString(ClearTargetButton, C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 ClearTargetButtonText:SetText(L_EXTRA_BUTTON_CLEAR)
 ClearTargetButtonText:SetPoint("CENTER")
+ClearTargetButtonText:Width(ClearTargetButton:GetWidth() - 4)
 
 -- Pull Button for clear target
 local PullTargetButton = CreateFrame("Frame", "PullTargetButton", MarkBarBackground)

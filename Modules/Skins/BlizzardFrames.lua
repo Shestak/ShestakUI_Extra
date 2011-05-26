@@ -2686,6 +2686,18 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 	-- Stuff not in Blizzard load-on-demand
 	if addon == "ShestakUI_Extra" then
+		-- Tutorial Frame
+		do
+			TutorialFrame:StripTextures()
+			TutorialFrame:CreateBackdrop("Transparent")
+			TutorialFrame.backdrop:Point("TOPLEFT", 0, 0)
+			TutorialFrame.backdrop:Point("BOTTOMRIGHT", 0, 0)
+			SkinNextPrevButton(TutorialFrameNextButton)
+			SkinNextPrevButton(TutorialFramePrevButton)
+			TutorialFrameOkayButton:SkinButton()
+			SkinCloseButton(TutorialFrameCloseButton, TutorialFrame.backdrop)
+		end
+
 		-- Bank/Container Frame
 		if C.bag.enable ~= true or (not IsAddOnLoaded("cargBags") or not IsAddOnLoaded("cargBags_Nivaya")) then
 			-- Container Frame

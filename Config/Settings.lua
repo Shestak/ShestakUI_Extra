@@ -11,6 +11,7 @@ C["extra_general"] = {
 	["click_cast"] = false,						-- Click2cast mod
 	["move_blizzard"] = true,					-- Move Blizzard frames
 	["micro_menu"] = false,						-- Micro menu
+	["micro_menu_mouse"] = false,				-- Micro menu on mouseover
 	["arena_calc"] = true,						-- Arena calculator(/calc)
 	["align"] = true,							-- Grid on screen(/align)
 	["fps_announce"] = true,					-- Announce fps in guild chat(!fps)

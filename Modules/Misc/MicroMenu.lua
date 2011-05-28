@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.micro_menu ~= true then return end
+if C.actionbar.enable ~= true or C.extra_general.micro_menu ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Micro menu(by Elv22)
@@ -22,7 +22,45 @@ if T.PTRVersion() then
 end
 
 local f = CreateFrame("Frame", "MicroAnchor", UIParent)
+MicroAnchor.shown = false
+if C.extra_general.micro_menu_mouse == true then f:SetAlpha(0) end
+
 UpdateMicroButtonsParent(f)
+
+local function CheckFade(self, elapsed)
+	local mouseactive
+	for i, button in pairs(microbuttons) do
+		local b = _G[button]
+		if b.mouseover == true then
+			mouseactive = true
+			if GameTooltip:IsShown() then
+				GameTooltip:Hide()
+			end
+		end
+	end
+
+	if C.extra_general.micro_menu_mouse ~= true then return end
+
+	if MicroAnchor.mouseover == true then
+		mouseactive = true
+		if GameTooltip:IsShown() then
+			GameTooltip:Hide()
+		end
+	end
+
+	if mouseactive == true then
+		if MicroAnchor.shown ~= true then
+			MicroAnchor:SetAlpha(1)
+			MicroAnchor.shown = true
+		end
+	else
+		if MicroAnchor.shown == true then
+			MicroAnchor:SetAlpha(0)
+			MicroAnchor.shown = false
+		end
+	end
+end
+f:SetScript("OnUpdate", CheckFade)
 
 for i, button in pairs(microbuttons) do
 	local m = _G[button]
@@ -60,6 +98,16 @@ for i, button in pairs(microbuttons) do
 		disabled:Point("TOPLEFT", m.frame, "TOPLEFT", 2, -2)
 		disabled:Point("BOTTOMRIGHT", m.frame, "BOTTOMRIGHT", -2, 2)
 	end
+
+	m.mouseover = false
+	m:HookScript("OnEnter", function(self)
+		self.frame:SetBackdropBorderColor(T.color.r, T.color.g, T.color.b)
+		self.mouseover = true
+	end)
+	m:HookScript("OnLeave", function(self)
+		self.frame:SetBackdropBorderColor(unpack(C.media.border_color))
+		self.mouseover = false
+	end)
 end
 
 -- Fix/Create textures for buttons

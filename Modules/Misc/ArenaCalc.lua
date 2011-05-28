@@ -30,10 +30,16 @@ local function SetButton(obj, value)
 	obj:SetScript("OnMouseDown", value)
 end
 
+local CalcAnchor = CreateFrame("Frame", "CalcAnchor", UIParent)
+CalcAnchor:SetPoint(unpack(C.extra_position.arena_calc))
+CalcAnchor:SetWidth((buttonSize * 4)  + (buttonSpacing * 5))
+CalcAnchor:SetHeight((buttonSize * 4)  + (buttonSpacing * 5))
+tinsert(T.MoverFrames, CalcAnchor)
+
 local function CreateModule()
 	-- Background Frame
 	local hCalcBG = CreateFrame("Frame", "CalcBG", UIParent)
-	hCalcBG:CreatePanel("Transparent", 1, 1, unpack(C.extra_position.arena_calc))
+	hCalcBG:CreatePanel("Transparent", 1, 1, "TOPLEFT", CalcAnchor, "TOPLEFT", 0, 0)
 	
 	-- Make all the buttons
 	hCalcButton = CreateFrame("Button", "CalcButton", hCalcBG)

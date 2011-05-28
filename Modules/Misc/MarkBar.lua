@@ -6,16 +6,10 @@ if C.extra_general.mark_bar ~= true then return end
 ----------------------------------------------------------------------------------------
 local button_size = 30
 
-local MarkBarBG = CreateFrame("Frame", "MarkBarBackground", UIParent)
+local MarkBarBG = CreateFrame("Frame", "MarkBarAnchor", UIParent)
 MarkBarBG:CreatePanel("Invisible", (button_size * 4) + 9, (button_size * 3) - 4, unpack(C.extra_position.mark_bar))
 MarkBarBG:SetFrameLevel(0)
-MarkBarBG:Hide()
-MarkBarBG:EnableMouse(true)
-MarkBarBG:SetMovable(true)
-MarkBarBG:SetClampedToScreen(true)
-MarkBarBG:RegisterForDrag("LeftButton")
-MarkBarBG:SetScript("OnDragStart", function(self) self:StartMoving() end)
-MarkBarBG:SetScript("OnDragStop", function(self) self:StopMovingOrSizing() end)
+tinsert(T.MoverFrames, MarkBarAnchor)
 
 local icon = CreateFrame("Button", "Icon", MarkBarBG)
 local mark = CreateFrame("Button", "Menu", MarkBarBG)
@@ -60,7 +54,7 @@ for i = 1, 8 do
 end
 
 -- Create Button for clear target
-local ClearTargetButton = CreateFrame("Button", "ClearTargetButton", MarkBarBackground)
+local ClearTargetButton = CreateFrame("Button", "ClearTargetButton", MarkBarAnchor)
 ClearTargetButton:CreatePanel("Transparent", (button_size * 3) + 6, 20, "TOPLEFT", mark[5], "BOTTOMLEFT", 0, -3)
 ClearTargetButton:SetScript("OnEnter", T.SetModifiedBackdrop)
 ClearTargetButton:SetScript("OnLeave", T.SetOriginalBackdrop)
@@ -73,7 +67,7 @@ ClearTargetButtonText:SetPoint("CENTER")
 ClearTargetButtonText:Width(ClearTargetButton:GetWidth() - 4)
 
 -- Pull Button for clear target
-local PullTargetButton = CreateFrame("Frame", "PullTargetButton", MarkBarBackground)
+local PullTargetButton = CreateFrame("Frame", "PullTargetButton", MarkBarAnchor)
 PullTargetButton:CreatePanel("Transparent", button_size, 20, "BOTTOMLEFT", ClearTargetButton, "BOTTOMRIGHT", 3, 0)
 PullTargetButton:SetScript("OnEnter", T.SetModifiedBackdrop)
 PullTargetButton:SetScript("OnLeave", T.SetOriginalBackdrop)
@@ -102,8 +96,8 @@ LeadershipCheck:RegisterEvent("PARTY_MEMBERS_CHANGED")
 LeadershipCheck:RegisterEvent("PLAYER_ENTERING_WORLD")
 LeadershipCheck:SetScript("OnEvent", function(self, event)
 	if CheckRaidStatus() then
-		MarkBarBackground:Show()
+		MarkBarAnchor:Show()
 	else
-		MarkBarBackground:Hide()
+		MarkBarAnchor:Hide()
 	end
 end)

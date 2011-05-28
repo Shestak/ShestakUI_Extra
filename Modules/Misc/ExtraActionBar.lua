@@ -33,6 +33,7 @@ local totalspells = table.getn(SpellListTest)
 local custombar = CreateFrame("Frame", "CustomActionBar", UIParent, "SecureHandlerStateTemplate")
 custombar:CreatePanel("Invisible", 1, C.extra_bar.button_size, unpack(C.extra_position.extra_bar))
 custombar:SetWidth((totalspells * C.extra_bar.button_size) + ((totalspells - 1) * C.extra_bar.button_space))
+tinsert(T.MoverFrames, CustomActionBar)
 
 local custombutton = CreateFrame("Button", "CustomButton", custombar, "SecureActionButtonTemplate")
 

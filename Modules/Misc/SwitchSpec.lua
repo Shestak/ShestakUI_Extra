@@ -47,17 +47,14 @@ local function enableHeal()
 end
 
 -- Spec
-local spec = CreateFrame("Button", "Spec", UIParent)
+local spec = CreateFrame("Button", "SpecAnchor", UIParent)
 spec:CreatePanel("Transparent", 128, 20, unpack(C.extra_position.switch_spec))
-spec:EnableMouse(true)
-spec:SetMovable(true)
-spec:SetClampedToScreen(true)
-spec:RegisterForDrag("LeftButton")
-spec:SetScript("OnDragStart", function(self) self:StartMoving() end)
-spec:SetScript("OnDragStop", function(self) self:StopMovingOrSizing() end)
+tinsert(T.MoverFrames, SpecAnchor)
 
 spec.t = spec:CreateFontString(spec, "OVERLAY")
 spec.t:SetPoint("CENTER")
+spec.t:Width(SpecAnchor:GetWidth() - 4)
+spec.t:Height(C.media.pixel_font_size)
 spec.t:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 
 local int = 1
@@ -104,8 +101,8 @@ spec:SetScript("OnClick", function(self)
 end)
 
 -- Toggle Button
-local toggle = CreateFrame("Button", "Toggle", Spec)
-toggle:CreatePanel("Transparent", 20, 20, "TOPLEFT", Spec, "TOPRIGHT", 3, 0)
+local toggle = CreateFrame("Button", "Toggle", SpecAnchor)
+toggle:CreatePanel("Transparent", 20, 20, "TOPLEFT", SpecAnchor, "TOPRIGHT", 3, 0)
 
 toggle.t = toggle:CreateFontString(nil, "OVERLAY")
 toggle.t:SetPoint("CENTER", 2, 0)

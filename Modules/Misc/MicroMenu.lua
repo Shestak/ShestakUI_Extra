@@ -21,7 +21,7 @@ if T.PTRVersion() then
 	tinsert(microbuttons, "RaidMicroButton")
 end
 
-local f = CreateFrame("Frame", "MicroParent", UIParent)
+local f = CreateFrame("Frame", "MicroAnchor", UIParent)
 UpdateMicroButtonsParent(f)
 
 for i, button in pairs(microbuttons) do
@@ -30,7 +30,7 @@ for i, button in pairs(microbuttons) do
 	local normal = m:GetNormalTexture()
 	local disabled = m:GetDisabledTexture()
 
-	m:SetParent(MicroParent)
+	m:SetParent(MicroAnchor)
 	m.SetParent = T.dummy
 	_G[button.."Flash"]:SetTexture("")
 	m:SetHighlightTexture("")
@@ -74,15 +74,16 @@ do
 	GuildMicroButtonTabard.ClearAllPoints = T.dummy
 end
 
-MicroParent:Point(unpack(C.extra_position.micro_menu))
+MicroAnchor:Point(unpack(C.extra_position.micro_menu))
 if T.PTRVersion() then
-	MicroParent:Width(((CharacterMicroButton:GetWidth() + 4) * 9) + 12)
+	MicroAnchor:Width(((CharacterMicroButton:GetWidth() + 4) * 9) + 12)
 else
-	MicroParent:Width(((CharacterMicroButton:GetWidth() + 4) * 7) + 2)
+	MicroAnchor:Width(((CharacterMicroButton:GetWidth() + 4) * 7) + 2)
 end
-MicroParent:Height(CharacterMicroButton:GetHeight() - 28)
+MicroAnchor:Height(CharacterMicroButton:GetHeight() - 28)
+tinsert(T.MoverFrames, MicroAnchor)
 
 CharacterMicroButton:ClearAllPoints()
-CharacterMicroButton:Point("BOTTOMLEFT", MicroParent, "BOTTOMLEFT", 0,  0)
+CharacterMicroButton:Point("BOTTOMLEFT", MicroAnchor, "BOTTOMLEFT", 0,  0)
 CharacterMicroButton.SetPoint = T.dummy
 CharacterMicroButton.ClearAllPoints = T.dummy

@@ -37,14 +37,13 @@ C["extra_bar"] = {
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
 	["blizzard_frames"] = true,					-- Blizzard frames skin
+	["minimap_buttons"] = true,					-- Skin addons icons on minimap
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["combustion_helper"] = false,				-- CombustionHelper skin
 	["roll_tracker"] = false,					-- RollTracker skin
 	["tiny_dps"] = false,						-- TinyDPS skin
-	["recount"] = false,						-- Recount skin
 	["skada"] = false,							-- Skada skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
-	["minimap_buttons"] = true,					-- Skin addons icons on minimap
 	["cool_line"] = false,						-- CoolLine skin
 	["mfclip"] = false,							-- MFClip skin
 }

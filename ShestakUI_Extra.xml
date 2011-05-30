@@ -31,7 +31,6 @@
 	<Script file="Modules\Skins\CoolLine.lua"/>
 	<Script file="Modules\Skins\MFClip.lua"/>
 	<Script file="Modules\Skins\MinimapButtons.lua"/>
-	<Script file="Modules\Skins\Recount.lua"/>
 	<Script file="Modules\Skins\RollTracker.lua"/>
 	<Script file="Modules\Skins\ShieldMonitor.lua"/>
 	<Script file="Modules\Skins\Skada.lua"/>

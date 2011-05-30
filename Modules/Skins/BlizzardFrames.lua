@@ -5102,5 +5102,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		OpenAllButton2:SkinButton()
 		DressUpFrameUndressButton:SkinButton()
 		SkinCloseButton(RolePollPopupCloseButton)
+		if C.bag.enable == true then
+			SkinCloseButton(Stuffing_CloseButtonBags)
+			Stuffing_CloseButtonBags:Size(Stuffing_CloseButtonBags:GetWidth() - 2, Stuffing_CloseButtonBags:GetHeight() - 2)
+		end
 	end
 end)

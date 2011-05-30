@@ -9,16 +9,16 @@
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
 	["click_cast"] = false,						-- Click2cast mod
-	["move_blizzard"] = true,					-- Move Blizzard frames
+	["move_blizzard"] = false,					-- Move Blizzard frames
 	["micro_menu"] = false,						-- Micro menu
 	["micro_menu_mouse"] = false,				-- Micro menu on mouseover
-	["arena_calc"] = true,						-- Arena calculator(/calc)
-	["align"] = true,							-- Grid on screen(/align)
-	["fps_announce"] = true,					-- Announce fps in guild chat(!fps)
+	["arena_calc"] = false,						-- Arena calculator(/calc)
+	["align"] = false,							-- Grid on screen(/align)
+	["fps_announce"] = false,					-- Announce fps in guild chat(!fps)
 	["buff_automator"] = false,					-- Personal buff automator
 	["switch_spec"] = false,					-- Talent spec panel
 	["mark_bar"] = false,						-- Mark bar
-	["color_picker"] = true,					-- Improved ColorPickerFrame
+	["color_picker"] = false,					-- Improved ColorPickerFrame
 }
 
 ----------------------------------------------------------------------------------------

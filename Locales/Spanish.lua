@@ -7,9 +7,6 @@ if T.client ~= "esES" or T.client ~= "esMX" then return end
 -- Mark bar
 L_EXTRA_BUTTON_CLEAR = "Limpiar Objetivo"
 
--- Item count
-L_EXTRA_ITEM_COUNT = "Item count: "
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "My current FPS is "
 

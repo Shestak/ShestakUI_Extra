@@ -16,7 +16,6 @@ C["extra_general"] = {
 	["align"] = true,							-- Grid on screen(/align)
 	["fps_announce"] = true,					-- Announce fps in guild chat(!fps)
 	["buff_automator"] = false,					-- Personal buff automator
-	["item_count"] = true,						-- Item count in tooltip 
 	["switch_spec"] = false,					-- Talent spec panel
 	["mark_bar"] = false,						-- Mark bar
 	["color_picker"] = true,					-- Improved ColorPickerFrame

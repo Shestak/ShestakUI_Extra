@@ -142,6 +142,12 @@ local function SkinCheckBox(frame)
 		frame:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
 	end
 
+	if not frame:GetChecked() then
+		frame:SetDisabledTexture(nil)
+	else
+		frame:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
+	end
+
 	frame.SetNormalTexture = T.dummy
 	frame.SetPushedTexture = T.dummy
 	frame.SetHighlightTexture = T.dummy
@@ -1137,6 +1143,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ArchaeologyFrame:SetTemplate("Transparent")
 
 		ArchaeologyFrameArtifactPageSolveFrameSolveButton:SkinButton(true)
+		ArchaeologyFrameArtifactPageBackButton:SkinButton(true)
 		SkinDropDownBox(ArchaeologyFrameRaceFilter, 125)
 
 		ArchaeologyFrameRankBar:StripTextures()
@@ -1683,16 +1690,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			_G[object]:StripTextures()
 		end
 
-		local function raidskinupdate()
-			nummembers = GetNumRaidMembers()
-
-			for i = 1, nummembers do
-				_G["RaidGroupButton"..i]:SkinButton()
-			end
+		for i = 1, MAX_RAID_GROUPS * 5 do
+			_G["RaidGroupButton"..i]:SkinButton(true)
 		end
-		raidskinupdate()
-		RaidFrame:HookScript("OnShow", raidskinupdate)
-		hooksecurefunc("RaidGroupFrame_OnEvent", raidskinupdate)
 
 		for i = 1, 8 do
 			for j = 1, 5 do
@@ -2128,7 +2128,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 		SkinDropDownBox(BrowseDropDown)
 		SkinDropDownBox(PriceDropDown)
-		SkinDropDownBox(DurationDropDown)
+		SkinDropDownBox(DurationDropDown, 80)
 
 		SkinCheckBox(IsUsableCheckButton)
 		SkinCheckBox(ShowOnPlayerCheckButton)
@@ -2392,6 +2392,141 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		AuctionFrameAuctions.bg2:Point("TOPLEFT", AuctionFrameAuctions.bg1, "TOPRIGHT", 3, 0)
 		AuctionFrameAuctions.bg2:Point("BOTTOMRIGHT", AuctionFrame, -8, 35)
 		AuctionFrameAuctions.bg2:SetFrameLevel(AuctionFrameAuctions.bg2:GetFrameLevel() - 2)
+	end
+
+	if addon == "Blizzard_AuctionUI" and IsAddOnLoaded("Auctionator") then
+		local buttons = {
+			"Atr_Search_Button",
+			"Atr_Back_Button",
+			"Atr_Buy1_Button",
+			"Atr_Adv_Search_Button",
+			"Atr_FullScanButton",
+			"Auctionator1Button",
+			"Atr_ListTabsTab1",
+			"Atr_ListTabsTab2",
+			"Atr_ListTabsTab3",
+			"Atr_CreateAuctionButton",
+			"Atr_RemFromSListButton",
+			"Atr_AddToSListButton",
+			"Atr_SrchSListButton",
+			"Atr_DelSListButton",
+			"Atr_NewSListButton",
+			"Atr_CheckActiveButton",
+			"AuctionatorCloseButton",
+			"Atr_CancelSelectionButton",
+			"Atr_FullScanStartButton",
+			"Atr_FullScanDone",
+			"Atr_CheckActives_Yes_Button",
+			"Atr_CheckActives_No_Button",
+			"Atr_Adv_Search_ResetBut",
+			"Atr_Adv_Search_OKBut",
+			"Atr_Adv_Search_CancelBut",
+			"Atr_Buy_Confirm_OKBut",
+			"Atr_Buy_Confirm_CancelBut",
+			"Atr_MngSListsButton",
+		}
+
+		for i = 1, getn(buttons) do
+			local frame = _G[buttons[i]]
+			if frame then
+				_G[buttons[i]]:SkinButton(true)
+			end
+		end
+
+		local dropdown = {
+			"Atr_DropDown1",
+			"Atr_Duration",
+			"Atr_DropDownSL",
+		}
+
+		for i = 1, getn(dropdown) do
+			local frame = _G[dropdown[i]]
+			if frame then
+				SkinDropDownBox(_G[dropdown[i]])
+			end
+		end
+
+		local editbox = {
+			"Atr_StackPriceGold",
+			"Atr_StackPriceSilver",
+			"Atr_StackPriceCopper",
+			"Atr_ItemPriceGold",
+			"Atr_ItemPriceSilver",
+			"Atr_ItemPriceCopper",
+			"Atr_Batch_NumAuctions",
+			"Atr_Batch_Stacksize",
+			"Atr_Search_Box",
+			"Atr_AS_Searchtext",
+			"Atr_AS_Minlevel",
+			"Atr_AS_Maxlevel",
+			"Atr_AS_MinItemlevel",
+			"Atr_AS_MaxItemlevel",
+		}
+
+		for i = 1, getn(editbox) do
+			local frame = _G[editbox[i]]
+			if frame then
+				SkinEditBox(_G[editbox[i]])
+			end
+		end
+
+		Atr_Search_Box:Height(Atr_Search_Box:GetHeight() - 2)
+		Auctionator1Button:Height(22)
+		Atr_Search_Button:Height(22)
+		Atr_Adv_Search_Button:Height(22)
+		Atr_Back_Button:Height(22)
+		Atr_FullScanButton:Height(22)
+
+		Atr_FullScanResults:StripTextures()
+		Atr_FullScanResults:SetTemplate("Transparent")
+
+		Atr_Adv_Search_Dialog:StripTextures()
+		Atr_Adv_Search_Dialog:SetTemplate("Transparent")
+
+		Atr_FullScanFrame:StripTextures()
+		Atr_FullScanFrame:SetTemplate("Transparent")
+
+		Atr_HeadingsBar:StripTextures()
+		Atr_HeadingsBar:CreateBackdrop("Overlay")
+		Atr_HeadingsBar.backdrop:Point("TOPLEFT", 0, -25)
+		Atr_HeadingsBar.backdrop:Point("BOTTOMRIGHT", 3, -182)
+
+		Atr_Error_Frame:StripTextures()
+		Atr_Error_Frame:SetTemplate("Transparent")
+
+		Atr_Hlist:StripTextures()
+		Atr_Hlist:SetTemplate("Overlay")
+		Atr_Hlist:Width(196)
+		Atr_Hlist:ClearAllPoints()
+		Atr_Hlist:Point("TOPLEFT", -195, -75)
+
+		Atr_SellControls:CreateBackdrop("Overlay")
+		Atr_SellControls.backdrop:Point("TOPLEFT", -2, 0)
+		Atr_SellControls.backdrop:Point("BOTTOMRIGHT", 24, 1)
+
+		Atr_Buy_Confirm_Frame:StripTextures()
+		Atr_Buy_Confirm_Frame:SetTemplate("Default")
+
+		Atr_CheckActives_Frame:StripTextures()
+		Atr_CheckActives_Frame:SetTemplate("Default")
+
+		Atr_SrchSListButton:Width(196)
+		Atr_MngSListsButton:Width(196)
+		Atr_NewSListButton:Width(196)
+		Atr_CheckActiveButton:Width(196)
+
+		for i = 4, 6 do
+			SkinTab(_G["AuctionFrameTab"..i])
+		end
+
+		AuctionatorCloseButton:ClearAllPoints()
+		AuctionatorCloseButton:Point("BOTTOMLEFT", Atr_Main_Panel, "BOTTOMRIGHT", -14, 10)
+		Atr_Buy1_Button:Point("RIGHT", AuctionatorCloseButton, "LEFT", -4, 0)
+		Atr_CancelSelectionButton:Point("RIGHT", Atr_Buy1_Button, "LEFT", -4, 0)
+
+		Atr_RecommendItem_Tex:SetTemplate("Default")
+		Atr_SellControls_Tex:SetTemplate("Default")
+		Atr_SellControls_Tex:StyleButton()
 	end
 
 	-- BarbershopUI
@@ -3257,6 +3392,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 				navButtonFrameLevel(self)
 			end)
+
+			HelpFrameGM_ResponseNeedMoreHelp:SkinButton()
+			HelpFrameGM_ResponseCancel:SkinButton()
+			for i = 1, HelpFrameGM_Response:GetNumChildren() do
+				local child = select(i, HelpFrameGM_Response:GetChildren())
+				if child and child:GetObjectType() == "Frame" and not child:GetName() then
+					child:SetTemplate("Default")
+				end
+			end
 		end
 
 		-- Trade Frame
@@ -3687,30 +3831,14 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			}
 
 			for _, object in pairs(checkButtons) do
-				_G[object]:GetChildren():SetFrameLevel(_G[object]:GetChildren():GetFrameLevel() + 2)
-				SkinCheckBox(_G[object]:GetChildren())
+				_G[object].checkButton:SetFrameLevel(_G[object].checkButton:GetFrameLevel() + 2)
+				SkinCheckBox(_G[object].checkButton)
 			end
 
-			for _, object in pairs(StripAllTextures) do
-				_G[object]:StripTextures()
-			end
+			hooksecurefunc("LFDQueueFrameRandom_UpdateFrame", function()
+				local dungeonID = LFDQueueFrame.type
+				local _, _, _, _, _, numRewards = GetLFGDungeonRewards(dungeonID)
 
-			for _, texture in pairs(KillTextures) do
-				_G[texture]:Kill()
-			end
-
-			for i = 1, #buttons do
-				_G[buttons[i]]:StripTextures()
-				_G[buttons[i]]:SkinButton()
-			end
-
-			for i = 1, 15 do
-				SkinCheckBox(_G["LFDQueueFrameSpecificListButton"..i.."EnableButton"])
-			end
-
-			LFDQueueFrameCapBar:SetPoint("LEFT", 40, 0)
-
-			LFDQueueFrameRandom:HookScript("OnShow", function()
 				for i = 1, LFD_MAX_REWARDS do
 					local button = _G["LFDQueueFrameRandomScrollFrameChildFrameItem"..i]
 					local icon = _G["LFDQueueFrameRandomScrollFrameChildFrameItem"..i.."IconTexture"]
@@ -3720,7 +3848,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					local role3 = _G["LFDQueueFrameRandomScrollFrameChildFrameItem"..i.."RoleIcon3"]
 
 					if button then
+						local __texture = _G[button:GetName().."IconTexture"]:GetTexture()
 						button:StripTextures()
+						icon:SetTexture(__texture)
 						icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 						icon:Point("TOPLEFT", 2, -2)
 						icon:SetDrawLayer("OVERLAY")
@@ -3749,6 +3879,36 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				end
 			end)
 
+			hooksecurefunc("LFDQueueFrameSpecificListButton_SetDungeon", function(button, dungeonID, mode, submode)
+				for _, object in pairs(checkButtons) do
+					local button = _G[object]
+					if not button.checkButton:GetChecked() then
+						button.checkButton:SetDisabledTexture(nil)
+					else
+						button.checkButton:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
+					end
+				end
+			end)
+
+			for _, object in pairs(StripAllTextures) do
+				_G[object]:StripTextures()
+			end
+
+			for _, texture in pairs(KillTextures) do
+				_G[texture]:Kill()
+			end
+
+			for i = 1, #buttons do
+				_G[buttons[i]]:StripTextures()
+				_G[buttons[i]]:SkinButton()
+			end
+
+			for i = 1, 15 do
+				SkinCheckBox(_G["LFDQueueFrameSpecificListButton"..i.."EnableButton"])
+			end
+
+			LFDQueueFrameCapBar:SetPoint("LEFT", 40, 0)
+
 			LFDQueueFrameNoLFDWhileLFR:CreateBackdrop("Overlay")
 			LFDQueueFrameNoLFDWhileLFR.backdrop:Point("TOPLEFT", 2, 5)
 			LFDQueueFrameNoLFDWhileLFR.backdrop:Point("BOTTOMRIGHT", 0, 6)
@@ -3772,6 +3932,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			LFDDungeonReadyDialog:SetTemplate("Transparent")
 			LFDQueueFrameFindGroupButton:Point("BOTTOMLEFT", LFDParentFrame.backdrop, "BOTTOMLEFT", 4, 4)
 			LFDQueueFrameCancelButton:Point("BOTTOMRIGHT", LFDParentFrame.backdrop, "BOTTOMRIGHT", -6, 4)
+			LFDQueueFrameRandomScrollFrame:Height(LFDQueueFrameRandomScrollFrame:GetHeight() + 10)
 		end
 
 		-- Quest Frame

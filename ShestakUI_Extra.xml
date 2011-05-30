@@ -9,6 +9,8 @@
 	<Script file="Locales\Taiwan.lua"/>
 
 	<Script file="Config\Settings.lua"/>
+	<Script file="Config\Positions.lua"/>
+	<Script file="Config\Profiles.lua"/>
 
 	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>

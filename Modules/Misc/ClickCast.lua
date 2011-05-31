@@ -17,6 +17,19 @@ local frames= {
 	"oUF_TargetTarget",
 	"oUF_Focus",
 	"oUF_FocusTarget",
+	"oUF_Boss1",
+	"oUF_Boss2",
+	"oUF_Boss3",
+	"oUF_Arena1",
+	"oUF_Arena2",
+	"oUF_Arena3",
+	"oUF_Arena4",
+	"oUF_Arena5",
+	"oUF_Arena1Target",
+	"oUF_Arena2Target",
+	"oUF_Arena3Target",
+	"oUF_Arena4Target",
+	"oUF_Arena5Target",
 }
 
 hooksecurefunc("CreateFrame",  function(type, name, parent, template)
@@ -66,19 +79,19 @@ mainf:SetBackdrop({
 	bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
 	edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
 	tile = true, tileSize = 32, edgeSize = 32,
-	insets = { left = 11, right = 12, top = 12, bottom = 11 }
+	insets = {left = 11, right = 12, top = 12, bottom = 11}
 })
 mainf:Hide()
 
 local scrollf = CreateFrame("ScrollFrame", "SpellBinderScrollFrameFrameList", mainf, "UIPanelScrollFrameTemplate")
-local framesf = CreateFrame("frame", "SpellBinderScrollFrameFrameListChild", scrollf)
+local framesf = CreateFrame("Frame", "SpellBinderScrollFrameFrameListChild", scrollf)
 scrollf:SetPoint("TOPLEFT", mainf, "TOP", 20, -40)
 scrollf:SetPoint("BOTTOMRIGHT", mainf, "BOTTOMRIGHT", -38, 45)
 scrollf:SetScrollChild(framesf)
 scrollf:Hide()
 
 local scrolls = CreateFrame("ScrollFrame", "SpellBinderScrollFrameSpellList", mainf, "UIPanelScrollFrameTemplate")
-local framess = CreateFrame("frame", "SpellBinderScrollFrameSpellListChild", scrolls)
+local framess = CreateFrame("Frame", "SpellBinderScrollFrameSpellListChild", scrolls)
 scrolls:SetPoint("TOPLEFT", mainf, "TOPLEFT", 20, -40)
 scrolls:SetPoint("BOTTOMRIGHT", mainf, "BOTTOMRIGHT", -38, 45)
 scrolls:SetScrollChild(framess)
@@ -92,13 +105,13 @@ local titles = mainf:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
 titles:SetPoint("BOTTOMLEFT", scrolls, "TOPLEFT", 0, 10)
 titles:SetText(SPELLS)
 
-local slider = CreateFrame("button", "SpellBinderSlideButton", mainf)
-slider:SetWidth(32)
-slider:SetHeight(32)
-slider:SetPoint("BOTTOMRIGHT", -8, 10)
-slider:SetNormalTexture("Interface\\Buttons\\UI-Panel-SmallerButton-Up")
-slider:SetPushedTexture("Interface\\Buttons\\UI-Panel-SmallerButton-Down")
-slider:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight")
+local slider = CreateFrame("Button", "SpellBinderSlideButton", mainf)
+slider:SetWidth(25)
+slider:SetHeight(25)
+slider:SetPoint("BOTTOMRIGHT", C.extra_skins.blizzard_frames and -4 or -11, C.extra_skins.blizzard_frames and 4 or 10)
+slider:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
+slider:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
+slider:SetHighlightTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
 
 slider:SetScript("OnClick", function(self)
 	if self.open == nil then self.open = false end
@@ -122,7 +135,11 @@ end)
  
 function SpellBinder:makeSpellsList(delete)
 	local self = framess
-	SpellBinder:Style(scrolls)
+	if C.extra_skins.blizzard_frames == true then
+		scrolls:SetTemplate("Overlay")
+	else
+		SpellBinder:Style(scrolls)
+	end
 	self:SetPoint("TOPLEFT")
 	self:SetWidth(scrolls:GetWidth())
 	self:SetHeight(scrolls:GetHeight())
@@ -143,7 +160,7 @@ function SpellBinder:makeSpellsList(delete)
 	for i, spell in ipairs(DB.spells) do
 		v = spell.spell
 		if v then
-			local bf = _G[i.."_cbs"] or CreateFrame("button", i.."_cbs", self)
+			local bf = _G[i.."_cbs"] or CreateFrame("Button", i.."_cbs", self)
 			spell.checked = spell.checked or false
 			if i == 1 then
 				bf:SetPoint("TOPLEFT", self, "TOPLEFT", 10, -10)
@@ -225,7 +242,11 @@ end
 
 function SpellBinder:makeFramesList()
 	local self = framesf
-	SpellBinder:Style(scrollf)
+	if C.extra_skins.blizzard_frames == true then
+		scrollf:SetTemplate("Overlay")
+	else
+		SpellBinder:Style(scrollf)
+	end
 	self:SetPoint("TOPLEFT")
 	self:SetWidth(scrollf:GetWidth())
 	self:SetHeight(scrollf:GetHeight())
@@ -239,7 +260,7 @@ function SpellBinder:makeFramesList()
 		if v then
 			DB.frames[frame] = DB.frames[frame] or true
 
-			local bf = _G[v.."_cbf"] or CreateFrame("button", v.."_cbf", self)
+			local bf = _G[v.."_cbf"] or CreateFrame("Button", v.."_cbf", self)
 			if i == 1 then
 				bf:SetPoint("TOPLEFT", self, "TOPLEFT", 10, -10)
 				bf:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", -10, -30)

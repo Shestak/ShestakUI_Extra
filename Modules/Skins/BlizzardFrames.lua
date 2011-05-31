@@ -5313,5 +5313,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinCloseButton(Stuffing_CloseButtonBags)
 			Stuffing_CloseButtonBags:Size(Stuffing_CloseButtonBags:GetWidth() - 2, Stuffing_CloseButtonBags:GetHeight() - 2)
 		end
+		if C.extra_general.click_cast == true then
+			SpellBinderMainFrame:StripTextures()
+			SpellBinderMainFrame:SetTemplate("Transparent")
+			SpellBinderOpenButton:SkinButton()
+			SpellBinderOpenButton:ClearAllPoints()
+			SpellBinderOpenButton:Point("TOPLEFT", SpellBookFrame.backdrop, "TOPLEFT", 4, -4)
+			btn_SpellBinderMainFrame:SkinButton()
+			SkinCloseButton(SpellBinderCloseButton)
+			SkinNextPrevButton(SpellBinderSlideButton)
+		end
 	end
 end)

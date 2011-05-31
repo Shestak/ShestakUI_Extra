@@ -13,7 +13,7 @@ elseif T.class=="HUNTER" then
 elseif T.class=="MAGE" then
 	SpellListTest = {45438, 12051, 122, 82676}
 elseif T.class=="WARLOCK" then
-	SpellListTest = {}
+	SpellListTest = {77801, 74434, 1122, 18540}
 elseif T.class=="PALADIN" then
 	SpellListTest = {}
 elseif T.class=="SHAMAN" then

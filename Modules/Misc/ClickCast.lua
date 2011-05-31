@@ -170,7 +170,7 @@ function SpellBinder:makeSpellsList(delete)
 				bf:SetPoint("BOTTOMRIGHT", oldb, "BOTTOMRIGHT", 0, -26)
 			end	
 			bf:EnableMouse(true)
-			bf:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",})
+			bf:SetBackdrop({bgFile = C.media.blank})
 			bf:SetBackdropColor(0, 0, 0, 0)
 			if spell.checked then
 				bf:SetBackdropColor(1, 0.1, 0.1, 0.25)
@@ -263,7 +263,7 @@ function SpellBinder:makeFramesList()
 			local bf = _G[v.."_cbf"] or CreateFrame("Button", v.."_cbf", self)
 			if i == 1 then
 				bf:SetPoint("TOPLEFT", self, "TOPLEFT", 10, -10)
-				bf:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", -10, -30)
+				bf:SetPoint("BOTTOMRIGHT", self, "TOPRIGHT", 140, -30)
 			else
 				bf:SetPoint("TOPLEFT", oldb, "BOTTOMLEFT", 0, 0)
 				bf:SetPoint("BOTTOMRIGHT", oldb, "BOTTOMRIGHT", 0, -20)
@@ -271,7 +271,7 @@ function SpellBinder:makeFramesList()
 
 			bf:EnableMouse(true)
 
-			bf:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",})
+			bf:SetBackdrop({bgFile = C.media.blank})
 			bf:SetBackdropColor(0, 0, 0, 0)
 			bf:SetScript("OnEnter", function(self) self:SetBackdropColor(0, 1, 0, 0.25) end)
 			bf:SetScript("OnLeave", function(self) self:SetBackdropColor(0, 0, 0, 0) end)

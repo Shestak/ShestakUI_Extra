@@ -4037,6 +4037,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			hooksecurefunc("LFDQueueFrameRandom_UpdateFrame", function()
 				local dungeonID = LFDQueueFrame.type
+				if type(dungeonID) == "string" then return end
 				local _, _, _, _, _, numRewards = GetLFGDungeonRewards(dungeonID)
 
 				for i = 1, LFD_MAX_REWARDS do

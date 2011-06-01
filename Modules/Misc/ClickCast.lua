@@ -20,39 +20,37 @@ local frames= {
 	"oUF_Boss1",
 	"oUF_Boss2",
 	"oUF_Boss3",
-	"oUF_Arena1",
-	"oUF_Arena2",
-	"oUF_Arena3",
-	"oUF_Arena4",
-	"oUF_Arena5",
-	"oUF_Arena1Target",
-	"oUF_Arena2Target",
-	"oUF_Arena3Target",
-	"oUF_Arena4Target",
-	"oUF_Arena5Target",
 }
+for i = 1, 5 do
+	local party_dps = "oUF_PartyDPSUnitButton"..i
+	local partytarget_dps = "oUF_PartyTargetDPSUnitButton"..i
+	local party_heal = "oUF_PartyUnitButton"..i
+	local partytarget_heal = "oUF_PartyTargetUnitButton"..i
+	local arena = "oUF_Arena"..i
+	local arenatarget = "oUF_Arena"..i.."Target"
 
-hooksecurefunc("CreateFrame",  function(type, name, parent, template)
-	if template == "SecureUnitButtonTemplate" then
-		tinsert(frames, name)
+	if party_dps then
+		tinsert(frames, party_dps)
 	end
-	if template == "RaidPulloutButtonTemplate" then
-		tinsert(frames, _G[name.."ClearButton"])
+	if partytarget_dps then
+		tinsert(frames, partytarget_dps)
 	end
-end)
-
-hooksecurefunc("CompactUnitFrame_SetUpFrame", function(frame, ...)
-	tinsert(frames, frame:GetName())
-end)
+	if party_heal then
+		tinsert(frames, party_heal)
+	end
+	if partytarget_heal then
+		tinsert(frames, partytarget_heal)
+	end
+	if arena then
+		tinsert(frames, arena)
+	end
+	if arenatarget then
+		tinsert(frames, arenatarget)
+	end
+end
 
 local mainf = CreateFrame("Frame", "SpellBinderMainFrame", SpellBookFrame)
-
 mainf:EnableMouse(true)
-mainf:SetMovable(true)
-mainf:SetUserPlaced(true)
-mainf:SetClampedToScreen(true)
-mainf:SetScript("OnMouseDown", function(self) self:StartMoving() end)
-mainf:SetScript("OnMouseUp", function(self) self:StopMovingOrSizing() end)
 mainf:SetFrameStrata("TOOLTIP")
 
 function SpellBinder:Style(frame)

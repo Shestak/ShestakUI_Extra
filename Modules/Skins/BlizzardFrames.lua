@@ -1169,7 +1169,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."Icon"].backdrop:SetFrameLevel(artifact:GetFrameLevel() - 2)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."Icon"]:SetDrawLayer("OVERLAY")
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactName"]:SetTextColor(1, 0.8, 0)
+				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactName"]:SetShadowOffset(1, -1)
 				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactSubText"]:SetTextColor(0.6, 0.6, 0.6)
+				_G["ArchaeologyFrameCompletedPageArtifact"..i.."ArtifactSubText"]:SetShadowOffset(1, -1)
 			end
 		end
 
@@ -1178,6 +1180,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			if frame then
 				frame.raceName:SetTextColor(1, 1, 1)
+				frame.raceName:SetShadowOffset(1, -1)
 			end
 		end
 

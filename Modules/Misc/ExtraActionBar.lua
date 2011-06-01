@@ -87,6 +87,15 @@ if totalspells then
 				end
 			end
 		end)
+		custombutton[i]:SetScript("OnEnter", function(self)
+			GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
+			GameTooltip:SetHyperlink("spell:"..SpellListTest[i])
+			GameTooltip:SetClampedToScreen(true)
+			GameTooltip:Show()
+		end)
+		custombutton[i]:SetScript("OnLeave", function()
+			GameTooltip:Hide()
+		end)
 	end
 else
 	custombar:Hide()

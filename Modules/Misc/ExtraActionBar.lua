@@ -2,101 +2,80 @@
 if C.extra_bar.enable ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Extra ActionBar(by )
+--	Extra ActionBar(ExtraBar by Cowmonster)
 ----------------------------------------------------------------------------------------
-local SpellListTest
-
-if T.class=="PRIEST" then
-	SpellListTest = {}
-elseif T.class=="HUNTER" then
-	SpellListTest = {}
-elseif T.class=="MAGE" then
-	SpellListTest = {45438, 12051, 122, 82676}
-elseif T.class=="WARLOCK" then
-	SpellListTest = {77801, 74434, 1122, 18540}
-elseif T.class=="PALADIN" then
-	SpellListTest = {}
-elseif T.class=="SHAMAN" then
-	SpellListTest = {}
-elseif T.class=="WARRIOR" then
-	SpellListTest = {}
-elseif T.class=="DEATHKNIGHT" then
-	SpellListTest = {}
-elseif T.class=="ROGUE" then
-	SpellListTest = {}
-elseif T.class=="DRUID" then
-	SpellListTest = {}
-end
-
-local totalspells = table.getn(SpellListTest)
-
-local custombar = CreateFrame("Frame", "CustomActionBar", UIParent, "SecureHandlerStateTemplate")
-custombar:CreatePanel("Invisible", 1, C.extra_bar.button_size, unpack(C.extra_position.extra_bar))
-custombar:SetWidth((totalspells * C.extra_bar.button_size) + ((totalspells - 1) * C.extra_bar.button_space))
-tinsert(T.MoverFrames, CustomActionBar)
-
-local custombutton = CreateFrame("Button", "CustomButton", custombar, "SecureActionButtonTemplate")
-
-if totalspells then
-	for i, v in ipairs(SpellListTest) do
-		-- Buttons
-		custombutton[i] = CreateFrame("Button", "CustomButton"..i, custombar, "SecureActionButtonTemplate")
-		custombutton[i]:CreatePanel("Transparent", C.extra_bar.button_size, C.extra_bar.button_size, "TOPLEFT", custombar, "TOPLEFT", 0, 0)
-		custombutton[i]:StyleButton()
-		custombutton[i]:SetAttribute("type", "spell")
-		custombutton[i]:SetAttribute("spell", SpellListTest[i])
-		
-		-- Positions
-		if i ~= 1 then
-			if C.extra_bar.vertical then
-				custombutton[i]:SetPoint("TOPLEFT", custombutton[i-1], "BOTTOMLEFT", 0, -C.extra_bar.button_space)
-			else
-				custombutton[i]:SetPoint("TOPLEFT", custombutton[i-1], "TOPRIGHT", C.extra_bar.button_space, 0)
-			end
-		end
-		
-		-- Textures
-		custombutton[i].texture = custombutton[i]:CreateTexture(nil, "BORDER")
-		custombutton[i].texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-		custombutton[i].texture:SetPoint("TOPLEFT", custombutton[i] ,"TOPLEFT", 2, -2)
-		custombutton[i].texture:SetPoint("BOTTOMRIGHT", custombutton[i] ,"BOTTOMRIGHT", -2, 2)
-		custombutton[i].texture:SetTexture(select(3, GetSpellInfo(SpellListTest[i])))
-	
-		-- Texts
-		custombutton[i].value = custombutton[i]:CreateFontString(nil, "ARTWORK")
-		custombutton[i].value:SetFont(C.font.action_bars_font, C.font.action_bars_font_size * 2, C.font.action_bars_font_style)
-		custombutton[i].value:SetShadowOffset(C.font.action_bars_font_shadow and 1 or 0, C.font.action_bars_font_shadow and -1 or 0)
-		custombutton[i].value:Point("CENTER", custombutton[i], "CENTER")
-
-		-- Cooldowns
-		custombutton[i].cooldown = CreateFrame("Cooldown", "$parentCD", custombutton[i], "CooldownFrameTemplate")
-		custombutton[i].cooldown:SetAllPoints(custombutton[i].texture)
-
-		custombutton[i]:SetScript("OnUpdate", function()
-			custombutton[i].texture:SetTexture(select(3, GetSpellInfo(SpellListTest[i])))
-			local start, duration, enabled = GetSpellCooldown(SpellListTest[i])
-			if not duration then duration = 0 end
-			if not start then start = 0	end			
-			if not enabled then	enabled = 0	end
-			if duration > 1.5 then
-				if enabled ~= 0 then
-					custombutton[i].texture:SetVertexColor(1, 1, 1)
-					custombutton[i].cooldown:SetCooldown(start, duration)
-				else
-					custombutton[i].texture:SetVertexColor(0.35, 0.35, 0.35)
-				end
-			end
-		end)
-		custombutton[i]:SetScript("OnEnter", function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
-			GameTooltip:SetHyperlink("spell:"..SpellListTest[i])
-			GameTooltip:SetClampedToScreen(true)
-			GameTooltip:Show()
-		end)
-		custombutton[i]:SetScript("OnLeave", function()
-			GameTooltip:Hide()
-		end)
-	end
+local bar = CreateFrame("Frame", "ExtraBarAnchor", UIParent)
+bar:CreatePanel("Invisible", 1, 1, "BOTTOM", ActionBarAnchor, "TOP", 0, C.actionbar.button_space)
+if C.extra_bar.style == "1*12" then
+	bar:Width(C.actionbar.button_size)
+	bar:Height((C.actionbar.button_size * 12) + (C.actionbar.button_space * 11))
+elseif C.extra_bar.style == "12*1" then
+	bar:Width((C.actionbar.button_size * 12) + (C.actionbar.button_space * 11))
+	bar:Height(C.actionbar.button_size)
+elseif C.extra_bar.style == "6*2" then
+	bar:Width((C.actionbar.button_size * 6) + (C.actionbar.button_space * 5))
+	bar:Height((C.actionbar.button_size * 2) + C.actionbar.button_space)
+elseif C.extra_bar.style == "4*3" then
+	bar:Width((C.actionbar.button_size * 4) + (C.actionbar.button_space * 3))
+	bar:Height((C.actionbar.button_size * 3) + C.actionbar.button_space * 2)
 else
-	custombar:Hide()
+	bar:Width((C.actionbar.button_size * 12) + (C.actionbar.button_space * 11))
+	bar:Height(C.actionbar.button_size)
 end
+bar:SetFrameStrata("LOW")
+tinsert(T.MoverFrames, ExtraBarAnchor)
+
+for i = 13, 24 do
+	local f = CreateFrame("CheckButton", "ExtraBarButton"..(i-12), UIParent, "ActionBarButtonTemplate")
+
+	f:Size(C.actionbar.button_size, C.actionbar.button_size)
+	f:SetAttribute("action", i)
+	if C.extra_bar.show_grid == true then
+		f:SetAttribute("showgrid", 1)
+	end
+	f:SetID(i)
+
+	f:ClearAllPoints()
+	if C.extra_bar.style == "1*12" then
+		if i == 13 then
+			f:Point("TOPLEFT", ExtraBarAnchor, "TOPLEFT", 0, 0)
+		else
+			f:Point("TOP", "ExtraBarButton"..i-13, "BOTTOM", 0, -C.actionbar.button_space)
+		end
+	elseif C.extra_bar.style == "12*1" then
+		if i == 13 then
+			f:Point("TOPLEFT", ExtraBarAnchor, "TOPLEFT", 0, 0)
+		else
+			f:Point("LEFT", "ExtraBarButton"..i-13, "RIGHT", C.actionbar.button_space, 0)
+		end
+	elseif C.extra_bar.style == "6*2" then
+		if i == 13 then
+			f:Point("TOPLEFT", ExtraBarAnchor, "TOPLEFT", 0, 0)
+		elseif i == 19 then
+			f:Point("TOPLEFT", "ExtraBarButton1", "BOTTOMLEFT", 0, -C.actionbar.button_space)
+		else
+			f:Point("LEFT", "ExtraBarButton"..i-13, "RIGHT", C.actionbar.button_space, 0)
+		end
+	elseif C.extra_bar.style == "4*3" then
+		if i == 13 then
+			f:Point("TOPLEFT", ExtraBarAnchor, "TOPLEFT", 0, 0)
+		elseif i == 17 then
+			f:Point("TOPLEFT", "ExtraBarButton1", "BOTTOMLEFT", 0, -C.actionbar.button_space)
+		elseif i == 21 then
+			f:Point("TOPLEFT", "ExtraBarButton5", "BOTTOMLEFT", 0, -C.actionbar.button_space)
+		else
+			f:Point("LEFT", "ExtraBarButton"..i-13, "RIGHT", C.actionbar.button_space, 0)
+		end
+	else
+		if i == 13 then
+			f:Point("TOPLEFT", ExtraBarAnchor, "TOPLEFT", 0, 0)
+		else
+			f:Point("LEFT", "ExtraBarButton"..i-13, "RIGHT", C.actionbar.button_space, 0)
+		end
+	end
+
+	f:StyleButton(true)
+	f:Show()
+end
+
+BINDING_HEADER_EXTRABAR_HEADER = "Extra Bar"

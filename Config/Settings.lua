@@ -19,6 +19,7 @@ C["extra_general"] = {
 	["switch_spec"] = false,					-- Talent spec panel
 	["mark_bar"] = false,						-- Mark bar
 	["color_picker"] = false,					-- Improved ColorPickerFrame
+	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 }
 
 ----------------------------------------------------------------------------------------
@@ -26,9 +27,11 @@ C["extra_general"] = {
 ----------------------------------------------------------------------------------------
 C["extra_bar"] = {
 	["enable"] = false,							-- Enable extra actionbar
+	["show_grid"] = true,						-- Show empty action bar buttons
 	["button_size"] = 30,						-- Buttons size
 	["button_space"] = 3,						-- Buttons space
 	["vertical"] = false,						-- Vertical orientation
+	["style"] = "4*3",							-- Buttons style(1*12|12*1|6*2|4*3)
 }
 
 ----------------------------------------------------------------------------------------

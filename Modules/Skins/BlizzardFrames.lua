@@ -4654,6 +4654,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"FriendsFriendsFrame",
 				"FriendsFriendsNoteFrame",
 				"FriendsFriendsList",
+				"BNConversationInviteDialog",
+				"BNConversationInviteDialogList",
 			}
 
 			local KillTextures = {
@@ -4697,6 +4699,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"AddFriendInfoFrameContinueButton",
 				"FriendsFriendsCloseButton",
 				"FriendsFriendsSendRequestButton",
+				"BNConversationInviteDialogCancelButton",
+				"BNConversationInviteDialogInviteButton",
 			}
 
 			for _, button in pairs(buttons) do
@@ -4747,6 +4751,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			FriendsFrameBroadcastInput.backdrop:Point("BOTTOMRIGHT", 0, 1)
 			ChannelFrameDaughterFrameChannelName:CreateBackdrop("Overlay")
 			ChannelFrameDaughterFrameChannelPassword:CreateBackdrop("Overlay")
+			BNConversationInviteDialog:SetTemplate("Transparent")
+			BNConversationInviteDialogList:SetTemplate("Overlay")
 
 			ChannelFrame:HookScript("OnShow", UpdateChannel)
 			hooksecurefunc("FriendsFrame_OnEvent", UpdateChannel)

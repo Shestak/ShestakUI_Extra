@@ -2515,11 +2515,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		Atr_CheckActives_Frame:StripTextures()
 		Atr_CheckActives_Frame:SetTemplate("Default")
 
-		Atr_SrchSListButton:Width(196)
-		Atr_MngSListsButton:Width(196)
-		Atr_NewSListButton:Width(196)
-		Atr_CheckActiveButton:Width(196)
-
 		Atr_CreateAuctionButton:Width(165)
 		Atr_CreateAuctionButton:ClearAllPoints()
 		Atr_CreateAuctionButton:Point("CENTER", 14, -20)

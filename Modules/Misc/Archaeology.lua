@@ -517,6 +517,48 @@ stArchFrame:HookScript("OnEvent", function(self)
 	if FrameWasShown == true and not self:IsShown() then  self:Show() end
 end)
 
+local b = CreateFrame("Button", nil, UIParent)
+b:SetTemplate("ClassColor")
+if C.actionbar.toggle_mode == true then
+	b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -21, 0)
+else
+	b:Point("TOPRIGHT", Minimap, "TOPRIGHT", 0, 0)
+end
+b:Width(20)
+b:Height(20)
+b:SetAlpha(0)
+
+local bt = b:CreateTexture(nil, "OVERLAY")
+bt:SetTexture("Interface\\Icons\\Trade_Archaeology")
+bt:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+bt:Point("TOPLEFT", b, 2, -2)
+bt:Point("BOTTOMRIGHT", b, -2, 2)
+
+b:SetScript("OnClick", function(self)
+	if not InCombatLockdown() then
+		if _G["stArchaeologyFrame"]:IsShown() then
+			_G["stArchaeologyFrame"]:Hide()
+		else
+			_G["stArchaeologyFrame"]:Show()
+		end
+		if _G["TTMenuAddOnBackground"]:IsShown() then
+			_G["TTMenuAddOnBackground"]:Hide()
+		end
+		if _G["TTMenuBackground"]:IsShown() then
+			_G["TTMenuBackground"]:Hide()
+		end
+	end
+end)
+
+b:SetScript("OnEnter", function()
+	if InCombatLockdown() then return end
+	b:FadeIn()
+end)
+
+b:SetScript("OnLeave", function()
+	b:FadeOut()
+end)
+
 ----------------------------------------------------------------------------------------
 --	Survey cooldown timer
 ----------------------------------------------------------------------------------------

@@ -2428,6 +2428,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			"Atr_Buy_Confirm_OKBut",
 			"Atr_Buy_Confirm_CancelBut",
 			"Atr_MngSListsButton",
+			"Auctionator_Search",
 		}
 
 		for i = 1, getn(buttons) do

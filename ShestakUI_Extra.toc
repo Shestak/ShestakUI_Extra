@@ -2,7 +2,7 @@
 ## Title: ShestakUI Extra
 ## Notes: Extra mods for ShestakUI
 ## Author: Shestak
-## Version: 0.1.1
+## Version: 0.1.2
 ## Credits: Fernir, Gsuz, Hydra, fraz0816, Slushe, Elv22, Tukz, Epic, Smelly, Jaslm, Dridzt, Safturento, Cowmonster
 ## RequiredDeps: ShestakUI
 ## SavedVariables: ExtraOptionsDB

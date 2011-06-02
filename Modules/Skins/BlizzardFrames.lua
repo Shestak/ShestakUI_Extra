@@ -2519,6 +2519,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		Atr_NewSListButton:Width(196)
 		Atr_CheckActiveButton:Width(196)
 
+		Atr_CreateAuctionButton:Width(165)
+		Atr_CreateAuctionButton:ClearAllPoints()
+		Atr_CreateAuctionButton:Point("CENTER", 14, -20)
+
 		for i = 4, 6 do
 			SkinTab(_G["AuctionFrameTab"..i])
 		end
@@ -2529,6 +2533,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		Atr_CancelSelectionButton:Point("RIGHT", Atr_Buy1_Button, "LEFT", -4, 0)
 
 		Atr_RecommendItem_Tex:SetTemplate("Default")
+		Atr_RecommendItem_Tex:StyleButton()
 		Atr_SellControls_Tex:SetTemplate("Default")
 		Atr_SellControls_Tex:StyleButton()
 	end
@@ -4646,6 +4651,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"AddFriendFrame",
 				"AddFriendNoteFrame",
 				"FriendsFriendsFrame",
+				"FriendsFriendsNoteFrame",
+				"FriendsFriendsList",
 			}
 
 			local KillTextures = {

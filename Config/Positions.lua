@@ -9,4 +9,5 @@ C["extra_position"] = {
 	["switch_spec"] = {"CENTER", UIParent, "CENTER", 0, -200},		-- Talent spec panel
 	["mark_bar"] = {"CENTER", UIParent, "CENTER", 100, 50},			-- Mark bar
 	["extra_bar"] = {"BOTTOM", UIParent, "BOTTOM", 0, 100},			-- Extra bar
+	["archaeology"] = {"BOTTOMRIGHT", Minimap, "TOPRIGHT", 1, 5},	-- Archaeology frame
 }

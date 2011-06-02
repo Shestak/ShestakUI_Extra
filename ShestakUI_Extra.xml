@@ -13,6 +13,7 @@
 	<Script file="Config\Profiles.lua"/>
 
 	<Script file="Modules\Misc\Align.lua"/>
+	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>

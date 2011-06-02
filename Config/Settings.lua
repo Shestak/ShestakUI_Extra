@@ -29,7 +29,6 @@ C["extra_bar"] = {
 	["show_grid"] = true,						-- Show empty action bar buttons
 	["button_size"] = 30,						-- Buttons size
 	["button_space"] = 3,						-- Buttons space
-	["vertical"] = false,						-- Vertical orientation
 	["style"] = "4*3",							-- Buttons style(1*12|12*1|6*2|4*3)
 	["mouseover"] = false,						-- Show bar on mouseover
 	-- MicroMenu

@@ -2475,45 +2475,57 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 		end
 
+		local frames = {
+			"Atr_FullScanResults",
+			"Atr_Adv_Search_Dialog",
+			"Atr_FullScanFrame",
+			"Atr_HeadingsBar",
+			"Atr_Error_Frame",
+			"Atr_Hlist",
+			"Atr_Buy_Confirm_Frame",
+			"Atr_CheckActives_Frame",
+			"Atr_Hilite1",
+		}
+
+		for i = 1, getn(frames) do
+			local frame = _G[frames[i]]
+			if frame then
+				_G[frames[i]]:StripTextures()
+			end
+		end
+
+		Atr_FullScanResults:SetTemplate("Transparent")
+		Atr_Adv_Search_Dialog:SetTemplate("Transparent")
+		Atr_FullScanFrame:SetTemplate("Transparent")
+		Atr_Buy_Confirm_Frame:SetTemplate("Default")
+		Atr_CheckActives_Frame:SetTemplate("Default")
+		Atr_Error_Frame:SetTemplate("Transparent")
+
+		Atr_HeadingsBar:CreateBackdrop("Overlay")
+		Atr_HeadingsBar.backdrop:Point("TOPLEFT", 0, -25)
+		Atr_HeadingsBar.backdrop:Point("BOTTOMRIGHT", 3, -182)
+
+		Atr_SellControls:CreateBackdrop("Overlay")
+		Atr_SellControls.backdrop:Point("TOPLEFT", -2, 0)
+		Atr_SellControls.backdrop:Point("BOTTOMRIGHT", 24, 1)
+
+		Atr_Hlist:SetTemplate("Overlay")
+		Atr_Hlist:Width(196)
+		Atr_Hlist:ClearAllPoints()
+		Atr_Hlist:Point("TOPLEFT", -195, -75)
+
+		Atr_Hilite1:CreateBackdrop("Overlay")
+		Atr_Hilite1.backdrop:Point("TOPLEFT", 1, -3)
+		Atr_Hilite1.backdrop:Point("BOTTOMRIGHT", 3, -1)
+
 		Atr_Search_Box:Height(Atr_Search_Box:GetHeight() - 2)
 		Auctionator1Button:Height(22)
 		Atr_Search_Button:Height(22)
 		Atr_Adv_Search_Button:Height(22)
 		Atr_Back_Button:Height(22)
 		Atr_FullScanButton:Height(22)
-
-		Atr_FullScanResults:StripTextures()
-		Atr_FullScanResults:SetTemplate("Transparent")
-
-		Atr_Adv_Search_Dialog:StripTextures()
-		Atr_Adv_Search_Dialog:SetTemplate("Transparent")
-
-		Atr_FullScanFrame:StripTextures()
-		Atr_FullScanFrame:SetTemplate("Transparent")
-
-		Atr_HeadingsBar:StripTextures()
-		Atr_HeadingsBar:CreateBackdrop("Overlay")
-		Atr_HeadingsBar.backdrop:Point("TOPLEFT", 0, -25)
-		Atr_HeadingsBar.backdrop:Point("BOTTOMRIGHT", 3, -182)
-
-		Atr_Error_Frame:StripTextures()
-		Atr_Error_Frame:SetTemplate("Transparent")
-
-		Atr_Hlist:StripTextures()
-		Atr_Hlist:SetTemplate("Overlay")
-		Atr_Hlist:Width(196)
-		Atr_Hlist:ClearAllPoints()
-		Atr_Hlist:Point("TOPLEFT", -195, -75)
-
-		Atr_SellControls:CreateBackdrop("Overlay")
-		Atr_SellControls.backdrop:Point("TOPLEFT", -2, 0)
-		Atr_SellControls.backdrop:Point("BOTTOMRIGHT", 24, 1)
-
-		Atr_Buy_Confirm_Frame:StripTextures()
-		Atr_Buy_Confirm_Frame:SetTemplate("Default")
-
-		Atr_CheckActives_Frame:StripTextures()
-		Atr_CheckActives_Frame:SetTemplate("Default")
+		Atr_FullScanButton:Point("LEFT", Atr_Adv_Search_Button, "RIGHT", 3, 0)
+		Atr_FullScanButton:Point("RIGHT", Auctionator1Button, "LEFT", -3, 0)
 
 		Atr_CreateAuctionButton:Width(165)
 		Atr_CreateAuctionButton:ClearAllPoints()

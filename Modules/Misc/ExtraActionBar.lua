@@ -79,3 +79,26 @@ for i = 13, 24 do
 end
 
 BINDING_HEADER_EXTRABAR_HEADER = "Extra Bar"
+
+-- Mouseover bar
+if C.extra_bar.mouseover ~= true then return end
+
+function ExtraBarMouseOver(alpha)
+	for i = 1, 12 do
+		local b = _G["ExtraBarButton"..i]
+		b:SetAlpha(alpha)
+	end
+	ExtraBarAnchor:SetAlpha(alpha)
+end
+
+do
+	ExtraBarAnchor:SetAlpha(0)
+	ExtraBarAnchor:SetScript("OnEnter", function() ExtraBarMouseOver(1) end)
+	ExtraBarAnchor:SetScript("OnLeave", function() ExtraBarMouseOver(0) end)
+	for i = 1, 12 do
+		local b = _G["ExtraBarButton"..i]
+		b:SetAlpha(0)
+		b:HookScript("OnEnter", function() ExtraBarMouseOver(1) end)
+		b:HookScript("OnLeave", function() ExtraBarMouseOver(0) end)
+	end
+end

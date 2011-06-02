@@ -5,7 +5,7 @@ if C.extra_bar.enable ~= true then return end
 --	Extra ActionBar(ExtraBar by Cowmonster)
 ----------------------------------------------------------------------------------------
 local bar = CreateFrame("Frame", "ExtraBarAnchor", UIParent)
-bar:CreatePanel("Invisible", 1, 1, "BOTTOM", ActionBarAnchor, "TOP", 0, C.actionbar.button_space)
+bar:CreatePanel("Invisible", 1, 1, unpack(C.extra_position.extra_bar))
 if C.extra_bar.style == "1*12" then
 	bar:Width(C.actionbar.button_size)
 	bar:Height((C.actionbar.button_size * 12) + (C.actionbar.button_space * 11))

@@ -12,20 +12,20 @@
 	<Script file="Config\Positions.lua"/>
 	<Script file="Config\Profiles.lua"/>
 
+	<Script file="Modules\ExtraBars\ActionBar.lua"/>
+	<Script file="Modules\ExtraBars\MicroMenu.lua"/>
+
 	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
-	<Script file="Modules\Misc\ExtraActionBar.lua"/>
 	<Script file="Modules\Misc\FPSAnnounce.lua"/>
 	<Script file="Modules\Misc\PullCountdown.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
-	<Script file="Modules\Misc\MicroMenu.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>	
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
-	<Script file="Modules\Misc\Temp.lua"/>
 	
 	<Script file="Modules\Skins\BlizzardFrames.lua"/>
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>

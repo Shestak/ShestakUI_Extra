@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.actionbar.enable ~= true or C.extra_general.micro_menu ~= true then return end
+if C.actionbar.enable ~= true or C.extra_bar.micro_menu ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Micro menu(by Elv22)
@@ -23,7 +23,7 @@ end
 
 local f = CreateFrame("Frame", "MicroAnchor", UIParent)
 MicroAnchor.shown = false
-if C.extra_general.micro_menu_mouse == true then f:SetAlpha(0) end
+if C.extra_bar.micro_menu_mouse == true then f:SetAlpha(0) end
 
 UpdateMicroButtonsParent(f)
 
@@ -39,7 +39,7 @@ local function CheckFade(self, elapsed)
 		end
 	end
 
-	if C.extra_general.micro_menu_mouse ~= true then return end
+	if C.extra_bar.micro_menu_mouse ~= true then return end
 
 	if MicroAnchor.mouseover == true then
 		mouseactive = true

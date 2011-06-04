@@ -5329,6 +5329,234 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			CharacterFrame:SetFrameStrata("DIALOG")
 		end
 
+		-- Interface Frame
+		do
+			local checkbox = {
+				"ControlsPanelStickyTargeting",
+				"ControlsPanelAutoDismount",
+				"ControlsPanelAutoClearAFK",
+				"ControlsPanelBlockTrades",
+				"ControlsPanelBlockGuildInvites",
+				"ControlsPanelLootAtMouse",
+				"ControlsPanelAutoLootCorpse",
+				"CombatPanelAutoSelfCast",
+				"CombatPanelAttackOnAssist",
+				"CombatPanelStopAutoAttack",
+				"CombatPanelNameplateClassColors",
+				"CombatPanelTargetOfTarget",
+				"CombatPanelShowSpellAlerts",
+				"CombatPanelReducedLagTolerance",
+				"CombatPanelActionButtonUseKeyDown",
+				"CombatPanelEnemyCastBarsOnPortrait",
+				"CombatPanelEnemyCastBarsOnNameplates",
+				"DisplayPanelShowCloak",
+				"DisplayPanelShowHelm",
+				"DisplayPanelShowAggroPercentage",
+				"DisplayPanelPlayAggroSounds",
+				"DisplayPanelDetailedLootInfo",
+				"DisplayPanelShowSpellPointsAvg",
+				"DisplayPanelemphasizeMySpellEffects",
+				"DisplayPanelShowFreeBagSpace",
+				"DisplayPanelCinematicSubtitles",
+				"DisplayPanelRotateMinimap",
+				"DisplayPanelScreenEdgeFlash",
+				"ObjectivesPanelAutoQuestTracking",
+				"ObjectivesPanelAutoQuestProgress",
+				"ObjectivesPanelMapQuestDifficulty",
+				"ObjectivesPanelAdvancedWorldMap",
+				"ObjectivesPanelWatchFrameWidth",
+				"SocialPanelProfanityFilter",
+				"SocialPanelSpamFilter",
+				"SocialPanelChatBubbles",
+				"SocialPanelPartyChat",
+				"SocialPanelChatHoverDelay",
+				"SocialPanelGuildMemberAlert",
+				"SocialPanelChatMouseScroll",
+				"ActionBarsPanelLockActionBars",
+				"ActionBarsPanelSecureAbilityToggle",
+				-- Names
+				"NamesPanelMyName",
+				"NamesPanelFriendlyPlayerNames",
+				"NamesPanelFriendlyPets",
+				"NamesPanelFriendlyGuardians",
+				"NamesPanelFriendlyTotems",
+				"NamesPanelUnitNameplatesFriends",
+				"NamesPanelUnitNameplatesFriendlyGuardians",
+				"NamesPanelUnitNameplatesFriendlyPets",
+				"NamesPanelUnitNameplatesFriendlyTotems",
+				"NamesPanelGuilds",
+				"NamesPanelGuildTitles",
+				"NamesPanelTitles",
+				"NamesPanelNonCombatCreature",
+				"NamesPanelEnemyPlayerNames",
+				"NamesPanelEnemyPets",
+				"NamesPanelEnemyGuardians",
+				"NamesPanelEnemyTotems",
+				"NamesPanelUnitNameplatesEnemyPets",
+				"NamesPanelUnitNameplatesEnemies",
+				"NamesPanelUnitNameplatesEnemyGuardians",
+				"NamesPanelUnitNameplatesEnemyTotems",
+				-- CombatText
+				"CombatTextPanelTargetDamage",
+				"CombatTextPanelPeriodicDamage",
+				"CombatTextPanelPetDamage",
+				"CombatTextPanelHealing",
+				"CombatTextPanelTargetEffects",
+				"CombatTextPanelOtherTargetEffects",
+				"CombatTextPanelEnableFCT",
+				"CombatTextPanelDodgeParryMiss",
+				"CombatTextPanelDamageReduction",
+				"CombatTextPanelRepChanges",
+				"CombatTextPanelReactiveAbilities",
+				"CombatTextPanelFriendlyHealerNames",
+				"CombatTextPanelCombatState",
+				"CombatTextPanelComboPoints",
+				"CombatTextPanelLowManaHealth",
+				"CombatTextPanelEnergyGains",
+				"CombatTextPanelPeriodicEnergyGains",
+				"CombatTextPanelHonorGains",
+				"CombatTextPanelAuras",
+				"CombatTextPanelAutoSelfCast",
+				-- Buffs
+				"BuffsPanelBuffDurations",
+				"BuffsPanelDispellableDebuffs",
+				"BuffsPanelCastableBuffs",
+				"BuffsPanelShowCastableDebuffs",
+				"BuffsPanelConsolidateBuffs",
+				-- Battlenet
+				"BattlenetPanelConversations",
+				"BattlenetPanelOnlineFriends",
+				"BattlenetPanelOfflineFriends",
+				"BattlenetPanelBroadcasts",
+				"BattlenetPanelFriendRequests",
+				"BattlenetPanelOnlineFriendsConversations",
+				"BattlenetPanelShowToastWindow",
+				-- Camera
+				"CameraPanelFollowTerrain",
+				"CameraPanelHeadBob",
+				"CameraPanelWaterCollision",
+				"CameraPanelSmartPivot",
+				-- Mouse
+				"MousePanelInvertMouse",
+				"MousePanelClickToMove",
+				"MousePanelWoWMouse",
+				-- Help
+				"HelpPanelShowTutorials",
+				"HelpPanelLoadingScreenTips",
+				"HelpPanelEnhancedTooltips",
+				"HelpPanelBeginnerTooltips",
+				"HelpPanelShowLuaErrors",
+				"HelpPanelColorblindMode",
+				"HelpPanelMovePad",
+			}
+
+			if not T.PTRVersion() then
+				tinsert(checkbox, "DisplayPanelColorblindMode")
+			end
+
+			for i = 1, getn(checkbox) do
+				local button = _G["InterfaceOptions"..checkbox[i]]
+				if button then
+					SkinCheckBox(button)
+				end
+			end
+
+			local dropdown ={
+				"ControlsPanelAutoLootKeyDropDown",
+				"CombatPanelTOTDropDown",
+				"CombatPanelFocusCastKeyDropDown",
+				"CombatPanelSelfCastKeyDropDown",
+				"DisplayPanelAggroWarningDisplay",
+				"DisplayPanelWorldPVPObjectiveDisplay",
+				"SocialPanelChatStyle",
+				"SocialPanelWhisperMode",
+				"SocialPanelTimestamps",
+				"SocialPanelBnWhisperMode",
+				"ActionBarsPanelPickupActionKeyDropDown",
+				"NamesPanelNPCNamesDropDown",
+				"NamesPanelUnitNameplatesMotionDropDown",
+				"CombatTextPanelFCTDropDown",
+				"CameraPanelStyleDropDown",
+				"MousePanelClickMoveStyleDropDown",
+				"LanguagesPanelLocaleDropDown",
+			}
+
+			for i = 1, getn(dropdown) do
+				local frame = _G["InterfaceOptions"..dropdown[i]]
+				if frame then
+					SkinDropDownBox(frame)
+				end
+			end
+		end
+
+		-- Options Frame
+		do
+			local checkbox = {
+				"Advanced_MaxFPSCheckBox",
+				"Advanced_MaxFPSBKCheckBox",
+				"AudioOptionsSoundPanelEnableSound",
+				"AudioOptionsSoundPanelSoundEffects",
+				"AudioOptionsSoundPanelErrorSpeech",
+				"AudioOptionsSoundPanelEmoteSounds",
+				"AudioOptionsSoundPanelPetSounds",
+				"AudioOptionsSoundPanelMusic",
+				"AudioOptionsSoundPanelLoopMusic",
+				"AudioOptionsSoundPanelAmbientSounds",
+				"AudioOptionsSoundPanelSoundInBG",
+				"AudioOptionsSoundPanelReverb",
+				"AudioOptionsSoundPanelHRTF",
+				"AudioOptionsSoundPanelEnableDSPs",
+				"AudioOptionsSoundPanelUseHardware",
+				"AudioOptionsVoicePanelEnableVoice",
+				"AudioOptionsVoicePanelEnableMicrophone",
+				"AudioOptionsVoicePanelPushToTalkSound",
+				"NetworkOptionsPanelOptimizeSpeed",
+				"NetworkOptionsPanelUseIPv6",
+			}
+
+			for i = 1, getn(checkbox) do
+				local button = _G[checkbox[i]]
+				if button then
+					SkinCheckBox(button)
+				end
+			end
+
+			local dropdown = {
+				"Graphics_DisplayModeDropDown",
+				"Graphics_ResolutionDropDown",
+				"Graphics_RefreshDropDown",
+				"Graphics_PrimaryMonitorDropDown",
+				"Graphics_MultiSampleDropDown",
+				"Graphics_VerticalSyncDropDown",
+				"Graphics_TextureResolutionDropDown",
+				"Graphics_FilteringDropDown",
+				"Graphics_ProjectedTexturesDropDown",
+				"Graphics_ViewDistanceDropDown",
+				"Graphics_EnvironmentalDetailDropDown",
+				"Graphics_GroundClutterDropDown",
+				"Graphics_ShadowsDropDown",
+				"Graphics_LiquidDetailDropDown",
+				"Graphics_SunshaftsDropDown",
+				"Graphics_ParticleDensityDropDown",
+				"Advanced_BufferingDropDown",
+				"Advanced_LagDropDown",
+				"Advanced_HardwareCursorDropDown",
+				"Advanced_GraphicsAPIDropDown",
+				"AudioOptionsSoundPanelHardwareDropDown",
+				"AudioOptionsSoundPanelSoundChannelsDropDown",
+				"AudioOptionsVoicePanelInputDeviceDropDown",
+				"AudioOptionsVoicePanelChatModeDropDown",
+				"AudioOptionsVoicePanelOutputDeviceDropDown",
+			}
+
+			for i = 1, getn(dropdown) do
+				local frame = _G[dropdown[i]]
+				if frame then
+					SkinDropDownBox(frame, 165)
+				end
+			end
+		end
+
 		-- Other buttons
 		OpenAllButton:SkinButton()
 		OpenAllButton2:SkinButton()

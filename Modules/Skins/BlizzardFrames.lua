@@ -864,21 +864,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		-- Tabs
-		local function SkinHeaderTab(tab)
-			if not tab then return end
-			for _, object in pairs(tabs) do
-				local tex = _G[tab:GetName()..object]
-				tex:SetTexture(nil)
-			end
-			tab:GetHighlightTexture():SetTexture(nil)
-			tab.backdrop = CreateFrame("Frame", nil, tab)
-			tab.backdrop:SetTemplate("Overlay")
-			tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
-			tab.backdrop:Point("TOPLEFT", 3, -8)
-			tab.backdrop:Point("BOTTOMRIGHT", -6, 0)
-		end
-		for i= 1, 3 do
-			SkinHeaderTab(_G["LookingForGuildFrameTab"..i])
+		for i = 1, 3 do
+			_G["LookingForGuildFrameTab"..i]:StripTextures()
 		end
 	end
 
@@ -1526,8 +1513,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildRecruitmentCommentInputFrame:SetTemplate("Overlay")
 
 		for _, button in next, GuildInfoFrameApplicantsContainer.buttons do
-			button.selectedTex:Kill()
-			button:GetHighlightTexture():Kill()
 			button:SetBackdrop(nil)
 		end
 
@@ -2857,11 +2842,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		do
 			TutorialFrame:StripTextures()
 			TutorialFrame:CreateBackdrop("Transparent")
-			TutorialFrame.backdrop:Point("TOPLEFT", 0, 0)
-			TutorialFrame.backdrop:Point("BOTTOMRIGHT", 0, 0)
+			TutorialFrame.backdrop:Point("TOPLEFT", 6, 0)
+			TutorialFrame.backdrop:Point("BOTTOMRIGHT", 0, -6)
 			SkinNextPrevButton(TutorialFrameNextButton)
 			SkinNextPrevButton(TutorialFramePrevButton)
 			TutorialFrameOkayButton:SkinButton()
+			TutorialFrameOkayButton:ClearAllPoints()
+			TutorialFrameOkayButton:Point("LEFT", TutorialFrameNextButton, "RIGHT", 10, 0)
 			SkinCloseButton(TutorialFrameCloseButton, TutorialFrame.backdrop)
 		end
 
@@ -3911,6 +3898,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					int = 0
 				end
 			end)
+			WorldMapContinentDropDownButton:HookScript("OnClick", function() DropDownList1:SetScale(C.general.uiscale) end)
+			WorldMapZoneDropDownButton:HookScript("OnClick", function() DropDownList1:SetScale(C.general.uiscale) end)
 		end
 
 		-- Item Text Frame
@@ -3948,12 +3937,17 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"LFRBrowseFrameSendMessageButton",
 				"LFRBrowseFrameInviteButton",
 				"LFRBrowseFrameRefreshButton",
+				"LFRQueueFrameNoLFRWhileLFDLeaveQueueButton",
 			}
 
 			LFRParentFrame:StripTextures()
 			LFRParentFrame:CreateBackdrop("Transparent")
 			LFRParentFrame.backdrop:Point("TOPLEFT", 16, -12)
 			LFRParentFrame.backdrop:Point("BOTTOMRIGHT", -1, 0)
+			LFRQueueFrameNoLFRWhileLFD:StripTextures()
+			LFRQueueFrameNoLFRWhileLFD:CreateBackdrop("Overlay")
+			LFRQueueFrameNoLFRWhileLFD.backdrop:Point("TOPLEFT", 4, 0)
+			LFRQueueFrameNoLFRWhileLFD.backdrop:Point("BOTTOMRIGHT", -3, -1)
 			LFRQueueFrame:StripTextures()
 			LFRBrowseFrame:StripTextures()
 
@@ -3984,7 +3978,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			LFRQueueFrameCommentTextButton:CreateBackdrop("Overlay")
 			LFRQueueFrameCommentTextButton.backdrop:Point("TOPLEFT", -6, 2)
-			LFRQueueFrameCommentTextButton.backdrop:Point("BOTTOMRIGHT", 2, 0)
+			LFRQueueFrameCommentTextButton.backdrop:Point("BOTTOMRIGHT", 1, 0)
 
 			for i = 1, 7 do
 				local button = "LFRBrowseFrameColumnHeader"..i
@@ -4120,7 +4114,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				_G[buttons[i]]:SkinButton()
 			end
 
-			for i = 1, 15 do
+			for i = 1, NUM_LFD_CHOICE_BUTTONS do
 				SkinCheckBox(_G["LFDQueueFrameSpecificListButton"..i.."EnableButton"])
 			end
 
@@ -4624,21 +4618,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinCloseButton(RaidInfoCloseButton, RaidInfoFrame)
 		end
 
-		-- Social Frame
-		local function SkinSocialHeaderTab(tab)
-			if not tab then return end
-			for _, object in pairs(tabs) do
-				local tex = _G[tab:GetName()..object]
-				tex:SetTexture(nil)
-			end
-			tab:GetHighlightTexture():SetTexture(nil)
-			tab.backdrop = CreateFrame("Frame", nil, tab)
-			tab.backdrop:SetTemplate("Overlay")
-			tab.backdrop:SetFrameLevel(tab:GetFrameLevel() - 1)
-			tab.backdrop:Point("TOPLEFT", 3, -8)
-			tab.backdrop:Point("BOTTOMRIGHT", -6, 0)
-		end
-
 		-- Friends/Social Panel
 		do
 			local StripAllTextures = {
@@ -4785,7 +4764,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 
 			for i = 1, 3 do
-				SkinSocialHeaderTab(_G["FriendsTabHeaderTab"..i])
+				_G["FriendsTabHeaderTab"..i]:StripTextures()
 			end
 
 			local function Channel()
@@ -5332,6 +5311,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Interface Frame
 		do
 			local checkbox = {
+				-- Controls
 				"ControlsPanelStickyTargeting",
 				"ControlsPanelAutoDismount",
 				"ControlsPanelAutoClearAFK",
@@ -5339,6 +5319,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"ControlsPanelBlockGuildInvites",
 				"ControlsPanelLootAtMouse",
 				"ControlsPanelAutoLootCorpse",
+				-- Combat
 				"CombatPanelAutoSelfCast",
 				"CombatPanelAttackOnAssist",
 				"CombatPanelStopAutoAttack",
@@ -5349,6 +5330,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"CombatPanelActionButtonUseKeyDown",
 				"CombatPanelEnemyCastBarsOnPortrait",
 				"CombatPanelEnemyCastBarsOnNameplates",
+				-- Display
 				"DisplayPanelShowCloak",
 				"DisplayPanelShowHelm",
 				"DisplayPanelShowAggroPercentage",
@@ -5360,11 +5342,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"DisplayPanelCinematicSubtitles",
 				"DisplayPanelRotateMinimap",
 				"DisplayPanelScreenEdgeFlash",
+				--Objectives
 				"ObjectivesPanelAutoQuestTracking",
 				"ObjectivesPanelAutoQuestProgress",
 				"ObjectivesPanelMapQuestDifficulty",
 				"ObjectivesPanelAdvancedWorldMap",
 				"ObjectivesPanelWatchFrameWidth",
+				-- Social
 				"SocialPanelProfanityFilter",
 				"SocialPanelSpamFilter",
 				"SocialPanelChatBubbles",
@@ -5372,6 +5356,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"SocialPanelChatHoverDelay",
 				"SocialPanelGuildMemberAlert",
 				"SocialPanelChatMouseScroll",
+				-- Action bars
 				"ActionBarsPanelLockActionBars",
 				"ActionBarsPanelSecureAbilityToggle",
 				-- Names

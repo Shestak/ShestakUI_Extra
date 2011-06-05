@@ -1520,11 +1520,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GuildTextEditFrame:SetTemplate("Transparent")
 		SkinScrollBar(GuildTextEditScrollFrameScrollBar)
 		GuildTextEditContainer:SetTemplate("Transparent")
+		SkinCloseButton(GuildTextEditFrameCloseButton, GuildTextEditFrame)
 		for i = 1, GuildTextEditFrame:GetNumChildren() do
 			local child = select(i, GuildTextEditFrame:GetChildren())
-			if child:GetName() == "GuildTextEditFrameCloseButton" and child:GetWidth() == 32 then
-				SkinCloseButton(child)
-			elseif child:GetName() == "GuildTextEditFrameCloseButton" then
+			if child:GetName() == "GuildTextEditFrameCloseButton" and child:GetWidth() > 50 then
 				child:SkinButton(true)
 			end
 		end

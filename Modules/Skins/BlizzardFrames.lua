@@ -3710,12 +3710,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			WorldMapDetailFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 2, -2)
 			WorldMapDetailFrame.backdrop:SetFrameLevel(WorldMapDetailFrame:GetFrameLevel() - 2)
 
-			--SkinCloseButton(WorldMapFrameCloseButton)
-			--SkinCloseButton(WorldMapFrameSizeDownButton)
-			--SkinCloseButton(WorldMapFrameSizeUpButton)
-			--WorldMapFrameCloseButton:Point("TOPRIGHT", WorldMapDetailFrame.backdrop, "TOPRIGHT", -4, -4)
-			--WorldMapFrameSizeDownButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -34, -4)
-			--WorldMapFrameSizeUpButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -34, -4)
+			SkinCloseButton(WorldMapFrameCloseButton)
+			SkinCloseButton(WorldMapFrameSizeDownButton)
+			SkinCloseButton(WorldMapFrameSizeUpButton)
 
 			SkinDropDownBox(WorldMapLevelDropDown)
 			SkinDropDownBox(WorldMapZoneMinimapDropDown)
@@ -3736,8 +3733,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				WorldMapLevelDropDown:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -10, -4)
 
 				WorldMapFrame.backdrop:ClearAllPoints()
-				WorldMapFrame.backdrop:Point("TOPLEFT", 2, 2)
-				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", 2, -2)
+				WorldMapFrame.backdrop:Point("TOPLEFT", 2, 3)
+				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", 2, 0)
+
+				WorldMapFrameCloseButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -4, -4)
+				WorldMapFrameSizeUpButton:ClearAllPoints()
+				WorldMapFrameSizeUpButton:Point("TOPRIGHT", WorldMapFrameCloseButton, "TOPLEFT", -4, 0)
+				WorldMapFrameSizeUpButton:Point("BOTTOMRIGHT", WorldMapFrameCloseButton, "BOTTOMLEFT", -4, 0)
 			end
 
 			-- Largemap
@@ -3752,7 +3754,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 				WorldMapFrame.backdrop:ClearAllPoints()
 				WorldMapFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -25, 70)
-				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 25, -30)
+				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 25, -27)
+
+				WorldMapFrameCloseButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -4, -4)
+				WorldMapFrameSizeDownButton:ClearAllPoints()
+				WorldMapFrameSizeDownButton:Point("TOPRIGHT", WorldMapFrameCloseButton, "TOPLEFT", -4, 0)
+				WorldMapFrameSizeDownButton:Point("BOTTOMRIGHT", WorldMapFrameCloseButton, "BOTTOMLEFT", -4, 0)
 			end
 
 			local function QuestSkin()
@@ -3765,8 +3772,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				end
 
 				WorldMapFrame.backdrop:ClearAllPoints()
-				WorldMapFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -25, 70)
-				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 325, -235)
+				WorldMapFrame.backdrop:Point("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", -25, 69)
+				WorldMapFrame.backdrop:Point("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 334, -234)
 
 				if not WorldMapQuestDetailScrollFrame.backdrop then
 					WorldMapQuestDetailScrollFrame:CreateBackdrop("Overlay")
@@ -3784,6 +3791,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 					WorldMapQuestScrollFrame.backdrop:Point("TOPLEFT", 0, 2)
 					WorldMapQuestScrollFrame.backdrop:Point("BOTTOMRIGHT", 24, -3)
 				end
+
+				WorldMapFrameCloseButton:Point("TOPRIGHT", WorldMapFrame.backdrop, "TOPRIGHT", -4, -4)
+				WorldMapFrameSizeDownButton:ClearAllPoints()
+				WorldMapFrameSizeDownButton:Point("TOPRIGHT", WorldMapFrameCloseButton, "TOPLEFT", -4, 0)
+				WorldMapFrameSizeDownButton:Point("BOTTOMRIGHT", WorldMapFrameCloseButton, "BOTTOMLEFT", -4, 0)
 			end
 
 			local function FixSkin()

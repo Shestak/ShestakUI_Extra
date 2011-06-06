@@ -2795,6 +2795,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ClassTrainerStatusBar:CreateBackdrop("Overlay")
 		ClassTrainerStatusBar:ClearAllPoints()
 		ClassTrainerStatusBar:Point("RIGHT", ClassTrainerFrameFilterDropDown, "LEFT", 10, 3)
+		ClassTrainerStatusBar.rankText:ClearAllPoints()
+		ClassTrainerStatusBar.rankText:SetPoint("CENTER", ClassTrainerStatusBar, "CENTER")
 	end
 
 	-- ItemSocketingUI
@@ -2912,8 +2914,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 
 			for i = 1, 7 do
-				local bag = _G["BankFrame".."Bag"..i]
-				local icon = _G["BankFrame".."Bag"..i.."IconTexture"]
+				local bag = _G["BankFrameBag"..i]
+				local icon = _G["BankFrameBag"..i.."IconTexture"]
+				local highlight = _G["BankFrameBag"..i.."HighlightFrameTexture"]
 
 				bag:SetNormalTexture(nil)
 				bag:StyleButton()
@@ -2923,6 +2926,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				icon:ClearAllPoints()
 				icon:Point("TOPLEFT", 2, -2)
 				icon:Point("BOTTOMRIGHT", -2, 2)
+
+				highlight:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				highlight:ClearAllPoints()
+				highlight:Point("TOPLEFT", 2, -2)
+				highlight:Point("BOTTOMRIGHT", -2, 2)
 			end
 		end
 
@@ -4279,6 +4287,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"QuestLogFramePushQuestButton",
 				"QuestLogFrameTrackButton",
 				"QuestLogFrameCancelButton",
+				"QuestLogFrameCompleteButton",
 			}
 
 			for _, button in pairs(buttons) do

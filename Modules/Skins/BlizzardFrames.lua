@@ -4290,6 +4290,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"QuestLogFrameCompleteButton",
 			}
 
+			QuestLogFrameCompleteButton:StripTextures()
 			for _, button in pairs(buttons) do
 				_G[button]:SkinButton()
 			end

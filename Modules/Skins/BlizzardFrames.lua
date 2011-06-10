@@ -2382,6 +2382,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		AuctionFrameAuctions.bg2:SetFrameLevel(AuctionFrameAuctions.bg2:GetFrameLevel() - 2)
 	end
 
+	-- Auctionator
 	if addon == "Blizzard_AuctionUI" and IsAddOnLoaded("Auctionator") then
 		local buttons = {
 			"Atr_Search_Button",
@@ -5032,6 +5033,50 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			_G["SpellBookFrameTabButton1"]:Point("TOPLEFT", _G["SpellBookFrame"], "BOTTOMLEFT", -5, 1)
 		end
 
+		-- Clique
+		if IsAddOnLoaded("Clique") then
+			CliqueConfig:StripTextures()
+			CliqueConfig:SetTemplate("Transparent")
+			CliqueConfig:ClearAllPoints()
+			CliqueConfig:SetPoint("TOPLEFT", SpellBookFrame.backdrop, "TOPRIGHT", 42, 0)
+			CliqueConfig.SetPoint = T.dummy
+
+			CliqueConfigPage1Column1:StripTextures()
+			CliqueConfigPage1Column2:StripTextures()
+			CliqueConfigInset:StripTextures()
+			CliqueConfigPage1_VSlider:StripTextures()
+
+			CliqueClickGrabber:StripTextures()
+			CliqueClickGrabber:CreateBackdrop("Overlay")
+			CliqueClickGrabber.backdrop:Point("TOPLEFT", -1, 0)
+			CliqueClickGrabber.backdrop:Point("BOTTOMRIGHT", 2, 3)
+
+			CliqueDialog:StripTextures()
+			CliqueDialog:SetTemplate("Transparent")
+
+			SkinCloseButton(CliqueConfigCloseButton)
+			SkinCloseButton(CliqueDialogCloseButton)
+
+			CliqueConfigPage1ButtonOptions:SkinButton(true)
+			CliqueConfigPage1ButtonOther:SkinButton(true)
+			CliqueConfigPage1ButtonSpell:SkinButton(true)
+			CliqueConfigPage2ButtonBinding:SkinButton()
+			CliqueConfigPage2ButtonSave:SkinButton(true)
+			CliqueConfigPage2ButtonCancel:SkinButton(true)
+			CliqueDialogButtonBinding:SkinButton()
+			CliqueDialogButtonAccept:SkinButton()
+
+			CliqueSpellTab:StripTextures()
+			CliqueSpellTab:GetNormalTexture():SetTexture("Interface\\AddOns\\Clique\\images\\icon_square_64")
+			CliqueSpellTab:GetNormalTexture():ClearAllPoints()
+			CliqueSpellTab:GetNormalTexture():Point("TOPLEFT", 2, -2)
+			CliqueSpellTab:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+			CliqueSpellTab:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			CliqueSpellTab:CreateBackdrop("Default")
+			CliqueSpellTab.backdrop:SetAllPoints()
+			CliqueSpellTab:StyleButton(true)
+		end
+
 		-- Character Frame
 		do
 			SkinCloseButton(CharacterFrameCloseButton)
@@ -5569,6 +5614,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		DressUpFrameUndressButton:SkinButton()
 		SkinCloseButton(RolePollPopupCloseButton)
 		SkinCloseButton(aLoadCloseButton)
+		SkinCloseButton(ItemRefCloseButton)
 		if C.bag.enable == true then
 			SkinCloseButton(Stuffing_CloseButtonBags)
 			Stuffing_CloseButtonBags:Size(Stuffing_CloseButtonBags:GetWidth() - 2, Stuffing_CloseButtonBags:GetHeight() - 2)

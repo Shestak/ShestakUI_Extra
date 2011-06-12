@@ -46,8 +46,4 @@ end
 ----------------------------------------------------------------------------------------
 if T.author == true then
 	C["extra_skins"].blizzard_frames = true
-	C["extra_skins"].minimap_buttons = true
-	if T.name == "Шестак" and T.realm == "Дракономор" then
-		C["extra_general"].archaeology = true
-	end
 end

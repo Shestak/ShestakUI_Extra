@@ -20,8 +20,8 @@ function stArch:OnLoad(self)
 	stArch['title']:SetPoint("TOP", self,"TOP", 0, 0)
 	stArch['title']['text'] = stArch['title']:CreateFontString()
 	stArch['title']['text']:SetPoint("CENTER", stArch['title'], "CENTER", 0, 0)
-	stArch['title']['text']:SetJustifyH("CENTER") 
-	stArch['title']['text']:SetJustifyV("CENTER") 
+	stArch['title']['text']:SetJustifyH("CENTER")
+	stArch['title']['text']:SetJustifyV("CENTER")
 	stArch['title']['text']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 	stArch['title']['text']:SetText(PROFESSIONS_ARCHAEOLOGY)
 
@@ -32,8 +32,8 @@ function stArch:OnLoad(self)
 	stArch['close']:SetPoint("TOPRIGHT", self,"TOPRIGHT", 0, 0)
 	stArch['close']['text'] = stArch['close']:CreateFontString()
 	stArch['close']['text']:SetPoint("CENTER", stArch['close'], "CENTER", 0, -4)
-	stArch['close']['text']:SetJustifyH("CENTER") 
-	stArch['close']['text']:SetJustifyV("CENTER") 
+	stArch['close']['text']:SetJustifyH("CENTER")
+	stArch['close']['text']:SetJustifyV("CENTER")
 	stArch['close']['text']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 	stArch['close']['text']:SetText("x")
 	stArch['close']:HookScript("OnEnter", function(self) self['text']:SetTextColor(T.color.r, T.color.g, T.color.b) end) 
@@ -520,9 +520,17 @@ end)
 local b = CreateFrame("Button", nil, UIParent)
 b:SetTemplate("ClassColor")
 if C.actionbar.toggle_mode == true then
-	b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -21, 0)
+	if _G["SwitchLayout"] and _G["SwitchLayout"]:IsShown() then
+		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -42, 0)
+	else
+		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -21, 0)
+	end
 else
-	b:Point("TOPRIGHT", Minimap, "TOPRIGHT", 0, 0)
+	if _G["SwitchLayout"] and _G["SwitchLayout"]:IsShown() then
+		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -21, 0)
+	else
+		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", 0, 0)
+	end
 end
 b:Width(20)
 b:Height(20)

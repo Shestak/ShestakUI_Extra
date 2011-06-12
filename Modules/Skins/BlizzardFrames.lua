@@ -327,6 +327,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		CalendarContextMenu:SetTemplate("Transparent")
 		CalendarContextMenu.SetBackdropColor = T.dummy
 		CalendarContextMenu.SetBackdropBorderColor = T.dummy
+		CalendarInviteStatusContextMenu:SetTemplate("Transparent")
 
 		-- Boost frame levels
 		for i = 1, 42 do
@@ -439,6 +440,12 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		CalendarViewEventInviteList:SetTemplate("Overlay")
 		CalendarViewEventInviteListSection:StripTextures()
 		SkinCloseButton(CalendarViewEventCloseButton)
+
+		CalendarEventPickerFrame:StripTextures()
+		CalendarEventPickerFrame:SetTemplate("Transparent")
+		CalendarEventPickerTitleFrame:StripTextures()
+		SkinScrollBar(CalendarEventPickerScrollBar)
+		CalendarEventPickerCloseButton:SkinButton(true)
 
 		local buttons = {
 			"CalendarViewEventAcceptButton",
@@ -2857,8 +2864,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		-- Bank/Container Frame
 		if C.bag.enable ~= true or (not IsAddOnLoaded("cargBags") or not IsAddOnLoaded("cargBags_Nivaya")) then
 			-- Container Frame
-			BackpackTokenFrame:StripTextures()
-
 			for i = 1, NUM_CONTAINER_FRAMES do
 				local frame = _G["ContainerFrame"..i]
 				local close = _G["ContainerFrame"..i.."CloseButton"]
@@ -2884,6 +2889,17 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 					quest:SetVertexColor(1, 1, 0)
 					quest:SetTexCoord(0.05, 0.955, 0.05, 0.955)
+				end
+
+				if i == 1 then
+					BackpackTokenFrame:StripTextures(true)
+					for i = 1, MAX_WATCHED_TOKENS do
+						_G["BackpackTokenFrameToken"..i].icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+						_G["BackpackTokenFrameToken"..i]:CreateBackdrop("Default")
+						_G["BackpackTokenFrameToken"..i].backdrop:Point("TOPLEFT", _G["BackpackTokenFrameToken"..i].icon, "TOPLEFT", -2, 2)
+						_G["BackpackTokenFrameToken"..i].backdrop:Point("BOTTOMRIGHT", _G["BackpackTokenFrameToken"..i].icon, "BOTTOMRIGHT", 2, -2)
+						_G["BackpackTokenFrameToken"..i].icon:Point("LEFT", _G["BackpackTokenFrameToken"..i].count, "RIGHT", 2, 0)
+					end
 				end
 			end
 
@@ -2928,11 +2944,84 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				icon:Point("TOPLEFT", 2, -2)
 				icon:Point("BOTTOMRIGHT", -2, 2)
 
-				highlight:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-				highlight:ClearAllPoints()
-				highlight:Point("TOPLEFT", 2, -2)
-				highlight:Point("BOTTOMRIGHT", -2, 2)
+				if highlight and not highlight.skinned then
+					highlight:SetTexture(1, 1, 1, 0.3)
+					highlight.SetTexture = T.dummy
+					highlight:ClearAllPoints()
+					highlight:Point("TOPLEFT", 2, -2)
+					highlight:Point("BOTTOMRIGHT", -2, 2)
+					highlight.skinned = true
+				end
 			end
+
+			-- Frame Anchors
+			hooksecurefunc("updateContainerFrameAnchors", function()
+				local frame, xOffset, yOffset, screenHeight, freeScreenHeight, leftMostPoint, column
+				local screenWidth = GetScreenWidth()
+				local containerScale = 1
+				local leftLimit = 0
+
+				if BankFrame:IsShown() then
+					leftLimit = BankFrame:GetRight() - 25
+				end
+
+				while containerScale > CONTAINER_SCALE do
+					screenHeight = GetScreenHeight() / containerScale
+					xOffset = CONTAINER_OFFSET_X / containerScale
+					yOffset = CONTAINER_OFFSET_Y / containerScale
+					freeScreenHeight = screenHeight - yOffset
+					leftMostPoint = screenWidth - xOffset
+					column = 1
+					local frameHeight
+					for index, frameName in ipairs(ContainerFrame1.bags) do
+						frameHeight = _G[frameName]:GetHeight()
+						if freeScreenHeight < frameHeight then
+							column = column + 1
+							leftMostPoint = screenWidth - (column * CONTAINER_WIDTH * containerScale) - xOffset
+							freeScreenHeight = screenHeight - yOffset
+						end
+						freeScreenHeight = freeScreenHeight - frameHeight - VISIBLE_CONTAINER_SPACING
+					end
+					if leftMostPoint < leftLimit then
+						containerScale = containerScale - 0.01
+					else
+						break
+					end
+				end
+
+				if containerScale < CONTAINER_SCALE then
+					containerScale = CONTAINER_SCALE
+				end
+
+				screenHeight = GetScreenHeight() / containerScale
+				xOffset = CONTAINER_OFFSET_X / containerScale
+				yOffset = CONTAINER_OFFSET_Y / containerScale
+				freeScreenHeight = screenHeight - yOffset
+				column = 0
+
+				local bagsPerColumn = 0
+				for index, frameName in ipairs(ContainerFrame1.bags) do
+					frame = _G[frameName]
+					frame:SetScale(1)
+					if index == 1 then
+						frame:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -21, 22)
+						bagsPerColumn = bagsPerColumn + 1
+					elseif freeScreenHeight < frame:GetHeight() then
+						column = column + 1
+						freeScreenHeight = screenHeight - yOffset
+						if column > 1 then
+							frame:SetPoint("BOTTOMRIGHT", ContainerFrame1.bags[(index - bagsPerColumn) - 1], "BOTTOMLEFT", -CONTAINER_SPACING, 0)
+						else
+							frame:SetPoint("BOTTOMRIGHT", ContainerFrame1.bags[index - bagsPerColumn], "BOTTOMLEFT", -CONTAINER_SPACING, 0)
+						end
+						bagsPerColumn = 0
+					else
+						frame:SetPoint("BOTTOMRIGHT", ContainerFrame1.bags[index - 1], "TOPRIGHT", 0, CONTAINER_SPACING)
+						bagsPerColumn = bagsPerColumn + 1
+					end
+					freeScreenHeight = freeScreenHeight - frame:GetHeight() - VISIBLE_CONTAINER_SPACING
+				end
+			end)
 		end
 
 		-- Achievement Popup Frames
@@ -5066,15 +5155,30 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			CliqueDialogButtonBinding:SkinButton()
 			CliqueDialogButtonAccept:SkinButton()
 
-			CliqueSpellTab:StripTextures()
-			CliqueSpellTab:GetNormalTexture():SetTexture("Interface\\AddOns\\Clique\\images\\icon_square_64")
+			CliqueSpellTab:GetRegions():SetSize(0.1, 0.1)
+			CliqueSpellTab:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			CliqueSpellTab:GetNormalTexture():ClearAllPoints()
 			CliqueSpellTab:GetNormalTexture():Point("TOPLEFT", 2, -2)
 			CliqueSpellTab:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
-			CliqueSpellTab:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			CliqueSpellTab:CreateBackdrop("Default")
 			CliqueSpellTab.backdrop:SetAllPoints()
 			CliqueSpellTab:StyleButton(true)
+
+			CliqueConfigPage1:SetScript("OnShow", function(self)
+				for i = 1, 12 do
+					if _G["CliqueRow"..i] then
+						_G["CliqueRow"..i.."Icon"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+						_G["CliqueRow"..i.."Bind"]:ClearAllPoints()
+						if _G["CliqueRow"..i] == CliqueRow1 then
+							_G["CliqueRow"..i.."Bind"]:SetPoint("RIGHT", _G["CliqueRow"..i], 8, 0)
+						else
+							_G["CliqueRow"..i.."Bind"]:SetPoint("RIGHT", _G["CliqueRow"..i], -8, 0)
+						end
+					end
+				end
+				CliqueRow1:ClearAllPoints()
+				CliqueRow1:SetPoint("TOPLEFT", 5, -(CliqueConfigPage1Column1:GetHeight() + 3))
+			end)
 		end
 
 		-- Character Frame

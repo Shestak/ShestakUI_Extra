@@ -3782,6 +3782,18 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 				EncounterJournalEncounterFrameInfoBossTab:SetScale(0.75)
 				EncounterJournalEncounterFrameInfoLootTab:SetScale(0.75)
+
+				EncounterJournalEncounterFrameInfoLootScrollFrameFilter:SetScript("OnShow", function()
+					EncounterJournalEncounterFrameInfoBossTab:ClearAllPoints()
+					EncounterJournalEncounterFrameInfoBossTab:Point("LEFT", EncounterJournalEncounterFrameInfoLootScrollFrameFilter, "RIGHT", 0, 0)
+					EncounterJournalEncounterFrameInfoEncounterTile:Hide()
+				end)
+
+				EncounterJournalEncounterFrameInfoLootScrollFrameFilter:SetScript("OnHide", function()
+					EncounterJournalEncounterFrameInfoBossTab:ClearAllPoints()
+					EncounterJournalEncounterFrameInfoBossTab:Point("LEFT", EncounterJournalEncounterFrameInfoEncounterTile, "RIGHT", -10, 4)
+					EncounterJournalEncounterFrameInfoEncounterTile:Show()
+				end)
 			end)
 
 			SkinScrollBar(EncounterJournalInstanceSelectScrollFrameScrollBar)
@@ -4486,7 +4498,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			QuestLogFrame:HookScript("OnShow", function()
 				QuestLogScrollFrame:Height(QuestLogScrollFrame:GetHeight() - 3)
-				QuestLogDetailScrollFrame:Height(QuestLogScrollFrame:GetHeight() - 3)
+				QuestLogDetailScrollFrame:Height(QuestLogDetailScrollFrame:GetHeight() - 3)
 			end)
 		end
 
@@ -5242,7 +5254,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			CharacterModelFrameRotateRightButton:Point("TOPLEFT", CharacterModelFrameRotateLeftButton, "TOPRIGHT", 4, 0)
 
 			-- Swap item flyout frame (shown when holding alt over a slot)
-			PaperDollFrameItemFlyout:HookScript("OnShow", function()
+			local function SkinItemFlyouts()
 				PaperDollFrameItemFlyoutButtons:StripTextures()
 
 				for i = 1, PDFITEMFLYOUT_MAXITEMS do
@@ -5264,7 +5276,10 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 						end
 					end
 				end
-			end)
+			end
+
+			PaperDollFrameItemFlyout:HookScript("OnShow", SkinItemFlyouts)
+			hooksecurefunc("PaperDollItemSlotButton_UpdateFlyout", SkinItemFlyouts)
 
 			-- Icon in upper right corner of character frame
 			CharacterFramePortrait:Kill()

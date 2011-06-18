@@ -11,7 +11,7 @@ local f
 SlashCmdList.EA = function()
 	if f then
 		f:Hide()
-		f = nil		
+		f = nil
 	else
 		f = CreateFrame("Frame", nil, UIParent) 
 		f:SetAllPoints(UIParent)
@@ -36,6 +36,6 @@ SlashCmdList.EA = function()
 			end
 			t:SetPoint("TOPLEFT", f, "TOPLEFT", 0, -i * h)
 			t:SetPoint("BOTTOMRIGHT", f, "TOPRIGHT", 0, -i * h - 1)
-		end	
+		end
 	end
 end

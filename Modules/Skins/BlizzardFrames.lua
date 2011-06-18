@@ -2008,7 +2008,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				frame:Point("TOPLEFT", icon, "TOPLEFT", 0, 0)
 				frame:Point("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 0, 0)
 			end
-		end	
+		end
 
 		local function PetTalentButtons(self, first, i)
 			local button = _G["PlayerTalentFramePetPanelTalent"..i]
@@ -2039,7 +2039,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				button:SetFrameLevel(button:GetFrameLevel() + 1)
 				button:CreateBackdrop("Default", true)
 			end
-		end	
+		end
 
 		PetInfoIcon(nil, true)
 		PetHeaderIcon(nil, true)
@@ -3457,7 +3457,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			SkinEditBox(HelpFrameKnowledgebaseSearchBox)
 			SkinScrollBar(HelpFrameKnowledgebaseScrollFrameScrollBar)
 			SkinCloseButton(HelpFrameCloseButton, HelpFrame.backdrop)
-			SkinCloseButton(HelpFrameKnowledgebaseErrorFrameCloseButton, HelpFrameKnowledgebaseErrorFrame.backdrop)			
+			SkinCloseButton(HelpFrameKnowledgebaseErrorFrameCloseButton, HelpFrameKnowledgebaseErrorFrame.backdrop)
 
 			-- Hearth Stone Button
 			HelpFrameCharacterStuckHearthstone:StyleButton()

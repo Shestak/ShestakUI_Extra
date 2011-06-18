@@ -16,7 +16,7 @@ MAGE1 = {
 	82930,	-- Arcane Tactics
 	1459,	-- Arcane Intellect
 	543,	-- Mage Ward
-}	
+}
 
 MAGE2 = {
 	34913,	-- Molten Armor
@@ -29,7 +29,7 @@ MAGE3 = {
 	1459,	-- Arcane Intellect
 	543,	-- Mage Ward
 	11426,	-- Ice Barrier
-}		
+}
 
 PRIEST1 = {
 	79107,	-- Shadow Protection
@@ -165,8 +165,8 @@ function CheckBuffs()
 			if duration == nil or duration > 1.5 then return end
 			frame:SetScript("OnUpdate", WaitForGC)
 		end
-	end		
-end	
+	end
+end
 
 -- Events that will trigger the Main Function
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")

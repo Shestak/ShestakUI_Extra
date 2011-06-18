@@ -291,7 +291,7 @@ function SpellBinder:makeFramesList()
 				DB.frames[frame] = checked
 				if checked then
 					for h, g in pairs(DB.keys) do
-						if _G[frame]:CanChangeAttribute() or _G[frame]:CanChangeProtectedState() then	
+						if _G[frame]:CanChangeAttribute() or _G[frame]:CanChangeProtectedState() then
 							if _G[frame]:GetAttribute(h) ~= "menu" then
 								_G[frame]:SetAttribute(h, g)
 							end

@@ -238,17 +238,17 @@ load:SetScript("OnEvent", function(self, event)
 
 		-- Set up scripts to handle event appropriately
 		if i == 5 then
-			box:SetScript("OnEscapePressed", function(self)	self:ClearFocus() UpdateAlphaText() end)
+			box:SetScript("OnEscapePressed", function(self) self:ClearFocus() UpdateAlphaText() end)
 			box:SetScript("OnEnterPressed", function(self) self:ClearFocus() UpdateAlphaText() end)
 			box:SetScript("OnTextChanged", function(self) UpdateAlpha(self) end)
 		else
-			box:SetScript("OnEscapePressed", function(self)	self:ClearFocus() UpdateColorTexts() end)
+			box:SetScript("OnEscapePressed", function(self) self:ClearFocus() UpdateColorTexts() end)
 			box:SetScript("OnEnterPressed", function(self) self:ClearFocus() UpdateColorTexts() end)
 			box:SetScript("OnTextChanged", function(self) UpdateColor(self) end)
 		end
 
 		box:SetScript("OnEditFocusGained", function(self) self:SetCursorPosition(0) self:HighlightText() end)
-		box:SetScript("OnEditFocusLost", function(self)	self:HighlightText(0, 0) end)
+		box:SetScript("OnEditFocusLost", function(self) self:HighlightText(0, 0) end)
 		box:SetScript("OnTextSet", function(self) self:ClearFocus() end)
 		box:Show()
 	end

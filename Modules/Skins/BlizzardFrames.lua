@@ -2602,12 +2602,9 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			"MacroFrameTab2",
 			"MacroPopupOkayButton",
 			"MacroPopupCancelButton",
+			"MacroSaveButton",
+			"MacroCancelButton",
 		}
-
-		if T.PTRVersion() then
-			tinsert(buttons, "MacroSaveButton")
-			tinsert(buttons, "MacroCancelButton")
-		end
 
 		for i = 1, #buttons do
 			_G[buttons[i]]:StripTextures()
@@ -3449,9 +3446,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			HelpFrameKnowledgebaseSearchBox:ClearAllPoints()
 			HelpFrameKnowledgebaseSearchBox:Point("TOPLEFT", HelpFrameMainInset, "TOPLEFT", 13, -10)
 			HelpFrameKnowledgebaseNavBarOverlay:Kill()
-			if T.PTRVersion() then
-				HelpFrameKnowledgebaseNavBar:StripTextures()
-			end
+			HelpFrameKnowledgebaseNavBar:StripTextures()
 			HelpFrame:StripTextures(true)
 			HelpFrame:CreateBackdrop("Transparent")
 			SkinEditBox(HelpFrameKnowledgebaseSearchBox)
@@ -3740,7 +3735,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		-- Encounter Journal
-		if T.PTRVersion() then
 		do
 			EncounterJournal:StripTextures(true)
 			EncounterJournal:CreateBackdrop("Transparent")
@@ -3807,7 +3801,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			EncounterJournalEncounterFrameInfoLootTab:GetPushedTexture():SetTexture(nil)
 			EncounterJournalEncounterFrameInfoLootTab:GetDisabledTexture():SetTexture(nil)
 			EncounterJournalEncounterFrameInfoLootTab:GetHighlightTexture():SetTexture(nil)
-		end
 		end
 
 		-- WorldMap
@@ -4530,10 +4523,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"PVPBannerFrameAcceptButton",
 			}
 
-			if not T.PTRVersion() then
-				tinsert(buttons, "PVPHonorFrameWarGameButton")
-			end
-
 			for i = 1, #buttons do
 				_G[buttons[i]]:StripTextures()
 				_G[buttons[i]]:SkinButton()
@@ -4614,21 +4603,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:Point("BOTTOMRIGHT", PVPTeamManagementFrameInvalidTeamFrame, "BOTTOMRIGHT")
 			PVPTeamManagementFrameInvalidTeamFrame.backdrop:SetFrameLevel(PVPTeamManagementFrameInvalidTeamFrame:GetFrameLevel())
 
-			if not T.PTRVersion() then
-				PVPFrameConquestBar:StripTextures()
-				PVPFrameConquestBar:SetStatusBarTexture(C.media.texture)
-				PVPFrameConquestBar:CreateBackdrop("Overlay")
-			else
-				PVPFrameConquestBarLeft:Kill()
-				PVPFrameConquestBarRight:Kill()
-				PVPFrameConquestBarMiddle:Kill()
-				PVPFrameConquestBarBG:Kill()
-				PVPFrameConquestBarShadow:Kill()
-				PVPFrameConquestBar.progress:SetTexture(C.media.texture)
-				PVPFrameConquestBar:CreateBackdrop("Overlay")
-				PVPFrameConquestBar.backdrop:Point("TOPLEFT", PVPFrameConquestBar.progress, "TOPLEFT", -2, 2)
-				PVPFrameConquestBar.backdrop:Point("BOTTOMRIGHT", PVPFrameConquestBar, "BOTTOMRIGHT", -2, 2)
-			end
+			PVPFrameConquestBarLeft:Kill()
+			PVPFrameConquestBarRight:Kill()
+			PVPFrameConquestBarMiddle:Kill()
+			PVPFrameConquestBarBG:Kill()
+			PVPFrameConquestBarShadow:Kill()
+			PVPFrameConquestBar.progress:SetTexture(C.media.texture)
+			PVPFrameConquestBar:CreateBackdrop("Overlay")
+			PVPFrameConquestBar.backdrop:Point("TOPLEFT", PVPFrameConquestBar.progress, "TOPLEFT", -2, 2)
+			PVPFrameConquestBar.backdrop:Point("BOTTOMRIGHT", PVPFrameConquestBar, "BOTTOMRIGHT", -2, 2)
 
 			PVPBannerFrame:CreateBackdrop("Transparent")
 			PVPBannerFrame.backdrop:Point("TOPLEFT", PVPBannerFrame, "TOPLEFT")
@@ -4659,17 +4642,15 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			PVPColorPickerButton3:Height(PVPColorPickerButton1:GetHeight())
 
 			-- War Games
-			if T.PTRVersion() then
-				WarGameStartButton:SkinButton(true)
-				WarGamesFrame:StripTextures()
-				WarGamesFrameInfoScrollFrameScrollBar:StripTextures()
-				SkinScrollBar(WarGamesFrameScrollFrameScrollBar)
+			WarGameStartButton:SkinButton(true)
+			WarGamesFrame:StripTextures()
+			WarGamesFrameInfoScrollFrameScrollBar:StripTextures()
+			SkinScrollBar(WarGamesFrameScrollFrameScrollBar)
 
-				WarGameStartButton:ClearAllPoints()
-				WarGameStartButton:Point("LEFT", PVPFrameLeftButton, "RIGHT", 2, 0)
+			WarGameStartButton:ClearAllPoints()
+			WarGameStartButton:Point("LEFT", PVPFrameLeftButton, "RIGHT", 2, 0)
 
-				WarGamesFrameDescription:SetTextColor(1, 1, 1)
-			end
+			WarGamesFrameDescription:SetTextColor(1, 1, 1)
 
 			-- Cancel Button FFSlocal
 			local f = PVPBannerFrameCancelButton
@@ -4686,14 +4667,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			f.backdrop:SetFrameLevel(f:GetFrameLevel() - 1)
 
 			-- Bottom Tabs
-			if not T.PTRVersion() then
-				for i = 1, 3 do
-					SkinTab(_G["PVPFrameTab"..i])
-				end
-			else
-				for i = 1, 4 do
-					SkinTab(_G["PVPFrameTab"..i])
-				end
+			for i = 1, 4 do
+				SkinTab(_G["PVPFrameTab"..i])
 			end
 
 			-- Reposition tabs
@@ -5444,7 +5419,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				SkinCheckBox(ReputationDetailAtWarCheckBox)
 			end
 			ReputationFrame:HookScript("OnShow", UpdateFactionSkins)
-			hooksecurefunc("ReputationFrame_OnEvent", UpdateFactionSkins)
+			hooksecurefunc("ExpandFactionHeader", UpdateFactionSkins)
+			hooksecurefunc("CollapseFactionHeader", UpdateFactionSkins)
 
 			-- Currency
 			TokenFrame:HookScript("OnShow", function()
@@ -5619,10 +5595,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 				"HelpPanelColorblindMode",
 				"HelpPanelMovePad",
 			}
-
-			if not T.PTRVersion() then
-				tinsert(checkbox, "DisplayPanelColorblindMode")
-			end
 
 			for i = 1, getn(checkbox) do
 				local button = _G["InterfaceOptions"..checkbox[i]]

@@ -12,14 +12,12 @@ local microbuttons = {
 	"PVPMicroButton",
 	"GuildMicroButton",
 	"LFDMicroButton",
+	"RaidMicroButton",
 	"HelpMicroButton",
 	"MainMenuMicroButton",
-	"AchievementMicroButton"
+	"AchievementMicroButton",
+	"EJMicroButton"
 }
-if T.PTRVersion() then
-	tinsert(microbuttons, "EJMicroButton")
-	tinsert(microbuttons, "RaidMicroButton")
-end
 
 local f = CreateFrame("Frame", "MicroAnchor", UIParent)
 MicroAnchor.shown = false
@@ -123,11 +121,7 @@ do
 end
 
 MicroAnchor:Point(unpack(C.extra_position.micro_menu))
-if T.PTRVersion() then
-	MicroAnchor:Width(((CharacterMicroButton:GetWidth() + 4) * 9) + 12)
-else
-	MicroAnchor:Width(((CharacterMicroButton:GetWidth() + 4) * 7) + 2)
-end
+MicroAnchor:Width(((CharacterMicroButton:GetWidth() + 4) * 9) + 12)
 MicroAnchor:Height(CharacterMicroButton:GetHeight() - 28)
 tinsert(T.MoverFrames, MicroAnchor)
 

@@ -1312,6 +1312,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		SkinCloseButton(GuildFrameCloseButton)
 
 		local striptextures = {
+			"GuildPerksToggleButton",
 			"GuildNewPerksFrame",
 			"GuildFrameInset",
 			"GuildFrameBottomInset",
@@ -2284,25 +2285,31 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			local button = _G["BrowseButton"..i]
 			local icon = _G["BrowseButton"..i.."Item"]
 
-			_G["BrowseButton"..i.."ItemIconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
-			_G["BrowseButton"..i.."ItemIconTexture"]:ClearAllPoints()
-			_G["BrowseButton"..i.."ItemIconTexture"]:Point("TOPLEFT", 2, -2)
-			_G["BrowseButton"..i.."ItemIconTexture"]:Point("BOTTOMRIGHT", -2, 2)
+			if _G["BrowseButton"..i.."ItemIconTexture"] then
+				_G["BrowseButton"..i.."ItemIconTexture"]:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				_G["BrowseButton"..i.."ItemIconTexture"]:ClearAllPoints()
+				_G["BrowseButton"..i.."ItemIconTexture"]:Point("TOPLEFT", 2, -2)
+				_G["BrowseButton"..i.."ItemIconTexture"]:Point("BOTTOMRIGHT", -2, 2)
+			end
 
-			icon:StyleButton()
-			--TODO: Find a better method to ensure that the icon:GetNormalTexture doesn't return after clicking
-			icon:HookScript("OnUpdate", function() icon:GetNormalTexture():Kill() end)
+			if icon then
+				icon:StyleButton()
+				--TODO: Find a better method to ensure that the icon:GetNormalTexture doesn't return after clicking
+				icon:HookScript("OnUpdate", function() icon:GetNormalTexture():Kill() end)
 
-			icon:CreateBackdrop("Default")
-			icon.backdrop:SetAllPoints()
+				icon:CreateBackdrop("Default")
+				icon.backdrop:SetAllPoints()
+			end
 
-			button:StripTextures()
-			button:StyleButton()
-			_G["BrowseButton"..i.."Highlight"] = button:GetHighlightTexture()
-			button:GetHighlightTexture():ClearAllPoints()
-			button:GetHighlightTexture():Point("TOPLEFT", icon, "TOPRIGHT", 2, 0)
-			button:GetHighlightTexture():SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 5)
-			button:GetPushedTexture():SetAllPoints(button:GetHighlightTexture())
+			if button then
+				button:StripTextures()
+				button:StyleButton()
+				_G["BrowseButton"..i.."Highlight"] = button:GetHighlightTexture()
+				button:GetHighlightTexture():ClearAllPoints()
+				button:GetHighlightTexture():Point("TOPLEFT", icon, "TOPRIGHT", 2, 0)
+				button:GetHighlightTexture():SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 5)
+				button:GetPushedTexture():SetAllPoints(button:GetHighlightTexture())
+			end
 		end
 
 		for i = 1, NUM_AUCTIONS_TO_DISPLAY do

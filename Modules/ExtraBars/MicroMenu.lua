@@ -31,9 +31,6 @@ local function CheckFade(self, elapsed)
 		local b = _G[button]
 		if b.mouseover == true then
 			mouseactive = true
-			if GameTooltip:IsShown() then
-				GameTooltip:Hide()
-			end
 		end
 	end
 
@@ -79,17 +76,17 @@ for i, button in pairs(microbuttons) do
 	f:Point("TOPRIGHT", m, "TOPRIGHT", -2, -28)
 	f:SetTemplate("Default", true)
 	m.frame = f
-	
+
 	pushed:SetTexCoord(0.17, 0.87, 0.5, 0.908)
 	pushed:ClearAllPoints()
 	pushed:Point("TOPLEFT", m.frame, "TOPLEFT", 2, -2)
 	pushed:Point("BOTTOMRIGHT", m.frame, "BOTTOMRIGHT", -2, 2)
-	
+
 	normal:SetTexCoord(0.17, 0.87, 0.5, 0.908)
 	normal:ClearAllPoints()
 	normal:Point("TOPLEFT", m.frame, "TOPLEFT", 2, -2)
 	normal:Point("BOTTOMRIGHT", m.frame, "BOTTOMRIGHT", -2, 2)
-	
+
 	if disabled then
 		disabled:SetTexCoord(0.17, 0.87, 0.5, 0.908)
 		disabled:ClearAllPoints()
@@ -126,6 +123,6 @@ MicroAnchor:Height(CharacterMicroButton:GetHeight() - 28)
 tinsert(T.MoverFrames, MicroAnchor)
 
 CharacterMicroButton:ClearAllPoints()
-CharacterMicroButton:Point("BOTTOMLEFT", MicroAnchor, "BOTTOMLEFT", 0,  0)
+CharacterMicroButton:Point("BOTTOMLEFT", MicroAnchor, "BOTTOMLEFT", -2, 0)
 CharacterMicroButton.SetPoint = T.dummy
 CharacterMicroButton.ClearAllPoints = T.dummy

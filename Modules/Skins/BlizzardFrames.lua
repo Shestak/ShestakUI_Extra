@@ -4396,6 +4396,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			for _, button in pairs(buttons) do
 				_G[button]:SkinButton()
 			end
+			QuestLogFrameAbandonButton:ClearAllPoints()
+			QuestLogFrameAbandonButton:Point("BOTTOMLEFT", QuestLogFrame.backdrop, "BOTTOMLEFT", 4, 4)
 			QuestLogFramePushQuestButton:Point("LEFT", QuestLogFrameAbandonButton, "RIGHT", 3, 0)
 			QuestLogFramePushQuestButton:Point("RIGHT", QuestLogFrameTrackButton, "LEFT", -3, 0)
 			QuestLogFrameCancelButton:Point("BOTTOMRIGHT", QuestLogFrame.backdrop, "BOTTOMRIGHT", -4, 4)

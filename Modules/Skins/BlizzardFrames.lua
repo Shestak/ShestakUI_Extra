@@ -153,32 +153,22 @@ local function SkinCheckBox(frame)
 	frame.SetHighlightTexture = T.dummy
 end
 
-local function SkinCloseButton(f, point)
-	if f.SetNormalTexture then f:SetNormalTexture("") end
-	if f.SetHighlightTexture then f:SetHighlightTexture("")	end
-	if f.SetPushedTexture then f:SetPushedTexture("") end
-	if f.SetDisabledTexture then f:SetDisabledTexture("") end
-
+local function SkinCloseButton(f, point, text)
+	f:StripTextures()
 	f:SetTemplate("Overlay")
 	f:Size(18, 18)
 
-	local text = f:FontString(nil, C.media.normal_font, 17)
-	text:SetPoint("CENTER", 0, 1)
-	text:SetText("x")
+	if not text then text = "x" end
+	if not f.text then
+		f.text = f:FontString(nil, C.media.normal_font, 17)
+		f.text:SetPoint("CENTER", 0, 1)
+		f.text:SetText(text)
+	end
 
 	if point then
 		f:Point("TOPRIGHT", point, "TOPRIGHT", -4, -4)
 	else
 		f:Point("TOPRIGHT", -4, -4)
-	end
-
-	for i = 1, f:GetNumRegions() do
-		local region = select(i, f:GetRegions())
-		if region:GetObjectType() == "Texture" then
-			if region:GetTexture() == "Interface\\DialogFrame\\UI-DialogBox-Corner" then
-				region:Kill()
-			end
-		end
 	end
 
 	f:HookScript("OnEnter", T.SetModifiedBackdrop)
@@ -2294,7 +2284,6 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			if icon then
 				icon:StyleButton()
-				--TODO: Find a better method to ensure that the icon:GetNormalTexture doesn't return after clicking
 				icon:HookScript("OnUpdate", function() icon:GetNormalTexture():Kill() end)
 
 				icon:CreateBackdrop("Default")
@@ -3458,6 +3447,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			HelpFrame:CreateBackdrop("Transparent")
 			SkinEditBox(HelpFrameKnowledgebaseSearchBox)
 			SkinScrollBar(HelpFrameKnowledgebaseScrollFrameScrollBar)
+			SkinScrollBar(HelpFrameTicketScrollFrameScrollBar)
 			SkinCloseButton(HelpFrameCloseButton, HelpFrame.backdrop)
 			SkinCloseButton(HelpFrameKnowledgebaseErrorFrameCloseButton, HelpFrameKnowledgebaseErrorFrame.backdrop)
 
@@ -3798,6 +3788,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end)
 
 			SkinScrollBar(EncounterJournalInstanceSelectScrollFrameScrollBar)
+			SkinScrollBar(EncounterJournalEncounterFrameInfoDetailsScrollFrameScrollBar)
+			SkinScrollBar(EncounterJournalEncounterFrameInfoLootScrollFrameScrollBar)
 
 			EncounterJournalEncounterFrameInfoBossTab:GetNormalTexture():SetTexture(nil)
 			EncounterJournalEncounterFrameInfoBossTab:GetPushedTexture():SetTexture(nil)
@@ -3820,8 +3812,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			WorldMapDetailFrame.backdrop:SetFrameLevel(WorldMapDetailFrame:GetFrameLevel() - 2)
 
 			SkinCloseButton(WorldMapFrameCloseButton)
-			SkinCloseButton(WorldMapFrameSizeDownButton)
-			SkinCloseButton(WorldMapFrameSizeUpButton)
+			SkinCloseButton(WorldMapFrameSizeDownButton, nil, "-")
+			SkinCloseButton(WorldMapFrameSizeUpButton, nil, "+")
 
 			SkinDropDownBox(WorldMapLevelDropDown)
 			SkinDropDownBox(WorldMapZoneMinimapDropDown)
@@ -5712,6 +5704,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		OpenAllButton:SkinButton()
 		OpenAllButton2:SkinButton()
 		DressUpFrameUndressButton:SkinButton()
+		SkinCloseButton(StaticPopup1CloseButton, nil, "-")
 		SkinCloseButton(RolePollPopupCloseButton)
 		SkinCloseButton(aLoadCloseButton)
 		SkinCloseButton(ItemRefCloseButton)

@@ -1909,7 +1909,7 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		for i = 1, 3 do
 			TalentSummaryClean(i)
 			TalentHeaderIcon(nil, true, i)
-			for j = 1, 4 do
+			for j = 1, NUM_TALENT_COLUMNS do
 				TalentSummaryButtons(nil, true, true, i, j)
 				TalentSummaryButtons(nil, true, false, i, j)
 			end
@@ -2087,6 +2087,11 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		GlyphFrameClearInfoFrame.backdrop:SetAllPoints()
 		GlyphFrameClearInfoFrame:StyleButton()
 		GlyphFrameClearInfoFrame:Size(25, 25)
+
+		GlyphFrame.levelOverlay1:SetParent(GlyphFrameSparkleFrame)
+		GlyphFrame.levelOverlayText1:SetParent(GlyphFrameSparkleFrame)
+		GlyphFrame.levelOverlay2:SetParent(GlyphFrameSparkleFrame)
+		GlyphFrame.levelOverlayText2:SetParent(GlyphFrameSparkleFrame)
 
 		SkinScrollBar(GlyphFrameScrollFrameScrollBar)
 
@@ -2790,6 +2795,8 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 		ClassTrainerFrameSkillStepButton.backdrop:Point("TOPLEFT", ClassTrainerFrameSkillStepButton.icon, "TOPLEFT", -2, 2)
 		ClassTrainerFrameSkillStepButton.backdrop:Point("BOTTOMRIGHT", ClassTrainerFrameSkillStepButton.icon, "BOTTOMRIGHT", 2, -2)
 		ClassTrainerFrameSkillStepButton.icon:SetParent(ClassTrainerFrameSkillStepButton.backdrop)
+		ClassTrainerFrameSkillStepButtonHighlight:SetTexture(1, 1, 1, 0.3)
+		ClassTrainerFrameSkillStepButton.selectedTex:SetTexture(1, 1, 1, 0.3)
 
 		ClassTrainerStatusBar:StripTextures()
 		ClassTrainerStatusBar:SetStatusBarTexture(C.media.texture)
@@ -5033,8 +5040,13 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 
 			for _, button in pairs(professionbuttons) do
 				local icon = _G[button.."IconTexture"]
+				local rank = _G[button.."SubSpellName"]
 				local button = _G[button]
 				button:StripTextures()
+
+				if rank then
+					rank:SetTextColor(1, 1, 1)
+				end
 
 				if icon then
 					icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)

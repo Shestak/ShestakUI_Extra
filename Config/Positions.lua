@@ -10,4 +10,5 @@ C["extra_position"] = {
 	["mark_bar"] = {"CENTER", UIParent, "CENTER", 100, 50},			-- Mark bar
 	["extra_bar"] = {"BOTTOM", ActionBarAnchor, "TOP", 0, 3},		-- Extra bar
 	["archaeology"] = {"BOTTOMRIGHT", Minimap, "TOPRIGHT", 2, 5},	-- Archaeology frame
+	["bg_announce"] = {"CENTER", UIParent, "CENTER", 0, 0},			-- BG announce panel
 }

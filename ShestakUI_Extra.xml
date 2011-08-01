@@ -18,6 +18,7 @@
 	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
+	<Script file="Modules\Misc\BGAnnounce.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>

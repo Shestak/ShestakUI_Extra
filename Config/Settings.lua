@@ -18,6 +18,7 @@ C["extra_general"] = {
 	["mark_bar"] = false,						-- Mark bar
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
+	["bg_announce"] = false,					-- Battleground defence announce
 }
 
 ----------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 if T.client ~= "zhTW" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for zhTW client
+--	Localization for zhTW client (Thanks to tat2dawn for the translation)
 ----------------------------------------------------------------------------------------
 -- Mark bar
 L_EXTRA_BUTTON_CLEAR = "清除目標"

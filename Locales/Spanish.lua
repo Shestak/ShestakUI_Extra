@@ -2,7 +2,7 @@
 if T.client ~= "esES" or T.client ~= "esMX" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for esES and esMX client
+--	Localization for esES and esMX client (Need full translation)
 ----------------------------------------------------------------------------------------
 -- Mark bar
 L_EXTRA_BUTTON_CLEAR = "Limpiar Objetivo"

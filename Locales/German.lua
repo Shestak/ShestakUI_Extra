@@ -2,7 +2,7 @@
 if T.client ~= "deDE" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for deDE client
+--	Localization for deDE client (Need full translation)
 ----------------------------------------------------------------------------------------
 -- Mark bar
 L_EXTRA_BUTTON_CLEAR = "Clear Target"

@@ -4684,8 +4684,16 @@ SkinBlizz:SetScript("OnEvent", function(self, event, addon)
 			end
 
 			-- Reposition tabs
-			PVPFrameTab1:ClearAllPoints()
-			PVPFrameTab1:SetPoint("TOPLEFT", PVPFrame, "BOTTOMLEFT", 0, 2)
+			if IsAddOnLoaded("OhNoesQueues") then
+				PVPFrame:SetScript("OnShow", function()
+					SkinTab(_G["PVPFrameTab5"])
+					PVPFrameTab5:ClearAllPoints()
+					PVPFrameTab5:SetPoint("TOPLEFT", PVPFrame, "BOTTOMLEFT", -10, 1)
+				end)
+			else
+				PVPFrameTab1:ClearAllPoints()
+				PVPFrameTab1:SetPoint("TOPLEFT", PVPFrame, "BOTTOMLEFT", 0, 2)
+			end
 		end
 
 		-- Non Raid Frame

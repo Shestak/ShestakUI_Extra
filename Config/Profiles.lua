@@ -30,6 +30,8 @@ end
 ----------------------------------------------------------------------------------------
 if T.name == "Чаккноррис" or T.name == "Нупачимучка" or T.name == "Пратифный" or T.name == "Рукалицо"
 	or T.name == "Трольпаладин" or T.name == "Чаккерс" or T.name == "Релика" or T.name == "Тинейд" or T.name == "Тупаяшколота" then
+	C["extra_general"].light_macro = true
+	C["extra_general"].profession_tabs = true
 	C["extra_skins"].blizzard_frames = true
 	C["extra_skins"].minimap_buttons = true
 end

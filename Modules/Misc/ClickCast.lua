@@ -49,6 +49,20 @@ for i = 1, 5 do
 	end
 end
 
+for i = 1, 8 do
+	for j = 1, 5 do
+		local raid_heal = "oUF_RaidHeal"..i.."UnitButton"..j
+		local raid_dps = "oUF_RaidDPS"..i.."UnitButton"..j
+
+		if raid_heal then
+			tinsert(frames, raid_heal)
+		end
+		if raid_dps then
+			tinsert(frames, raid_dps)
+		end
+	end
+end
+
 local mainf = CreateFrame("Frame", "SpellBinderMainFrame", SpellBookFrame)
 mainf:EnableMouse(true)
 mainf:SetFrameStrata("TOOLTIP")
@@ -142,7 +156,7 @@ function SpellBinder:makeSpellsList(delete)
 	self:SetWidth(scrolls:GetWidth())
 	self:SetHeight(scrolls:GetHeight())
 	local oldb
-	
+
 	if delete then
 		i = 1
 		while _G[i.."_cbs"] do
@@ -154,7 +168,7 @@ function SpellBinder:makeSpellsList(delete)
 			i = i + 1
 		end
 	end
-	
+
 	for i, spell in ipairs(DB.spells) do
 		v = spell.spell
 		if v then
@@ -173,21 +187,21 @@ function SpellBinder:makeSpellsList(delete)
 			if spell.checked then
 				bf:SetBackdropColor(1, 0.1, 0.1, 0.25)
 			end
-			
+
 			bf:SetScript("OnEnter", function(self) 
 				self:SetBackdropColor(0, 1, 0, 0.25)
 				if spell.checked then
 					self:SetBackdropColor(1, 0.1, 0.1, 0.25)
 				end
 			end)
-			
+
 			bf:SetScript("OnLeave", function(self) 
 				self:SetBackdropColor(0, 0, 0, 0) 
 				if spell.checked then
 					self:SetBackdropColor(1, 0.1, 0.1, 0.25)
 				end
 			end)
-			
+
 			local tex = _G[i.."_texture"] or bf:CreateTexture(i.."_texture", "OVERLAY")
 			tex:SetWidth(22)
 			tex:SetHeight(22)
@@ -197,7 +211,7 @@ function SpellBinder:makeSpellsList(delete)
 			local fs = _G[i.."_fs"] or bf:CreateFontString(i.."_fs", "OVERLAY", "GameFontNormal")
 			fs:SetText(spell.modifier..spell.origbutton)
 			fs:SetPoint("RIGHT", -4, 0)
-			
+
 			bf:SetScript("OnClick", function(self)
 				for j, k in ipairs(DB.spells) do
 					if k ~= spell then
@@ -207,7 +221,7 @@ function SpellBinder:makeSpellsList(delete)
 				end
 				spell.checked = not spell.checked
 			end)
-			
+
 			for j, frame in pairs(frames) do
 				local f
 				if _G[frame] then f = _G[frame]:GetName() end

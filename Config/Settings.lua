@@ -19,6 +19,7 @@ C["extra_general"] = {
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 	["bg_announce"] = false,					-- Battleground defence announce
+	["profession_tabs"] = false,				-- Professions tabs on tradeskill frame
 }
 
 ----------------------------------------------------------------------------------------

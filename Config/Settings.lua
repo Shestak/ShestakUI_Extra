@@ -35,6 +35,8 @@ C["extra_bar"] = {
 	-- MicroMenu
 	["micro_menu"] = false,						-- Enable micro menu
 	["micro_menu_mouse"] = false,				-- Micro menu on mouseover
+	-- Other
+	["light_macro"] = false,					-- Light macro button when proc spell
 }
 
 ----------------------------------------------------------------------------------------
@@ -51,4 +53,5 @@ C["extra_skins"] = {
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["cool_line"] = false,						-- CoolLine skin
 	["mfclip"] = false,							-- MFClip skin
+	["face_shooter"] = false,					-- FaceShooter skin
 }

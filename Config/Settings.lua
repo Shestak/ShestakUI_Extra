@@ -35,6 +35,8 @@ C["extra_bar"] = {
 	-- MicroMenu
 	["micro_menu"] = false,						-- Enable micro menu
 	["micro_menu_mouse"] = false,				-- Micro menu on mouseover
+	-- Other
+	["light_macro"] = false,					-- Light macro button when proc spell
 }
 
 ----------------------------------------------------------------------------------------

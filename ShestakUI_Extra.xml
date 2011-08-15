@@ -13,6 +13,7 @@
 	<Script file="Config\Profiles.lua"/>
 
 	<Script file="Modules\ExtraBars\ActionBar.lua"/>
+	<Script file="Modules\ExtraBars\LightMacro.lua"/>
 	<Script file="Modules\ExtraBars\MicroMenu.lua"/>
 
 	<Script file="Modules\Misc\Align.lua"/>

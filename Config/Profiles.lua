@@ -45,5 +45,7 @@ end
 --	My Config
 ----------------------------------------------------------------------------------------
 if T.author == true then
+	C["extra_general"].move_blizzard = true
+	C["extra_general"].profession_tabs = true
 	C["extra_skins"].blizzard_frames = true
 end

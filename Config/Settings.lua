@@ -19,7 +19,6 @@ C["extra_general"] = {
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 	["bg_announce"] = false,					-- Battleground defence announce
-	["profession_tabs"] = false,				-- Professions tabs on tradeskill frame
 }
 
 ----------------------------------------------------------------------------------------
@@ -36,8 +35,6 @@ C["extra_bar"] = {
 	-- MicroMenu
 	["micro_menu"] = false,						-- Enable micro menu
 	["micro_menu_mouse"] = false,				-- Micro menu on mouseover
-	-- Other
-	["light_macro"] = false,					-- Light macro button when proc spell
 }
 
 ----------------------------------------------------------------------------------------

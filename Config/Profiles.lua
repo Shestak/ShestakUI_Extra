@@ -28,10 +28,8 @@ end
 --	Per Character Name Config (overwrite general and class)
 --	Name need to be case sensitive
 ----------------------------------------------------------------------------------------
-if T.name == "Чаккноррис" or T.name == "Нупачимучка" or T.name == "Пратифный" or T.name == "Рукалицо"
-	or T.name == "Трольпаладин" or T.name == "Чаккерс" or T.name == "Релика" or T.name == "Тинейд" or T.name == "Тупаяшколота" then
-	C["extra_general"].light_macro = true
-	C["extra_general"].profession_tabs = true
+if T.name == "CharacterName" then
+
 end
 
 ----------------------------------------------------------------------------------------
@@ -39,12 +37,4 @@ end
 ----------------------------------------------------------------------------------------
 if T.level ~= MAX_PLAYER_LEVEL then
 
-end
-
-----------------------------------------------------------------------------------------
---	My Config
-----------------------------------------------------------------------------------------
-if T.author == true then
-	C["extra_general"].move_blizzard = true
-	C["extra_general"].profession_tabs = true
 end

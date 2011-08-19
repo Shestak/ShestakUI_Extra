@@ -120,7 +120,7 @@ titles:SetText(SPELLS)
 local slider = CreateFrame("Button", "SpellBinderSlideButton", mainf)
 slider:SetWidth(25)
 slider:SetHeight(25)
-slider:SetPoint("BOTTOMRIGHT", C.extra_skins.blizzard_frames and -4 or -11, C.extra_skins.blizzard_frames and 4 or 10)
+slider:SetPoint("BOTTOMRIGHT", C.skins.blizzard_frames and -4 or -11, C.skins.blizzard_frames and 4 or 10)
 slider:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
 slider:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
 slider:SetHighlightTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
@@ -147,7 +147,7 @@ end)
  
 function SpellBinder:makeSpellsList(delete)
 	local self = framess
-	if C.extra_skins.blizzard_frames == true then
+	if C.skins.blizzard_frames == true then
 		scrolls:SetTemplate("Overlay")
 	else
 		SpellBinder:Style(scrolls)
@@ -254,7 +254,7 @@ end
 
 function SpellBinder:makeFramesList()
 	local self = framesf
-	if C.extra_skins.blizzard_frames == true then
+	if C.skins.blizzard_frames == true then
 		scrollf:SetTemplate("Overlay")
 	else
 		SpellBinder:Style(scrollf)
@@ -469,3 +469,14 @@ eventf:SetScript("OnEvent", function(self, event, ...)
 		SpellBinder:makeSpellsList(true)
 	end
 end)
+
+if C.skins.blizzard_frames == true then
+	SpellBinderMainFrame:StripTextures()
+	SpellBinderMainFrame:SetTemplate("Transparent")
+	SpellBinderOpenButton:SkinButton()
+	SpellBinderOpenButton:ClearAllPoints()
+	SpellBinderOpenButton:Point("TOPLEFT", SpellBookFrame.backdrop, "TOPLEFT", 4, -4)
+	btn_SpellBinderMainFrame:SkinButton()
+	T.SkinCloseButton(SpellBinderCloseButton)
+	T.SkinNextPrevButton(SpellBinderSlideButton)
+end

@@ -79,7 +79,7 @@ function ProfessionTabs:CreateTab(Table, Parent)
 	Tab:SetScript("OnEnter", Tab_OnEnter)
 	Tab:SetScript("OnLeave", Tab_OnLeave)
 
-	if C.extra_skins.blizzard_frames == true then
+	if C.skins.blizzard_frames == true then
 		Tab:SetPoint("TOPLEFT", Parent, "TOPRIGHT", (Parent == ATSWFrame or Parent == TradeFrame) and -19 or 1, (Parent == TradeFrame and -12 or 0) + -44 * #Table)
 
 		Tab:StripTextures()

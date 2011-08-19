@@ -44,15 +44,13 @@ C["extra_bar"] = {
 --	Skins options (Maybe not work correctly!!!)
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
-	["blizzard_frames"] = false,				-- Blizzard frames skin
-	["minimap_buttons"] = false,				-- Skin addons icons on minimap
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["combustion_helper"] = false,				-- CombustionHelper skin
-	["roll_tracker"] = false,					-- RollTracker skin
-	["tiny_dps"] = false,						-- TinyDPS skin
-	["skada"] = false,							-- Skada skin
-	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["cool_line"] = false,						-- CoolLine skin
-	["mfclip"] = false,							-- MFClip skin
 	["face_shooter"] = false,					-- FaceShooter skin
+	["mfclip"] = false,							-- MFClip skin
+	["roll_tracker"] = false,					-- RollTracker skin
+	["shield_monitor"] = false,					-- ShieldMonitor skin
+	["skada"] = false,							-- Skada skin
+	["tiny_dps"] = false,						-- TinyDPS skin
 }

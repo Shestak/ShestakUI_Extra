@@ -228,7 +228,7 @@ function SpellBinder:makeSpellsList(delete)
 				if f and DB.frames[frame] then
 				if _G[f]:CanChangeAttribute() or _G[f]:CanChangeProtectedState() then
 					if _G[f]:GetAttribute(spell.modifier.."type"..spell.button) ~= "menu" then
-						_G[f]:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp", "Button4Up", "Button5Up")
+						_G[f]:RegisterForClicks("AnyUp")
 						if spell.button:find("harmbutton") then
 							_G[f]:SetAttribute(spell.modifier..spell.button, spell.spell)
 							_G[f]:SetAttribute(spell.modifier.."type-"..spell.spell, "spell")
@@ -457,7 +457,7 @@ eventf:SetScript("OnEvent", function(self, event, ...)
 			local parent = getglobal("SpellButton"..i)
 			local button = CreateFrame("Button", "SpellBinderFakeButton"..i, parent)
 			button:SetID(parent:GetID())
-			button:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp", "Button4Up", "Button5Up")
+			button:RegisterForClicks("AnyUp")
 			button:SetAllPoints(parent)
 			button:SetScript("OnClick", addSpell)
 			button:Hide()

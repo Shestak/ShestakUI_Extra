@@ -17,8 +17,7 @@ CLSkin:SetScript("OnEvent", function(self, event, addon)
 	CoolLineDB.fontsize = 8
 	CoolLineDB.w = (C.actionbar.button_size * 12) + (C.actionbar.button_space * 11) - 4
 	CoolLineDB.h = C.actionbar.button_size - 4
-	--CoolLine:SetTemplate("Transparent")
-	
+
 	local CoolLineBar = CreateFrame("Frame", "CoolLineBar", CoolLine)
 	CoolLineBar:SetPoint("TOPLEFT", CoolLine, "TOPLEFT", -2, 2)
 	CoolLineBar:SetPoint("BOTTOMRIGHT", CoolLine, "BOTTOMRIGHT", 2, -2)

@@ -8,12 +8,12 @@ local RTSkin = CreateFrame("Frame")
 RTSkin:RegisterEvent("PLAYER_LOGIN")
 RTSkin:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("RollTracker") then return end
-	
+
 	tinsert(UISpecialFrames, "RollTrackerFrame")
 	RollTrackerFrame:SetTemplate("Transparent")
 	RollTrackerFrameRollButton:SkinButton()
 	RollTrackerFrameClearButton:SkinButton()
-	
+
 	RollTrackerFrameStatusText:SetPoint("BOTTOMLEFT", RollTrackerFrame, "BOTTOMLEFT", 5, 2)
 	RollTrackerFrameClearButton:SetPoint("BOTTOMLEFT", RollTrackerFrame, "BOTTOMLEFT", 5, 15)
 	RollTrackerFrameRollButton:SetPoint("BOTTOMRIGHT", RollTrackerFrame, "BOTTOMRIGHT", -5, 15)

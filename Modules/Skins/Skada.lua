@@ -13,6 +13,31 @@ SkadaSkin:SetScript("OnEvent", function(self, event, addon)
 	local barSpacing = T.Scale(1)
 	local barmod = Skada.displays["bar"]
 
+	-- Used to strip unecessary options from the in-game config
+	local function StripOptions(options)
+		options.baroptions.args.barspacing = nil
+		options.titleoptions.args.texture = nil
+		options.titleoptions.args.bordertexture = nil
+		options.titleoptions.args.thickness = nil
+		options.titleoptions.args.margin = nil
+		options.titleoptions.args.color = nil
+		options.windowoptions = nil
+		options.baroptions.args.barfont = nil
+		options.titleoptions.args.font = nil
+	end
+
+	barmod.AddDisplayOptions_ = barmod.AddDisplayOptions
+	barmod.AddDisplayOptions = function(self, win, options)
+		self:AddDisplayOptions_(win, options)
+		StripOptions(options)
+	end
+
+	for k, options in pairs(Skada.options.args.windows.args) do
+		if options.type == "group" then
+			StripOptions(options.args)
+		end
+	end
+
 	-- Override settings from in-game GUI
 	local titleBG = {
 		bgFile = C.media.texture,
@@ -39,16 +64,20 @@ SkadaSkin:SetScript("OnEvent", function(self, event, addon)
 		skada:SetTexture(C.media.texture)
 		skada:SetSpacing(barSpacing)
 		skada:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-		--skada.timerLabel:SetShadowColor(0, 0, 0, C.font.stylization_font_shadow and 1 or 0)
+		--skada:SetShadowColor(0, 0, 0, C.font.stylization_font_shadow and 1 or 0)
 		skada:SetFrameLevel(5)
 
 		skada:SetBackdrop(nil)
 		if not skada.backdrop then
-			skada:CreateBackdrop('Transparent')
+			skada:CreateBackdrop("Transparent")
 		end
 		skada.backdrop:ClearAllPoints()
-		skada.backdrop:Point('TOPLEFT', win.bargroup.button or win.bargroup, 'TOPLEFT', -2, 2)
-		skada.backdrop:Point('BOTTOMRIGHT', win.bargroup, 'BOTTOMRIGHT', 2, -2)
+		if win.db.enabletitle then
+			skada.backdrop:Point("TOPLEFT", win.bargroup.button, "TOPLEFT", -2, 2)
+		else
+			skada.backdrop:Point("TOPLEFT", win.bargroup, "TOPLEFT", -2, 2)
+		end
+		skada.backdrop:Point("BOTTOMRIGHT", win.bargroup, "BOTTOMRIGHT", 2, -2)
 	end
 
 	-- Update pre-existing displays

@@ -26,7 +26,7 @@ LoadOCBO:SetScript("OnEvent", function(self, event, addon)
 			if f then
 				f:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 				f:HookScript("OnClick", function(self, button)
-					if button and IsShiftKeyDown() then
+					if button == "RightButton" and IsShiftKeyDown() then
 						index = self:GetID() + FauxScrollFrame_GetOffset(BrowseScrollFrame)
 						name, _, _, _, _, _, startingBid, minIncrement, buyoutPrice, bidAmount = GetAuctionItemInfo("list", index)
 						if name then
@@ -44,7 +44,7 @@ LoadOCBO:SetScript("OnEvent", function(self, event, addon)
 			f:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 			f:HookScript("OnClick", function(self, button)
 				index = self:GetID() + FauxScrollFrame_GetOffset(AuctionsScrollFrame)
-				if button and IsShiftKeyDown() then
+				if button == "RightButton" and IsShiftKeyDown() then
 					name = GetAuctionItemInfo("owner", index)
 					if name then
 						CancelAuction(index)

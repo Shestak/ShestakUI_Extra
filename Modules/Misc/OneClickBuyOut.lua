@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------------
---	(OneClickBuyOut by Egingell)
+--	Shift+Click to cancel/bid/buyout items in auction(OneClickBuyOut by Egingell)
 ----------------------------------------------------------------------------------------
 local LoadOCBO = CreateFrame("Frame")
 LoadOCBO:RegisterEvent("ADDON_LOADED")
 LoadOCBO:SetScript("OnEvent", function(self, event, addon)
-	if addon ~= "Blizzard_AuctionUI" then return end
+	if addon ~= "Blizzard_AuctionUI" or addon == "OneClickBuyOut" then return end
 	local f, buyoutPrice, index, startingBid, minIncrement, bidAmount, bid, name
 	local gt, buttonNames = GameTooltip, {"BrowseButton"}
 

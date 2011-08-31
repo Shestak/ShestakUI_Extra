@@ -30,6 +30,7 @@
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickBuyOut.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
+	<Script file="Modules\Misc\TrainAnnounce.lua"/>
 
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>
 	<Script file="Modules\Skins\CombustionHelper.lua"/>

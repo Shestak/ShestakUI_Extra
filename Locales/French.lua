@@ -2,7 +2,7 @@
 if T.client ~= "frFR" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for frFR client (Thanks to Puree for the translation)
+--	Localization for frFR client(Thanks to Puree for the translation)
 ----------------------------------------------------------------------------------------
 -- Mark bar
 L_EXTRA_BUTTON_CLEAR = "Supprimer l'objectif"

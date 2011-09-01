@@ -2,27 +2,27 @@
 if T.client ~= "deDE" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for deDE client (Need full translation)
+--	Localization for deDE client(Thanks to Vienchen for the translation)
 ----------------------------------------------------------------------------------------
 -- Mark bar
-L_EXTRA_BUTTON_CLEAR = "Clear Target"
+L_EXTRA_BUTTON_CLEAR = "Lösche Ziel"
 
 -- Announce fps
-L_EXTRA_ANNOUNCE_FPS = "My current FPS is "
+L_EXTRA_ANNOUNCE_FPS = "Meine FPS sind "
 
 -- Click2Cast
 L_EXTRA_BINDER_FRAMES = "Frames"
-L_EXTRA_BINDER_OPEN = "Open spell binder"
-L_EXTRA_BINDER_CLOSE = "Close spell binder"
+L_EXTRA_BINDER_OPEN = "Öffne spell binder"
+L_EXTRA_BINDER_CLOSE = "Schließe spell binder"
 
 -- BG announce
-L_EXTRA_ANNOUNCE_BG_LIGHT = "Light attack incoming to "
-L_EXTRA_ANNOUNCE_BG_MEDIUM = "Medium attack incoming to "
-L_EXTRA_ANNOUNCE_BG_HEAVY = "Heavy attack incoming to "
-L_EXTRA_ANNOUNCE_BG_CLEAR = "All clear at "
-L_EXTRA_ANNOUNCE_BG_FOCUS = "Focus Damage on "
-L_EXTRA_ANNOUNCE_BG_STEALTH = "Stealthed Enemies Nearby"
+L_EXTRA_ANNOUNCE_BG_LIGHT = "wenig Schaden auf "
+L_EXTRA_ANNOUNCE_BG_MEDIUM = "mittlerer Schaden auf "
+L_EXTRA_ANNOUNCE_BG_HEAVY = "viel Schaden auf "
+L_EXTRA_ANNOUNCE_BG_CLEAR = "alles klar auf "
+L_EXTRA_ANNOUNCE_BG_FOCUS = "Fokusschaden auf "
+L_EXTRA_ANNOUNCE_BG_STEALTH = "Unsichtbarer Gegner in der Nähe"
 
 -- BuyOut
-L_EXTRA_ONECLICK_BUYOUT = "Shift-Click to buyout the selected item without confirmation"
-L_EXTRA_ONECLICK_BID = "Shift-Click to bid on the selected item without confirmation"
+L_EXTRA_ONECLICK_BUYOUT = "Shift-Click um den ausgewählten Gegenstand ohne Bestätigung zu kaufen"
+L_EXTRA_ONECLICK_BID = "Shift-Click um auf den ausgewählten Gegenstand ohne Bestätigung zu bieten"

@@ -22,7 +22,3 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "viel Schaden auf "
 L_EXTRA_ANNOUNCE_BG_CLEAR = "alles klar auf "
 L_EXTRA_ANNOUNCE_BG_FOCUS = "Fokusschaden auf "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "Unsichtbarer Gegner in der Nähe"
-
--- BuyOut
-L_EXTRA_ONECLICK_BUYOUT = "Shift-Click um den ausgewählten Gegenstand ohne Bestätigung zu kaufen"
-L_EXTRA_ONECLICK_BID = "Shift-Click um auf den ausgewählten Gegenstand ohne Bestätigung zu bieten"

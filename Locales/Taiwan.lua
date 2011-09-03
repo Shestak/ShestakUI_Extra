@@ -22,7 +22,3 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "敵方大部隊來攻 "
 L_EXTRA_ANNOUNCE_BG_CLEAR = " 已清除所有敵人"
 L_EXTRA_ANNOUNCE_BG_FOCUS = "主要集火目標 "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "注意,有潛行敵人在旁邊"
-
--- BuyOut
-L_EXTRA_ONECLICK_BUYOUT = "Shift-左鍵,不彈出確認窗口直接購買"
-L_EXTRA_ONECLICK_BID = "Shift-左鍵,不彈出確認窗口直接競標"

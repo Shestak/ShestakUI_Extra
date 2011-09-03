@@ -22,7 +22,3 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "Attaque massive venant sur "
 L_EXTRA_ANNOUNCE_BG_CLEAR = "Tout est Ok à "
 L_EXTRA_ANNOUNCE_BG_FOCUS = "Focus dégats sur "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "Ennemi furtif proche détecté"
-
--- BuyOut
-L_EXTRA_ONECLICK_BUYOUT = "Shift-Click pour acheter l'objet sélectionné sans confirmation"
-L_EXTRA_ONECLICK_BID = "Shift-Click pour enchérir sur l'objet sélectionné sans confirmation"

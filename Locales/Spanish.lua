@@ -2,23 +2,23 @@
 if T.client ~= "esES" or T.client ~= "esMX" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for esES and esMX client(Need full translation)
+--	Localization for esES and esMX client(Thanks to eXecrate for the translation)
 ----------------------------------------------------------------------------------------
 -- Mark bar
 L_EXTRA_BUTTON_CLEAR = "Limpiar Objetivo"
 
 -- Announce fps
-L_EXTRA_ANNOUNCE_FPS = "My current FPS is "
+L_EXTRA_ANNOUNCE_FPS = "Mis FPS actuales son "
 
 -- Click2Cast
-L_EXTRA_BINDER_FRAMES = "Frames"
-L_EXTRA_BINDER_OPEN = "Open spell binder"
-L_EXTRA_BINDER_CLOSE = "Close spell binder"
+L_EXTRA_BINDER_FRAMES = "Cuadros"
+L_EXTRA_BINDER_OPEN = "Abrir encuadernador de hechizos"
+L_EXTRA_BINDER_CLOSE = "Cerrar encuadernador de hechizos"
 
 -- BG announce
-L_EXTRA_ANNOUNCE_BG_LIGHT = "Light attack incoming to "
-L_EXTRA_ANNOUNCE_BG_MEDIUM = "Medium attack incoming to "
-L_EXTRA_ANNOUNCE_BG_HEAVY = "Heavy attack incoming to "
-L_EXTRA_ANNOUNCE_BG_CLEAR = "All clear at "
-L_EXTRA_ANNOUNCE_BG_FOCUS = "Focus Damage on "
-L_EXTRA_ANNOUNCE_BG_STEALTH = "Stealthed Enemies Nearby"
+L_EXTRA_ANNOUNCE_BG_LIGHT = "Ataque ligero llega a "
+L_EXTRA_ANNOUNCE_BG_MEDIUM = "Ataque medio llega a "
+L_EXTRA_ANNOUNCE_BG_HEAVY = "Ataque duro llega a "
+L_EXTRA_ANNOUNCE_BG_CLEAR = "Todo despejado en "
+L_EXTRA_ANNOUNCE_BG_FOCUS = "Centrar daño en "
+L_EXTRA_ANNOUNCE_BG_STEALTH = "Enemigos en sigilo en las inmediaciones"

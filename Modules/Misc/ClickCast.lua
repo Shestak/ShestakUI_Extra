@@ -246,7 +246,7 @@ function SpellBinder:makeSpellsList(delete)
 				end
 			end
 		end
-		bf:Show()    
+		bf:Show()
 		oldb = bf
 		end
 	end
@@ -429,7 +429,7 @@ local addSpell = function(self, button)
 			for i, v in pairs(DB.spells) do
 				if v.spell == spellname then return end
 			end
-  
+
 			tinsert( DB.spells , { ["id"] = slot, ["modifier"] = modifier, ["button"] = button, ["spell"] = spellname, ["rank"] = rank, ["texture"] = texture, ["origbutton"] = originalbutton, } )
 			SpellBinder:makeSpellsList(false)
 		end

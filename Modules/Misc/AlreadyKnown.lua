@@ -132,7 +132,7 @@ local function AuctionFrameBrowse_Update ()
 		local texture = _G["BrowseButton" .. i .. "ItemIconTexture"]
 
 		if texture and texture:IsShown() then
-			local _, _, _, _, canUse =  GetAuctionItemInfo("list", index)
+			local _, _, _, _, canUse = GetAuctionItemInfo("list", index)
 
 			if canUse and IsAlreadyKnown(GetAuctionItemLink("list", index)) then
 				texture:SetVertexColor(COLOR.r, COLOR.g, COLOR.b)
@@ -152,7 +152,7 @@ local function AuctionFrameBid_Update ()
 		local texture = _G["BidButton" .. i .. "ItemIconTexture"]
 
 		if texture and texture:IsShown() then
-			local _, _, _, _, canUse =  GetAuctionItemInfo("bidder", index)
+			local _, _, _, _, canUse = GetAuctionItemInfo("bidder", index)
 
 			if canUse and IsAlreadyKnown(GetAuctionItemLink("bidder", index)) then
 				texture:SetVertexColor(COLOR.r, COLOR.g, COLOR.b)

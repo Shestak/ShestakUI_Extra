@@ -32,8 +32,8 @@ end
 
 local CalcAnchor = CreateFrame("Frame", "CalcAnchor", UIParent)
 CalcAnchor:SetPoint(unpack(C.extra_position.arena_calc))
-CalcAnchor:SetWidth((buttonSize * 4)  + (buttonSpacing * 5))
-CalcAnchor:SetHeight((buttonSize * 4)  + (buttonSpacing * 5))
+CalcAnchor:SetWidth((buttonSize * 4) + (buttonSpacing * 5))
+CalcAnchor:SetHeight((buttonSize * 4) + (buttonSpacing * 5))
 tinsert(T.MoverFrames, CalcAnchor)
 
 local function CreateModule()
@@ -70,8 +70,8 @@ local function CreateModule()
 	end
 
 	-- Auto size the background
-	hCalcBG:SetWidth((buttonSize * 4)  + (buttonSpacing * 5))
-	hCalcBG:SetHeight((buttonSize * 4)  + (buttonSpacing * 5))
+	hCalcBG:SetWidth((buttonSize * 4) + (buttonSpacing * 5))
+	hCalcBG:SetHeight((buttonSize * 4) + (buttonSpacing * 5))
 
 	-- Text box
 	hCalcTextFrame = CreateFrame("Button", "CalcTextFrame", hCalcBG)

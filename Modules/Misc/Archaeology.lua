@@ -497,7 +497,7 @@ stArchFrame:HookScript("OnMouseUp", function(self)
 end)
 
 SlashCmdList["STARCHAEOLOGIST"] = function(msg, editBox)
-    ToggleFrame(stArchFrame)
+	ToggleFrame(stArchFrame)
 	stArchFrame:StopMovingOrSizing()
 	
 	if stArchFrame:IsShown() then FrameWasShown = true else FrameWasShown = false end
@@ -514,7 +514,7 @@ stArchFrame:HookScript("OnEvent", function(self)
 		stArch:UpdateFrameHeight(self)
 	end
 	if not select(3, GetProfessions()) then stArchFrame:Hide() FrameWasShown = false end
-	if FrameWasShown == true and not self:IsShown() then  self:Show() end
+	if FrameWasShown == true and not self:IsShown() then self:Show() end
 end)
 
 local b = CreateFrame("Button", nil, UIParent)

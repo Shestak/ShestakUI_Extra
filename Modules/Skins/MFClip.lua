@@ -16,8 +16,8 @@ MFCSkin:SetScript("OnEvent", function(self, event, addon)
 	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["fLBSpacing"] = 3
 	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["fLButtonsScale"] = 1
 	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lbtexture"] = "Smooth"
-	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lbbarcolor"] = {T.color.r,  T.color.g, T.color.b, 1}
-	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lbbarbgcolor"] = {T.color.r,  T.color.g, T.color.b, 0.2}
+	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lbbarcolor"] = {T.color.r, T.color.g, T.color.b, 1}
+	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lbbarbgcolor"] = {T.color.r, T.color.g, T.color.b, 0.2}
 	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lbbordercolor"] = {0, 0, 0, 0}
 	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["lblagcolor"] = {0.69, 0.14, 0.14, 0.75}
 

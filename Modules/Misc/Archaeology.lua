@@ -36,13 +36,13 @@ function stArch:OnLoad(self)
 	stArch['close']['text']:SetJustifyV("CENTER")
 	stArch['close']['text']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 	stArch['close']['text']:SetText("x")
-	stArch['close']:HookScript("OnEnter", function(self) self['text']:SetTextColor(T.color.r, T.color.g, T.color.b) end) 
-	stArch['close']:HookScript("OnLeave", function(self) self['text']:SetTextColor(1, 1, 1) end) 
+	stArch['close']:HookScript("OnEnter", function(self) self['text']:SetTextColor(T.color.r, T.color.g, T.color.b) end)
+	stArch['close']:HookScript("OnLeave", function(self) self['text']:SetTextColor(1, 1, 1) end)
 	stArch['close']:SetScript("OnMouseUp", function() self:Hide() FrameWasShown = false end)
-	
+
 	-- Artifact Progress Bars
 	local progressBars = stArch['progressBars']
-	
+
 	progressBars['frame'] = CreateFrame("Frame", "ArchBarFrame", self)
 	progressBars['frame']:SetHeight(200)
 	progressBars['frame']:SetWidth(self:GetWidth() - 10)
@@ -56,9 +56,9 @@ function stArch:OnLoad(self)
 		progressBars[i]['race'] = progressBars[i]['bar']:CreateFontString()
 		progressBars[i]['progress'] = progressBars[i]['bar']:CreateFontString()
 		progressBars[i]['solve'] = CreateFrame("Button", "ArchBar"..i, self, "SecureHandlerClickTemplate")
-		
+
 		-- Border
-		progressBars[i]['border']:SetWidth(progressBars['frame']:GetWidth()-10)
+		progressBars[i]['border']:SetWidth(progressBars['frame']:GetWidth() - 10)
 		progressBars[i]['border']:SetHeight(16)
 		progressBars[i]['border']:SetTemplate("Overlay")
 		if i == 1 then
@@ -66,7 +66,7 @@ function stArch:OnLoad(self)
 		else
 			progressBars[i]['border']:SetPoint("TOP", progressBars[i-1]['border'], "BOTTOM", 0, -5)
 		end
-		
+
 		-- Bar
 		progressBars[i]['bar']:SetStatusBarTexture(C.media.texture)
 		progressBars[i]['bar']:SetPoint("TOPRIGHT", progressBars[i]['border'], "TOPRIGHT", -2, -2)
@@ -98,26 +98,26 @@ function stArch:OnLoad(self)
 		progressBars[i]['bar']:SetScript("OnLeave", function()
 			GameTooltip:Hide()
 		end)
-		
+
 		-- Race Text
 		progressBars[i]['race']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 		progressBars[i]['race']:SetText("Race")
 		progressBars[i]['race']:SetPoint("LEFT", progressBars[i]['bar'], "LEFT", 3, 0)
-		
+
 		-- Progress Text
 		progressBars[i]['progress']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 		progressBars[i]['progress']:SetText(" ")
 		progressBars[i]['progress']:SetPoint("RIGHT", progressBars[i]['bar'], "RIGHT", 1, 0)
 	end
-	
+
 	-------------------------------------------------------------
-	
+
 	-- Archaeology Skill Level Frame
 	local archSkill = stArch['archSkill']
 	archSkill['frame'] = CreateFrame("Frame", "ArchSkillFrame", self)
 	archSkill['bar'] = CreateFrame("StatusBar", "ArchSkillBar", archSkill['frame'], "TextStatusbar")
 	archSkill['text'] = archSkill['bar']:CreateFontString()
-	
+
 	-- Border
 	archSkill['frame']:SetHeight(24)
 	archSkill['frame']:SetWidth(self:GetWidth() - 10)
@@ -139,14 +139,14 @@ function stArch:OnLoad(self)
 			end
 		end
 	end)
-	
+
 	-- Text
 	archSkill['text']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 	archSkill['text']:SetText("-")
 	archSkill['text']:SetPoint("CENTER", archSkill['bar'], "CENTER", 0, 0)
-	
+
 	-------------------------------------------------------------
-	
+
 	-- Solve Frame
 	progressBars['solveFrame'] = CreateFrame("Frame", "ArchSolveFrame", self)
 	progressBars['solveFrame']:SetHeight(progressBars['frame']:GetHeight())
@@ -157,7 +157,7 @@ function stArch:OnLoad(self)
 	progressBars['solveFrame']:SetTemplate("Transparent")
 	progressBars['solveFrame']:Hide()
 	for i = 1, 9 do progressBars[i]['solve']:Hide() end
-	
+
 	-- Solve Toggle
 	progressBars['solveToggle'] = CreateFrame("Frame", "ArchSolveToggle", self)
 	progressBars['solveToggle']:SetHeight(progressBars['solveFrame']:GetHeight())
@@ -166,16 +166,16 @@ function stArch:OnLoad(self)
 	progressBars['solveToggle']:SetPoint("TOP", progressBars['frame'], "TOP", 0, 0)
 	progressBars['solveToggle']:SetTemplate("Transparent")
 	progressBars['solveToggle']:SetAlpha(0)
-	
+
 	-- Solve Toggle Text
 	progressBars['solveToggle']['text'] = progressBars['solveToggle']:CreateFontString()
 	progressBars['solveToggle']['text']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 	progressBars['solveToggle']['text']:SetText(">")
 	progressBars['solveToggle']['text']:SetPoint("CENTER", progressBars['solveToggle'], "CENTER", 1, 0)
-	
+
 	progressBars['solveToggle']['closeDirection'] = "<"
 	progressBars['solveToggle']['openDirection'] = ">"
-	
+
 	progressBars['solveToggle']:SetScript("OnEnter", function()
 		progressBars['solveToggle']['text']:SetTextColor(T.color.r, T.color.g, T.color.b)
 		progressBars['solveToggle']:FadeIn()
@@ -200,7 +200,7 @@ function stArch:OnLoad(self)
 			progressBars['solveToggle']:SetPoint(unpack(progressBars['solveToggle']['closePoint']))
 		end
 	end)
-	
+
 	local solveFrame = stArch['progressBars']
 	for i = 1, 9 do
 		-- Button
@@ -209,36 +209,36 @@ function stArch:OnLoad(self)
 		solveFrame[i]['solve']:SetPoint("LEFT", progressBars['solveFrame'], "LEFT", 5, 0)
 		solveFrame[i]['solve']:SetPoint("TOP", progressBars[i]['border'], "TOP", 0, 0)
 		solveFrame[i]['solve']:SetTemplate("Overlay")
-		
+
 		-- Text
 		solveFrame[i]['solve']['text'] = solveFrame[i]['solve']:CreateFontString()
 		solveFrame[i]['solve']['text']:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 		solveFrame[i]['solve']['text']:SetText(SOLVE)
 		solveFrame[i]['solve']['text']:SetPoint("CENTER", solveFrame[i]['solve'], "CENTER", 0, 0)
 	end
-	
+
 	-------------------------------------------------------------
-	
+
 	-- Construct artifact info table
 	for i = 1, 9 do
 		stArch['artifactInfo'][i] = { }
 	end
-	
+
 	-------------------------------------------------------------
-	
+
 	Loaded = true
 end
 
 function stArch:UpdateFrameHeight(self)
 	if not InCombatLockdown() then
 		-- Update frame Sizes to fit correctly
-		stArch['progressBars']['frame']:SetHeight(stArch['progressBars'][1]['border']:GetHeight()*9+50)
+		stArch['progressBars']['frame']:SetHeight(stArch['progressBars'][1]['border']:GetHeight() * 9 + 50)
 		stArch['progressBars']['solveFrame']:SetHeight(stArch['progressBars']['frame']:GetHeight())
 		stArch['progressBars']['solveToggle']:SetHeight(stArch['progressBars']['frame']:GetHeight())
 		if stArch['archSkill']['frame']:IsShown() then
-			self:SetHeight(stArch['title']:GetHeight()+stArch['progressBars']['frame']:GetHeight()+stArch['archSkill']['frame']:GetHeight()+10)
+			self:SetHeight(stArch['title']:GetHeight()+stArch['progressBars']['frame']:GetHeight()+stArch['archSkill']['frame']:GetHeight() + 10)
 		else
-			self:SetHeight(stArch['title']:GetHeight()+stArch['progressBars']['frame']:GetHeight()+5)
+			self:SetHeight(stArch['title']:GetHeight()+stArch['progressBars']['frame']:GetHeight() + 5)
 		end
 	end
 end
@@ -284,7 +284,7 @@ function stArch:updateArtifact(index)
 	local numProjects = GetNumArtifactsByRace(index)
 	local raceName, _, raceItemID = GetArchaeologyRaceInfo(index)
 	local artifact = stArch['artifactInfo'][index]
-	
+
 	artifact['race'] = raceName
 	artifact['keyID'] = raceItemID
 	artifact['numKeystones'] = 0	-- Will dig for these in inventory later
@@ -298,13 +298,13 @@ function stArch:updateArtifact(index)
 		SetSelectedArtifact(index)
 		local _, _, _, _, _, keystoneCount = GetSelectedArtifactInfo()
 		local numFragmentsCollected, numFragmentsAdded, numFragmentsRequired = GetArtifactProgress()
-		
+
 		artifact['numKeysockets'] = keystoneCount
 		artifact['progress'] = numFragmentsCollected
 		artifact['modifier'] = numFragmentsAdded
 		artifact['total'] = numFragmentsRequired
 		artifact['canSolve'] = CanSolveArtifact()
-		
+
 		for c = 0, 4 do
 			for s = 1, GetContainerNumSlots(c) do
 				local slotID = GetContainerItemID(c,s)
@@ -313,7 +313,7 @@ function stArch:updateArtifact(index)
 					if artifact['numKeystones'] < artifact['numKeysockets'] then
 						artifact['numKeystones'] = artifact['numKeystones'] + count
 					end
-					if min(artifact['numKeystones'],artifact['numKeysockets'])*12+artifact['progress'] >= artifact['total'] then
+					if min(artifact['numKeystones'],artifact['numKeysockets']) * 12 + artifact['progress'] >= artifact['total'] then
 						artifact['canSolve'] = true
 					end
 				end
@@ -325,26 +325,26 @@ end
 function stArch:updateArtifactBar(index)
 	local artifact = stArch['artifactInfo'][index]
 	local bar = stArch['progressBars'][index]
-		
+
 	bar['race']:SetText(artifact['race'])
-	
+
 	if GetNumArtifactsByRace(index) ~= 0 then 
 		local keystoneBonus = 0
-		
+
 		if artifact['numKeysockets'] then
 			keystoneBonus = min(artifact['numKeystones'], artifact['numKeysockets']) * 12
 		end
-		
+
 		bar['bar']:SetMinMaxValues(0, artifact['total'])
 		bar['bar']:SetValue(min(artifact['progress'] + keystoneBonus, artifact['total']))
-		
+
 		if artifact['numKeysockets'] and artifact['numKeysockets'] > 0 then
 			bar['solve']['text']:SetText(SOLVE.." ("..artifact['numKeystones'].."/"..artifact['numKeysockets']..")")
 			
 		else
 			bar['solve']['text']:SetText(SOLVE)
 		end
-		
+
 		if keystoneBonus > 0 then
 			bar['progress']:SetText(format('|cff00c1ea%d|r/%d',artifact['progress'] + keystoneBonus, artifact['total']))
 		else
@@ -366,7 +366,7 @@ function stArch:updateArtifactBar(index)
 		bar['progress']:SetText(" ")
 		stArch:DisableSolve(bar['solve'])
 		bar['bar']:SetStatusBarColor(0.4, 0.4, 0.4)
-		
+
 		stArch['progressBars'][index]['border']:SetAlpha(0.2)
 		stArch['progressBars'][index]['solve']:SetAlpha(0.2)
 	end
@@ -394,7 +394,7 @@ function stArch:EnableSolve(index, button)
 				end
 			end
 		end
-		
+
 		if GetNumArtifactsByRace(index) > 0 then
 			if stArch['artifactInfo'][index]['canSolve'] then 
 				if not ((stArch['archSkill']['rank'] + 5) > stArch['archSkill']['maxRank'] and stArch['archSkill']['maxRank'] ~= 525) or IsShiftKeyDown() then
@@ -437,7 +437,7 @@ function stArch:updateFramePosition(self)
 		progressBars['solveFrame']:ClearAllPoints()
 		progressBars['solveFrame']:SetPoint("RIGHT", self, "LEFT", -1, 0)
 		progressBars['solveFrame']:SetPoint("TOP", progressBars['frame'], "TOP", 0, 0)
-		
+
 		progressBars['solveToggle']['openPoint1'] = {"RIGHT", self, "LEFT", -1, 0}
 		progressBars['solveToggle']['openPoint2'] = {"TOP", progressBars['frame'], "TOP", 0, 0 }
 		progressBars['solveToggle']['closePoint'] = { "RIGHT", progressBars['solveFrame'], "LEFT", -1, 0 }
@@ -448,21 +448,21 @@ function stArch:updateFramePosition(self)
 		progressBars['solveFrame']:ClearAllPoints()
 		progressBars['solveFrame']:SetPoint("LEFT", self, "RIGHT", 1, 0)
 		progressBars['solveFrame']:SetPoint("TOP", progressBars['frame'], "TOP", 0, 0)
-		
+
 		progressBars['solveToggle']['openPoint1'] = {"LEFT", self, "RIGHT", 1, 0}
 		progressBars['solveToggle']['openPoint2'] = {"TOP", progressBars['frame'], "TOP", 0, 0 }
 		progressBars['solveToggle']['closePoint'] = { "LEFT", progressBars['solveFrame'], "RIGHT", 1, 0 }
-		
+
 		progressBars['solveToggle']['closeDirection'] = "<"
 		progressBars['solveToggle']['openDirection'] = ">"
 	end
-	
+
 	if progressBars['solveFrame']:IsShown() then
 		progressBars['solveToggle']['text']:SetText(progressBars['solveToggle']['closeDirection'])
 	else
 		progressBars['solveToggle']['text']:SetText(progressBars['solveToggle']['openDirection'])
 	end
-	
+
 	progressBars['solveToggle']:ClearAllPoints()
 	if progressBars['solveFrame']:IsShown() then 
 		progressBars['solveToggle']:SetPoint(unpack(progressBars['solveToggle']['closePoint']))

@@ -46,6 +46,7 @@ C["extra_skins"] = {
 	["cool_line"] = false,						-- CoolLine skin
 	["face_shooter"] = false,					-- FaceShooter skin
 	["mfclip"] = false,							-- MFClip skin
+	["npcscan"] = false,						-- NPCScan skin
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin

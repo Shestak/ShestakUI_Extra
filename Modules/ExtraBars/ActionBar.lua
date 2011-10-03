@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_bar.enable ~= true then return end
+if C.extra_bar.enable ~= true or C.actionbar.enable ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Extra ActionBar(ExtraBar by Cowmonster)
@@ -18,6 +18,9 @@ elseif C.extra_bar.style == "6*2" then
 elseif C.extra_bar.style == "4*3" then
 	bar:Width((C.actionbar.button_size * 4) + (C.actionbar.button_space * 3))
 	bar:Height((C.actionbar.button_size * 3) + C.actionbar.button_space * 2)
+elseif C.extra_bar.style == "3*4" then
+	bar:Width((C.actionbar.button_size * 3) + (C.actionbar.button_space * 2))
+	bar:Height((C.actionbar.button_size * 4) + C.actionbar.button_space * 3)
 else
 	bar:Width((C.actionbar.button_size * 12) + (C.actionbar.button_space * 11))
 	bar:Height(C.actionbar.button_size)
@@ -63,6 +66,18 @@ for i = 13, 24 do
 			f:Point("TOPLEFT", "ExtraBarButton1", "BOTTOMLEFT", 0, -C.actionbar.button_space)
 		elseif i == 21 then
 			f:Point("TOPLEFT", "ExtraBarButton5", "BOTTOMLEFT", 0, -C.actionbar.button_space)
+		else
+			f:Point("LEFT", "ExtraBarButton"..i-13, "RIGHT", C.actionbar.button_space, 0)
+		end
+	elseif C.extra_bar.style == "3*4" then
+		if i == 13 then
+			f:Point("TOPLEFT", ExtraBarAnchor, "TOPLEFT", 0, 0)
+		elseif i == 16 then
+			f:Point("TOPLEFT", "ExtraBarButton1", "BOTTOMLEFT", 0, -C.actionbar.button_space)
+		elseif i == 19 then
+			f:Point("TOPLEFT", "ExtraBarButton4", "BOTTOMLEFT", 0, -C.actionbar.button_space)
+		elseif i == 22 then
+			f:Point("TOPLEFT", "ExtraBarButton7", "BOTTOMLEFT", 0, -C.actionbar.button_space)
 		else
 			f:Point("LEFT", "ExtraBarButton"..i-13, "RIGHT", C.actionbar.button_space, 0)
 		end

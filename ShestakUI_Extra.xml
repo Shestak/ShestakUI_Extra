@@ -31,9 +31,11 @@
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
 	<Script file="Modules\Misc\TrainAnnounce.lua"/>
 
+	<Script file="Modules\Skins\AtlasLoot.lua"/>
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>
 	<Script file="Modules\Skins\CombustionHelper.lua"/>
 	<Script file="Modules\Skins\CoolLine.lua"/>
+	<Script file="Modules\Skins\EPGP.lua"/>
 	<Script file="Modules\Skins\FaceShooter.lua"/>
 	<Script file="Modules\Skins\MFClip.lua"/>
 	<Script file="Modules\Skins\NPCScan.lua"/>

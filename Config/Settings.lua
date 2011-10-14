@@ -38,17 +38,19 @@ C["extra_bar"] = {
 }
 
 ----------------------------------------------------------------------------------------
---	Skins options (Maybe not work correctly!!!)
+--	Skins options(Maybe not work correctly!!!)
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
+	["atlasloot"] = false,						-- AtlasLoot skin
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["combustion_helper"] = false,				-- CombustionHelper skin
 	["cool_line"] = false,						-- CoolLine skin
+	["epgp"] = false,							-- EPGP skin(Not Ready)
 	["face_shooter"] = false,					-- FaceShooter skin
 	["mfclip"] = false,							-- MFClip skin
 	["npcscan"] = false,						-- NPCScan skin
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
-	["skada"] = false,							-- Skada skin
+	["skada"] = false,							-- Skada skin(Not Ready)
 	["tiny_dps"] = false,						-- TinyDPS skin
 }

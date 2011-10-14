@@ -46,7 +46,6 @@ if T.name == "Oz" and T.realm == "Runetotem" then
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].arena_calc = true
 	C["extra_skins"].blood_shield_tracker = true
-	C["extra_skins"].cool_line = true
 	C["extra_skins"].npcscan = true
 	C["extra_skins"].roll_tracker = true
 end

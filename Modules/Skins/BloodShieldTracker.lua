@@ -15,6 +15,7 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 	self.db.profile.estheal_bar_border = false
 	self.db.profile.status_bar_scale = 1
 	self.db.profile.estheal_bar_scale = 1
+	self.db.profile.status_bar_texture = "Smooth"
 	self.db.profile.estheal_bar_texture = "Smooth"
 
 	local ShieldTrackerStatusBar = CreateFrame("Frame", "ShieldTrackerStatusBar", BloodShieldTracker_StatusBar)

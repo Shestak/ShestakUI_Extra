@@ -110,7 +110,7 @@ do
 	MicroButtonPortrait:ClearAllPoints()
 	MicroButtonPortrait:Point("TOPLEFT", CharacterMicroButton.frame, "TOPLEFT", 2, -2)
 	MicroButtonPortrait:Point("BOTTOMRIGHT", CharacterMicroButton.frame, "BOTTOMRIGHT", -2, 2)
-	
+
 	GuildMicroButtonTabard:ClearAllPoints()
 	GuildMicroButtonTabard:Point("TOP", GuildMicroButton.frame, "TOP", 0, 25)
 	GuildMicroButtonTabard.SetPoint = T.dummy

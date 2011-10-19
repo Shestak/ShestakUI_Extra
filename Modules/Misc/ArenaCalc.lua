@@ -40,7 +40,7 @@ local function CreateModule()
 	-- Background Frame
 	local hCalcBG = CreateFrame("Frame", "CalcBG", UIParent)
 	hCalcBG:CreatePanel("Transparent", 1, 1, "TOPLEFT", CalcAnchor, "TOPLEFT", 0, 0)
-	
+
 	-- Make all the buttons
 	hCalcButton = CreateFrame("Button", "CalcButton", hCalcBG)
 	for i = 1, getn(buttonValues) do
@@ -87,26 +87,25 @@ local function CreateModule()
 	-- Text
 	hCalcText = hCalcTextFrame:CreateFontString(nil, "OVERLAY")
 	hCalcText:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
-	hCalcText:SetPoint("Right", hCalcTextFrame, -4, -.5)
+	hCalcText:SetPoint("Right", hCalcTextFrame, -4, -0.5)
 	hCalcText:SetText(textValue)
 	hCalcText:SetTextColor(0, 0.7, 1)
 
 	for i, text in pairs(buttonValues) do
 		SetButton(CalcButton[i], function()
-		
 			if hCalcText:GetText() ~= "0" then
 				local old = hCalcText:GetText()
 				textValue = (old..text)
 			else
 				textValue = text
 			end
-			
+
 			if i == 12 then
 				textValue = "0"
 			end
 		end)
 	end
-	
+
 	SetButton(CalcButton[11], function()
 		local rating = hCalcText:GetText()
 		local value = -(101/97200000000000)*rating^5+(247/19440000000)*rating^4-(39557/648000000)*rating^3+(154351/1080000)*rating^2-(1446533/9000)*rating+70461

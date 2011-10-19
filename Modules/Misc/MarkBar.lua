@@ -27,12 +27,12 @@ for i = 1, 8 do
 	mark[i]:SetScript("OnEnter", T.SetModifiedBackdrop)
 	mark[i]:SetScript("OnLeave", T.SetOriginalBackdrop)
 	mark[i]:SetScript("OnMouseUp", function() SetRaidTarget("target", i) end)
-	
+
 	icon[i] = CreateFrame("Button", "icon"..i, MarkBarBG)
 	icon[i]:SetNormalTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcons")
 	icon[i]:Size(button_size - 5, button_size - 5)
 	icon[i]:Point("CENTER", mark[i])
-	
+
 	-- Set up each button
 	if i == 1 then 
 		icon[i]:GetNormalTexture():SetTexCoord(0, 0.25, 0, 0.25)

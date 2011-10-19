@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------------
 --	Colorizes recipe that is already known(AlreadyKnown by Villiv)
 ----------------------------------------------------------------------------------------
-local COLOR = { r = 0.1, g = 1.0, b = 0.1, }
+local COLOR = {r = 0.1, g = 1, b = 0.1,}
 
 local tooltip = CreateFrame("GameTooltip")
 tooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
@@ -119,7 +119,6 @@ if IsAddOnLoaded("Blizzard_GuildBankUI") then
 	hooksecurefunc("GuildBankFrame_Update", GuildBankFrame_Update)
 end
 
-
 -- Auction frame
 local function AuctionFrameBrowse_Update ()
 	local numItems = GetNumAuctionItems("list")
@@ -194,7 +193,6 @@ if IsAddOnLoaded("Blizzard_AuctionUI") then
 	hooksecurefunc("AuctionFrameBid_Update", AuctionFrameBid_Update)
 	hooksecurefunc("AuctionFrameAuctions_Update", AuctionFrameAuctions_Update)
 end
-
 
 -- LoD addons
 if not (isBlizzard_GuildBankUILoaded and isBlizzard_AuctionUILoaded) then

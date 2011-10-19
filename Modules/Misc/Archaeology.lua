@@ -340,7 +340,6 @@ function stArch:updateArtifactBar(index)
 
 		if artifact['numKeysockets'] and artifact['numKeysockets'] > 0 then
 			bar['solve']['text']:SetText(SOLVE.." ("..artifact['numKeystones'].."/"..artifact['numKeysockets']..")")
-			
 		else
 			bar['solve']['text']:SetText(SOLVE)
 		end
@@ -356,8 +355,8 @@ function stArch:updateArtifactBar(index)
 		else
 			bar['bar']:SetStatusBarColor(0.7, 0.2, 0)
 			stArch:DisableSolve(bar['solve'])
-		end	
-		
+		end
+
 		bar['border']:SetAlpha(1)
 		bar['solve']:SetAlpha(1)
 	else
@@ -386,9 +385,9 @@ function stArch:EnableSolve(index, button)
 		SetSelectedArtifact(index)
 		local _, _, _, _, _, numSockets = GetActiveArtifactByRace(index)
 		local _, _, itemID = GetArchaeologyRaceInfo(index)
-		
+
 		if numSockets and numSockets > 0 then
-			for socketNum=1,numSockets do
+			for socketNum = 1,numSockets do
 				if not ItemAddedToArtifact(itemID) then
 					SocketItemToArtifact()
 				end
@@ -424,7 +423,7 @@ function stArch:OnEvent()
 	end
 	stArch:updateSkillLevel()
 	stArch:updateSkillBar()
-	
+
 	if stArch['archSkill']['rank'] == 525 then
 		stArch['archSkill']['frame']:Hide()
 	end

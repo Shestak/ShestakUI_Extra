@@ -61,7 +61,6 @@ local int = 1
 local function Update(self, t)
 	int = int - t
 	if int > 0 then return end
-	--if not GetPrimaryTalentTree() then spec.t:SetText(NO.." "..TALENTS) return end
 	local tree1, tree2, tree3, Tree = ActiveTalents()
 	name = select(2, GetTalentTabInfo(Tree)) or NONE
 	spec.t:SetText(name..": "..panelcolor..tree1.."/"..tree2.."/"..tree3)

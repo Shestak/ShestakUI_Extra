@@ -1,4 +1,4 @@
-﻿## Interface: 40200
+﻿## Interface: 40300
 ## Title: ShestakUI Extra
 ## Notes: Extra mods for ShestakUI
 ## Author: Shestak

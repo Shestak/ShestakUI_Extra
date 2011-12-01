@@ -45,6 +45,7 @@ C["extra_skins"] = {
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["combustion_helper"] = false,				-- CombustionHelper skin
 	["cool_line"] = false,						-- CoolLine skin
+	["dominos"] = false,						-- Dominos skin(Not Ready)
 	["epgp"] = false,							-- EPGP skin(Not Ready)
 	["face_shooter"] = false,					-- FaceShooter skin
 	["mfclip"] = false,							-- MFClip skin

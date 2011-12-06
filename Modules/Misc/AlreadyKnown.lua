@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------------
 --	Colorizes recipe that is already known(AlreadyKnown by Villiv)
 ----------------------------------------------------------------------------------------
-local COLOR = {r = 0.1, g = 1, b = 0.1,}
+local COLOR = {r = 0.1, g = 1, b = 0.1}
 
 local tooltip = CreateFrame("GameTooltip")
 tooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
@@ -11,7 +11,7 @@ do
 	local knowns = {}
 
 	local weapon, armor, container, consumable, glyph, trade_goods, recipe, gem, miscallaneous, quest = GetAuctionItemClasses()
-	local knowables = {[consumable] = true, [glyph] = true, [recipe] = true, [miscallaneous] = true,}
+	local knowables = {[consumable] = true, [glyph] = true, [recipe] = true, [miscallaneous] = true}
 
 	local lines = {}
 	for i = 1, 40 do
@@ -40,16 +40,15 @@ do
 	end
 end
 
-
 -- Merchant frame
-local function MerchantFrame_UpdateMerchantInfo ()
+local function MerchantFrame_UpdateMerchantInfo()
 	local numItems = GetMerchantNumItems()
 
 	for i = 1, MERCHANT_ITEMS_PER_PAGE do
 		local index = (MerchantFrame.page - 1) * MERCHANT_ITEMS_PER_PAGE + i
 		if index > numItems then return end
 
-		local button = _G["MerchantItem" .. i .. "ItemButton"]
+		local button = _G["MerchantItem"..i.."ItemButton"]
 
 		if button and button:IsShown() then
 			local _, _, _, _, numAvailable, isUsable = GetMerchantItemInfo(index)
@@ -68,13 +67,13 @@ end
 
 hooksecurefunc("MerchantFrame_UpdateMerchantInfo", MerchantFrame_UpdateMerchantInfo)
 
-local function MerchantFrame_UpdateBuybackInfo ()
+local function MerchantFrame_UpdateBuybackInfo()
 	local numItems = GetNumBuybackItems()
 
 	for index = 1, BUYBACK_ITEMS_PER_PAGE do
 		if index > numItems then return end
 
-		local button = _G["MerchantItem" .. index .. "ItemButton"]
+		local button = _G["MerchantItem"..index.."ItemButton"]
 
 		if button and button:IsShown() then
 			local _, _, _, _, _, isUsable = GetBuybackItemInfo(index)
@@ -88,9 +87,8 @@ end
 
 hooksecurefunc("MerchantFrame_UpdateBuybackInfo", MerchantFrame_UpdateBuybackInfo)
 
-
 -- GuildBank frame
-local function GuildBankFrame_Update ()
+local function GuildBankFrame_Update()
 	if GuildBankFrame.mode ~= "bank" then return end
 
 	local tab = GetCurrentGuildBankTab()
@@ -120,7 +118,7 @@ if IsAddOnLoaded("Blizzard_GuildBankUI") then
 end
 
 -- Auction frame
-local function AuctionFrameBrowse_Update ()
+local function AuctionFrameBrowse_Update()
 	local numItems = GetNumAuctionItems("list")
 	local offset = FauxScrollFrame_GetOffset(BrowseScrollFrame)
 
@@ -128,7 +126,7 @@ local function AuctionFrameBrowse_Update ()
 		local index = offset + i
 		if index > numItems then return end
 
-		local texture = _G["BrowseButton" .. i .. "ItemIconTexture"]
+		local texture = _G["BrowseButton"..i.."ItemIconTexture"]
 
 		if texture and texture:IsShown() then
 			local _, _, _, _, canUse = GetAuctionItemInfo("list", index)
@@ -140,7 +138,7 @@ local function AuctionFrameBrowse_Update ()
 	end
 end
 
-local function AuctionFrameBid_Update ()
+local function AuctionFrameBid_Update()
 	local numItems = GetNumAuctionItems("bidder")
 	local offset = FauxScrollFrame_GetOffset(BidScrollFrame)
 
@@ -148,7 +146,7 @@ local function AuctionFrameBid_Update ()
 		local index = offset + i
 		if index > numItems then return end
 
-		local texture = _G["BidButton" .. i .. "ItemIconTexture"]
+		local texture = _G["BidButton"..i.."ItemIconTexture"]
 
 		if texture and texture:IsShown() then
 			local _, _, _, _, canUse = GetAuctionItemInfo("bidder", index)
@@ -160,7 +158,7 @@ local function AuctionFrameBid_Update ()
 	end
 end
 
-local function AuctionFrameAuctions_Update ()
+local function AuctionFrameAuctions_Update()
 	local numItems = GetNumAuctionItems("owner")
 	local offset = FauxScrollFrame_GetOffset(AuctionsScrollFrame)
 
@@ -168,7 +166,7 @@ local function AuctionFrameAuctions_Update ()
 		local index = offset + i
 		if index > numItems then return end
 
-		local texture = _G["AuctionsButton" .. i .. "ItemIconTexture"]
+		local texture = _G["AuctionsButton"..i.."ItemIconTexture"]
 
 		if texture and texture:IsShown() then
 			local _, _, _, _, canUse, _, _, _, _, _, _, _, saleStatus = GetAuctionItemInfo("owner", index)

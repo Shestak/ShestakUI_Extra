@@ -22,3 +22,6 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "敵方大部隊來攻 "
 L_EXTRA_ANNOUNCE_BG_CLEAR = " 已清除所有敵人"
 L_EXTRA_ANNOUNCE_BG_FOCUS = "主要集火目標 "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "注意,有潛行敵人在旁邊"
+
+-- EnchantScroll
+L_EXTRA_SCROLL = "Scroll" -- Needs review

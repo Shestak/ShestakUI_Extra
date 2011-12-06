@@ -22,3 +22,6 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "Тяжелая атака на "
 L_EXTRA_ANNOUNCE_BG_CLEAR = "Все чисто у "
 L_EXTRA_ANNOUNCE_BG_FOCUS = "Фокусная атака на "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "Рядом враг в невидимости"
+
+-- EnchantScroll
+L_EXTRA_SCROLL = "Свиток"

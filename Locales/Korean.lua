@@ -22,3 +22,6 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "Heavy attack incoming to "
 L_EXTRA_ANNOUNCE_BG_CLEAR = "All clear at "
 L_EXTRA_ANNOUNCE_BG_FOCUS = "Focus Damage on "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "Stealthed Enemies Nearby"
+
+-- EnchantScroll
+L_EXTRA_SCROLL = "Scroll"

@@ -22,3 +22,6 @@ L_EXTRA_ANNOUNCE_BG_HEAVY = "viel Schaden auf "
 L_EXTRA_ANNOUNCE_BG_CLEAR = "alles klar auf "
 L_EXTRA_ANNOUNCE_BG_FOCUS = "Fokusschaden auf "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "Unsichtbarer Gegner in der Nähe"
+
+-- EnchantScroll
+L_EXTRA_SCROLL = "Rolle"

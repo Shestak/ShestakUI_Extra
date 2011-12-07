@@ -167,12 +167,16 @@ SkinAL:SetScript("OnEvent", function(self, event)
 
 	for i = 1, 12 do
 		local f = _G["AtlasLoot_PanelButton_"..i]
-		f:SkinButton()
+		if f then
+			f:SkinButton()
+		end
 	end
 
 	for i = 1, 15 do
 		local f = _G["AtlasLootCompareFrameMainFilterButton"..i]
-		f:StripTextures()
+		if f then
+			f:StripTextures()
+		end
 	end
 
 	AtlasLootPanel:CreateBackdrop("Transparent")

@@ -1,19 +1,15 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.buff_automator ~= true then return end
+if C.extra_general.buff_automator ~= true or T.level ~= MAX_PLAYER_LEVEL then return end
 
 ----------------------------------------------------------------------------------------
 --	Personal buff automator(by Gsuz)
 ----------------------------------------------------------------------------------------
-if T.level ~= 85 then return end
-
 local frame = CreateFrame("Frame", "AutomatorFrame")
 
 -- Settings for each class and spec in the format of : Class'TalentTree'
 -- PRIEST1 is Disc Priest while MAGE2 is Fire Mage
-
 MAGE1 = {
 	6117,	-- Mage Armor
-	82930,	-- Arcane Tactics
 	1459,	-- Arcane Intellect
 	543,	-- Mage Ward
 }
@@ -78,55 +74,63 @@ WARRIOR2 = {
 
 WARRIOR3 = {
 	6673,	-- Battle Shout
-}		
+}
 
 WARLOCK1 = {
-	6629,	-- Shadow Ward
+	6229,	-- Shadow Ward
 	28176,	-- Fel Armor
 }
+
 WARLOCK2 = {
-	6629,	-- Shadow Ward
+	6229,	-- Shadow Ward
 	28176,	-- Fel Armor
 }
+
 WARLOCK3 = {
-	6629,	-- Shadow Ward
+	6229,	-- Shadow Ward
 	28176,	-- Fel Armor
 }
 
 ROGUE1 = {}
+
 ROGUE2 = {}
+
 ROGUE3 = {}
 
 PALADIN1 = {
-	20217	-- Blessing of Kings
+	20217,	-- Blessing of Kings
 }
 
 PALADIN2 = {
-	20217	-- Blessing of Kings
+	20217,	-- Blessing of Kings
 }
 
 PALADIN3 = {
-	20217	-- Blessing of Kings
+	20217,	-- Blessing of Kings
 }
 
 HUNTER1 = {
-	19506	-- Trueshot Aura
+	13165,	-- Aspect of the Hawk
 }
+
 HUNTER2 = {
-	19506	-- Trueshot Aura
+	13165,	-- Aspect of the Hawk
 }
+
 HUNTER3 = {
-	19506	-- Trueshot Aura
+	13165,	-- Aspect of the Hawk
 }
 
 DRUID1 = {
-	1126	-- Mark of the Wild
+	1126,	-- Mark of the Wild
 }
+
 DRUID2 = {
-	1126	-- Mark of the Wild
+	1126,	-- Mark of the Wild
 }
+
 DRUID3 = {
-	1126	-- Mark of the Wild
+	1126,	-- Mark of the Wild
 }
 
 -- Function for waiting through the global cooldown
@@ -141,7 +145,7 @@ local function WaitForGC(self, elapsed)
 end
 
 -- Create Secure Action Button for better control
-local btn = CreateFrame("Button", "BuffButton", UIParent, "SecureActionButtonTemplate")
+local btn = CreateFrame("Button", "AutoBuffButton", UIParent, "SecureActionButtonTemplate")
 btn:SetAttribute("type", "action")
 btn:SetAttribute("action", 1)
 btn:SetAttribute("type", "spell")
@@ -159,8 +163,8 @@ function CheckBuffs()
 
 		if GetSpellCooldown(spellname) == 0 then
 			btn:SetAttribute("spell", spellname)
-			SetOverrideBindingClick(btn, true, "MOUSEWHEELUP", "BuffButton")
-			SetOverrideBindingClick(btn, true, "MOUSEWHEELDOWN", "BuffButton")
+			SetOverrideBindingClick(btn, true, "MOUSEWHEELUP", "AutoBuffButton")
+			SetOverrideBindingClick(btn, true, "MOUSEWHEELDOWN", "AutoBuffButton")
 		else
 			local start, duration, enabled = GetSpellCooldown(spellname)
 			if duration == nil or duration > 1.5 then return end

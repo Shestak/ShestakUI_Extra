@@ -149,10 +149,11 @@ btn:SetAttribute("unit", "player")
 
 -- Main function for changing keybinding to mousewheel when a buff is needed
 function CheckBuffs()
+	local tree = GetPrimaryTalentTree() or 1
 	if IsFlying() or IsMounted() or UnitIsDeadOrGhost("Player") or InCombatLockdown() then return end
 	ClearOverrideBindings(btn)
 	btn:SetAttribute("spell", nil)
-	for i, v in pairs(_G[select(2, UnitClass("player"))..GetPrimaryTalentTree()]) do
+	for i, v in pairs(_G[T.class..tree]) do
 		local spellname = select(1, GetSpellInfo(v))
 		if UnitAura("player", spellname) then return end
 

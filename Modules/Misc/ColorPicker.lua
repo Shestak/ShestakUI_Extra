@@ -8,16 +8,6 @@ local initialized = nil
 local colorBuffer = {}
 local editingText
 
-local function SkinEditBox(f)
-	if not f:GetName() then return end
-	local name = f:GetName()
-	_G[name.."Left"]:SetTexture(nil)
-	_G[name.."Right"]:SetTexture(nil)
-	_G[name.."Middle"]:SetTexture(nil)
-
-	f:SetTemplate("Default")
-end
-
 local function UpdateAlphaText()
 	local a = OpacitySliderFrame:GetValue()
 	a = a * 100
@@ -112,8 +102,9 @@ load:SetScript("OnEvent", function(self, event)
 	end)
 
 	ColorPickerFrame:HookScript("OnColorSelect", function(self, r, g, b)
+		ColorSwatch:SetTexture(r, g, b)
 		if not editingText then
-			UpdateColorTexts(arg1, arg2, arg3)
+			UpdateColorTexts(r, g, b)
 		end
 	end)
 
@@ -195,6 +186,23 @@ load:SetScript("OnEvent", function(self, event)
 		end
 	end)
 
+	-- ClassColor button
+	b = CreateFrame("Button", "ColorPPClass", ColorPickerFrame, "UIPanelButtonTemplate")
+	b:SkinButton()
+	b:SetText("C")
+	b:Width(18)
+	b:Height(22)
+	b:Point("TOPRIGHT", "ColorPPPaste", "BOTTOMRIGHT", 0, -7)
+
+	b:SetScript("OnClick", function()
+		local color = RAID_CLASS_COLORS[T.class]
+		ColorPickerFrame:SetColorRGB(color.r, color.g, color.b)
+		ColorSwatch:SetTexture(color.r, color.g, color.b)
+		if ColorPickerFrame.hasOpacity then
+			OpacitySliderFrame:SetValue(0)
+		end
+	end)
+
 	-- Locate Color Swatch for copy color
 	ColorPPCopyColorSwatch:SetPoint("LEFT", "ColorSwatch", "LEFT")
 	ColorPPCopyColorSwatch:Point("TOP", "ColorPPPaste", "BOTTOM", 0, -5)
@@ -210,13 +218,13 @@ load:SetScript("OnEvent", function(self, event)
 
 		local rgb = boxes[i]
 		local box = CreateFrame("EditBox", "ColorPPBox"..rgb, ColorPickerFrame, "InputBoxTemplate")
-		SkinEditBox(box)
+		T.SkinEditBox(box)
 		box:SetID(i)
 		box:SetFrameStrata("DIALOG")
 		box:SetAutoFocus(false)
 		box:SetTextInsets(0, 7, 0, 0)
 		box:SetJustifyH("RIGHT")
-		box:Height(24)
+		box:Height(20)
 
 		if i == 4 then
 			-- Hex entry box
@@ -258,10 +266,10 @@ load:SetScript("OnEvent", function(self, event)
 	end
 
 	-- Finish up with placement
-	ColorPPBoxR:Point("BOTTOMLEFT", "ColorPickerOkayButton", "TOPLEFT", 13, 15)
+	ColorPPBoxR:Point("BOTTOMLEFT", "ColorPickerOkayButton", "TOPLEFT", 13, 18)
 	ColorPPBoxG:Point("LEFT", "ColorPPBoxR", "RIGHT", 18, 0)
 	ColorPPBoxB:Point("LEFT", "ColorPPBoxG", "RIGHT", 18, 0)
-	ColorPPBoxA:Point("BOTTOMRIGHT", "ColorPickerCancelButton", "TOPRIGHT", 0, 15)
+	ColorPPBoxA:Point("BOTTOMRIGHT", "ColorPickerCancelButton", "TOPRIGHT", 0, 18)
 	ColorPPBoxH:Point("RIGHT", "ColorPPBoxA", "LEFT", -20, 0)
 
 	-- Define the order of tab cursor movement

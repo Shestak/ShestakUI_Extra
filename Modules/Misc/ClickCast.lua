@@ -228,7 +228,11 @@ function SpellBinder:makeSpellsList(delete)
 				if f and DB.frames[frame] then
 				if _G[f]:CanChangeAttribute() or _G[f]:CanChangeProtectedState() then
 					if _G[f]:GetAttribute(spell.modifier.."type"..spell.button) ~= "menu" then
-						_G[f]:RegisterForClicks("AnyUp")
+						if GetCVarBool("ActionButtonUseKeyDown") then
+							_G[f]:RegisterForClicks("AnyDown")
+						else
+							_G[f]:RegisterForClicks("AnyUp")
+						end
 						if spell.button:find("harmbutton") then
 							_G[f]:SetAttribute(spell.modifier..spell.button, spell.spell)
 							_G[f]:SetAttribute(spell.modifier.."type-"..spell.spell, "spell")

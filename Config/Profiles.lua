@@ -50,3 +50,13 @@ if T.name == "Oz" and T.realm == "Runetotem" then
 	C["extra_skins"].npcscan = true
 	C["extra_skins"].roll_tracker = true
 end
+
+----------------------------------------------------------------------------------------
+--	ILF7 Config
+----------------------------------------------------------------------------------------
+if T.name == "Мейнстрим" and T.realm == "Азурегос" then
+	C["extra_general"].move_blizzard = true
+	C["extra_general"].align = true
+	C["extra_general"].fps_announce = true
+	C["extra_general"].mark_bar = true
+end

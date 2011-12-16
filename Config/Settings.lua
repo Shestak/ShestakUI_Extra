@@ -19,7 +19,7 @@ C["extra_general"] = {
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 	["fps_announce"] = false,					-- Announce fps in guild chat(!fps)
 	["bg_announce"] = false,					-- Battleground defence announce
-	["lw_announce"] = true,					-- Announce your Lightwell
+	["lw_announce"] = false,					-- Announce your Lightwell
 }
 
 ----------------------------------------------------------------------------------------

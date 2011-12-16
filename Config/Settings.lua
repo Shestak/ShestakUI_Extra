@@ -12,13 +12,14 @@ C["extra_general"] = {
 	["move_blizzard"] = false,					-- Move Blizzard frames
 	["arena_calc"] = false,						-- Arena calculator(/calc)
 	["align"] = false,							-- Grid on screen(/align)
-	["fps_announce"] = false,					-- Announce fps in guild chat(!fps)
 	["buff_automator"] = false,					-- Personal buff automator
 	["switch_spec"] = false,					-- Talent spec panel
 	["mark_bar"] = false,						-- Mark bar
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
+	["fps_announce"] = false,					-- Announce fps in guild chat(!fps)
 	["bg_announce"] = false,					-- Battleground defence announce
+	["lw_announce"] = true,					-- Announce your Lightwell
 }
 
 ----------------------------------------------------------------------------------------

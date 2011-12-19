@@ -52,11 +52,20 @@ if T.name == "Oz" and T.realm == "Runetotem" then
 end
 
 ----------------------------------------------------------------------------------------
---	ILF7 Config
+--	ILF7-Virinea Config
 ----------------------------------------------------------------------------------------
-if T.name == "Мейнстрим" and T.realm == "Азурегос" then
+if (T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох"
+or T.name == "Виринейка" or T.name == "Вирин" or T.name == "Вирин" or T.name == "Виринеа"
+or T.name == "Лунорог" or T.name == "Вирка") and T.realm == "Азурегос" then
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].align = true
 	C["extra_general"].fps_announce = true
-	C["extra_general"].mark_bar = true
+	C["extra_general"].color_picker = true
+	C["extra_general"].bg_announce = true
+	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох" then
+		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
+		C["extra_general"].mark_bar = true
+	elseif T.name == "Виринейка" or T.name == "Вирин" or T.name == "Виринеа" or T.name == "Лунорог" or T.name == "Вирка" then
+		C["extra_general"].lw_announce = true
+	end
 end

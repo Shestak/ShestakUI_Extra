@@ -25,3 +25,11 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "注意,有潛行敵人在旁邊"
 
 -- EnchantScroll
 L_EXTRA_SCROLL = "Scroll" -- Needs review
+
+-- Announce your Lightwell
+L_EXTRA_ANNOUNCE_LA_USE = " used my lightwell. " -- Needs review
+L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))" -- Needs review
+L_EXTRA_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. " -- Needs review
+L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell." -- Needs review
+L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. " -- Needs review
+L_EXTRA_ANNOUNCE_LA_CHARGES = " charges." -- Needs review

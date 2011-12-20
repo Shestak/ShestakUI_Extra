@@ -22,3 +22,11 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "Stealthed Enemies Nearby"
 
 -- EnchantScroll
 L_EXTRA_SCROLL = "Scroll"
+
+-- Announce your Lightwell
+L_EXTRA_ANNOUNCE_LA_USE = " used my lightwell. "
+L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))"
+L_EXTRA_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. "
+L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell."
+L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. "
+L_EXTRA_ANNOUNCE_LA_CHARGES = " charges."

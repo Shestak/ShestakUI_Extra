@@ -21,11 +21,11 @@ lightwell_announce:SetScript("OnEvent", function(self, _, ...)
 				aLw[sourceName] = aLw[sourceName] - 1
 				if UnitInParty(destName) or UnitInRaid(destName) then
 					if sante > baduse_threshold then
-						SendChatMessage(destName.." used my lightwell. ".."("..aLw[sourceName].." charge(s))", "SAY")
+						SendChatMessage(destName..L_EXTRA_ANNOUNCE_LA_USE.."("..aLw[sourceName]..L_EXTRA_ANNOUNCE_LA_CHARGE, "SAY")
 					else
-						SendChatMessage(destName.." used my lightwell, uselessly. ".."("..aLw[sourceName].." charge(s))", "SAY")
+						SendChatMessage(destName..L_EXTRA_ANNOUNCE_LA_USELESS.."("..aLw[sourceName]..L_EXTRA_ANNOUNCE_LA_CHARGE, "SAY")
 						if whisper_baduser then
-							SendChatMessage("You shouldn't have used the lightwell.", "WHISPER", nil, destName)
+							SendChatMessage(L_EXTRA_ANNOUNCE_LA_STOP, "WHISPER", nil, destName)
 						end
 					end
 				end
@@ -35,7 +35,7 @@ lightwell_announce:SetScript("OnEvent", function(self, _, ...)
 			aLw = {}
 			aLw[sourceName] = 0
 			aLw[sourceName] = chargesLw
-			SendChatMessage("Lightwell placed. "..chargesLw.." charges.", "SAY")
+			SendChatMessage(L_EXTRA_ANNOUNCE_LA_PLACED..chargesLw..L_EXTRA_ANNOUNCE_LA_CHARGES, "SAY")
 		end
 	end
 end)

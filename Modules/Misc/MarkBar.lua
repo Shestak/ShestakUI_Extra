@@ -11,8 +11,8 @@ MarkBarBG:CreatePanel("Invisible", (button_size * 6) + 15, (button_size * 2) + 3
 MarkBarBG:SetFrameLevel(0)
 tinsert(T.MoverFrames, MarkBarAnchor)
 
-local icon = CreateFrame("Button", "Icon", MarkBarBG)
-local mark = CreateFrame("Button", "Menu", MarkBarBG)
+local icon = {}
+local mark = {}
 for i = 0, 8 do
 	mark[i] = CreateFrame("Button", "mark"..i, MarkBarBG)
 	mark[i]:CreatePanel("Transparent", button_size, button_size, "LEFT", MarkBarBG, "LEFT", 0, 0)

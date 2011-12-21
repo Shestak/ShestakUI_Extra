@@ -4,9 +4,6 @@ if T.client ~= "frFR" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for frFR client(Thanks to Puree for the translation)
 ----------------------------------------------------------------------------------------
--- Mark bar
-L_EXTRA_BUTTON_CLEAR = "Supprimer l'objectif"
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Mon FPS actuel : "
 

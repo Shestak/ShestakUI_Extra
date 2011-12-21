@@ -4,9 +4,6 @@ if T.client ~= "esES" or T.client ~= "esMX" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for esES and esMX client(Thanks to eXecrate for the translation)
 ----------------------------------------------------------------------------------------
--- Mark bar
-L_EXTRA_BUTTON_CLEAR = "Limpiar Objetivo"
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Mis FPS actuales son "
 

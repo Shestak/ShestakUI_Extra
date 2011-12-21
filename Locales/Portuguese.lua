@@ -4,9 +4,6 @@ if T.client ~= "ptBR" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for ptBR client(Need full translation)
 ----------------------------------------------------------------------------------------
--- Mark bar
-L_EXTRA_BUTTON_CLEAR = "Clear Target"
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "My current FPS is "
 

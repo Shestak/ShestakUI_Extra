@@ -4,9 +4,6 @@ if T.client ~= "deDE" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for deDE client(Thanks to Vienchen for the translation)
 ----------------------------------------------------------------------------------------
--- Mark bar
-L_EXTRA_BUTTON_CLEAR = "Lösche Ziel"
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Meine FPS sind "
 

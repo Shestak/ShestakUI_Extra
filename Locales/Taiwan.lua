@@ -4,9 +4,6 @@ if T.client ~= "zhTW" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for zhTW client(Thanks to tat2dawn for the translation)
 ----------------------------------------------------------------------------------------
--- Mark bar
-L_EXTRA_BUTTON_CLEAR = "清除目標"
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "我目前的 FPS 是 "
 

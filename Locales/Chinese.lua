@@ -4,9 +4,6 @@ if T.client ~= "zhCN" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for zhCN client(Thanks to tat2dawn for the translation)
 ----------------------------------------------------------------------------------------
--- Mark bar
-L_EXTRA_BUTTON_CLEAR = "清除选定的目标"
-
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "我目前的 FPS 是 "
 

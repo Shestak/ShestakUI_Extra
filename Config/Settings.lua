@@ -20,6 +20,7 @@ C["extra_general"] = {
 	["fps_announce"] = false,					-- Announce fps in guild chat(!fps)
 	["bg_announce"] = false,					-- Battleground defence announce
 	["lw_announce"] = false,					-- Announce your Lightwell
+	["skip_cinematic"] = false,					-- Skip cinematics/movies
 }
 
 ----------------------------------------------------------------------------------------

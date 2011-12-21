@@ -23,6 +23,7 @@
 	<Script file="Modules\Misc\BGAnnounce.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ChatBind.lua"/>
+	<Script file="Modules\Misc\CinematicSkip.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
 	<Script file="Modules\Misc\FPSAnnounce.lua"/>

@@ -117,9 +117,18 @@ LeadershipCheck:RegisterEvent("RAID_ROSTER_UPDATE")
 LeadershipCheck:RegisterEvent("PARTY_MEMBERS_CHANGED")
 LeadershipCheck:RegisterEvent("PLAYER_ENTERING_WORLD")
 LeadershipCheck:SetScript("OnEvent", function(self, event)
+	if InCombatLockdown() then
+		self:RegisterEvent("PLAYER_REGEN_ENABLED")
+		return
+	end
+
 	if CheckRaidStatus() then
 		MarkBarAnchor:Show()
 	else
 		MarkBarAnchor:Hide()
+	end
+
+	if event == "PLAYER_REGEN_ENABLED" then
+		self:UnregisterEvent("PLAYER_REGEN_ENABLED")
 	end
 end)

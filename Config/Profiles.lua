@@ -45,6 +45,7 @@ end
 if T.author == true then
 	C["extra_general"].lw_announce = true
 	C["extra_general"].disenchanting = true
+	C["extra_general"].item_level = true
 end
 
 ----------------------------------------------------------------------------------------

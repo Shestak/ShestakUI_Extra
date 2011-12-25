@@ -22,6 +22,7 @@ C["extra_general"] = {
 	["lw_announce"] = false,					-- Announce your Lightwell
 	["skip_cinematic"] = false,					-- Skip cinematics/movies
 	["disenchanting"] = false,					-- One-click Milling, Prospecting and Disenchanting
+	["item_level"] = false,						-- Item level on slot buttons
 }
 
 ----------------------------------------------------------------------------------------

@@ -29,6 +29,7 @@
 	<Script file="Modules\Misc\FPSAnnounce.lua"/>
 	<Script file="Modules\Misc\LightwellAnnounce.lua"/>
 	<Script file="Modules\Misc\PullCountdown.lua"/>
+	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>

@@ -11,6 +11,7 @@ local lightwell_announce = CreateFrame("Frame")
 lightwell_announce:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 lightwell_announce:SetScript("OnEvent", function(self, _, ...)
 	local _, event, _, _, sourceName, _, _, _, destName, _, _, spellID = ...
+
 	if sourceName == UnitName("player") then
 		if event == "SPELL_AURA_APPLIED" and spellID == 7001 then
 			local santemax = UnitHealthMax(destName)

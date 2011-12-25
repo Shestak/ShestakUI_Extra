@@ -8,7 +8,7 @@
 --	General options
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
-	["click_cast"] = false,						-- Click2cast mod
+	["click_cast"] = false,						-- Click2Cast mod
 	["move_blizzard"] = false,					-- Move Blizzard frames
 	["arena_calc"] = false,						-- Arena calculator(/calc)
 	["align"] = false,							-- Grid on screen(/align)
@@ -21,6 +21,7 @@ C["extra_general"] = {
 	["bg_announce"] = false,					-- Battleground defence announce
 	["lw_announce"] = false,					-- Announce your Lightwell
 	["skip_cinematic"] = false,					-- Skip cinematics/movies
+	["disenchanting"] = false,					-- One-click Milling, Prospecting and Disenchanting
 }
 
 ----------------------------------------------------------------------------------------

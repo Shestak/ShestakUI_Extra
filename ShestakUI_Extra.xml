@@ -31,6 +31,7 @@
 	<Script file="Modules\Misc\PullCountdown.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
+	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
 	<Script file="Modules\Misc\TrainAnnounce.lua"/>

@@ -56,7 +56,6 @@ or T.name == "Рукалицо" or T.name == "Трольпаладин" or T.nam
 or T.name == "Релика" or T.name == "Тинейд" or T.name == "Тупаяшколота" then
 	C["extra_general"].skip_cinematic = true
 	C["extra_general"].disenchanting = true
-	C["extra_general"].item_level = true
 end
 
 ----------------------------------------------------------------------------------------

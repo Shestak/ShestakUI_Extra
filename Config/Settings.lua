@@ -53,6 +53,7 @@ C["extra_skins"] = {
 	["face_shooter"] = false,					-- FaceShooter skin
 	["mfclip"] = false,							-- MFClip skin
 	["npcscan"] = false,						-- NPCScan skin
+	["nug_running"] = false,					-- NugRunning skin
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin(Not Ready)

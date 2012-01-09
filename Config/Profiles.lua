@@ -81,6 +81,7 @@ or T.name == "Лунорог" or T.name == "Вирка") and T.realm == "Азу�
 	C["extra_general"].fps_announce = true
 	C["extra_general"].color_picker = true
 	C["extra_general"].bg_announce = true
+	C["extra_general"].item_level = true
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох" then
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true

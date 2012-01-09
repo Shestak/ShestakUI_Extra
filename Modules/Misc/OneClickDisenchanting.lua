@@ -19,7 +19,7 @@ end
 
 function button:PLAYER_LOGIN()
 	local spells, disenchanter, rogue = {}
-	local ARMOR_TYPE = GetLocale() == 'ruRU' and 'Доспехи' or ARMOR
+	local ARMOR_TYPE = T.client == "ruRU" and "Доспехи" or ARMOR
 
 	if IsSpellKnown(51005) then
 		spells[ITEM_MILLABLE] = {GetSpellInfo(51005), 0.5, 1, 0.5}
@@ -34,7 +34,7 @@ function button:PLAYER_LOGIN()
 	end
 
 	if IsSpellKnown(1804) then
-		rogue = ERR_USE_LOCKED_WITH_SPELL_KNOWN_SI:gsub("%%s", (GetSpellInfo(1810))):gsub("%%d", "%(.*%)")
+		rogue = ITEM_MIN_SKILL:gsub("%%s", (T.client == "ruRU" and "Взлом замков" or GetSpellInfo(1809))):gsub("%%d", "%(.*%)")
 	end
 
 	GameTooltip:HookScript("OnTooltipSetItem", function(self)

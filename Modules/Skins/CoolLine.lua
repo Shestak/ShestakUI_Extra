@@ -14,7 +14,7 @@ CLSkin:SetScript("OnEvent", function(self, event, addon)
 	CoolLineDB.inactivealpha = 1
 	CoolLineDB.activealpha = 1
 	CoolLineDB.font = "Hooge"
-	CoolLineDB.fontsize = 8
+	CoolLineDB.fontsize = C.font.stylization_font_size
 	CoolLineDB.w = (C.actionbar.button_size * 12) + (C.actionbar.button_space * 11) - 4
 	CoolLineDB.h = C.actionbar.button_size - 4
 

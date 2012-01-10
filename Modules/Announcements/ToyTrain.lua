@@ -1,4 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
+if C.extra_announce.toy_train ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Announce Toy Train Set

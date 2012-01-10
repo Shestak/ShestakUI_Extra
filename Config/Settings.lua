@@ -17,12 +17,19 @@ C["extra_general"] = {
 	["mark_bar"] = false,						-- Mark bar
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
-	["fps_announce"] = false,					-- Announce fps in guild chat(!fps)
-	["bg_announce"] = false,					-- Battleground defence announce
-	["lw_announce"] = false,					-- Announce your Lightwell
 	["skip_cinematic"] = false,					-- Skip cinematics/movies
 	["disenchanting"] = false,					-- One-click Milling, Prospecting and Disenchanting
 	["item_level"] = false,						-- Item level on slot buttons
+}
+
+----------------------------------------------------------------------------------------
+--	Announce options
+----------------------------------------------------------------------------------------
+C["extra_announce"] = {
+	["battleground"] = false,					-- Battleground defence announce
+	["my_fps"] = false,							-- Announce fps in guild chat(!fps)
+	["lightwell"] = false,						-- Announce your Lightwell
+	["toy_train"] = false,						-- Announce Toy Train set
 }
 
 ----------------------------------------------------------------------------------------

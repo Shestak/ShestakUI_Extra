@@ -43,9 +43,10 @@ end
 --	Shestak Config
 ----------------------------------------------------------------------------------------
 if T.author == true then
-	C["extra_general"].lw_announce = true
 	C["extra_general"].disenchanting = true
 	C["extra_general"].item_level = true
+	C["extra_announce"].lightwell = true
+	C["extra_announce"].toy_train = true
 end
 
 ----------------------------------------------------------------------------------------
@@ -78,14 +79,14 @@ or T.name == "Виринейка" or T.name == "Вирин" or T.name == "Вир
 or T.name == "Лунорог" or T.name == "Вирка") and T.realm == "Азурегос" then
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].align = true
-	C["extra_general"].fps_announce = true
 	C["extra_general"].color_picker = true
-	C["extra_general"].bg_announce = true
 	C["extra_general"].item_level = true
+	C["extra_announce"].battleground = true
+	C["extra_announce"].my_fps = true
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох" then
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true
 	elseif T.name == "Виринейка" or T.name == "Вирин" or T.name == "Виринеа" or T.name == "Лунорог" or T.name == "Вирка" then
-		C["extra_general"].lw_announce = true
+		C["extra_announce"].lightwell = true
 	end
 end

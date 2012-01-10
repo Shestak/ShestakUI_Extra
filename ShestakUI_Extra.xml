@@ -13,6 +13,12 @@
 	<Script file="Config\Positions.lua"/>
 	<Script file="Config\Profiles.lua"/>
 
+	<Script file="Modules\Announcements\Battleground.lua"/>
+	<Script file="Modules\Announcements\FPS.lua"/>
+	<Script file="Modules\Announcements\Lightwell.lua"/>
+	<Script file="Modules\Announcements\PullCountdown.lua"/>
+	<Script file="Modules\Announcements\ToyTrain.lua"/>
+
 	<Script file="Modules\ExtraBars\ActionBar.lua"/>
 	<Script file="Modules\ExtraBars\MicroMenu.lua"/>
 

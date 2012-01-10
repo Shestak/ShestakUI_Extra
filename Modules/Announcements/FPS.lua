@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.fps_announce ~= true then return end
+if C.extra_announce.my_fps ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Announce fps to guild chat(FPSAnnounce by Slushe) 

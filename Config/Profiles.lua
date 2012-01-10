@@ -47,6 +47,9 @@ if T.author == true then
 	C["extra_general"].item_level = true
 	C["extra_announce"].lightwell = true
 	C["extra_announce"].toy_train = true
+	if T.class == "DRUID" then
+		C["extra_general"].click_cast = true
+	end
 end
 
 ----------------------------------------------------------------------------------------

@@ -26,6 +26,7 @@
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
+	<Script file="Modules\Misc\AutoRole.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ChatBind.lua"/>
 	<Script file="Modules\Misc\CinematicSkip.lua"/>

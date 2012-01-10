@@ -1,3 +1,5 @@
+if IsAddOnLoaded("GnomishVendorShrinker") then return end
+
 ----------------------------------------------------------------------------------------
 --	Colorizes recipe that is already known(AlreadyKnown by Villiv)
 ----------------------------------------------------------------------------------------

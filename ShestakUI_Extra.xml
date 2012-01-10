@@ -26,22 +26,17 @@
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
-	<Script file="Modules\Misc\BGAnnounce.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
 	<Script file="Modules\Misc\ChatBind.lua"/>
 	<Script file="Modules\Misc\CinematicSkip.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
-	<Script file="Modules\Misc\FPSAnnounce.lua"/>
-	<Script file="Modules\Misc\LightwellAnnounce.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
-	<Script file="Modules\Misc\PullCountdown.lua"/>
 	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
-	<Script file="Modules\Misc\TrainAnnounce.lua"/>
 
 	<Script file="Modules\Skins\AtlasLoot.lua"/>
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>

@@ -458,7 +458,7 @@ eventf:SetScript("OnEvent", function(self, event, ...)
 		SpellBinder:makeSpellsList(true)
 
 		for i = 1, SPELLS_PER_PAGE do
-			local parent = getglobal("SpellButton"..i)
+			local parent = _G["SpellButton"..i]
 			local button = CreateFrame("Button", "SpellBinderFakeButton"..i, parent)
 			button:SetID(parent:GetID())
 			button:RegisterForClicks("AnyUp")

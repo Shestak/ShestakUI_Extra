@@ -21,12 +21,12 @@ L_EXTRA_ANNOUNCE_BG_FOCUS = "主要集火目標 "
 L_EXTRA_ANNOUNCE_BG_STEALTH = "注意,有潛行敵人在旁邊"
 
 -- EnchantScroll
-L_EXTRA_SCROLL = "Scroll" -- Needs review
+L_EXTRA_SCROLL = "附魔卷軸"
 
 -- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " used my lightwell. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))" -- Needs review
-L_EXTRA_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell." -- Needs review
-L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_CHARGES = " charges." -- Needs review
+L_EXTRA_ANNOUNCE_LA_USE = " 使用我的光束泉. "
+L_EXTRA_ANNOUNCE_LA_CHARGE = " 刷新)"
+L_EXTRA_ANNOUNCE_LA_USELESS = " 盡量少地使用我的光束泉. "
+L_EXTRA_ANNOUNCE_LA_STOP = "你不應該使用光束泉."
+L_EXTRA_ANNOUNCE_LA_PLACED = "光束泉位置. "
+L_EXTRA_ANNOUNCE_LA_CHARGES = " 刷新."

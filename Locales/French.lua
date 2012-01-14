@@ -24,9 +24,9 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "Ennemi furtif proche détecté"
 L_EXTRA_SCROLL = "Parchemin"
 
 -- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " used my lightwell. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))" -- Needs review
-L_EXTRA_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell." -- Needs review
-L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_CHARGES = " charges." -- Needs review
+L_EXTRA_ANNOUNCE_LA_USE = " a utilisé mon Puits de lumière. "
+L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))"
+L_EXTRA_ANNOUNCE_LA_USELESS = " a utilisé mon Puits de lumière, pour rien. "
+L_EXTRA_ANNOUNCE_LA_STOP = "Vous n'aviez pas besoin d'utiliser le Puits de lumière."
+L_EXTRA_ANNOUNCE_LA_PLACED = "Puits de lumière placé. "
+L_EXTRA_ANNOUNCE_LA_CHARGES = " charges."

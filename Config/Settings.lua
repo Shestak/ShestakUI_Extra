@@ -19,6 +19,7 @@ C["extra_general"] = {
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 	["skip_cinematic"] = false,					-- Skip cinematics/movies
 	["disenchanting"] = false,					-- One-click Milling, Prospecting and Disenchanting
+	["poison"] = false,							-- One-click poison enchant
 	["item_level"] = false,						-- Item level on slot buttons
 	["auto_role"] = false,						-- Auto set role
 }

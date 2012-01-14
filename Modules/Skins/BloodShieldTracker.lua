@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_skins.blood_shield_tracker ~= true then return end
+if C.extra_skins.blood_shield_tracker ~= true or T.class ~= "DEATHKNIGHT" then return end
 
 ----------------------------------------------------------------------------------------
 --	BloodShieldTracker skin

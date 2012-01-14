@@ -1,5 +1,5 @@
 local T, C, L = unpack(ShestakUI)
-if C.extra_general.poison ~= true then return end
+if C.extra_general.poison ~= true or T.class ~= "ROGUE" then return end
 
 ----------------------------------------------------------------------------------------
 --	One-click poison enchant(oApplication by Haste)

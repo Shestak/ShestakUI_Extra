@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_skins.face_shooter ~= true then return end
+if C.extra_skins.face_shooter ~= true or T.class ~= "HUNTER" or T.level < 80 then return end
 
 ----------------------------------------------------------------------------------------
 --	FaceShooter skin

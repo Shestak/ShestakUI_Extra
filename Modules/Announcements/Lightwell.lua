@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_announce.lightwell ~= true then return end
+if C.extra_announce.lightwell ~= true or T.class ~= "PRIEST" then return end
 
 ----------------------------------------------------------------------------------------
 --	Announce your Lightwell(Light Well Prout by Rahanprout)

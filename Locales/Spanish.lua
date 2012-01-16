@@ -24,9 +24,9 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "Enemigos en sigilo en las inmediaciones"
 L_EXTRA_SCROLL = "Pergamino"
 
 -- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " used my lightwell. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))" -- Needs review
-L_EXTRA_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell." -- Needs review
-L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. " -- Needs review
-L_EXTRA_ANNOUNCE_LA_CHARGES = " charges." -- Needs review
+L_EXTRA_ANNOUNCE_LA_USE = " usó mi Pozo de Luz. "
+L_EXTRA_ANNOUNCE_LA_CHARGE = " carga(s))"
+L_EXTRA_ANNOUNCE_LA_USELESS = " usó mi Pozo de Luz inútilmente. "
+L_EXTRA_ANNOUNCE_LA_STOP = "No deberías haber usado el Pozo de Luz."
+L_EXTRA_ANNOUNCE_LA_PLACED = "Pozo de Luz colocado. "
+L_EXTRA_ANNOUNCE_LA_CHARGES = " cargas."

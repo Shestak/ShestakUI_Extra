@@ -52,6 +52,7 @@ if T.author == true then
 	C["extra_announce"].toy_train = true
 	if T.class == "DRUID" then
 		C["extra_general"].click_cast = true
+		C["extra_general"].buff_automator = true
 	end
 end
 

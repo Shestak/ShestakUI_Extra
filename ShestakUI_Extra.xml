@@ -42,6 +42,7 @@
 
 	<Script file="Modules\Skins\AtlasLoot.lua"/>
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>
+	<Script file="Modules\Skins\Capping.lua"/>
 	<Script file="Modules\Skins\CoolLine.lua"/>
 	<Script file="Modules\Skins\Dominos.lua"/>
 	<Script file="Modules\Skins\EPGP.lua"/>

@@ -56,6 +56,7 @@ C["extra_bar"] = {
 C["extra_skins"] = {
 	["atlasloot"] = false,						-- AtlasLoot skin
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
+	["capping"] = false,						-- Capping skin
 	["cool_line"] = false,						-- CoolLine skin
 	["dominos"] = false,						-- Dominos skin(Not Ready)
 	["epgp"] = false,							-- EPGP skin(Not Ready)

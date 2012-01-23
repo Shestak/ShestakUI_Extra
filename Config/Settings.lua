@@ -22,6 +22,7 @@ C["extra_general"] = {
 	["poison"] = false,							-- One-click poison enchant
 	["item_level"] = false,						-- Item level on slot buttons
 	["auto_role"] = false,						-- Auto set role
+	["tab_binder"] = false,						-- Auto change Tab key to only target enemy players
 }
 
 ----------------------------------------------------------------------------------------

@@ -39,6 +39,7 @@
 	<Script file="Modules\Misc\OneClickPoison.lua"/>
 	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
+	<Script file="Modules\Misc\TabBinder.lua"/>
 
 	<Script file="Modules\Skins\AtlasLoot.lua"/>
 	<Script file="Modules\Skins\BloodShieldTracker.lua"/>

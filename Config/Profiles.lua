@@ -48,6 +48,7 @@ if T.author == true then
 	C["extra_general"].item_level = true
 	C["extra_general"].skip_cinematic = true
 	C["extra_general"].auto_role = true
+	C["extra_general"].tab_binder = true
 	C["extra_announce"].lightwell = true
 	C["extra_announce"].toy_train = true
 	if T.class == "DRUID" then
@@ -82,8 +83,8 @@ end
 --	ILF7-Virinea Config
 ----------------------------------------------------------------------------------------
 if (T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох"
-or T.name == "Виринейка" or T.name == "Вирин" or T.name == "Вирин" or T.name == "Виринеа"
-or T.name == "Лунорог" or T.name == "Вирка") and T.realm == "Азурегос" then
+or T.name == "Виринейка" or T.name == "Вирин" or T.name == "Вириней" or T.name == "Виринеа"
+or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Виринка") and T.realm == "Азурегос" then
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].align = true
 	C["extra_general"].color_picker = true
@@ -93,7 +94,7 @@ or T.name == "Лунорог" or T.name == "Вирка") and T.realm == "Азу�
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох" then
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true
-	elseif T.name == "Виринейка" or T.name == "Вирин" or T.name == "Виринеа" or T.name == "Лунорог" or T.name == "Вирка" then
+	elseif T.name == "Виринеа" then
 		C["extra_announce"].lightwell = true
 	end
 end

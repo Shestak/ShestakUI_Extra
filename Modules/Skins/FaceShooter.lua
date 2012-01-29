@@ -13,10 +13,13 @@ FSSkin:SetScript("OnEvent", function(self, event, addon)
 	button1Mover.str:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
 	button2Mover.str:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
 	button2Mover.str:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
-	ttlMover.str:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-	ttlMover.str:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
-	ttlFrame.str:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-	ttlFrame.str:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+
+	if ttlMover then
+		ttlMover.str:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+		ttlMover.str:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+		ttlFrame.str:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+		ttlFrame.str:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+	end
 
 	button1Button.texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	button2Button.texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)

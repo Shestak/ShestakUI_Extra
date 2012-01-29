@@ -12,15 +12,10 @@ TabBinder:RegisterEvent("DUEL_FINISHED")
 TabBinder:RegisterEvent("CHAT_MSG_SYSTEM")
 TabBinder:RegisterEvent("ADDON_LOADED")
 
-local RTB_Fail = false
-local RTB_DefaultKey = true
+local RTB_Fail, RTB_DefaultKey, RTB_LastTargetKey, RTB_TargetKey, RTB_CurrentBind, RTB_Success = false, true
 
 TabBinder:SetScript("OnEvent", function(self, event, ...)
-	if event == "ADDON_LOADED" then
-		if RTB_DefaultKey == nil then
-			RTB_DefaultKey = true
-		end
-	elseif event == "CHAT_MSG_SYSTEM" then
+	if event == "CHAT_MSG_SYSTEM" then
 		local RTBChatMessage = ...
 		if RTBChatMessage == ERR_DUEL_REQUESTED then
 			event = "DUEL_REQUESTED"

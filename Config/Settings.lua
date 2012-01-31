@@ -55,6 +55,7 @@ C["extra_bar"] = {
 --	Skins options(Maybe not work correctly!!!)
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
+	["adibags"] = false,						-- AdiBags skin(Not Ready)
 	["atlasloot"] = false,						-- AtlasLoot skin
 	["blood_shield_tracker"] = false,			-- BloodShieldTracker skin
 	["capping"] = false,						-- Capping skin
@@ -65,6 +66,8 @@ C["extra_skins"] = {
 	["mfclip"] = false,							-- MFClip skin
 	["npcscan"] = false,						-- NPCScan skin
 	["nug_running"] = false,					-- NugRunning skin
+	["overachiever"] = false,					-- Overachiever skin(Not Ready)
+	["preform_av"] = false,						-- PreformAVEnabler skin(Not Ready)
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin(Not Ready)

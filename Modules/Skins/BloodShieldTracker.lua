@@ -13,29 +13,42 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 
 	self.db.profile.status_bar_border = false
 	self.db.profile.estheal_bar_border = false
+	self.db.profile.pwsbar_border = false
+	self.db.profile.illumbar_border = false
+	self.db.profile.healthbar_border = false
 	self.db.profile.status_bar_scale = 1
 	self.db.profile.estheal_bar_scale = 1
+	self.db.profile.pwsbar_scale = 1
+	self.db.profile.illumbar_scale = 1
+	self.db.profile.healthbar_scale = 1
 	self.db.profile.status_bar_texture = "Smooth"
 	self.db.profile.estheal_bar_texture = "Smooth"
+	self.db.profile.pwsbar_texture = "Smooth"
+	self.db.profile.illumbar_texture = "Smooth"
+	self.db.profile.healthbar_texture = "Smooth"
 
-	local ShieldTrackerStatusBar = CreateFrame("Frame", "ShieldTrackerStatusBar", BloodShieldTracker_StatusBar)
-	ShieldTrackerStatusBar:SetPoint("TOPLEFT", BloodShieldTracker_StatusBar, "TOPLEFT", -2, 2)
-	ShieldTrackerStatusBar:SetPoint("BOTTOMRIGHT", BloodShieldTracker_StatusBar, "BOTTOMRIGHT", 2, -2)
-	ShieldTrackerStatusBar:SetTemplate("Default")
-	ShieldTrackerStatusBar:SetFrameStrata("BACKGROUND")
+	local frames = {
+		"BloodShieldTracker_StatusBar",
+		"BloodShieldTracker_EstimateBar",
+		"BloodShieldTracker_Shield_PWS",
+		"BloodShieldTracker_Shield_IllumHeal",
+		"BloodShieldTracker_HealthBar"
+	}
 
-	local ShieldTrackerDamageBar = CreateFrame("Frame", "ShieldTrackerDamageBar", BloodShieldTracker_DamageBar)
-	ShieldTrackerDamageBar:SetPoint("TOPLEFT", BloodShieldTracker_DamageBar, "TOPLEFT", -2, 2)
-	ShieldTrackerDamageBar:SetPoint("BOTTOMRIGHT", BloodShieldTracker_DamageBar, "BOTTOMRIGHT", 2, -2)
-	ShieldTrackerDamageBar:SetTemplate("Default")
-	ShieldTrackerDamageBar:SetFrameStrata("BACKGROUND")
+	for i = 1, getn(frames) do
+		local frame = _G[frames[i]]
+		if frame then
+			frame:CreateBackdrop("Default")
+			frame.backdrop:Point("TOPLEFT", -2, 2)
+			frame.backdrop:Point("BOTTOMRIGHT", 2, -2)
 
-	BloodShieldTracker_StatusBar.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-	BloodShieldTracker_StatusBar.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+			frame.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+			frame.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
 
-	BloodShieldTracker_DamageBar.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-	BloodShieldTracker_DamageBar.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
-
-	BloodShieldTracker_StatusBar.time:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-	BloodShieldTracker_StatusBar.time:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+			if frame.time then
+				frame.time:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+				frame.time:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+			end
+		end
+	end
 end)

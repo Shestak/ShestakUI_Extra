@@ -83,7 +83,6 @@ local function Compare_OnShow(self, event, ...)
 	local Nine = AtlasLootCompareFrameSortButton_9
 	if Nine ~= nil then
 		Nine:SetScript("OnUpdate", Nine_IsThere)
-	else
 	end
 end
 
@@ -182,6 +181,11 @@ SkinAL:SetScript("OnEvent", function(self, event)
 		if f then
 			f:StripTextures()
 		end
+	end
+
+	for i = 1, 30 do
+		local icon = _G["AtlasLootItem_"..i.."_Icon"]
+		icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 	end
 
 	AtlasLootPanel:CreateBackdrop("Transparent")

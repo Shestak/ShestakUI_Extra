@@ -15,15 +15,20 @@ local function AL_OnShow(self, event, ...)
 	AtlasLootPanelSearch_LastResultButton:Point("LEFT", AtlasLootPanelSearch_ClearButton, "RIGHT", 3, 0)
 	AtlasLoot10Man25ManSwitch:Point("BOTTOM", AtlasLootItemsFrame, "BOTTOM", -130, 4)
 	AtlasLootServerQueryButton:Point("BOTTOM", AtlasLootItemsFrame, "BOTTOM", 130, 4)
-	--AtlasLoot_PanelButton_2:Point("LEFT", AtlasLoot_PanelButton_1, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_3:Point("LEFT", AtlasLoot_PanelButton_2, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_4:Point("LEFT", AtlasLoot_PanelButton_3, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_5:Point("LEFT", AtlasLoot_PanelButton_4, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_7:Point("LEFT", AtlasLoot_PanelButton_6, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_8:Point("LEFT", AtlasLoot_PanelButton_7, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_9:Point("LEFT", AtlasLoot_PanelButton_8, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_10:Point("LEFT", AtlasLoot_PanelButton_9, "RIGHT", 3, 0)
-	--AtlasLoot_PanelButton_12:Point("LEFT", AtlasLoot_PanelButton_11, "RIGHT", 3, 0)
+	if AtlasLoot_PanelButton_2 then AtlasLoot_PanelButton_2:Point("LEFT", AtlasLoot_PanelButton_1, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_3 then AtlasLoot_PanelButton_3:Point("LEFT", AtlasLoot_PanelButton_2, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_4 then AtlasLoot_PanelButton_4:Point("LEFT", AtlasLoot_PanelButton_3, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_5 then AtlasLoot_PanelButton_5:Point("LEFT", AtlasLoot_PanelButton_4, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_7 then AtlasLoot_PanelButton_7:Point("LEFT", AtlasLoot_PanelButton_6, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_8 then AtlasLoot_PanelButton_8:Point("LEFT", AtlasLoot_PanelButton_7, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_9 then AtlasLoot_PanelButton_9:Point("LEFT", AtlasLoot_PanelButton_8, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_10 then AtlasLoot_PanelButton_10:Point("LEFT", AtlasLoot_PanelButton_9, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_12 then AtlasLoot_PanelButton_12:Point("LEFT", AtlasLoot_PanelButton_11, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_13 then AtlasLoot_PanelButton_13:Point("LEFT", AtlasLoot_PanelButton_12, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_14 then AtlasLoot_PanelButton_14:Point("LEFT", AtlasLoot_PanelButton_13, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_15 then AtlasLoot_PanelButton_15:Point("LEFT", AtlasLoot_PanelButton_14, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_17 then AtlasLoot_PanelButton_17:Point("LEFT", AtlasLoot_PanelButton_16, "RIGHT", 3, 0) end
+	if AtlasLoot_PanelButton_18 then AtlasLoot_PanelButton_18:Point("LEFT", AtlasLoot_PanelButton_17, "RIGHT", 3, 0) end
 	AtlasLootCompareFrameSortButton_Rarity:Point("LEFT", AtlasLootCompareFrameSortButton_Name, "RIGHT", 1, 0)
 	AtlasLootCompareFrameSortButton_1:Point("LEFT", AtlasLootCompareFrameSortButton_Rarity, "RIGHT", 1, 0)
 	AtlasLootCompareFrameSortButton_2:Point("LEFT", AtlasLootCompareFrameSortButton_1, "RIGHT", 1, 0)
@@ -165,7 +170,7 @@ SkinAL:SetScript("OnEvent", function(self, event)
 		_G[button]:SkinButton()
 	end
 
-	for i = 1, 12 do
+	for i = 1, 18 do
 		local f = _G["AtlasLoot_PanelButton_"..i]
 		if f then
 			f:SkinButton()

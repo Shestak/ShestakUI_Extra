@@ -13,6 +13,7 @@
 	<Script file="Config\Positions.lua"/>
 	<Script file="Config\Profiles.lua"/>
 
+	<Script file="Modules\Announcements\BadTank.lua"/>
 	<Script file="Modules\Announcements\Battleground.lua"/>
 	<Script file="Modules\Announcements\FPS.lua"/>
 	<Script file="Modules\Announcements\Lightwell.lua"/>
@@ -32,6 +33,7 @@
 	<Script file="Modules\Misc\CinematicSkip.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
+	<Script file="Modules\Misc\ExploreMap.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>

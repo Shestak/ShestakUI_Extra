@@ -23,6 +23,7 @@ C["extra_general"] = {
 	["item_level"] = false,						-- Item level on slot buttons
 	["auto_role"] = false,						-- Auto set role
 	["tab_binder"] = false,						-- Auto change Tab key to only target enemy players
+	["explore_map"] = false,					-- Tracking completion of the Explorer and Lore Master achievements in WorldMap
 }
 
 ----------------------------------------------------------------------------------------
@@ -33,6 +34,7 @@ C["extra_announce"] = {
 	["my_fps"] = false,							-- Announce fps in guild chat(!fps)
 	["lightwell"] = false,						-- Announce your Lightwell
 	["toy_train"] = false,						-- Announce Toy Train set
+	["bad_tank"] = false,						-- Announce taunt from not tanks
 }
 
 ----------------------------------------------------------------------------------------

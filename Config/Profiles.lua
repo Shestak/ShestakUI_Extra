@@ -49,6 +49,7 @@ if T.author == true then
 	C["extra_general"].skip_cinematic = true
 	C["extra_general"].auto_role = true
 	C["extra_general"].tab_binder = true
+	C["extra_general"].explore_map = true
 	C["extra_announce"].lightwell = true
 	C["extra_announce"].toy_train = true
 	if T.class == "DRUID" then

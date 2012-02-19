@@ -516,23 +516,22 @@ stArchFrame:HookScript("OnEvent", function(self)
 	if FrameWasShown == true and not self:IsShown() then self:Show() end
 end)
 
-local b = CreateFrame("Button", nil, UIParent)
+local b = CreateFrame("Button", "SwitchArch", UIParent)
 b:SetTemplate("ClassColor")
 if C.actionbar.toggle_mode == true then
 	if _G["SwitchLayout"] and _G["SwitchLayout"]:IsShown() then
-		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -42, 0)
+		b:Point("TOPLEFT", Minimap, "TOPRIGHT", 3, -38)
 	else
-		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -21, 0)
+		b:Point("TOPLEFT", Minimap, "TOPRIGHT", 3, -18)
 	end
 else
 	if _G["SwitchLayout"] and _G["SwitchLayout"]:IsShown() then
-		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", -21, 0)
+		b:Point("TOPLEFT", Minimap, "TOPRIGHT", 3, -18)
 	else
-		b:Point("TOPRIGHT", Minimap, "TOPRIGHT", 0, 0)
+		b:Point("TOPLEFT", Minimap, "TOPRIGHT", 3, 2)
 	end
 end
-b:Width(20)
-b:Height(20)
+b:Size(19)
 b:SetAlpha(0)
 
 local bt = b:CreateTexture(nil, "OVERLAY")

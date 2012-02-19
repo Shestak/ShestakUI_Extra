@@ -9,6 +9,7 @@ local greenColor = "|cff00ff00"
 local yellowColor = "|cffffff00"
 
 local defaults = {
+	["wasShown"] = true,
 	["socialOutput"] = false,
 	["customTanks"] = {}
 }
@@ -76,6 +77,10 @@ function BadGroup:ADDON_LOADED(event, name)
 		ExtraTanksDB = ExtraTanksDB or defaults
 		ExtraTanksDB = setmetatable(ExtraTanksDB, metaSV)
 		ExtraTanksDB.customTanks = setmetatable(ExtraTanksDB.customTanks, metaSV)
+
+		if ExtraTanksDB.wasShown == false then
+			BadGroupMenu:Hide()
+		end
 
 		-- Register events
 		self:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -314,13 +319,13 @@ function BadGroup.Command(str, editbox)
 		BadGroup:Print(ExtraTanksDB)
 	elseif str == "add" then
 		if not UnitExists("target") then
-			BadGroup:Print("You have to target something")
+			BadGroup:Print("You have to target something.")
 		else
 			BadGroup:AddTank(UnitName("target"))
 		end
 	elseif str == "del" then
 		if not UnitExists("target") then
-			BadGroup:Print("You have to target something")
+			BadGroup:Print("You have to target something.")
 		else
 			BadGroup:RemoveTank(UnitName("target"))
 		end
@@ -334,3 +339,205 @@ function BadGroup.Command(str, editbox)
 		BadGroup:Print(redColor.."Unknown command:|r "..str)
 	end
 end
+
+local BadGroupMenu = CreateFrame("Frame", "BadGroupMenu", UIParent)
+BadGroupMenu:SetWidth(C.minimap.size)
+BadGroupMenu:SetHeight(181)
+BadGroupMenu:SetPoint("BOTTOMRIGHT", Minimap, "TOPRIGHT", 2, 5)
+BadGroupMenu:SetTemplate("Transparent")
+BadGroupMenu:SetFrameLevel(1)
+BadGroupMenu:EnableMouse(true)
+BadGroupMenu:SetMovable(true)
+BadGroupMenu:SetUserPlaced(true)
+BadGroupMenu:HookScript("OnMouseDown", function(self) if IsShiftKeyDown() then self:StartMoving() end end)
+BadGroupMenu:HookScript("OnMouseUp", function(self) self:StopMovingOrSizing() end)
+
+BadGroupMenu.text = BadGroupMenu:CreateFontString(nil, "OVERLAY")
+BadGroupMenu.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+BadGroupMenu.text:SetPoint("TOP", BadGroupMenu, "TOP", 0, -6)
+BadGroupMenu.text:SetText("Таунты танков")
+
+local BadGroupClose = CreateFrame("Button", "BadGroupClose", BadGroupMenu)
+BadGroupClose:SetWidth(12)
+BadGroupClose:SetHeight(12)
+BadGroupClose:SetPoint("TOPRIGHT", BadGroupMenu,"TOPRIGHT", 0, -4)
+BadGroupClose:EnableMouse(true)
+BadGroupClose:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+
+BadGroupClose.text = BadGroupClose:CreateFontString(nil, "OVERLAY")
+BadGroupClose.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+BadGroupClose.text:SetPoint("CENTER")
+BadGroupClose.text:SetText("x")
+
+BadGroupClose:HookScript("OnEnter", function(self) BadGroupClose.text:SetTextColor(T.color.r, T.color.g, T.color.b) end)
+BadGroupClose:HookScript("OnLeave", function(self) BadGroupClose.text:SetTextColor(1, 1, 1) end)
+BadGroupClose:SetScript("OnMouseUp", function() BadGroupMenu:Hide() ExtraTanksDB.wasShown = false end)
+
+local AddButton = CreateFrame("Button", "BGAddButton", BadGroupMenu)
+AddButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+AddButton:SetHeight(20)
+AddButton:SetPoint("TOP", BadGroupMenu.text, "BOTTOM", 0, -5)
+AddButton:SkinButton()
+AddButton:EnableMouse(true)
+AddButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+AddButton:SetScript("OnMouseUp", function(self)
+	if not UnitExists("target") then
+		BadGroup:Print("You have to target something.")
+	else
+		BadGroup:AddTank(UnitName("target"))
+	end
+end)
+
+AddButton.text = AddButton:CreateFontString(nil, "OVERLAY")
+AddButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+AddButton.text:SetPoint("CENTER")
+AddButton.text:SetText("Добавить танка")
+
+local DelButton = CreateFrame("Button", "BGDelButton", BadGroupMenu)
+DelButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+DelButton:SetHeight(20)
+DelButton:SetPoint("TOP", AddButton, "BOTTOM", 0, -3)
+DelButton:SkinButton()
+DelButton:EnableMouse(true)
+DelButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+DelButton:SetScript("OnMouseUp", function(self)
+	if not UnitExists("target") then
+		BadGroup:Print("You have to target something.")
+	else
+		BadGroup:RemoveTank(UnitName("target"))
+	end
+end)
+
+DelButton.text = DelButton:CreateFontString(nil, "OVERLAY")
+DelButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+DelButton.text:SetPoint("CENTER")
+DelButton.text:SetText("Удалить танка")
+
+local ClearButton = CreateFrame("Button", "BGClearButton", BadGroupMenu)
+ClearButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+ClearButton:SetHeight(20)
+ClearButton:SetPoint("TOP", DelButton, "BOTTOM", 0, -3)
+ClearButton:SkinButton()
+ClearButton:EnableMouse(true)
+ClearButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+ClearButton:SetScript("OnMouseUp", function(self)
+	BadGroup:WipeTanks()
+end)
+
+ClearButton.text = ClearButton:CreateFontString(nil, "OVERLAY")
+ClearButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+ClearButton.text:SetPoint("CENTER")
+ClearButton.text:SetText("Удалить всех танков")
+
+local ShowButton = CreateFrame("Button", "BGClearButton", BadGroupMenu)
+ShowButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+ShowButton:SetHeight(20)
+ShowButton:SetPoint("TOP", ClearButton, "BOTTOM", 0, -3)
+ShowButton:SkinButton()
+ShowButton:EnableMouse(true)
+ShowButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+ShowButton:SetScript("OnMouseUp", function(self)
+	BadGroup:Print(ExtraTanksDB.customTanks)
+end)
+
+ShowButton.text = ShowButton:CreateFontString(nil, "OVERLAY")
+ShowButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+ShowButton.text:SetPoint("CENTER")
+ShowButton.text:SetText("Список танков")
+
+local AuraButton = CreateFrame("Button", "BGAuraButton", BadGroupMenu)
+AuraButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+AuraButton:SetHeight(20)
+AuraButton:SetPoint("TOP", ShowButton, "BOTTOM", 0, -3)
+AuraButton:SkinButton()
+AuraButton:EnableMouse(true)
+AuraButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+AuraButton:SetScript("OnMouseUp", function(self)
+	BadGroup:CheckAuras()
+end)
+
+AuraButton.text = AuraButton:CreateFontString(nil, "OVERLAY")
+AuraButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+AuraButton.text:SetPoint("CENTER")
+AuraButton.text:SetText("Проверка аур")
+
+local SayButton = CreateFrame("Button", "BGAuraButton", BadGroupMenu)
+SayButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+SayButton:SetHeight(20)
+SayButton:SetPoint("TOP", AuraButton, "BOTTOM", 0, -3)
+SayButton:SkinButton()
+SayButton:EnableMouse(true)
+SayButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+SayButton:SetScript("OnMouseUp", function(self)
+	if ExtraTanksDB.socialOutput == true then
+		ExtraTanksDB.socialOutput = false
+		BadGroup:Print("Output set to "..yellowColor.."private|r.")
+	else
+		ExtraTanksDB.socialOutput = true
+		BadGroup:Print("Output set to "..yellowColor.."social|r.")
+	end
+end)
+
+SayButton.text = SayButton:CreateFontString(nil, "OVERLAY")
+SayButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+SayButton.text:SetPoint("CENTER")
+SayButton.text:SetText(CHAT_ANNOUNCE)
+
+local InfoButton = CreateFrame("Button", "BGAuraButton", BadGroupMenu)
+InfoButton:SetWidth(BadGroupMenu:GetWidth() - 8)
+InfoButton:SetHeight(20)
+InfoButton:SetPoint("TOP", SayButton, "BOTTOM", 0, -3)
+InfoButton:SkinButton()
+InfoButton:EnableMouse(true)
+InfoButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
+InfoButton:SetScript("OnMouseUp", function(self)
+	BadGroup:Print(ExtraTanksDB)
+end)
+
+InfoButton.text = InfoButton:CreateFontString(nil, "OVERLAY")
+InfoButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
+InfoButton.text:SetPoint("CENTER")
+InfoButton.text:SetText(GUILD_INFORMATION)
+
+local b = CreateFrame("Button", nil, UIParent)
+b:SetTemplate("ClassColor")
+b:Size(19)
+b:SetAlpha(0)
+if C.extra_general.archaeology == true then
+	b:Point("TOP", SwitchLayout, "BOTTOM", 0, -21)
+else
+	b:Point("TOP", SwitchLayout, "BOTTOM", 0, -1)
+end
+
+local bt = b:CreateTexture(nil, "OVERLAY")
+bt:SetTexture("Interface\\Icons\\Ability_Hunter_Beastcall")
+bt:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+bt:Point("TOPLEFT", b, 2, -2)
+bt:Point("BOTTOMRIGHT", b, -2, 2)
+
+b:SetScript("OnClick", function(self)
+	if not InCombatLockdown() then
+		if _G["BadGroupMenu"]:IsShown() then
+			ExtraTanksDB.wasShown = false
+			_G["BadGroupMenu"]:Hide()
+		else
+			ExtraTanksDB.wasShown = true
+			_G["BadGroupMenu"]:Show()
+		end
+		if _G["TTMenuAddOnBackground"]:IsShown() then
+			_G["TTMenuAddOnBackground"]:Hide()
+		end
+		if _G["TTMenuBackground"]:IsShown() then
+			_G["TTMenuBackground"]:Hide()
+		end
+	end
+end)
+
+b:SetScript("OnEnter", function()
+	if InCombatLockdown() then return end
+	b:FadeIn()
+end)
+
+b:SetScript("OnLeave", function()
+	b:FadeOut()
+end)

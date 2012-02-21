@@ -186,7 +186,11 @@ end
 function BadGroup:ClassColoredName(srcName)
 	local _, playerClass = UnitClass(srcName)
 	local classColor = RAID_CLASS_COLORS[playerClass]
-	return string.format("|cff%02x%02x%02x%s|r", classColor.r * 255, classColor.g * 255, classColor.b * 255, srcName)
+	if classColor then
+		return string.format("|cff%02x%02x%02x%s|r", classColor.r * 255, classColor.g * 255, classColor.b * 255, srcName)
+	else
+		return string.format("|cff%02x%02x%02x%s|r", 1, 1, 1, srcName)
+	end
 end
 
 function BadGroup:CreateRaidIcons()

@@ -12,12 +12,12 @@ stArch['artifactInfo'] = {}	-- Information to update bars
 local Loaded = false
 
 function stArch:OnLoad(self)
-	if FrameWasShown == false then self:Hide() end
+	if ExtraArchyDB == false then self:Hide() end
 	-- Title Bar
 	stArch['title'] = CreateFrame("Frame", "ArchTitleFrame", self)
 	stArch['title']:SetWidth(self:GetWidth() - 10)
 	stArch['title']:SetHeight(20)
-	stArch['title']:SetPoint("TOP", self,"TOP", 0, 0)
+	stArch['title']:SetPoint("TOP", self, "TOP", 0, 0)
 	stArch['title']['text'] = stArch['title']:CreateFontString()
 	stArch['title']['text']:SetPoint("CENTER", stArch['title'], "CENTER", 0, 0)
 	stArch['title']['text']:SetJustifyH("CENTER")
@@ -29,7 +29,7 @@ function stArch:OnLoad(self)
 	stArch['close'] = CreateFrame("Frame", "ArchCloseButton", self)
 	stArch['close']:SetWidth(12)
 	stArch['close']:SetHeight(12)
-	stArch['close']:SetPoint("TOPRIGHT", self,"TOPRIGHT", 0, 0)
+	stArch['close']:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, 0)
 	stArch['close']['text'] = stArch['close']:CreateFontString()
 	stArch['close']['text']:SetPoint("CENTER", stArch['close'], "CENTER", 0, -4)
 	stArch['close']['text']:SetJustifyH("CENTER")
@@ -38,7 +38,7 @@ function stArch:OnLoad(self)
 	stArch['close']['text']:SetText("x")
 	stArch['close']:HookScript("OnEnter", function(self) self['text']:SetTextColor(T.color.r, T.color.g, T.color.b) end)
 	stArch['close']:HookScript("OnLeave", function(self) self['text']:SetTextColor(1, 1, 1) end)
-	stArch['close']:SetScript("OnMouseUp", function() self:Hide() FrameWasShown = false end)
+	stArch['close']:SetScript("OnMouseUp", function() self:Hide() ExtraArchyDB = false end)
 
 	-- Artifact Progress Bars
 	local progressBars = stArch['progressBars']
@@ -438,8 +438,8 @@ function stArch:updateFramePosition(self)
 		progressBars['solveFrame']:SetPoint("TOP", progressBars['frame'], "TOP", 0, 0)
 
 		progressBars['solveToggle']['openPoint1'] = {"RIGHT", self, "LEFT", -1, 0}
-		progressBars['solveToggle']['openPoint2'] = {"TOP", progressBars['frame'], "TOP", 0, 0 }
-		progressBars['solveToggle']['closePoint'] = { "RIGHT", progressBars['solveFrame'], "LEFT", -1, 0 }
+		progressBars['solveToggle']['openPoint2'] = {"TOP", progressBars['frame'], "TOP", 0, 0}
+		progressBars['solveToggle']['closePoint'] = {"RIGHT", progressBars['solveFrame'], "LEFT", -1, 0}
 
 		progressBars['solveToggle']['closeDirection'] = ">"
 		progressBars['solveToggle']['openDirection'] = "<"
@@ -450,7 +450,7 @@ function stArch:updateFramePosition(self)
 
 		progressBars['solveToggle']['openPoint1'] = {"LEFT", self, "RIGHT", 1, 0}
 		progressBars['solveToggle']['openPoint2'] = {"TOP", progressBars['frame'], "TOP", 0, 0 }
-		progressBars['solveToggle']['closePoint'] = { "LEFT", progressBars['solveFrame'], "RIGHT", 1, 0 }
+		progressBars['solveToggle']['closePoint'] = {"LEFT", progressBars['solveFrame'], "RIGHT", 1, 0}
 
 		progressBars['solveToggle']['closeDirection'] = "<"
 		progressBars['solveToggle']['openDirection'] = ">"
@@ -498,8 +498,8 @@ end)
 SlashCmdList.STARCHAEOLOGIST = function(msg, editBox)
 	ToggleFrame(stArchFrame)
 	stArchFrame:StopMovingOrSizing()
-	
-	if stArchFrame:IsShown() then FrameWasShown = true else FrameWasShown = false end
+
+	if stArchFrame:IsShown() then ExtraArchyDB = true else ExtraArchyDB = false end
 end
 SLASH_STARCHAEOLOGIST1 = "/starch"
 SLASH_STARCHAEOLOGIST2 = "/arch"
@@ -512,8 +512,8 @@ stArchFrame:HookScript("OnEvent", function(self)
 		stArch:OnEvent()
 		stArch:UpdateFrameHeight(self)
 	end
-	if not select(3, GetProfessions()) then stArchFrame:Hide() FrameWasShown = false end
-	if FrameWasShown == true and not self:IsShown() then self:Show() end
+	if not select(3, GetProfessions()) then stArchFrame:Hide() ExtraArchyDB = false end
+	if ExtraArchyDB == true and not self:IsShown() then self:Show() end
 end)
 
 local b = CreateFrame("Button", "SwitchArch", UIParent)
@@ -544,8 +544,10 @@ b:SetScript("OnClick", function(self)
 	if not InCombatLockdown() then
 		if _G["stArchaeologyFrame"]:IsShown() then
 			_G["stArchaeologyFrame"]:Hide()
+			ExtraArchyDB = false
 		else
 			_G["stArchaeologyFrame"]:Show()
+			ExtraArchyDB = true
 		end
 		if _G["TTMenuAddOnBackground"]:IsShown() then
 			_G["TTMenuAddOnBackground"]:Hide()

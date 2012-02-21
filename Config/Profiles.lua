@@ -54,6 +54,10 @@ if T.author == true then
 	if T.class == "DRUID" then
 		C["extra_general"].click_cast = true
 		C["extra_general"].buff_automator = true
+		C["extra_general"].archaeology = true
+	end
+	if T.class == "PALADIN" then
+		C["extra_announce"].bad_tank = true
 	end
 	if T.level ~= MAX_PLAYER_LEVEL then
 		C["extra_general"].explore_map = true

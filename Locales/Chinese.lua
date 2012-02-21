@@ -31,6 +31,20 @@ L_EXTRA_ANNOUNCE_LA_STOP = "你不应该使用光束泉."
 L_EXTRA_ANNOUNCE_LA_PLACED = "光束泉位置. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = "刷新."
 
+-- Taunt announce
+L_EXTRA_TAUNT_UNKNOWN = "Unknown command:" -- Needs review
+L_EXTRA_TAUNT_ADD = "Add tank" -- Needs review
+L_EXTRA_TAUNT_DEL = "Delete tank" -- Needs review
+L_EXTRA_TAUNT_DEL_ALL = "Delete all tanks" -- Needs review
+L_EXTRA_TAUNT_TANK_LIST = "List of tanks" -- Needs review
+L_EXTRA_TAUNT_AURA = "Auras check" -- Needs review
+L_EXTRA_TAUNT_AURA_CHECK = "Auras check done." -- Needs review
+L_EXTRA_TAUNT_ALREADY_LIST = " is already in the list." -- Needs review
+L_EXTRA_TAUNT_ADDED_TANK = "Added tank " -- Needs review
+L_EXTRA_TAUNT_REMOVED_TANK = "Removed tank " -- Needs review
+L_EXTRA_TAUNT_TARGET_FIRST = "You have to target a group member first." -- Needs review
+L_EXTRA_TAUNT_ALL_REMOVED = "All custom tanks removed." -- Needs review
+
 -- ExploreMap
 L_EXTRA_EXPLORED = "Explored: " -- Needs review
 L_EXTRA_ZONEACHID = { -- Needs review

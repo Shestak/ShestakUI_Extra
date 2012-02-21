@@ -28,6 +28,20 @@ L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell."
 L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = " charges."
 
+-- Taunt announce
+L_EXTRA_TAUNT_UNKNOWN = "Unknown command:"
+L_EXTRA_TAUNT_ADD = "Add tank"
+L_EXTRA_TAUNT_DEL = "Delete tank"
+L_EXTRA_TAUNT_DEL_ALL = "Delete all tanks"
+L_EXTRA_TAUNT_TANK_LIST = "List of tanks"
+L_EXTRA_TAUNT_AURA = "Auras check"
+L_EXTRA_TAUNT_AURA_CHECK = "Auras check done."
+L_EXTRA_TAUNT_ALREADY_LIST = " is already in the list."
+L_EXTRA_TAUNT_ADDED_TANK = "Added tank "
+L_EXTRA_TAUNT_REMOVED_TANK = "Removed tank "
+L_EXTRA_TAUNT_TARGET_FIRST = "You have to target a group member first."
+L_EXTRA_TAUNT_ALL_REMOVED = "All custom tanks removed."
+
 -- ExploreMap
 L_EXTRA_EXPLORED = "Explored: "
 L_EXTRA_ZONEACHID = {

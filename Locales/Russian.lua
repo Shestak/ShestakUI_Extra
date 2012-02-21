@@ -31,6 +31,20 @@ L_EXTRA_ANNOUNCE_LA_STOP = "Прекрати пить из моего колод
 L_EXTRA_ANNOUNCE_LA_PLACED = "Колодец Света поставлен. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = " зарядов."
 
+-- Taunt announce
+L_EXTRA_TAUNT_UNKNOWN = "Неизвестная команда:"
+L_EXTRA_TAUNT_ADD = "Добавить танка"
+L_EXTRA_TAUNT_DEL = "Удалить танка"
+L_EXTRA_TAUNT_DEL_ALL = "Удалить всех танков"
+L_EXTRA_TAUNT_TANK_LIST = "Список танков"
+L_EXTRA_TAUNT_AURA = "Проверка аур"
+L_EXTRA_TAUNT_AURA_CHECK = "Проверка аур выполнена."
+L_EXTRA_TAUNT_ALREADY_LIST = " уже добавлен в список танков."
+L_EXTRA_TAUNT_ADDED_TANK = "Добавлен танк "
+L_EXTRA_TAUNT_REMOVED_TANK = "Удалён танк "
+L_EXTRA_TAUNT_TARGET_FIRST = "Необходимо выбрать игрока."
+L_EXTRA_TAUNT_ALL_REMOVED = "Весь список танков очищен."
+
 -- ExploreMap
 L_EXTRA_EXPLORED = "Исследовано: "
 L_EXTRA_ZONEACHID = {

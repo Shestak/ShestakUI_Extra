@@ -9,9 +9,9 @@ local greenColor = "|cff00ff00"
 local yellowColor = "|cffffff00"
 
 local defaults = {
-	["wasShown"] = true,
-	["socialOutput"] = false,
-	["customTanks"] = {}
+	["WasShown"] = true,
+	["SocialOutput"] = false,
+	["CustomTanks"] = {}
 }
 
 local spellList = {
@@ -76,9 +76,9 @@ function BadGroup:ADDON_LOADED(event, name)
 		-- Set SavedVariables
 		ExtraTanksDB = ExtraTanksDB or defaults
 		ExtraTanksDB = setmetatable(ExtraTanksDB, metaSV)
-		ExtraTanksDB.customTanks = setmetatable(ExtraTanksDB.customTanks, metaSV)
+		ExtraTanksDB.CustomTanks = setmetatable(ExtraTanksDB.CustomTanks, metaSV)
 
-		if ExtraTanksDB.wasShown == false then
+		if ExtraTanksDB.WasShown == false then
 			BadGroupMenu:Hide()
 		end
 
@@ -146,7 +146,7 @@ function BadGroup:IsOutsider(srcFlags)
 end
 
 function BadGroup:IsTank(srcName)
-	for i, tankName in ipairs(ExtraTanksDB.customTanks) do
+	for i, tankName in ipairs(ExtraTanksDB.CustomTanks) do
 		if srcName == tankName then
 			return true
 		end
@@ -218,7 +218,7 @@ end
 
 function BadGroup:ChatOutput(srcName, srcGUID, srcRaidFlags, dstName, dstRaidFlags, spellid)
 	local spellLink = GetSpellLink(spellid)
-	local srcRaidIcon = self:GetRaidIcon(srcRaidFlags, ExtraTanksDB.socialOutput)
+	local srcRaidIcon = self:GetRaidIcon(srcRaidFlags, ExtraTanksDB.SocialOutput)
 	local owner = self:GetPetOwner(srcGUID)
 
 	local message
@@ -233,12 +233,12 @@ function BadGroup:ChatOutput(srcName, srcGUID, srcRaidFlags, dstName, dstRaidFla
 	end
 
 	if dstName then
-		local dstRaidIcon = self:GetRaidIcon(dstRaidFlags, ExtraTanksDB.socialOutput)
+		local dstRaidIcon = self:GetRaidIcon(dstRaidFlags, ExtraTanksDB.SocialOutput)
 		message = ("%s on %s%s"):format(message, dstRaidIcon, dstName)
 		prvtMessage = ("%s on %s%s%s|r"):format(prvtMessage, dstRaidIcon, redColor, dstName)
 	end
 
-	if ExtraTanksDB.socialOutput and numMembers > 0 then
+	if ExtraTanksDB.SocialOutput and numMembers > 0 then
 		SendChatMessage(message, string.upper(groupType))
 	else
 		self:Print(prvtMessage)
@@ -258,7 +258,7 @@ function BadGroup:ScanAuras(unitID, groupType)
 
 	if UnitAura(unitID, auraName) == auraName then
 		local playerName = UnitName(unitID)
-		if ExtraTanksDB.socialOutput and groupType == "raid" or groupType == "party" and not self:IsTank(playerName) then
+		if ExtraTanksDB.SocialOutput and groupType == "raid" or groupType == "party" and not self:IsTank(playerName) then
 			SendChatMessage("Non-tank "..playerName.." has "..GetSpellLink(auraID).." on.", groupType == "raid" and "RAID" or "PARTY")
 		elseif not self:IsTank(playerName) then
 			self:Print("Non-tank "..self:ClassColoredName(playerName).." has "..GetSpellLink(auraID).." on.")
@@ -274,80 +274,80 @@ function BadGroup:CheckAuras()
 	end
 
 	self:ScanAuras("player", groupType)
-	self:Print("Auras check done.")
+	self:Print(L_EXTRA_TAUNT_AURA_CHECK)
 end
 
 function BadGroup:AddTank(tankName)
 	if tankName == UnitName("player") or tankName == UnitName("pet") or UnitPlayerOrPetInParty(tankName) or UnitPlayerOrPetInRaid(tankName) then
-		for i, v in ipairs(ExtraTanksDB.customTanks) do
+		for i, v in ipairs(ExtraTanksDB.CustomTanks) do
 			if v == tankName then
-				self:Print(tankName.." is already in the list.")
+				self:Print(tankName..L_EXTRA_TAUNT_ALREADY_LIST)
 				return
 			end
 		end
 
-		table.insert(ExtraTanksDB.customTanks, tankName)
-		self:Print("Added tank "..self:ClassColoredName(tankName))
+		table.insert(ExtraTanksDB.CustomTanks, tankName)
+		self:Print(L_EXTRA_TAUNT_ADDED_TANK..self:ClassColoredName(tankName)..".")
 	else
-		self:Print("You have to target a group member first.")
+		self:Print(L_EXTRA_TAUNT_TARGET_FIRST)
 	end
 end
 
 function BadGroup:RemoveTank(tankName)
-	for i, name in ipairs(ExtraTanksDB.customTanks) do
+	for i, name in ipairs(ExtraTanksDB.CustomTanks) do
 		if tankName == name then
-			table.remove(ExtraTanksDB.customTanks, i)
-			self:Print("Removed "..tankName.." from the list.")
+			table.remove(ExtraTanksDB.CustomTanks, i)
+			self:Print(L_EXTRA_TAUNT_REMOVED_TANK..tankName..".")
 		end
 	end
 end
 
 function BadGroup:WipeTanks()
-	table.wipe(ExtraTanksDB.customTanks)
-	self:Print("All custom tanks removed.")
+	table.wipe(ExtraTanksDB.CustomTanks)
+	self:Print(L_EXTRA_TAUNT_ALL_REMOVED)
 end
 
 function BadGroup:Print(...)
 	local str = tostring(...)
-	DEFAULT_CHAT_FRAME:AddMessage("|cff0099CCBadTank:|r "..str)
+	DEFAULT_CHAT_FRAME:AddMessage("|cff0099CCBadGroup:|r "..str)
 end
 
 function BadGroup.Command(str, editbox)
 	if str == "social" then
-		ExtraTanksDB.socialOutput = true
+		ExtraTanksDB.SocialOutput = true
 		BadGroup:Print("Output set to "..yellowColor.."social|r.")
 	elseif str == "private" then
-		ExtraTanksDB.socialOutput = false
+		ExtraTanksDB.SocialOutput = false
 		BadGroup:Print("Output set to "..yellowColor.."private|r.")
 	elseif str == "status" then 
 		BadGroup:Print(ExtraTanksDB)
 	elseif str == "add" then
 		if not UnitExists("target") then
-			BadGroup:Print("You have to target something.")
+			BadGroup:Print(L_EXTRA_TAUNT_TARGET_FIRST)
 		else
 			BadGroup:AddTank(UnitName("target"))
 		end
 	elseif str == "del" then
 		if not UnitExists("target") then
-			BadGroup:Print("You have to target something.")
+			BadGroup:Print(L_EXTRA_TAUNT_TARGET_FIRST)
 		else
 			BadGroup:RemoveTank(UnitName("target"))
 		end
 	elseif str == "wipe" then
 		BadGroup:WipeTanks()
 	elseif str == "tanks" then
-		BadGroup:Print(ExtraTanksDB.customTanks)
+		BadGroup:Print(ExtraTanksDB.CustomTanks)
 	elseif str == "auras" then
 		BadGroup:CheckAuras()
 	else
-		BadGroup:Print(redColor.."Unknown command:|r "..str)
+		BadGroup:Print(redColor..L_EXTRA_TAUNT_UNKNOWN.."|r "..str)
 	end
 end
 
 local BadGroupMenu = CreateFrame("Frame", "BadGroupMenu", UIParent)
 BadGroupMenu:SetWidth(C.minimap.size)
 BadGroupMenu:SetHeight(181)
-BadGroupMenu:SetPoint("BOTTOMRIGHT", Minimap, "TOPRIGHT", 2, 5)
+BadGroupMenu:SetPoint(unpack(C.extra_position.tank_announce))
 BadGroupMenu:SetTemplate("Transparent")
 BadGroupMenu:SetFrameLevel(1)
 BadGroupMenu:EnableMouse(true)
@@ -359,7 +359,7 @@ BadGroupMenu:HookScript("OnMouseUp", function(self) self:StopMovingOrSizing() en
 BadGroupMenu.text = BadGroupMenu:CreateFontString(nil, "OVERLAY")
 BadGroupMenu.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 BadGroupMenu.text:SetPoint("TOP", BadGroupMenu, "TOP", 0, -6)
-BadGroupMenu.text:SetText("Таунты танков")
+BadGroupMenu.text:SetText("BadGroup")
 
 local BadGroupClose = CreateFrame("Button", "BadGroupClose", BadGroupMenu)
 BadGroupClose:SetWidth(12)
@@ -375,7 +375,7 @@ BadGroupClose.text:SetText("x")
 
 BadGroupClose:HookScript("OnEnter", function(self) BadGroupClose.text:SetTextColor(T.color.r, T.color.g, T.color.b) end)
 BadGroupClose:HookScript("OnLeave", function(self) BadGroupClose.text:SetTextColor(1, 1, 1) end)
-BadGroupClose:SetScript("OnMouseUp", function() BadGroupMenu:Hide() ExtraTanksDB.wasShown = false end)
+BadGroupClose:SetScript("OnMouseUp", function() BadGroupMenu:Hide() ExtraTanksDB.WasShown = false end)
 
 local AddButton = CreateFrame("Button", "BGAddButton", BadGroupMenu)
 AddButton:SetWidth(BadGroupMenu:GetWidth() - 8)
@@ -386,7 +386,7 @@ AddButton:EnableMouse(true)
 AddButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
 AddButton:SetScript("OnMouseUp", function(self)
 	if not UnitExists("target") then
-		BadGroup:Print("You have to target something.")
+		BadGroup:Print(L_EXTRA_TAUNT_TARGET_FIRST)
 	else
 		BadGroup:AddTank(UnitName("target"))
 	end
@@ -395,7 +395,7 @@ end)
 AddButton.text = AddButton:CreateFontString(nil, "OVERLAY")
 AddButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 AddButton.text:SetPoint("CENTER")
-AddButton.text:SetText("Добавить танка")
+AddButton.text:SetText(L_EXTRA_TAUNT_ADD)
 
 local DelButton = CreateFrame("Button", "BGDelButton", BadGroupMenu)
 DelButton:SetWidth(BadGroupMenu:GetWidth() - 8)
@@ -406,7 +406,7 @@ DelButton:EnableMouse(true)
 DelButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
 DelButton:SetScript("OnMouseUp", function(self)
 	if not UnitExists("target") then
-		BadGroup:Print("You have to target something.")
+		BadGroup:Print(L_EXTRA_TAUNT_TARGET_FIRST)
 	else
 		BadGroup:RemoveTank(UnitName("target"))
 	end
@@ -415,7 +415,7 @@ end)
 DelButton.text = DelButton:CreateFontString(nil, "OVERLAY")
 DelButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 DelButton.text:SetPoint("CENTER")
-DelButton.text:SetText("Удалить танка")
+DelButton.text:SetText(L_EXTRA_TAUNT_DEL)
 
 local ClearButton = CreateFrame("Button", "BGClearButton", BadGroupMenu)
 ClearButton:SetWidth(BadGroupMenu:GetWidth() - 8)
@@ -431,7 +431,7 @@ end)
 ClearButton.text = ClearButton:CreateFontString(nil, "OVERLAY")
 ClearButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 ClearButton.text:SetPoint("CENTER")
-ClearButton.text:SetText("Удалить всех танков")
+ClearButton.text:SetText(L_EXTRA_TAUNT_DEL_ALL)
 
 local ShowButton = CreateFrame("Button", "BGClearButton", BadGroupMenu)
 ShowButton:SetWidth(BadGroupMenu:GetWidth() - 8)
@@ -441,13 +441,13 @@ ShowButton:SkinButton()
 ShowButton:EnableMouse(true)
 ShowButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
 ShowButton:SetScript("OnMouseUp", function(self)
-	BadGroup:Print(ExtraTanksDB.customTanks)
+	BadGroup:Print(ExtraTanksDB.CustomTanks)
 end)
 
 ShowButton.text = ShowButton:CreateFontString(nil, "OVERLAY")
 ShowButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 ShowButton.text:SetPoint("CENTER")
-ShowButton.text:SetText("Список танков")
+ShowButton.text:SetText(L_EXTRA_TAUNT_TANK_LIST)
 
 local AuraButton = CreateFrame("Button", "BGAuraButton", BadGroupMenu)
 AuraButton:SetWidth(BadGroupMenu:GetWidth() - 8)
@@ -463,7 +463,7 @@ end)
 AuraButton.text = AuraButton:CreateFontString(nil, "OVERLAY")
 AuraButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 AuraButton.text:SetPoint("CENTER")
-AuraButton.text:SetText("Проверка аур")
+AuraButton.text:SetText(L_EXTRA_TAUNT_AURA)
 
 local SayButton = CreateFrame("Button", "BGAuraButton", BadGroupMenu)
 SayButton:SetWidth(BadGroupMenu:GetWidth() - 8)
@@ -473,11 +473,11 @@ SayButton:SkinButton()
 SayButton:EnableMouse(true)
 SayButton:SetFrameLevel(BadGroupMenu:GetFrameLevel() + 1)
 SayButton:SetScript("OnMouseUp", function(self)
-	if ExtraTanksDB.socialOutput == true then
-		ExtraTanksDB.socialOutput = false
+	if ExtraTanksDB.SocialOutput == true then
+		ExtraTanksDB.SocialOutput = false
 		BadGroup:Print("Output set to "..yellowColor.."private|r.")
 	else
-		ExtraTanksDB.socialOutput = true
+		ExtraTanksDB.SocialOutput = true
 		BadGroup:Print("Output set to "..yellowColor.."social|r.")
 	end
 end)
@@ -522,10 +522,10 @@ bt:Point("BOTTOMRIGHT", b, -2, 2)
 b:SetScript("OnClick", function(self)
 	if not InCombatLockdown() then
 		if _G["BadGroupMenu"]:IsShown() then
-			ExtraTanksDB.wasShown = false
+			ExtraTanksDB.WasShown = false
 			_G["BadGroupMenu"]:Hide()
 		else
-			ExtraTanksDB.wasShown = true
+			ExtraTanksDB.WasShown = true
 			_G["BadGroupMenu"]:Show()
 		end
 		if _G["TTMenuAddOnBackground"]:IsShown() then

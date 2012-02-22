@@ -34,6 +34,7 @@
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
 	<Script file="Modules\Misc\ExploreMap.lua"/>
+	<Script file="Modules\Misc\MapBossCount.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>

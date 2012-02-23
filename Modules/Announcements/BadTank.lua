@@ -528,10 +528,10 @@ b:SetScript("OnClick", function(self)
 			ExtraTanksDB.WasShown = true
 			_G["BadGroupMenu"]:Show()
 		end
-		if _G["TTMenuAddOnBackground"]:IsShown() then
+		if C.minimap.toggle_menu and _G["TTMenuAddOnBackground"]:IsShown() then
 			_G["TTMenuAddOnBackground"]:Hide()
 		end
-		if _G["TTMenuBackground"]:IsShown() then
+		if C.minimap.toggle_menu and _G["TTMenuBackground"]:IsShown() then
 			_G["TTMenuBackground"]:Hide()
 		end
 	end

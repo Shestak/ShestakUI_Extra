@@ -98,13 +98,13 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].color_picker = true
 	C["extra_general"].skip_cinematic = true
 	C["extra_general"].item_level = true
+	C["extra_general"].disenchanting = true
 	C["extra_announce"].battleground = true
 	C["extra_announce"].my_fps = true
 	C["extra_skins"].atlasloot = true
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох" then
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true
-		C["extra_general"].disenchanting = true
 		C["extra_general"].auto_role = true
 	elseif T.name == "Виринеа" then
 		C["extra_announce"].lightwell = true

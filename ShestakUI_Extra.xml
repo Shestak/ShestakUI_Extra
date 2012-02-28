@@ -53,6 +53,7 @@
 	<Script file="Modules\Skins\Dominos.lua"/>
 	<Script file="Modules\Skins\EPGP.lua"/>
 	<Script file="Modules\Skins\FaceShooter.lua"/>
+	<Script file="Modules\Skins\MageNuggets.lua"/>
 	<Script file="Modules\Skins\MFClip.lua"/>
 	<Script file="Modules\Skins\NPCScan.lua"/>
 	<Script file="Modules\Skins\NugRunning.lua"/>

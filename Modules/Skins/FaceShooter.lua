@@ -22,6 +22,7 @@ FSSkin:SetScript("OnEvent", function(self, event, addon)
 	button1Button.texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
 	if not button1Button.b then
+		button1Button:Hide()
 		button1Button.b = CreateFrame("Frame", nil, button1Button)
 		button1Button.b:SetTemplate("Default")
 		button1Button.b:SetFrameStrata("BACKGROUND")
@@ -36,6 +37,7 @@ FSSkin:SetScript("OnEvent", function(self, event, addon)
 		button2Button.texture:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
 		if not button2Button.b then
+			button2Button:Hide()
 			button2Button.b = CreateFrame("Frame", nil, button2Button)
 			button2Button.b:SetTemplate("Default")
 			button2Button.b:SetFrameStrata("BACKGROUND")

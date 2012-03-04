@@ -32,6 +32,7 @@ C["extra_general"] = {
 ----------------------------------------------------------------------------------------
 C["extra_announce"] = {
 	["battleground"] = false,					-- Battleground defence announce
+	["battleground_two_row"] = true,			-- Two row for BG panel
 	["my_fps"] = false,							-- Announce fps in guild chat(!fps)
 	["lightwell"] = false,						-- Announce your Lightwell
 	["toy_train"] = false,						-- Announce Toy Train set

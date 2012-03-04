@@ -9,13 +9,16 @@ local curmapid = GetCurrentMapAreaID()
 -- Create Main Button Frame
 local buttonframe = CreateFrame("Frame", "BGAnnouncerButtonFrame", UIParent)
 buttonframe:CreatePanel("Invisible", 313, 20, unpack(C.extra_position.bg_announce))
+if C.extra_announce.battleground_two_row == true then
+	buttonframe:Size(156, 43)
+end
 buttonframe:Hide()
 buttonframe:SetFrameStrata("BACKGROUND")
 tinsert(T.MoverFrames, buttonframe)
 
 -- Button 1
 local button1 = CreateFrame("Button", "BGAnnouncerButton1", buttonframe, "SecureActionButtonTemplate")
-button1:CreatePanel("Transparent", 50, 20, "BOTTOMLEFT", buttonframe, "BOTTOMLEFT", 0, 0)
+button1:CreatePanel("Transparent", 50, 20, "TOPLEFT", buttonframe, "TOPLEFT", 0, 0)
 button1:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button1:SetFrameStrata("MEDIUM")
 button1:SetAttribute("type", "macro")
@@ -61,15 +64,18 @@ button3:SetScript("OnLeave", T.SetOriginalBackdrop)
 -- Button 4
 local button4 = CreateFrame("Button", "BGAnnouncerButton4", buttonframe, "SecureActionButtonTemplate")
 button4:CreatePanel("Transparent", 50, 20, "LEFT", button3, "RIGHT", 3, 0)
+if C.extra_announce.battleground_two_row == true then
+	button4:Point("TOPLEFT", button1, "BOTTOMLEFT", 0, -3)
+end
 button4:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button4:SetFrameStrata("MEDIUM")
 button4:SetAttribute("type", "macro")
-button4:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_CLEAR..GetMinimapZoneText())
+button4:SetAttribute("macrotext", "/say "..L_EXTRA_ANNOUNCE_BG_FOCUS.."%t")
 
 local button4_text = button4:CreateFontString(nil, "OVERLAY")
 button4_text:SetFont(C.font.stats_font, C.font.stats_font_size, C.font.stats_font_style)
 button4_text:Point("CENTER", 0, 0)
-button4_text:SetText("Secure")
+button4_text:SetText("Focus")
 button4:SetScript("OnEnter", T.SetModifiedBackdrop)
 button4:SetScript("OnLeave", T.SetOriginalBackdrop)
 
@@ -79,27 +85,27 @@ button5:CreatePanel("Transparent", 50, 20, "LEFT", button4, "RIGHT", 3, 0)
 button5:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button5:SetFrameStrata("MEDIUM")
 button5:SetAttribute("type", "macro")
-button5:SetAttribute("macrotext", "/say "..L_EXTRA_ANNOUNCE_BG_FOCUS.."%t")
+button5:SetAttribute("macrotext", "/say "..L_EXTRA_ANNOUNCE_BG_STEALTH)
 
 local button5_text = button5:CreateFontString(nil, "OVERLAY")
 button5_text:SetFont(C.font.stats_font, C.font.stats_font_size, C.font.stats_font_style)
 button5_text:Point("CENTER", 0, 0)
-button5_text:SetText("Focus")
+button5_text:SetText("Hidden")
 button5:SetScript("OnEnter", T.SetModifiedBackdrop)
 button5:SetScript("OnLeave", T.SetOriginalBackdrop)
 
 -- Button 6
-local button6 = CreateFrame("Button", "BGAnnouncerButton5", buttonframe, "SecureActionButtonTemplate")
+local button6 = CreateFrame("Button", "BGAnnouncerButton6", buttonframe, "SecureActionButtonTemplate")
 button6:CreatePanel("Transparent", 50, 20, "LEFT", button5, "RIGHT", 3, 0)
 button6:SetFrameLevel(buttonframe:GetFrameLevel() + 1)
 button6:SetFrameStrata("MEDIUM")
 button6:SetAttribute("type", "macro")
-button6:SetAttribute("macrotext", "/say "..L_EXTRA_ANNOUNCE_BG_STEALTH)
+button6:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_CLEAR..GetMinimapZoneText())
 
 local button6_text = button6:CreateFontString(nil, "OVERLAY")
 button6_text:SetFont(C.font.stats_font, C.font.stats_font_size, C.font.stats_font_style)
 button6_text:Point("CENTER", 0, 0)
-button6_text:SetText("Hidden")
+button6_text:SetText("Secure")
 button6:SetScript("OnEnter", T.SetModifiedBackdrop)
 button6:SetScript("OnLeave", T.SetOriginalBackdrop)
 

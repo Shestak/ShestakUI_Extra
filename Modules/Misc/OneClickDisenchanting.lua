@@ -65,7 +65,7 @@ function button:PLAYER_LOGIN()
 	end)
 
 	self:SetFrameStrata("TOOLTIP")
-	self:SetAttribute("alt-type1", "macro")
+	self:SetAttribute("*type1", "macro")
 	self:SetScript("OnLeave", self.MODIFIER_STATE_CHANGED)
 
 	self:RegisterEvent("MODIFIER_STATE_CHANGED")

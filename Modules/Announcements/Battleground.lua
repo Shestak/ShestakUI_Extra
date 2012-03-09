@@ -123,7 +123,7 @@ local function OnEvent(self, event)
 	button1:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_LIGHT..GetMinimapZoneText())
 	button2:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_MEDIUM..GetMinimapZoneText())
 	button3:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_HEAVY..GetMinimapZoneText())
-	button4:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_CLEAR..GetMinimapZoneText())
+	button6:SetAttribute("macrotext", "/bg "..L_EXTRA_ANNOUNCE_BG_CLEAR..GetMinimapZoneText())
 end
 
 UpdateZone:RegisterEvent("PLAYER_ENTERING_WORLD")

@@ -79,12 +79,19 @@ end
 --	Oz@Runetotem Config
 ----------------------------------------------------------------------------------------
 if T.name == "Oz" and T.realm == "Runetotem" then
+	C["extra_position"].extra_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -336, 24}
+	C["extra_position"].bg_announce = {"BOTTOMLEFT", UIParent, "BOTTOMLEFT", 381, 156}
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].arena_calc = true
 	C["extra_general"].align = true
+	C["extra_general"].item_level = true
+	C["extra_general"].map_boss_count = true
+	C["extra_announce"].battleground = true
+	C["extra_announce"].battleground_two_row = false
+	C["extra_bar"].enable = true
+	C["extra_bar"].mouseover = true
 	C["extra_skins"].blood_shield_tracker = true
 	C["extra_skins"].npcscan = true
-	C["extra_skins"].roll_tracker = true
 end
 
 ----------------------------------------------------------------------------------------

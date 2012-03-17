@@ -50,6 +50,9 @@ if T.author == true then
 	C["extra_general"].auto_role = true
 	C["extra_general"].tab_binder = true
 	C["extra_general"].map_boss_count = true
+	C["extra_general"].instance_lock = true
+	C["extra_general"].item_transmogrify = true
+	C["extra_general"].healer_icon = true
 	C["extra_announce"].lightwell = true
 	C["extra_announce"].toy_train = true
 	if T.class == "DRUID" then

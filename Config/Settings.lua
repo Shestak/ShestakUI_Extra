@@ -25,6 +25,9 @@ C["extra_general"] = {
 	["tab_binder"] = false,						-- Auto change Tab key to only target enemy players
 	["explore_map"] = false,					-- Tracking completion of the Explorer and Lore Master achievements in WorldMap
 	["map_boss_count"] = false,					-- Show boss count in WorldMap
+	["instance_lock"] = false,					-- Your instance lock status in tooltip
+	["item_transmogrify"] = false,				-- Displays items can not be transmogrified
+	["healer_icon"] = false,					-- Show healer icon on all enemy healers nameplate in battlegrounds
 }
 
 ----------------------------------------------------------------------------------------

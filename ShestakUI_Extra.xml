@@ -40,6 +40,7 @@
 	<Script file="Modules\Misc\InstanceLockCompare.lua"/>
 	<Script file="Modules\Misc\MapBossCount.lua"/>
 	<Script file="Modules\Misc\MarkBar.lua"/>
+	<Script file="Modules\Misc\MouseoverMarking.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>

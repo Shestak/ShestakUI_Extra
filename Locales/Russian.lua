@@ -4,6 +4,10 @@ if T.client ~= "ruRU" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for ruRU client
 ----------------------------------------------------------------------------------------
+-- Key binding Header Name
+L_EXTRA_HEADER_EXTRABAR = "Дополнительная панель команд"
+L_EXTRA_HEADER_MARK = "Метки по наведению курсора"
+
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Кадров в секунду у меня "
 

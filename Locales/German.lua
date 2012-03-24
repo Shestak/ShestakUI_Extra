@@ -4,6 +4,10 @@ if T.client ~= "deDE" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for deDE client(Thanks to Vienchen for the translation)
 ----------------------------------------------------------------------------------------
+-- Key binding Header Name
+L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
+L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
+
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Meine FPS sind "
 

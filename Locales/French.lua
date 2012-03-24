@@ -4,6 +4,10 @@ if T.client ~= "frFR" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for frFR client(Thanks to Puree for the translation)
 ----------------------------------------------------------------------------------------
+-- Key binding Header Name
+L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
+L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
+
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Mon FPS actuel : "
 

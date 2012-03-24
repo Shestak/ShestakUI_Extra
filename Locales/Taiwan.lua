@@ -4,6 +4,10 @@ if T.client ~= "zhTW" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for zhTW client(Thanks to tat2dawn for the translation)
 ----------------------------------------------------------------------------------------
+-- Key binding Header Name
+L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
+L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
+
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "我目前的 FPS 是 "
 

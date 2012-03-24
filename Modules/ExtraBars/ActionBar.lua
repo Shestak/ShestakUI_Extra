@@ -93,7 +93,7 @@ for i = 13, 24 do
 	f:Show()
 end
 
-BINDING_HEADER_EXTRABAR_HEADER = "Extra Bar"
+BINDING_HEADER_EXTRABAR_HEADER = L_EXTRA_HEADER_EXTRABAR
 
 -- Mouseover bar
 if C.extra_bar.mouseover ~= true then return end

@@ -4,6 +4,10 @@ if T.client ~= "??" then return end
 ----------------------------------------------------------------------------------------
 --	Localization for ?? client(Need full translation)
 ----------------------------------------------------------------------------------------
+-- Key binding Header Name
+L_EXTRA_HEADER_EXTRABAR = "Extra Bar"
+L_EXTRA_HEADER_MARK = "Mouseover Raid Icons"
+
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "My current FPS is "
 

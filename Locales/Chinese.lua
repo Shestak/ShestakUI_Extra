@@ -36,18 +36,18 @@ L_EXTRA_ANNOUNCE_LA_PLACED = "光束泉位置. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = "刷新."
 
 -- Taunt announce
-L_EXTRA_TAUNT_UNKNOWN = "Unknown command:" -- Needs review
-L_EXTRA_TAUNT_ADD = "Add tank" -- Needs review
-L_EXTRA_TAUNT_DEL = "Delete tank" -- Needs review
-L_EXTRA_TAUNT_DEL_ALL = "Delete all tanks" -- Needs review
-L_EXTRA_TAUNT_TANK_LIST = "List of tanks" -- Needs review
-L_EXTRA_TAUNT_AURA = "Auras check" -- Needs review
-L_EXTRA_TAUNT_AURA_CHECK = "Auras check done." -- Needs review
-L_EXTRA_TAUNT_ALREADY_LIST = " is already in the list." -- Needs review
-L_EXTRA_TAUNT_ADDED_TANK = "Added tank " -- Needs review
-L_EXTRA_TAUNT_REMOVED_TANK = "Removed tank " -- Needs review
-L_EXTRA_TAUNT_TARGET_FIRST = "You have to target a group member first." -- Needs review
-L_EXTRA_TAUNT_ALL_REMOVED = "All custom tanks removed." -- Needs review
+L_EXTRA_TAUNT_UNKNOWN = "未知命令:"
+L_EXTRA_TAUNT_ADD = "添加坦克 "
+L_EXTRA_TAUNT_DEL = "移除坦克 "
+L_EXTRA_TAUNT_DEL_ALL = "移除所有坦克"
+L_EXTRA_TAUNT_TANK_LIST = "坦克列表"
+L_EXTRA_TAUNT_AURA = "检查光环"
+L_EXTRA_TAUNT_AURA_CHECK = "光环检查完毕."
+L_EXTRA_TAUNT_ALREADY_LIST = " 已经在列表中."
+L_EXTRA_TAUNT_ADDED_TANK = "已添加坦克 "
+L_EXTRA_TAUNT_REMOVED_TANK = "已移除坦克 "
+L_EXTRA_TAUNT_TARGET_FIRST = "请先选择一位队友为目标."
+L_EXTRA_TAUNT_ALL_REMOVED = "已移除所有自定义添加的坦克."
 
 -- ExploreMap
 L_EXTRA_EXPLORED = "Explored: " -- Needs review

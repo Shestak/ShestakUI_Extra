@@ -46,6 +46,7 @@
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
 	<Script file="Modules\Misc\OneClickPoison.lua"/>
 	<Script file="Modules\Misc\SlotItemLevel.lua"/>
+	<Script file="Modules\Misc\SpamageMeters.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
 	<Script file="Modules\Misc\TabBinder.lua"/>
 

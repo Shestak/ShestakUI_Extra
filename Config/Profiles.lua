@@ -53,6 +53,7 @@ if T.author == true then
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
+	C["extra_general"].damage_meter_spam = true
 	C["extra_announce"].lightwell = true
 	C["extra_announce"].toy_train = true
 	if T.class == "DRUID" then

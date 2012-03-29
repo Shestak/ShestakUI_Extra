@@ -54,12 +54,16 @@ if T.author == true then
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
 	C["extra_general"].damage_meter_spam = true
-	C["extra_announce"].lightwell = true
+	C["extra_announce"].flask_food = true
 	C["extra_announce"].toy_train = true
 	if T.class == "DRUID" then
 		C["extra_general"].click_cast = true
 		C["extra_general"].buff_automator = true
 		C["extra_general"].archaeology = true
+	end
+	if T.class == "PRIEST" then
+		C["extra_general"].click_cast = true
+		C["extra_announce"].lightwell = true
 	end
 	if T.class == "PALADIN" then
 		C["extra_announce"].bad_tank = true

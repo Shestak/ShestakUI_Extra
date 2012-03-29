@@ -74,6 +74,7 @@ C["extra_skins"] = {
 	["mage_mana_bar"] = false,					-- MageManaBar skin
 	["mage_nuggets"] = false,					-- MageNuggets skin
 	["mfclip"] = false,							-- MFClip skin
+	["mog_it"] = false,							-- MogIt skin(Not Ready)
 	["my_role_play"] = false,					-- MyRolePlay skin
 	["npcscan"] = false,						-- NPCScan skin
 	["nug_running"] = false,					-- NugRunning skin

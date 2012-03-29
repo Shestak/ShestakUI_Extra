@@ -61,6 +61,7 @@
 	<Script file="Modules\Skins\MageManaBar.lua"/>
 	<Script file="Modules\Skins\MageNuggets.lua"/>
 	<Script file="Modules\Skins\MFClip.lua"/>
+	<Script file="Modules\Skins\MogIt.lua"/>
 	<Script file="Modules\Skins\MyRolePlay.lua"/>
 	<Script file="Modules\Skins\NPCScan.lua"/>
 	<Script file="Modules\Skins\NugRunning.lua"/>

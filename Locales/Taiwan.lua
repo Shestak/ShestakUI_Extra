@@ -35,6 +35,12 @@ L_EXTRA_ANNOUNCE_LA_STOP = "你不應該使用光束泉."
 L_EXTRA_ANNOUNCE_LA_PLACED = "光束泉位置. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = " 刷新."
 
+-- Announce flasks and food
+L_EXTRA_ANNOUNCE_FF_NOFOOD = "No Food: " -- Needs review
+L_EXTRA_ANNOUNCE_FF_NOFLASK = "No Flask: " -- Needs review
+L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "All Buffed!" -- Needs review
+L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "未知的命令:"
 L_EXTRA_TAUNT_ADD = "添加 坦克"

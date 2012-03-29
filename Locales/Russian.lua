@@ -35,6 +35,12 @@ L_EXTRA_ANNOUNCE_LA_STOP = "Прекрати пить из моего колод
 L_EXTRA_ANNOUNCE_LA_PLACED = "Колодец Света поставлен. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = " зарядов."
 
+-- Announce flasks and food
+L_EXTRA_ANNOUNCE_FF_NOFOOD = "Нет еды: "
+L_EXTRA_ANNOUNCE_FF_NOFLASK = "Нет настоя: "
+L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "Еда и настой есть у всех. Можно щемить!"
+L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Проверка еды и настоя"
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Неизвестная команда:"
 L_EXTRA_TAUNT_ADD = "Добавить танка"

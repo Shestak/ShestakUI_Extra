@@ -35,6 +35,12 @@ L_EXTRA_ANNOUNCE_LA_STOP = "Vous n'aviez pas besoin d'utiliser le Puits de lumi�
 L_EXTRA_ANNOUNCE_LA_PLACED = "Puits de lumière placé. "
 L_EXTRA_ANNOUNCE_LA_CHARGES = " charges."
 
+-- Announce flasks and food
+L_EXTRA_ANNOUNCE_FF_NOFOOD = "No Food: " -- Needs review
+L_EXTRA_ANNOUNCE_FF_NOFLASK = "No Flask: " -- Needs review
+L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "All Buffed!" -- Needs review
+L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Unknown command:" -- Needs review
 L_EXTRA_TAUNT_ADD = "Add tank" -- Needs review

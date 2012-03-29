@@ -35,6 +35,12 @@ L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell." -- Needs rev
 L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. " -- Needs review
 L_EXTRA_ANNOUNCE_LA_CHARGES = " charges." -- Needs review
 
+-- Announce flasks and food
+L_EXTRA_ANNOUNCE_FF_NOFOOD = "Kein Essen: "
+L_EXTRA_ANNOUNCE_FF_NOFLASK = "Kein Fläschchen: "
+L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "Alles drin!"
+L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Unknown command:" -- Needs review
 L_EXTRA_TAUNT_ADD = "Add tank" -- Needs review

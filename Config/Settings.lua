@@ -35,8 +35,14 @@ C["extra_general"] = {
 --	Announce options
 ----------------------------------------------------------------------------------------
 C["extra_announce"] = {
+	-- Battleground
 	["battleground"] = false,					-- Battleground defence announce
 	["battleground_two_row"] = true,			-- Two row for BG panel
+	-- Flask and Food
+	["flask_food"] = false,						-- Announce the usage of flasks and food
+	["flask_food_auto"] = false,				-- Auto announce when ReadyCheck(if enable, announce to raid channel)
+	["flask_food_raid"] = false,				-- Announce to raid channel
+	-- Other
 	["my_fps"] = false,							-- Announce fps in guild chat(!fps)
 	["lightwell"] = false,						-- Announce your Lightwell
 	["toy_train"] = false,						-- Announce Toy Train set

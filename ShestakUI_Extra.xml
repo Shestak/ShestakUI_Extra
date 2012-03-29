@@ -16,6 +16,7 @@
 
 	<Script file="Modules\Announcements\BadTank.lua"/>
 	<Script file="Modules\Announcements\Battleground.lua"/>
+	<Script file="Modules\Announcements\FlaskAndFood.lua"/>
 	<Script file="Modules\Announcements\FPS.lua"/>
 	<Script file="Modules\Announcements\Lightwell.lua"/>
 	<Script file="Modules\Announcements\PullCountdown.lua"/>

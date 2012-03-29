@@ -9,11 +9,9 @@ local noFood, noFlask, unitBuffs = {}, {}, {}
 local foods = {
 	35272,	-- Well Fed
 	44106,	-- Well Fed from Brewfest
-	79061,	-- Test
 }
 
 local flasks = {
-	79640, -- Test
 	79631, -- Prismatic Elixir
 	79469, -- Flask of Steelskin
 	79470, -- Flask of the Draconic Mind

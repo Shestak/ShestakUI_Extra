@@ -46,6 +46,8 @@ local WIMtooltip = function(tooltip)
 	if not itemType or (quality < 2 and not wx[tonumber(link:match("item:(%d+):"))]) or not (itemType == ARMOR or itemType == ENCHSLOT_WEAPON) or (subType == MISCELLANEOUS and not slot == "INVTYPE_HOLDABLE") or not locs[slot] then return end
 	local canBeChanged, noChangeReason, canBeSource, noSourceReason = GetItemTransmogrifyInfo(link)
 
+	if not (canBeChanged or canBeSource) then return end
+
 	if noChangeReason or noSourceReason then
 		GameTooltip:AddLine(" ")
 	end

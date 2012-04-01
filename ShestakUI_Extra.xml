@@ -37,6 +37,7 @@
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
 	<Script file="Modules\Misc\ExploreMap.lua"/>
+	<Script file="Modules\Misc\GemCounter.lua"/>
 	<Script file="Modules\Misc\HealerIconNameplate.lua"/>
 	<Script file="Modules\Misc\InstanceLockCompare.lua"/>
 	<Script file="Modules\Misc\MapBossCount.lua"/>
@@ -48,6 +49,7 @@
 	<Script file="Modules\Misc\OneClickPoison.lua"/>
 	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\SpamageMeters.lua"/>
+	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
 	<Script file="Modules\Misc\TabBinder.lua"/>
 

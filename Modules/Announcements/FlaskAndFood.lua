@@ -90,7 +90,7 @@ local function run(autoreport)
 		end
 		checkUnit("player")
 	end
-	for i = 1,num do
+	for i = 1, num do
 		if checkType == "raid" then
 			local _, _, subGroup, _, _, _, _, online = GetRaidRosterInfo(i)
 			if (((diff == 1) or (diff == 3)) and subGroup < 3) or (((diff == 2) or (diff == 4)) and subGroup < 6) and online then

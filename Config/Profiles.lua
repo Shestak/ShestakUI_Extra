@@ -61,7 +61,6 @@ if T.author == true then
 	if T.class == "DRUID" then
 		C["extra_general"].click_cast = true
 		C["extra_general"].buff_automator = true
-		C["extra_general"].archaeology = true
 	end
 	if T.class == "PRIEST" then
 		C["extra_general"].click_cast = true
@@ -79,18 +78,21 @@ end
 --	Oz@Runetotem Config
 ----------------------------------------------------------------------------------------
 if T.name == "Oz" and T.realm == "Runetotem" then
-	C["extra_position"].extra_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -336, 24}
-	C["extra_position"].bg_announce = {"BOTTOMLEFT", UIParent, "BOTTOMLEFT", 381, 156}
+	C["extra_position"].extra_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -237, 24}
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].arena_calc = true
 	C["extra_general"].align = true
 	C["extra_general"].item_level = true
 	C["extra_general"].map_boss_count = true
-	C["extra_announce"].battleground = true
-	C["extra_announce"].battleground_two_row = false
+	C["extra_general"].gem_counter = true
+	C["extra_general"].item_transmogrify = true
+	C["extra_general"].healer_icon = true
+	C["extra_general"].damage_meter_spam = true
+	C["extra_announce"].flask_food = true
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
 	C["extra_skins"].blood_shield_tracker = true
+	C["extra_skins"].my_role_play = true
 	C["extra_skins"].npcscan = true
 end
 

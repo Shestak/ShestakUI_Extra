@@ -108,6 +108,15 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].skip_cinematic = true
 	C["extra_general"].item_level = true
 	C["extra_general"].disenchanting = true
+	C["extra_general"].tab_binder = true
+	C["extra_general"].explore_map = true
+	C["extra_general"].map_boss_count = true
+	C["extra_general"].instance_lock = true
+	C["extra_general"].item_transmogrify = true
+	C["extra_general"].healer_icon = true
+	C["extra_general"].damage_meter_spam = true
+	C["extra_general"].sum_buyouts = true
+	C["extra_general"].gem_counter = true
 	C["extra_announce"].battleground = true
 	C["extra_announce"].my_fps = true
 	C["extra_skins"].atlasloot = true

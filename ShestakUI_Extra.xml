@@ -20,6 +20,7 @@
 	<Script file="Modules\Announcements\FPS.lua"/>
 	<Script file="Modules\Announcements\Lightwell.lua"/>
 	<Script file="Modules\Announcements\PullCountdown.lua"/>
+	<Script file="Modules\Announcements\SayThanks.lua"/>
 	<Script file="Modules\Announcements\ToyTrain.lua"/>
 
 	<Script file="Modules\ExtraBars\ActionBar.lua"/>
@@ -31,6 +32,7 @@
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\AutoRole.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
+	<Script file="Modules\Misc\CancelBadBuffs.lua"/>
 	<Script file="Modules\Misc\ChatBind.lua"/>
 	<Script file="Modules\Misc\CheckItemTransmogrify.lua"/>
 	<Script file="Modules\Misc\CinematicSkip.lua"/>

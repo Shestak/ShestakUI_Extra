@@ -58,6 +58,7 @@ if T.author == true then
 	C["extra_general"].gem_counter = true
 	C["extra_announce"].flask_food = true
 	C["extra_announce"].toy_train = true
+	C["extra_announce"].says_thanks = true
 	if T.class == "DRUID" then
 		C["extra_general"].click_cast = true
 		C["extra_general"].buff_automator = true

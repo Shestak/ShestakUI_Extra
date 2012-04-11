@@ -31,6 +31,7 @@ C["extra_general"] = {
 	["damage_meter_spam"] = false,				-- Merge damage meter spam in one line-link
 	["sum_buyouts"] = false,					-- Sum upp all current auctions
 	["gem_counter"] = false,					-- Displays how many red/blue/yellow gems you have
+	["cancel_bad_buffs"] = false,				-- Auto cancel various buffs
 }
 
 ----------------------------------------------------------------------------------------
@@ -49,6 +50,7 @@ C["extra_announce"] = {
 	["lightwell"] = false,						-- Announce your Lightwell
 	["toy_train"] = false,						-- Announce Toy Train set
 	["bad_tank"] = false,						-- Announce taunt from not tanks
+	["says_thanks"] = false,					-- Says thanks for some spells
 }
 
 ----------------------------------------------------------------------------------------

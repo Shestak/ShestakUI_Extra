@@ -39,23 +39,23 @@ function button:PLAYER_LOGIN()
 
 	GameTooltip:HookScript("OnTooltipSetItem", function(self)
 		local item, link = self:GetItem()
-		if (item and not InCombatLockdown() and IsAltKeyDown()) then
+		if item and not InCombatLockdown() and IsAltKeyDown() then
 			local spell, r, g, b = ScanTooltip(self, spells)
 
-			if (not spell and disenchanter) then
+			if not spell and disenchanter then
 				local _, _, itemRarity, _, _, itemType = GetItemInfo(item)
-				if (not (itemType == ARMOR_TYPE or itemType == ENCHSLOT_WEAPON) or not (itemRarity and (itemRarity > 1 and itemRarity < 5))) then return end
+				if not (itemType == ARMOR_TYPE or itemType == ENCHSLOT_WEAPON) or not (itemRarity and (itemRarity > 1 and itemRarity < 5)) then return end
 				spell, r, g, b = GetSpellInfo(13262), 0.5, 0.5, 1
-			elseif (not spell and rogue) then
+			elseif not spell and rogue then
 				for index = 1, self:NumLines() do
-					if (string.match(_G["GameTooltipTextLeft" .. index]:GetText(), rogue)) then
+					if string.match(_G["GameTooltipTextLeft" .. index]:GetText(), rogue) then
 						spell, r, g, b = GetSpellInfo(1804), 0, 1, 1
 					end
 				end
 			end
 
 			local bag, slot = GetMouseFocus():GetParent(), GetMouseFocus()
-			if (spell and GetContainerItemLink(bag:GetID(), slot:GetID()) == link) then
+			if spell and GetContainerItemLink(bag:GetID(), slot:GetID()) == link then
 				button:SetAttribute("macrotext", string.format("/cast %s\n/use %s %s", spell, bag:GetID(), slot:GetID()))
 				button:SetAllPoints(slot)
 				button:Show()
@@ -78,7 +78,7 @@ function button:PLAYER_LOGIN()
 end
 
 function button:MODIFIER_STATE_CHANGED(key)
-	if (not self:IsShown() and not key and key ~= "LALT" and key ~= "RALT") then return end
+	if not self:IsShown() and not key and key ~= "LALT" and key ~= "RALT" then return end
 
 	if InCombatLockdown() then
 		self:SetAlpha(0)

@@ -41,6 +41,10 @@ L_EXTRA_ANNOUNCE_FF_NOFLASK = "Kein Fläschchen: "
 L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "Alles drin!"
 L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
 
+-- Says thanks for some spells
+L_EXTRA_ANNOUNCE_SS_THANKS = "Thanks for " -- Needs review
+L_EXTRA_ANNOUNCE_SS_RECEIVED = " received from " -- Needs review
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Unknown command:" -- Needs review
 L_EXTRA_TAUNT_ADD = "Add tank" -- Needs review

@@ -41,6 +41,10 @@ L_EXTRA_ANNOUNCE_FF_NOFLASK = "No Flask: " -- Needs review
 L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "All Buffed!" -- Needs review
 L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
 
+-- Says thanks for some spells
+L_EXTRA_ANNOUNCE_SS_THANKS = "Thanks for " -- Needs review
+L_EXTRA_ANNOUNCE_SS_RECEIVED = " received from " -- Needs review
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "未知命令:"
 L_EXTRA_TAUNT_ADD = "添加坦克 "

@@ -41,6 +41,10 @@ L_EXTRA_ANNOUNCE_FF_NOFLASK = "Нет настоя: "
 L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "Еда и настой есть у всех. Можно щемить!"
 L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Проверка еды и настоя"
 
+-- Says thanks for some spells
+L_EXTRA_ANNOUNCE_SS_THANKS = "Спасибо за "
+L_EXTRA_ANNOUNCE_SS_RECEIVED = " получено от "
+
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Неизвестная команда:"
 L_EXTRA_TAUNT_ADD = "Добавить танка"

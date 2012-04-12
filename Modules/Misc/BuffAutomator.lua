@@ -159,16 +159,16 @@ function CheckBuffs()
 	btn:SetAttribute("spell", nil)
 	for i, v in pairs(_G[T.class..tree]) do
 		local spellname = select(1, GetSpellInfo(v))
-		if UnitAura("player", spellname) then return end
-
-		if GetSpellCooldown(spellname) == 0 then
-			btn:SetAttribute("spell", spellname)
-			SetOverrideBindingClick(btn, true, "MOUSEWHEELUP", "AutoBuffButton")
-			SetOverrideBindingClick(btn, true, "MOUSEWHEELDOWN", "AutoBuffButton")
-		else
-			local start, duration, enabled = GetSpellCooldown(spellname)
-			if duration == nil or duration > 1.5 then return end
-			frame:SetScript("OnUpdate", WaitForGC)
+		if not UnitAura("player", spellname) then
+			if GetSpellCooldown(spellname) == 0 then
+				btn:SetAttribute("spell", spellname)
+				SetOverrideBindingClick(btn, true, "MOUSEWHEELUP", "AutoBuffButton")
+				SetOverrideBindingClick(btn, true, "MOUSEWHEELDOWN", "AutoBuffButton")
+			else
+				local start, duration, enabled = GetSpellCooldown(spellname)
+				if duration == nil or duration > 1.5 then return end
+				frame:SetScript("OnUpdate", WaitForGC)
+			end
 		end
 	end
 end

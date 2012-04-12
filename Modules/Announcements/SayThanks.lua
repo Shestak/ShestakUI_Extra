@@ -2,7 +2,7 @@
 if C.extra_announce.says_thanks ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Says thanks for some spells(by Bitbyte, modified by m2jest1c)
+--	Says thanks for some spells(SaySapped by Bitbyte, modified by m2jest1c)
 ----------------------------------------------------------------------------------------
 local SayThanks = CreateFrame("Frame")
 

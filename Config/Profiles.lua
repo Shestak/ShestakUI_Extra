@@ -118,7 +118,8 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].damage_meter_spam = true
 	C["extra_general"].sum_buyouts = true
 	C["extra_general"].gem_counter = true
-	C["extra_announce"].battleground = true
+	C["extra_announce"].flask_food = true
+	C["extra_announce"].flask_food_auto = true
 	C["extra_announce"].my_fps = true
 	C["extra_skins"].atlasloot = true
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Махес" or T.name == "Ночнойшорох" then

@@ -68,7 +68,7 @@ L_EXTRA_ZONEACHID = {
 	["Kalimdor"]						= {X =   43, A =    0, H =    0},
 	["Outreterre"]						= {X =   44, A =    0, H =    0},
 	["Norfendre"]						= {X =   45, A =    0, H =    0},
-	["Carte du Monde"]					= {X =  nil, A =    0, H =    0},
+	["Carte du monde"]					= {X =  nil, A =    0, H =    0},
 	-- Eastern Kingdoms
 	["Hautes-terres Arathies"]			= {X =  761, A = 4896, H = 4896},
 	["Terres Ingrates"]					= {X =  765, A = 4900, H = 4900},

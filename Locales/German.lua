@@ -68,7 +68,7 @@ L_EXTRA_ZONEACHID = {
 	["Kalimdor"]						= {X =   43, A =    0, H =    0},
 	["Scherbenwelt"]					= {X =   44, A =    0, H =    0},
 	["Nordend"]							= {X =   45, A =    0, H =    0},
-	["World Map"]						= {X =  nil, A =    0, H =    0}, -- Needs review
+	["Weltkarte"]						= {X =  nil, A =    0, H =    0},
 	-- Eastern Kingdoms
 	["Arathihochland"]					= {X =  761, A = 4896, H = 4896},
 	["Ödland"]							= {X =  765, A = 4900, H = 4900},

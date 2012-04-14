@@ -126,6 +126,7 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true
 		C["extra_general"].auto_role = true
+		C["extra_general"].buff_automator = true
 	elseif T.name == "Виринеа" then
 		C["extra_announce"].lightwell = true
 	end

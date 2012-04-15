@@ -8,7 +8,7 @@ local SayThanks = CreateFrame("Frame")
 
 local ST_Buffs = {
 	[1] = 85767,	-- Dark Intent
-	[2] = 54648,	-- Focus Magic
+	[2] = 54646,	-- Focus Magic
 	[3] = 29166,	-- Innervate
 }
 

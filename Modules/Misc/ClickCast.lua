@@ -147,10 +147,15 @@ end)
  
 function SpellBinder:makeSpellsList(delete)
 	local self = framess
-	if C.skins.blizzard_frames == true then
-		scrolls:SetTemplate("Overlay")
+	if IsAddOnLoaded("Aurora") then
+		local F = unpack(Aurora)
+		F.CreateBD(scrolls)
 	else
-		SpellBinder:Style(scrolls)
+		if C.skins.blizzard_frames == true then
+			scrolls:SetTemplate("Overlay")
+		else
+			SpellBinder:Style(scrolls)
+		end
 	end
 	self:SetPoint("TOPLEFT")
 	self:SetWidth(scrolls:GetWidth())
@@ -258,10 +263,15 @@ end
 
 function SpellBinder:makeFramesList()
 	local self = framesf
-	if C.skins.blizzard_frames == true then
-		scrollf:SetTemplate("Overlay")
+	if IsAddOnLoaded("Aurora") then
+		local F = unpack(Aurora)
+		F.CreateBD(scrollf)
 	else
-		SpellBinder:Style(scrollf)
+		if C.skins.blizzard_frames == true then
+			scrollf:SetTemplate("Overlay")
+		else
+			SpellBinder:Style(scrollf)
+		end
 	end
 	self:SetPoint("TOPLEFT")
 	self:SetWidth(scrollf:GetWidth())
@@ -474,7 +484,19 @@ eventf:SetScript("OnEvent", function(self, event, ...)
 	end
 end)
 
-if C.skins.blizzard_frames == true then
+if IsAddOnLoaded("Aurora") then
+	local F = unpack(Aurora)
+	F.CreateBD(SpellBinderMainFrame)
+	F.CreateSD(SpellBinderMainFrame)
+	F.Reskin(btn_SpellBinderMainFrame)
+	F.Reskin(SpellBinderOpenButton)
+	F.ReskinClose(SpellBinderCloseButton)
+	F.ReskinScroll(SpellBinderScrollFrameSpellListScrollBar)
+	F.ReskinScroll(SpellBinderScrollFrameFrameListScrollBar)
+	F.ReskinArrow(SpellBinderSlideButton, 2)
+	SpellBinderOpenButton:ClearAllPoints()
+	SpellBinderOpenButton:Point("TOPLEFT", SpellBookFrame, "TOPLEFT", 4, -4)
+elseif C.skins.blizzard_frames == true then
 	SpellBinderMainFrame:StripTextures()
 	SpellBinderMainFrame:SetTemplate("Transparent")
 	SpellBinderOpenButton:SkinButton()

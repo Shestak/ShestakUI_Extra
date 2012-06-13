@@ -76,14 +76,15 @@ if T.author == true then
 end
 
 ----------------------------------------------------------------------------------------
---	Oz@Runetotem Config
+--	Oz Config
 ----------------------------------------------------------------------------------------
-if T.name == "Oz" and T.realm == "Runetotem" then
+if T.name == "Oz" then
 	C["extra_position"].extra_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -237, 24}
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].arena_calc = true
 	C["extra_general"].align = true
 	C["extra_general"].item_level = true
+	C["extra_general"].tab_binder = true
 	C["extra_general"].map_boss_count = true
 	C["extra_general"].gem_counter = true
 	C["extra_general"].item_transmogrify = true

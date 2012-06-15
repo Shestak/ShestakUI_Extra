@@ -35,6 +35,20 @@ C["extra_general"] = {
 }
 
 ----------------------------------------------------------------------------------------
+--	Chat options
+----------------------------------------------------------------------------------------
+C["extra_chat"] = {
+	["nick_alert_enable"] = true,				-- Enable nick alert warning sound
+	["nick_alert_names"] = {					-- Abbreviations and nicks of your name(full name of your character does not need to enter)
+		UnitName("player"),						-- You do not need to make all the exact names of your characters
+		--"YourNickOrName1",
+		--"YourNickOrName2",
+		--"YourNickOrName3",
+	},
+	["nick_alert_sound"] = "Sound\\Event Sounds\\Wisp\\WispPissed1.wav",
+}
+
+----------------------------------------------------------------------------------------
 --	Announce options
 ----------------------------------------------------------------------------------------
 C["extra_announce"] = {

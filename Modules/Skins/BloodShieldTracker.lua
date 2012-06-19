@@ -9,29 +9,39 @@ BSTSkin:RegisterEvent("PLAYER_LOGIN")
 BSTSkin:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("BloodShieldTracker") then return end
 
-	self.db = LibStub("AceDB-3.0"):New("BloodShieldTrackerDB", defaults, "Default")
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"] = {} end
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"]["PWSBar"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"]["PWSBar"] = {} end
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"]["ShieldBar"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"]["ShieldBar"] = {} end
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"]["HealthBar"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"]["HealthBar"] = {} end
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"]["IllumBar"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"]["IllumBar"] = {} end
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"]["EstimateBar"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"]["EstimateBar"] = {} end
+	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"] = {} end
 
-	self.db.profile.status_bar_border = false
-	self.db.profile.estheal_bar_border = false
-	self.db.profile.pwsbar_border = false
-	self.db.profile.illumbar_border = false
-	self.db.profile.healthbar_border = false
-	self.db.profile.status_bar_scale = 1
-	self.db.profile.estheal_bar_scale = 1
-	self.db.profile.pwsbar_scale = 1
-	self.db.profile.illumbar_scale = 1
-	self.db.profile.healthbar_scale = 1
-	self.db.profile.status_bar_texture = "Smooth"
-	self.db.profile.estheal_bar_texture = "Smooth"
-	self.db.profile.pwsbar_texture = "Smooth"
-	self.db.profile.illumbar_texture = "Smooth"
-	self.db.profile.healthbar_texture = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["PWSBar"]["border"] = false
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["PWSBar"]["texture"] = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["PWSBar"]["scale"] = 1
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["ShieldBar"]["border"] = false
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["ShieldBar"]["texture"] = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["ShieldBar"]["scale"] = 1
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["HealthBar"]["border"] = false
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["HealthBar"]["texture"] = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["HealthBar"]["scale"] = 1
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["IllumBar"]["border"] = false
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["IllumBar"]["texture"] = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["IllumBar"]["scale"] = 1
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["EstimateBar"]["border"] = false
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["EstimateBar"]["texture"] = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["EstimateBar"]["scale"] = 1
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"]["border"] = false
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"]["texture"] = "Smooth"
+	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"]["scale"] = 1
 
 	local frames = {
-		"BloodShieldTracker_StatusBar",
+		"BloodShieldTracker_PWSBar",
 		"BloodShieldTracker_EstimateBar",
-		"BloodShieldTracker_Shield_PWS",
-		"BloodShieldTracker_Shield_IllumHeal",
+		"BloodShieldTracker_ShieldBar",
+		"BloodShieldTracker_TotalAbsorbsBar",
+		"BloodShieldTracker_IllumBar",
 		"BloodShieldTracker_HealthBar"
 	}
 

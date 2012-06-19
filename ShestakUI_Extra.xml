@@ -3,7 +3,7 @@
 	<Script file="Locales\Chinese.lua"/>
 	<Script file="Locales\French.lua"/>
 	<Script file="Locales\German.lua"/>
-	<!--<Script file="Locales\Italian.lua"/>-->
+	<Script file="Locales\Italian.lua"/>
 	<Script file="Locales\Korean.lua"/>
 	<Script file="Locales\Portuguese.lua"/>
 	<Script file="Locales\Russian.lua"/>
@@ -64,6 +64,7 @@
 	<Script file="Modules\Skins\Dominos.lua"/>
 	<Script file="Modules\Skins\EPGP.lua"/>
 	<Script file="Modules\Skins\FaceShooter.lua"/>
+	<Script file="Modules\Skins\FlyoutButtonCustom.lua"/>
 	<Script file="Modules\Skins\MageManaBar.lua"/>
 	<Script file="Modules\Skins\MageNuggets.lua"/>
 	<Script file="Modules\Skins\MFClip.lua"/>

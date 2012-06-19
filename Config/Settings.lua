@@ -95,6 +95,7 @@ C["extra_skins"] = {
 	["dominos"] = false,						-- Dominos skin(Not Ready)
 	["epgp"] = false,							-- EPGP skin(Not Ready)
 	["face_shooter"] = false,					-- FaceShooter skin
+	["flyout_button"] = false,					-- FlyoutButtonCustom skin
 	["mage_mana_bar"] = false,					-- MageManaBar skin
 	["mage_nuggets"] = false,					-- MageNuggets skin
 	["mfclip"] = false,							-- MFClip skin

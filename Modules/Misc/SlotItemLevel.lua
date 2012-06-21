@@ -44,8 +44,12 @@ local function UpdateButtonsText(frame)
 			local heirloom = select(3, GetItemInfo(item))
 
 			if ilevel then
-				if ilevel ~= oldilevel and heirloom ~= 7 then
-					text:SetText("|cFFFFFF00"..ilevel)
+				if ilevel ~= oldilevel then
+					if heirloom == 7 then
+						text:SetText("")
+					else
+						text:SetText("|cFFFFFF00"..ilevel)
+					end
 				end
 			else
 				text:SetText("")

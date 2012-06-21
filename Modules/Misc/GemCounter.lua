@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.gem_counter ~= true then return end
+if C.extra_general.gem_counter ~= true or T.level ~= MAX_PLAYER_LEVEL then return end
 
 ----------------------------------------------------------------------------------------
 --	Displays how many red/blue/yellow gems you have(GemCounter by Killakhan)

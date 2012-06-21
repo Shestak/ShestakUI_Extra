@@ -99,6 +99,7 @@ ROGUE3 = {}
 
 PALADIN1 = {
 	20217,	-- Blessing of Kings
+	20165,	-- Seal of Insight
 }
 
 PALADIN2 = {

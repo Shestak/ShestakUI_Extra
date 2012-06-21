@@ -4,6 +4,7 @@ if C.extra_general.item_level ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Item level on slot buttons in Character/InspectFrame(by Tukz)
 ----------------------------------------------------------------------------------------
+local time = 3
 local slots = {
 	"HeadSlot", "NeckSlot", "ShoulderSlot", "BackSlot", "ChestSlot", "ShirtSlot", "TabardSlot",
 	"WristSlot", "MainHandSlot", "SecondaryHandSlot", "RangedSlot", "HandsSlot", "WaistSlot",
@@ -40,9 +41,10 @@ local function UpdateButtonsText(frame)
 		elseif item then
 			local oldilevel = text:GetText()
 			local ilevel = select(4, GetItemInfo(item))
+			local heirloom = select(3, GetItemInfo(item))
 
 			if ilevel then
-				if ilevel ~= oldilevel then
+				if ilevel ~= oldilevel and heirloom ~= 7 then
 					text:SetText("|cFFFFFF00"..ilevel)
 				end
 			else
@@ -62,10 +64,20 @@ OnEvent:SetScript("OnEvent", function(self, event)
 		CreateButtonsText("Character")
 		UpdateButtonsText("Character")
 		self:UnregisterEvent("PLAYER_LOGIN")
-	elseif event == "PLAYER_TARGET_CHANGED" then
+	elseif event == "PLAYER_TARGET_CHANGED" or event == "INSPECT_READY" then
 		UpdateButtonsText("Inspect")
 	else
 		UpdateButtonsText("Character")
+	end
+end)
+OnEvent:SetScript("OnUpdate", function(self, elapsed)
+	time = time + elapsed
+	if time >= 3 then
+		if InspectFrame and InspectFrame:IsShown() then
+			UpdateButtonsText("Inspect")
+		else
+			UpdateButtonsText("Character")
+		end
 	end
 end)
 
@@ -76,6 +88,7 @@ OnLoad:SetScript("OnEvent", function(self, event, addon)
 		CreateButtonsText("Inspect")
 		InspectFrame:HookScript("OnShow", function(self) UpdateButtonsText("Inspect") end)
 		OnEvent:RegisterEvent("PLAYER_TARGET_CHANGED")
+		OnEvent:RegisterEvent("INSPECT_READY")
 		self:UnregisterEvent("ADDON_LOADED")
 	end
 end)

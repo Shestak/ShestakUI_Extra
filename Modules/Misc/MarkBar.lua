@@ -103,7 +103,7 @@ PullTargetButtonTexture:Point("BOTTOMRIGHT", PullTargetButton, -2, 2)
 -- Check if we are Raid Leader/Officer or in Party
 local function CheckRaidStatus()
 	local inInstance, instanceType = IsInInstance()
-	local partyMembers = GetNumPartyMembers()
+	local partyMembers = GetNumSubgroupMembers()
  
 	if not UnitInRaid("player") and partyMembers >= 1 then return true
 	elseif UnitIsRaidOfficer("player") then return true

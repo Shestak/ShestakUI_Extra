@@ -125,13 +125,13 @@ function BadGroup:COMBAT_LOG_EVENT_UNFILTERED(event, ...)
 end
 
 function BadGroup:CountGroupMembers(event)
-	numMembers = GetNumRaidMembers()
+	numMembers = GetNumGroupMembers()
 	if numMembers > 0 then
 		groupType = "raid"
 		return
 	end
 
-	numMembers = GetNumPartyMembers()
+	numMembers = GetNumSubgroupMembers()
 	if numMembers > 0 then
 		groupType = "party"
 		return

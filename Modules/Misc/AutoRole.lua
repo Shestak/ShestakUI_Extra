@@ -4,19 +4,19 @@ if C.extra_general.auto_role ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Automatically sets your role(Corporation auto role setter by iSpawnAtHome)
 ----------------------------------------------------------------------------------------
-local ATT = GetActiveTalentGroup(false, false)
-local PTT = GetPrimaryTalentTree(false, false, ATT)
+local ATT = GetActiveSpecGroup(false, false)
+local PTT = GetSpecialization(false, false, ATT)
 local SetRole = CreateFrame("Frame")
 
 local function roleSetter()
-	ATT = GetActiveTalentGroup(false, false)
-	PTT = GetPrimaryTalentTree(false, false, ATT)
+	ATT = GetActiveSpecGroup(false, false)
+	PTT = GetSpecialization(false, false, ATT)
 
 	if T.level >= 10 then
 		if PTT == nil then
 			UnitSetRole("player", "No Role")
 		elseif PTT ~= nil then
-			if GetNumPartyMembers() > 0 or GetNumRaidMembers() > 0 then
+			if GetNumSubgroupMembers() > 0 or GetNumGroupMembers() > 0 then
 				if T.Role == "Tank" then
 					UnitSetRole("player", "TANK")
 				elseif T.Role == "Healer" then

@@ -17,12 +17,12 @@ local function ActiveTalents()
 	local tree1 = select(5, GetTalentTabInfo(1)) or 0
 	local tree2 = select(5, GetTalentTabInfo(2)) or 0
 	local tree3 = select(5, GetTalentTabInfo(3)) or 0
-	local Tree = GetPrimaryTalentTree(false, false, GetActiveTalentGroup()) or 0
+	local Tree = GetSpecialization(false, false, GetActiveSpecGroup()) or 0
 	return tree1, tree2, tree3, Tree
 end
 
 local function UnactiveTalents()
-	if GetActiveTalentGroup() == 1 then
+	if GetActiveSpecGroup() == 1 then
 		secondary = 2
 	else
 		secondary = 1
@@ -30,7 +30,7 @@ local function UnactiveTalents()
 	local sTree1 = select(5, GetTalentTabInfo(1, false, false, secondary)) or 0
 	local sTree2 = select(5, GetTalentTabInfo(2, false, false, secondary)) or 0
 	local sTree3 = select(5, GetTalentTabInfo(3, false, false, secondary)) or 0
-	local sTree = GetPrimaryTalentTree(false, false, (secondary)) or 0
+	local sTree = GetSpecialization(false, false, (secondary)) or 0
 	return sTree1, sTree2, sTree3, sTree
 end
 
@@ -94,7 +94,7 @@ spec:RegisterEvent("CHARACTER_POINTS_CHANGED")
 spec:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 spec:SetScript("OnEvent", OnEvent)
 spec:SetScript("OnClick", function(self) 
-	local i = GetActiveTalentGroup()
+	local i = GetActiveSpecGroup()
 	if i == 1 then SetActiveTalentGroup(2) end
 	if i == 2 then SetActiveTalentGroup(1) end
 end)

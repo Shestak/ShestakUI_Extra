@@ -75,7 +75,7 @@ end
 
 -- The Main function to run a check
 local function run(autoreport)
-	local num = GetNumRaidMembers()
+	local num = GetNumGroupMembers()
 	local diff = getDiff()
 	local checkType = "raid"
 
@@ -84,7 +84,7 @@ local function run(autoreport)
 	table.wipe(noFood)
 	table.wipe(noFlask)
 	if num == 0 then
-		num = GetNumPartyMembers()
+		num = GetNumSubgroupMembers()
 		if num > 0 and num <= 4 then
 			checkType = "party"
 		end

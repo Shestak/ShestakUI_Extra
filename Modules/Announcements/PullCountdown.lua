@@ -20,13 +20,13 @@ local timerframe = CreateFrame("Frame")
 
 local function getChannel()
 	local ch
-	if GetRealNumRaidMembers() > 0 then
+	if GetNumGroupMembers() > 0 then
 		if IsRaidLeader() or IsRaidOfficer() then
 			ch = "RAID_WARNING"
 		else
 			ch = "RAID"
 		end
-	elseif GetRealNumPartyMembers() > 0 then
+	elseif GetNumSubgroupMembers() > 0 then
 		ch = "PARTY"
 	end
 	return ch or "SAY"

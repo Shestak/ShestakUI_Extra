@@ -16,11 +16,6 @@ local frames = {
 	"aLoadFrame",
 }
 
-local framesLoD = {
-	"AchievementFrameHeader", "ClassTrainerFrame", "MacroFrame", "KeyBindingFrame",
-	"CalendarFrame", "TimeManagerFrame", "LookingForGuildFrame", "InspectFrame",
-}
-
 for i, v in pairs(frames) do
 	if _G[v] then
 		_G[v]:EnableMouse(true)

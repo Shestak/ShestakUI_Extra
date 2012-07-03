@@ -49,7 +49,6 @@
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
-	<Script file="Modules\Misc\OneClickPoison.lua"/>
 	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\SpamageMeters.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>

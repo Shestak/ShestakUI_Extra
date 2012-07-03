@@ -11,12 +11,12 @@ local dr, dg, db = unpack({0.4, 0.4, 0.4})
 local panelcolor = ("|cff%.2x%.2x%.2x"):format(dr * 255, dg * 255, db * 255)
 
 -- Functions
-local function HasDualSpec() if GetNumTalentGroups() > 1 then return true end end
+local function HasDualSpec() if GetNumSpecGroups() > 1 then return true end end
 
 local function ActiveTalents()
-	local tree1 = select(5, GetTalentTabInfo(1)) or 0
-	local tree2 = select(5, GetTalentTabInfo(2)) or 0
-	local tree3 = select(5, GetTalentTabInfo(3)) or 0
+	local tree1 = select(5, GetSpecializationInfo(1)) or 0
+	local tree2 = select(5, GetSpecializationInfo(2)) or 0
+	local tree3 = select(5, GetSpecializationInfo(3)) or 0
 	local Tree = GetSpecialization(false, false, GetActiveSpecGroup()) or 0
 	return tree1, tree2, tree3, Tree
 end
@@ -27,9 +27,9 @@ local function UnactiveTalents()
 	else
 		secondary = 1
 	end
-	local sTree1 = select(5, GetTalentTabInfo(1, false, false, secondary)) or 0
-	local sTree2 = select(5, GetTalentTabInfo(2, false, false, secondary)) or 0
-	local sTree3 = select(5, GetTalentTabInfo(3, false, false, secondary)) or 0
+	local sTree1 = select(5, GetSpecializationInfo(1, false, false, secondary)) or 0
+	local sTree2 = select(5, GetSpecializationInfo(2, false, false, secondary)) or 0
+	local sTree3 = select(5, GetSpecializationInfo(3, false, false, secondary)) or 0
 	local sTree = GetSpecialization(false, false, (secondary)) or 0
 	return sTree1, sTree2, sTree3, sTree
 end
@@ -48,7 +48,7 @@ end
 
 -- Spec
 local spec = CreateFrame("Button", "SpecAnchor", UIParent)
-spec:CreatePanel("Transparent", 128, 20, unpack(C.extra_position.switch_spec))
+spec:CreatePanel("Transparent", 928, 20, unpack(C.extra_position.switch_spec))
 tinsert(T.MoverFrames, SpecAnchor)
 
 spec.t = spec:CreateFontString(spec, "OVERLAY")
@@ -62,17 +62,17 @@ local function Update(self, t)
 	int = int - t
 	if int > 0 then return end
 	local tree1, tree2, tree3, Tree = ActiveTalents()
-	name = select(2, GetTalentTabInfo(Tree)) or NONE
-	spec.t:SetText(name..": "..panelcolor..tree1.."/"..tree2.."/"..tree3)
+	name = select(2, GetSpecializationInfo(Tree)) or NONE
+	spec.t:SetText(name)
 	if HasDualSpec() then
 		local sTree1, sTree2, sTree3, sTree = UnactiveTalents()
-		sName = select(2, GetTalentTabInfo(sTree)) or NONE
+		sName = select(2, GetSpecializationInfo(sTree)) or NONE
 		spec:SetScript("OnEnter", function()
-			spec.t:SetText(cm..sName..": "..panelcolor..sTree1.."/"..sTree2.."/"..sTree3)
+			spec.t:SetText(cm..sName)
 			self:SetBackdropBorderColor(T.color.r, T.color.g, T.color.b)
 		end)
 		spec:SetScript("OnLeave", function()
-			spec.t:SetText(name..": "..panelcolor..tree1.."/"..tree2.."/"..tree3)
+			spec.t:SetText(name)
 			self:SetBackdropBorderColor(unpack(C.media.border_color))
 		end)
 	end
@@ -95,8 +95,8 @@ spec:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 spec:SetScript("OnEvent", OnEvent)
 spec:SetScript("OnClick", function(self) 
 	local i = GetActiveSpecGroup()
-	if i == 1 then SetActiveTalentGroup(2) end
-	if i == 2 then SetActiveTalentGroup(1) end
+	if i == 1 then SetActiveSpecGroup(2) end
+	if i == 2 then SetActiveSpecGroup(1) end
 end)
 
 -- Toggle Button

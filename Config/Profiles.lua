@@ -44,7 +44,6 @@ end
 ----------------------------------------------------------------------------------------
 if T.author == true then
 	C["extra_general"].disenchanting = true
-	C["extra_general"].poison = true
 	C["extra_general"].item_level = true
 	C["extra_general"].skip_cinematic = true
 	C["extra_general"].auto_role = true

@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
---if C.extra_general.click_cast ~= true then return end
+if C.extra_general.click_cast ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Simple click2cast spell binder(sBinder by Fernir)

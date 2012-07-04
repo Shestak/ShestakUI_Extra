@@ -37,7 +37,7 @@ C["extra_general"] = {
 --	Chat options
 ----------------------------------------------------------------------------------------
 C["extra_chat"] = {
-	["nick_alert_enable"] = true,				-- Enable nick alert warning sound
+	["nick_alert_enable"] = false,				-- Enable nick alert warning sound
 	["nick_alert_names"] = {					-- Abbreviations and nicks of your name(full name of your character does not need to enter)
 		UnitName("player"),						-- You do not need to make all the exact names of your characters
 		--"YourNickOrName1",

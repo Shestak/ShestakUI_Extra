@@ -154,7 +154,12 @@ if C.misc.raid_tools == true then
 	b:Width(RoleCheckButton:GetWidth())
 	b:Height(18)
 	b:Point("TOP", RaidControlButton, "BOTTOM", 0, -5)
-	b:SkinButton()
+	if IsAddOnLoaded("Aurora") then
+		local F = unpack(Aurora)
+		F.Reskin(b)
+	else
+		b:SkinButton()
+	end
 	b:EnableMouse(true)
 	b:SetScript("OnMouseUp", function(self) run() end)
 

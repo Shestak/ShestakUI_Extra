@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.click_cast ~= true then return end
+--if C.extra_general.click_cast ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Simple click2cast spell binder(sBinder by Fernir)
@@ -88,6 +88,7 @@ SpellBinder.makeSpellsList = function(self, scroll, delete)
 			bf.icon.tex = _G[i.."_texture"] or bf.icon:CreateTexture(i.."_texture", "OVERLAY")
 			bf.icon.tex:SetAllPoints()
 			bf.icon.tex:SetTexture(spell.texture)
+			bf.icon.tex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 
 			bf.delete = _G[i.."_delete"] or CreateFrame("Button", i.."_delete", bf)
 			bf.delete:SetSize(16, 16)
@@ -185,7 +186,11 @@ SpellBinder.OpenButton:SetScript("OnShow", function(self)
 	self:ClearAllPoints()
 	local lastTab = _G["SpellBookSkillLineTab"..MAX_SKILLLINE_TABS]
 	self.id = GetNumSpellTabs() + 2
-	self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
+	if not IsAddOnLoaded("Aurora") and C.skins.blizzard_frames == true then
+		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", -64, -17)
+	else
+		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
+	end
 	self:SetScript("OnEnter", function(self) GameTooltip:ClearLines() GameTooltip:SetOwner(self, ANCHOR_TOPLEFT) GameTooltip:AddLine(L_EXTRA_BINDER_OPEN) GameTooltip:Show() end)
 	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
 end)
@@ -315,27 +320,45 @@ eventf:SetScript("OnEvent", function(self, event, ...)
 end)
 
 if IsAddOnLoaded("Aurora") then
-	--[[local F = unpack(Aurora)
-	F.CreateBD(SpellBinderMainFrame)
-	F.CreateSD(SpellBinderMainFrame)
-	F.Reskin(btn_SpellBinderMainFrame)
-	F.Reskin(SpellBinderOpenButton)
+	local F, C = unpack(Aurora)
+	SpellBinder:StripTextures()
+	SpellBinderInset:StripTextures()
+
+	SpellBinder.OpenButton:StripTextures()
+	SpellBinder.OpenButton:SetNormalTexture("Interface\\ICONS\\INV_Mushroom_08")
+	SpellBinder.OpenButton:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+
+	SpellBinder.OpenButton:SetCheckedTexture(C.media.checked)
+	SpellBinder.OpenButton:GetHighlightTexture():SetTexture(1, 1, 1, 0.3)
+	SpellBinder.OpenButton:GetHighlightTexture():SetAllPoints(SpellBinder.OpenButton:GetNormalTexture())
+
+	F.CreateBG(SpellBinder.OpenButton)
+	F.CreateSD(SpellBinder.OpenButton, 5, 0, 0, 0, 1, 1)
+	F.CreateBD(SpellBinder)
+	F.CreateSD(SpellBinder)
 	F.ReskinClose(SpellBinderCloseButton)
 	F.ReskinScroll(SpellBinderScrollFrameSpellListScrollBar)
-	F.ReskinScroll(SpellBinderScrollFrameFrameListScrollBar)
-	F.ReskinArrow(SpellBinderSlideButton, 2)
-	SpellBinderOpenButton:ClearAllPoints()
-	SpellBinderOpenButton:Point("TOPLEFT", SpellBookFrame, "TOPLEFT", 4, -4)]]
 elseif C.skins.blizzard_frames == true then
 	SpellBinder:StripTextures()
-	SpellBinder:SetTemplate("Transparent")
 	SpellBinderInset:StripTextures()
+
+	--SpellBinder:SetTemplate("Transparent")
+	SpellBinder:CreateBackdrop("Transparent")
+	SpellBinder.backdrop:Point("TOPLEFT", -18, 0)
+	SpellBinder.backdrop:Point("BOTTOMRIGHT", 0, 9)
+
+	SpellBinder.OpenButton:StripTextures()
+	SpellBinder.OpenButton:SetNormalTexture("Interface\\ICONS\\INV_Mushroom_08")
+	SpellBinder.OpenButton:GetNormalTexture():ClearAllPoints()
+	SpellBinder.OpenButton:GetNormalTexture():Point("TOPLEFT", 2, -2)
+	SpellBinder.OpenButton:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+	SpellBinder.OpenButton:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+
+	SpellBinder.OpenButton:CreateBackdrop("Default")
+	SpellBinder.OpenButton.backdrop:SetAllPoints()
+	SpellBinder.OpenButton:StyleButton()
+
 	SpellBinderScrollFrameSpellList:StripTextures()
 	SpellBinderScrollFrameSpellList:SetTemplate("Overlay")
-	--SpellBinderOpenButton:SkinButton()
-	--SpellBinderOpenButton:ClearAllPoints()
-	--SpellBinderOpenButton:Point("TOPLEFT", SpellBookFrame.backdrop, "TOPLEFT", 4, -4)
-	--btn_SpellBinderMainFrame:SkinButton()
 	T.SkinCloseButton(SpellBinderCloseButton)
-	--T.SkinNextPrevButton(SpellBinderSlideButton)
 end

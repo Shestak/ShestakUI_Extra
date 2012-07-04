@@ -12,9 +12,7 @@ L_EXTRA_HEADER_MARK = "Icone dell'incursione in mouseover"
 L_EXTRA_ANNOUNCE_FPS = "I miei attuali FPS sono "
 
 -- Click2Cast
-L_EXTRA_BINDER_FRAMES = "Riquadri"
 L_EXTRA_BINDER_OPEN = "Apri l'assegnazione incantesimi/abilità"
-L_EXTRA_BINDER_CLOSE = "Chiudi l'assegnazione incantesimi/abilità"
 
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "Piccolo attacco in arrivo: "

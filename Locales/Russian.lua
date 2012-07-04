@@ -12,9 +12,7 @@ L_EXTRA_HEADER_MARK = "Метки по наведению курсора"
 L_EXTRA_ANNOUNCE_FPS = "Кадров в секунду у меня "
 
 -- Click2Cast
-L_EXTRA_BINDER_FRAMES = "Рамки"
 L_EXTRA_BINDER_OPEN = "Назначения мыши"
-L_EXTRA_BINDER_CLOSE = "Назначения мыши"
 
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "Легкая атака на "

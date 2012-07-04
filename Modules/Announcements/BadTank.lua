@@ -84,16 +84,11 @@ function BadGroup:ADDON_LOADED(event, name)
 
 		-- Register events
 		self:RegisterEvent("PLAYER_ENTERING_WORLD")
-		self:RegisterEvent("PARTY_MEMBERS_CHANGED")
-		self:RegisterEvent("RAID_ROSTER_UPDATE")
+		self:RegisterEvent("GROUP_ROSTER_UPDATE")
 	end
 end
 
-function BadGroup:PARTY_MEMBERS_CHANGED()
-	self:CountGroupMembers()
-end
-
-function BadGroup:RAID_ROSTER_UPDATE()
+function BadGroup:GROUP_ROSTER_UPDATE()
 	self:CountGroupMembers()
 end
 

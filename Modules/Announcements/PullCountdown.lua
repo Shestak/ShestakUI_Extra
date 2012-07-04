@@ -10,7 +10,7 @@ f:SetScript("OnEvent", function(self, event, ...)
 	end
 end)
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
-f:RegisterEvent("PARTY_MEMBERS_CHANGED")
+f:RegisterEvent("GROUP_ROSTER_UPDATE")
 
 local channel, delay, target
 local INTERVAL = 1.5
@@ -21,7 +21,7 @@ local timerframe = CreateFrame("Frame")
 local function getChannel()
 	local ch
 	if GetNumGroupMembers() > 0 then
-		if IsRaidLeader() or IsRaidOfficer() then
+		if UnitIsGroupLeader("player") or UnitIsGroupAssistant("player") then
 			ch = "RAID_WARNING"
 		else
 			ch = "RAID"
@@ -36,7 +36,7 @@ function f.PLAYER_ENTERING_WORLD()
 	channel = getChannel()
 end
 
-function f.PARTY_MEMBERS_CHANGED()
+function f.GROUP_ROSTER_UPDATE()
 	channel = getChannel()
 end
 

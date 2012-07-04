@@ -31,6 +31,6 @@ end
 
 SetRole:RegisterEvent("PLAYER_ENTERING_BATTLEGROUND")
 SetRole:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
-SetRole:RegisterEvent("PARTY_MEMBERS_CHANGED")
+SetRole:RegisterEvent("GROUP_ROSTER_UPDATE")
 SetRole:RegisterEvent("PLAYER_TALENT_UPDATE")
 SetRole:SetScript("OnEvent", roleSetter)

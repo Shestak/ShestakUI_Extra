@@ -8,15 +8,15 @@ local microbuttons = {
 	"CharacterMicroButton",
 	"SpellbookMicroButton",
 	"TalentMicroButton",
-	"QuestLogMicroButton",
-	"PVPMicroButton",
-	"GuildMicroButton",
-	"LFDMicroButton",
-	"RaidMicroButton",
-	"HelpMicroButton",
-	"MainMenuMicroButton",
 	"AchievementMicroButton",
-	"EJMicroButton"
+	"QuestLogMicroButton",
+	"GuildMicroButton",
+	"PVPMicroButton",
+	"LFDMicroButton",
+	"CompanionsMicroButton",
+	"EJMicroButton",
+	"MainMenuMicroButton",
+	"HelpMicroButton"
 }
 
 local f = CreateFrame("Frame", "MicroAnchor", UIParent)

@@ -150,7 +150,7 @@ end)
 if C.misc.raid_tools == true then
 	RaidUtilityPanel:Height(168)
 
-	local b = CreateFrame("Button", "FoodFlaskCheckButton", RaidUtilityPanel, "UIMenuButtonStretchTemplate")
+	local b = CreateFrame("Button", "FoodFlaskCheckButton", RaidUtilityPanel, "UIPanelButtonTemplate")
 	b:Width(RoleCheckButton:GetWidth())
 	b:Height(18)
 	b:Point("TOP", RaidControlButton, "BOTTOM", 0, -5)

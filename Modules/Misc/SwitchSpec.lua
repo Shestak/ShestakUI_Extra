@@ -48,7 +48,7 @@ end
 
 -- Spec
 local spec = CreateFrame("Button", "SpecAnchor", UIParent)
-spec:CreatePanel("Transparent", 928, 20, unpack(C.extra_position.switch_spec))
+spec:CreatePanel("Transparent", 128, 20, unpack(C.extra_position.switch_spec))
 tinsert(T.MoverFrames, SpecAnchor)
 
 spec.t = spec:CreateFontString(spec, "OVERLAY")

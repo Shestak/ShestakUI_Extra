@@ -66,6 +66,7 @@ L_EXTRA_ZONEACHID = { -- Needs review
 	["Kalimdor"]						= {X =   43, A =    0, H =    0},
 	["Outland"]							= {X =   44, A =    0, H =    0},
 	["Northrend"]						= {X =   45, A =    0, H =    0},
+	["Pandaria"]						= {X = 6974, A =    0, H =    0},
 	["World Map"]						= {X =  nil, A =    0, H =    0},
 	-- Eastern Kingdoms
 	["Arathi Highlands"]				= {X =  761, A = 4896, H = 4896},
@@ -140,6 +141,14 @@ L_EXTRA_ZONEACHID = { -- Needs review
 	["Vashj'ir"]						= {X = 4825, A = 4869, H = 4982},
 	["Tol Barad"]						= {X =    0, A = 4874, H = 4874},
 	["Tol Barad Peninsula"]				= {X =    0, A = 4874, H = 4874},
+	-- Pandaria
+	["The Jade Forest"]					= {X = 6351, A = 6300, H = 6534},
+	["Valley of the Four Winds"]		= {X = 6969, A = 6301, H = 6301},
+	--["Krasarang Wilds"]					= {X = 6975, A = 6535, H = 6536},
+	["Kun-Lai Summit"]					= {X = 6976, A = 6537, H = 6538},
+	["Townlong Steppes"]				= {X = 6977, A = 6539, H = 6539},
+	["Dread Wastes"]					= {X = 6978, A = 6540, H = 6540},
+	["Vale of Eternal Blossoms"]		= {X = 6979, A =    0, H =    0},
 	-- Boolean Explores
 	["Isle of Quel'Danas"]				= {X =  868, A =    0, H =    0},
 	["Ahn'Qiraj: The Fallen Kingdom"]	= {X =    0, A =    0, H =    0},

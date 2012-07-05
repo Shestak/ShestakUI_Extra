@@ -64,9 +64,10 @@ L_EXTRA_ZONEACHID = {
 	-- e(X)plore achievement id, (Q)uest achievement id
 	["东部王国"]							= {X =   42, A =    0, H =    0},
 	["卡利姆多"]							= {X =   43, A =    0, H =    0},
-	["外域"]								= {X =   44, A =    0, H =    0},
+	["外域"]							= {X =   44, A =    0, H =    0},
 	["诺森德"]							= {X =   45, A =    0, H =    0},
 	["世界地图"]							= {X =  nil, A =    0, H =    0},
+	["Pandaria"]						= {X = 6974, A =    0, H =    0}, -- Needs review
 	-- Eastern Kingdoms
 	["阿拉希高地"]						= {X =  761, A = 4896, H = 4896},
 	["荒芜之地"]							= {X =  765, A = 4900, H = 4900},
@@ -91,9 +92,9 @@ L_EXTRA_ZONEACHID = {
 	["提瑞斯法林地"]						= {X =  768, A =    0, H =    0},
 	["西瘟疫之地"]						= {X =  770, A = 4893, H = 4893},
 	["西部荒野"]							= {X =  802, A = 4903, H =    0},
-	["湿地"]								= {X =  841, A = 4898, H =    0},
+	["湿地"]							= {X =  841, A = 4898, H =    0},
 	-- Kalimdor
-	["灰谷"]								= {X =  845, A = 4925, H = 4976},
+	["灰谷"]							= {X =  845, A = 4925, H = 4976},
 	["艾萨拉"]							= {X =  852, A =    0, H = 4927},
 	["秘蓝岛"]							= {X =  860, A =    0, H =    0},
 	["秘血岛"]							= {X =  861, A = 4926, H = 4926},
@@ -140,6 +141,14 @@ L_EXTRA_ZONEACHID = {
 	["瓦丝琪尔"]							= {X = 4825, A = 4869, H = 4982},
 	["托尔巴拉德"]						= {X =    0, A = 4874, H = 4874},
 	["托尔巴拉德半岛"]					= {X =    0, A = 4874, H = 4874},
+	-- Pandaria
+	["The Jade Forest"]					= {X = 6351, A = 6300, H = 6534}, -- Needs review
+	["Valley of the Four Winds"]		= {X = 6969, A = 6301, H = 6301}, -- Needs review
+	--["Krasarang Wilds"]					= {X = 6975, A = 6535, H = 6536}, -- Needs review
+	["Kun-Lai Summit"]					= {X = 6976, A = 6537, H = 6538}, -- Needs review
+	["Townlong Steppes"]				= {X = 6977, A = 6539, H = 6539}, -- Needs review
+	["Dread Wastes"]					= {X = 6978, A = 6540, H = 6540}, -- Needs review
+	["Vale of Eternal Blossoms"]		= {X = 6979, A =    0, H =    0}, -- Needs review
 	-- Boolean Explores
 	["奎尔丹纳斯岛"]						= {X =  868, A =    0, H =    0},
 	["安其拉：堕落王国"]					= {X =    0, A =    0, H =    0},

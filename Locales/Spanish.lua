@@ -67,6 +67,7 @@ L_EXTRA_ZONEACHID = {
 	["Kalimdor"]						= {X =   43, A =    0, H =    0},
 	["Terrallende"]						= {X =   44, A =    0, H =    0},
 	["Rasganorte"]						= {X =   45, A =    0, H =    0},
+	["Pandaria"]						= {X = 6974, A =    0, H =    0}, -- Needs review
 	["Mapa del mundo"]					= {X =  nil, A =    0, H =    0},
 	-- Eastern Kingdoms
 	["Tierras Altas de Arathi"]			= {X =  761, A = 4896, H = 4896},
@@ -141,6 +142,14 @@ L_EXTRA_ZONEACHID = {
 	["Vashj'ir"]						= {X = 4825, A = 4869, H = 4982},
 	["Tol Barad"]						= {X =    0, A = 4874, H = 4874},
 	["Península de Tol Barad"]			= {X =    0, A = 4874, H = 4874},
+	-- Pandaria
+	["The Jade Forest"]					= {X = 6351, A = 6300, H = 6534}, -- Needs review
+	["Valley of the Four Winds"]		= {X = 6969, A = 6301, H = 6301}, -- Needs review
+	--["Krasarang Wilds"]					= {X = 6975, A = 6535, H = 6536}, -- Needs review
+	["Kun-Lai Summit"]					= {X = 6976, A = 6537, H = 6538}, -- Needs review
+	["Townlong Steppes"]				= {X = 6977, A = 6539, H = 6539}, -- Needs review
+	["Dread Wastes"]					= {X = 6978, A = 6540, H = 6540}, -- Needs review
+	["Vale of Eternal Blossoms"]		= {X = 6979, A =    0, H =    0}, -- Needs review
 	-- Boolean Explores
 	["Isla de Quel'Danas"]				= {X =  868, A =    0, H =    0},
 	["Ahn'Qiraj: El Reino Caído"]		= {X =    0, A =    0, H =    0},
@@ -154,6 +163,7 @@ L_EXTRA_ZONEACHID = {
 	["Kalimdor"]						= {X =   43, A =    0, H =    0},
 	["Terrallende"]						= {X =   44, A =    0, H =    0},
 	["Rasganorte"]						= {X =   45, A =    0, H =    0},
+	["Pandaria"]						= {X = 6974, A =    0, H =    0}, -- Needs review
 	["Mapa del mundo"]					= {X =  nil, A =    0, H =    0},
 	-- Eastern Kingdoms
 	["Tierras Altas de Arathi"]			= {X =  761, A = 4896, H = 4896},
@@ -228,6 +238,14 @@ L_EXTRA_ZONEACHID = {
 	["Vashj'ir"]						= {X = 4825, A = 4869, H = 4982},
 	["Tol Barad"]						= {X =    0, A = 4874, H = 4874},
 	["Península de Tol Barad"]			= {X =    0, A = 4874, H = 4874},
+	-- Pandaria
+	["The Jade Forest"]					= {X = 6351, A = 6300, H = 6534}, -- Needs review
+	["Valley of the Four Winds"]		= {X = 6969, A = 6301, H = 6301}, -- Needs review
+	--["Krasarang Wilds"]					= {X = 6975, A = 6535, H = 6536}, -- Needs review
+	["Kun-Lai Summit"]					= {X = 6976, A = 6537, H = 6538}, -- Needs review
+	["Townlong Steppes"]				= {X = 6977, A = 6539, H = 6539}, -- Needs review
+	["Dread Wastes"]					= {X = 6978, A = 6540, H = 6540}, -- Needs review
+	["Vale of Eternal Blossoms"]		= {X = 6979, A =    0, H =    0}, -- Needs review
 	-- Boolean Explores
 	["Isla de Quel'Danas"]				= {X =  868, A =    0, H =    0},
 	["Ahn'Qiraj: El Reino Caído"]		= {X =    0, A =    0, H =    0},

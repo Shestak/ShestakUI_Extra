@@ -7,8 +7,8 @@ if C.extra_announce.says_thanks ~= true then return end
 local SayThanks = CreateFrame("Frame")
 
 local ST_Buffs = {
-	[1] = 85767,	-- Dark Intent
-	[2] = 54646,	-- Focus Magic
+	--MOP[1] = 85767,	-- Dark Intent
+	--MOP[2] = 54646,	-- Focus Magic
 	[3] = 29166,	-- Innervate
 	--[4] = 10060,	-- Power Infusion
 }

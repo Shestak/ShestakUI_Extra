@@ -83,7 +83,7 @@ local function run(autoreport)
 
 	table.wipe(noFood)
 	table.wipe(noFlask)
-	if num == 0 then
+	if not UnitInRaid("player") then
 		num = GetNumSubgroupMembers()
 		if num > 0 and num <= 4 then
 			checkType = "party"

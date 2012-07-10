@@ -101,8 +101,9 @@ MISkin:SetScript("OnEvent", function(self, event, addon)
 		local icon = _G["MogItPreview"..slot.."IconTexture"]
 		local slot = _G["MogItPreview"..slot]
 
-		slot:StyleButton(false)
+		slot:StyleButton()
 		slot:SetNormalTexture(nil)
+
 		icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 		icon:ClearAllPoints()
 		icon:Point("TOPLEFT", 2, -2)

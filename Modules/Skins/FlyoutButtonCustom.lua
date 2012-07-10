@@ -27,7 +27,7 @@ FlyoutButtonSkin:SetScript("OnEvent", function(self, event, addon)
 		local hotkey = _G[btn:GetName().."HotKey"]
 		local normal = _G[btn:GetName().."NormalTexture"]
 
-		button:StyleButton(true)
+		button:StyleButton()
 		button:SetNormalTexture("")
 
 		if border then

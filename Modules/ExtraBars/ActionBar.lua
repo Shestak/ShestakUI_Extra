@@ -89,7 +89,7 @@ for i = 13, 24 do
 		end
 	end
 
-	f:StyleButton(true)
+	f:StyleButton()
 	f:Show()
 end
 

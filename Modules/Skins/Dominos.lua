@@ -67,20 +67,20 @@ DominosSkin:SetScript("OnEvent", function(self, event, addon)
 
 	do
 		for i = 1, 60 do
-			_G["DominosActionButton"..i]:StyleButton(true)
+			_G["DominosActionButton"..i]:StyleButton()
 		end
 
 		for i = 1, 12 do
-			_G["ActionButton"..i]:StyleButton(true)
-			_G["MultiBarBottomLeftButton"..i]:StyleButton(true)
-			_G["MultiBarBottomRightButton"..i]:StyleButton(true)
-			_G["MultiBarLeftButton"..i]:StyleButton(true)
-			_G["MultiBarRightButton"..i]:StyleButton(true)
+			_G["ActionButton"..i]:StyleButton()
+			_G["MultiBarBottomLeftButton"..i]:StyleButton()
+			_G["MultiBarBottomRightButton"..i]:StyleButton()
+			_G["MultiBarLeftButton"..i]:StyleButton()
+			_G["MultiBarRightButton"..i]:StyleButton()
 		end
 
 		for i = 1, 10 do
-			_G["ShapeshiftButton"..i]:StyleButton(true)
-			_G["PetActionButton"..i]:StyleButton(true)
+			_G["ShapeshiftButton"..i]:StyleButton()
+			_G["PetActionButton"..i]:StyleButton()
 		end
 	end
 

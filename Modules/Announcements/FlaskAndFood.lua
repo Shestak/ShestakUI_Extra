@@ -151,9 +151,9 @@ if C.misc.raid_tools == true then
 	RaidUtilityPanel:Height(168)
 
 	local b = CreateFrame("Button", "FoodFlaskCheckButton", RaidUtilityPanel, "UIPanelButtonTemplate")
-	b:Width(RoleCheckButton:GetWidth())
+	b:Width(RaidUtilityRoleButton:GetWidth())
 	b:Height(18)
-	b:Point("TOP", RaidControlButton, "BOTTOM", 0, -5)
+	b:Point("TOP", RaidUtilityRaidControlButton, "BOTTOM", 0, -5)
 	if IsAddOnLoaded("Aurora") then
 		local F = unpack(Aurora)
 		F.Reskin(b)

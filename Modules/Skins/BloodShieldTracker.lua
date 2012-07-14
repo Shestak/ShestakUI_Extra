@@ -49,8 +49,6 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 		local frame = _G[frames[i]]
 		if frame then
 			frame:CreateBackdrop("Default")
-			frame.backdrop:Point("TOPLEFT", -2, 2)
-			frame.backdrop:Point("BOTTOMRIGHT", 2, -2)
 
 			frame.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
 			frame.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)

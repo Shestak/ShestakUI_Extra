@@ -187,7 +187,7 @@ SpellBinder.OpenButton:SetScript("OnShow", function(self)
 	local lastTab = _G["SpellBookSkillLineTab"..MAX_SKILLLINE_TABS]
 	self.id = GetNumSpellTabs() + 2
 	if not IsAddOnLoaded("Aurora") and C.skins.blizzard_frames == true then
-		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", -64, -17)
+		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", -48, -17)
 	else
 		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
 	end
@@ -342,7 +342,6 @@ elseif C.skins.blizzard_frames == true then
 	SpellBinder:StripTextures()
 	SpellBinderInset:StripTextures()
 
-	--SpellBinder:SetTemplate("Transparent")
 	SpellBinder:CreateBackdrop("Transparent")
 	SpellBinder.backdrop:Point("TOPLEFT", -18, 0)
 	SpellBinder.backdrop:Point("BOTTOMRIGHT", 0, 9)

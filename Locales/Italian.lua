@@ -92,7 +92,7 @@ L_EXTRA_ZONEACHID = { -- Needs review
 	["Radure di Tirisfal"]				= {X =  768, A =    0, H =    0},
 	["Terre Infette Occidentali"]		= {X =  770, A = 4893, H = 4893},
 	["Marche Occidentali"]				= {X =  802, A = 4903, H =    0},
-	["Paludi Grigie"]					= {X =  841, A = 4898, H =    0},
+	["Paludi Grigie"]					= {X =  841, A =    0, H =    0},
 	-- Kalimdor
 	["Valtetra"]						= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},

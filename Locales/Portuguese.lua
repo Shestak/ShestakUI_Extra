@@ -92,7 +92,7 @@ L_EXTRA_ZONEACHID = { -- Needs review
 	["Tirisfal Glades"]					= {X =  768, A =    0, H =    0},
 	["Western Plaguelands"]				= {X =  770, A = 4893, H = 4893},
 	["Westfall"]						= {X =  802, A = 4903, H =    0},
-	["Wetlands"]						= {X =  841, A = 4898, H =    0},
+	["Wetlands"]						= {X =  841, A =    0, H =    0},
 	-- Kalimdor
 	["Ashenvale"]						= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},

@@ -92,7 +92,7 @@ L_EXTRA_ZONEACHID = {
 	["Clairières de Tirisfal"]			= {X =  768, A =    0, H =    0},
 	["Maleterres de l'Ouest"]			= {X =  770, A = 4893, H = 4893},
 	["Marche de l'Ouest"]				= {X =  802, A = 4903, H =    0},
-	["Les Paluns"]						= {X =  841, A = 4898, H =    0},
+	["Les Paluns"]						= {X =  841, A =    0, H =    0},
 	-- Kalimdor
 	["Orneval"]							= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},

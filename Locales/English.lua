@@ -72,7 +72,7 @@ L_EXTRA_ZONEACHID = {
 	["Burning Steppes"]					= {X =  775, A = 4901, H = 4901},
 	["Deadwind Pass"]					= {X =  777, A =    0, H =    0},
 	["Dun Morogh"]						= {X =  627, A =    0, H =    0},
-	["Duskwood"]						= {X =  778, A = 4907, H =    0},
+	["Duskwood"]						= {X =  778, A = 4903, H =    0},
 	["Eastern Plaguelands"]				= {X =  771, A = 4892, H = 4892},
 	["Elwynn Forest"]					= {X =  776, A =    0, H =    0},
 	["Eversong Woods"]					= {X =  859, A =    0, H =    0},
@@ -89,7 +89,7 @@ L_EXTRA_ZONEACHID = {
 	["Tirisfal Glades"]					= {X =  768, A =    0, H =    0},
 	["Western Plaguelands"]				= {X =  770, A = 4893, H = 4893},
 	["Westfall"]						= {X =  802, A = 4903, H =    0},
-	["Wetlands"]						= {X =  841, A = 4898, H =    0},
+	["Wetlands"]						= {X =  841, A =    0, H =    0},
 	-- Kalimdor
 	["Ashenvale"]						= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},

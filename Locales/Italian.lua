@@ -75,7 +75,7 @@ L_EXTRA_ZONEACHID = { -- Needs review
 	["Steppe Ardenti"]					= {X =  775, A = 4901, H = 4901},
 	["Valico Ventomorto"]				= {X =  777, A =    0, H =    0},
 	["Dun Morogh"]						= {X =  627, A =    0, H =    0},
-	["Boscovespro"]						= {X =  778, A = 4907, H =    0},
+	["Boscovespro"]						= {X =  778, A = 4903, H =    0},
 	["Terre Infette Orientali"]			= {X =  771, A = 4892, H = 4892},
 	["Foresta di Elwynn"]				= {X =  776, A =    0, H =    0},
 	["Boschi di Cantoeterno"]			= {X =  859, A =    0, H =    0},

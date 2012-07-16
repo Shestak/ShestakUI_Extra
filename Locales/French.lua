@@ -75,7 +75,7 @@ L_EXTRA_ZONEACHID = {
 	["Steppes Ardentes"]				= {X =  775, A = 4901, H = 4901},
 	["Défilé de Deuillevent"]			= {X =  777, A =    0, H =    0},
 	["Dun Morogh"]						= {X =  627, A =    0, H =    0},
-	["Bois de la Pénombre"]				= {X =  778, A = 4907, H =    0},
+	["Bois de la Pénombre"]				= {X =  778, A = 4903, H =    0},
 	["Maleterres de l'Est"]				= {X =  771, A = 4892, H = 4892},
 	["Forêt d'Elwynn"]					= {X =  776, A =    0, H =    0},
 	["Bois des Chants éternels"]		= {X =  859, A =    0, H =    0},

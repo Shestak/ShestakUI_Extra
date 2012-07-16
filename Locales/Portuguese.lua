@@ -75,7 +75,7 @@ L_EXTRA_ZONEACHID = { -- Needs review
 	["Burning Steppes"]					= {X =  775, A = 4901, H = 4901},
 	["Deadwind Pass"]					= {X =  777, A =    0, H =    0},
 	["Dun Morogh"]						= {X =  627, A =    0, H =    0},
-	["Duskwood"]						= {X =  778, A = 4907, H =    0},
+	["Duskwood"]						= {X =  778, A = 4903, H =    0},
 	["Eastern Plaguelands"]				= {X =  771, A = 4892, H = 4892},
 	["Elwynn Forest"]					= {X =  776, A =    0, H =    0},
 	["Eversong Woods"]					= {X =  859, A =    0, H =    0},

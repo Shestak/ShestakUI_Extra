@@ -75,7 +75,7 @@ L_EXTRA_ZONEACHID = {
 	["Brennende Steppe"]				= {X =  775, A = 4901, H = 4901},
 	["Gebirgspass der Totenwinde"]		= {X =  777, A =    0, H =    0},
 	["Dun Morogh"]						= {X =  627, A =    0, H =    0},
-	["Dämmerwald"]						= {X =  778, A = 4907, H =    0},
+	["Dämmerwald"]						= {X =  778, A = 4903, H =    0},
 	["Östliche Pestländer"]				= {X =  771, A = 4892, H = 4892},
 	["Wald von Elwynn"]					= {X =  776, A =    0, H =    0},
 	["Immersangwald"]					= {X =  859, A =    0, H =    0},

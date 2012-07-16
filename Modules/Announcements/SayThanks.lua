@@ -7,18 +7,14 @@ if C.extra_announce.says_thanks ~= true then return end
 local SayThanks = CreateFrame("Frame")
 
 local ST_Buffs = {
-	--MOP[1] = 85767,	-- Dark Intent
-	--MOP[2] = 54646,	-- Focus Magic
-	[3] = 29166,	-- Innervate
-	--[4] = 10060,	-- Power Infusion
+	[29166] = true,	-- Innervate
 }
 
-SayThanks:SetScript("OnEvent", function(...)
-	local args = {...}
-	for i, v in ipairs(ST_Buffs) do
-		if args[14] == v and args[11] == T.name and args[7] ~= T.name and (args[4] == "SPELL_AURA_APPLIED" or args[4] == "SPELL_AURA_REFRESH") then
-			SendChatMessage(L_EXTRA_ANNOUNCE_SS_THANKS..GetSpellLink(args[14])..", "..args[7], "WHISPER", nil, args[7])
-			DEFAULT_CHAT_FRAME:AddMessage(GetSpellLink(args[14])..L_EXTRA_ANNOUNCE_SS_RECEIVED..(args[7] or UNKNOWN))
+SayThanks:SetScript("OnEvent", function(_, event, _, applied, _, _, buffer, _, _, _, player, _, _, spell, ...)
+	for key, value in pairs(ST_Buffs) do
+		if spell == key and value == true and player == T.name and buffer ~= T.name and applied == "SPELL_AURA_APPLIED" then
+			SendChatMessage(L_EXTRA_ANNOUNCE_SS_THANKS..GetSpellLink(spell)..", "..buffer, "WHISPER", nil, buffer)
+			DEFAULT_CHAT_FRAME:AddMessage(GetSpellLink(spell)..L_EXTRA_ANNOUNCE_SS_RECEIVED..buffer)
 		end
 	end
 end)

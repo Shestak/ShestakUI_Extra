@@ -17,8 +17,8 @@ local defaults = {
 local spellList = {
 	-- Warrior
 	355,	-- Taunt
-	1161,	-- Challenging Shout
-	694,	-- Mocking Blow
+	--MOP--1161,	-- Challenging Shout
+	--MOP--694,	-- Mocking Blow
 	-- Paladin
 	31789,	-- Rghteous Defense
 	62124,	-- Hand of Reckoning
@@ -27,13 +27,13 @@ local spellList = {
 	56222,	-- Dark Command
 	-- Druid
 	6795,	-- Growl
-	5209,	-- Challenging Roar
+	--MOP--5209,	-- Challenging Roar
 	-- Hunter
 	20736,	-- Distracting Shot
 	-- Hunter's pet
 	--2649,	-- Growl (Stupid hunters will never turn off this ability)
 	-- Warlock's pets
-	33698,	-- Anguish 
+	--MOP--33698,	-- Anguish
 	3716,	-- Torment
 	17735,	-- Suffering
 }

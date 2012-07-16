@@ -72,10 +72,6 @@ local function pull(self, elapsed)
 end
 
 function f.Pull(timer)
-	if not channel then 
-		DEFAULT_CHAT_FRAME:AddMessage("PullCountdown: no valid output.")
-		return 
-	end
 	delay = timer or 3
 	if timerframe:GetScript("OnUpdate") then
 		reset()

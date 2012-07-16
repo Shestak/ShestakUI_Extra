@@ -146,7 +146,7 @@ f:SetScript("OnEvent", function(self, event, ...)
 	end
 end)
 
--- Ready Check button
+-- Check button
 if C.misc.raid_tools == true then
 	RaidUtilityPanel:Height(168)
 

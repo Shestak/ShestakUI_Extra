@@ -12,9 +12,9 @@ FlyoutButtonSkin:SetScript("OnEvent", function(self, event, addon)
 	FlyoutButtonCustom_Settings.Highlight = false
 	FlyoutButtonCustom_Settings.ShowBorders = false
 	FlyoutButtonCustom_Settings.ButtonsScale = 1
-	FBC_BUTTON_PLACE_SIZE = T.buttonsize
-	FBC_BUTTON_PLACE_OFFSET = T.buttonspacing
-	FBC_FRAME_OFFSET = T.buttonspacing - 6
+	FBC_BUTTON_PLACE_SIZE = C.actionbar.button_size
+	FBC_BUTTON_PLACE_OFFSET = C.actionbar.button_space
+	FBC_FRAME_OFFSET = C.actionbar.button_space - 6
 
 	local function CreateBorder(self)
 		local name = self:GetName()
@@ -46,7 +46,7 @@ FlyoutButtonSkin:SetScript("OnEvent", function(self, event, addon)
 				btname:Point("BOTTOM", 0, 0)
 				btname:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
 				btname:SetShadowOffset(C.font.action_bars_font_shadow and 1 or 0, C.font.action_bars_font_shadow and -1 or 0)
-				--btname:Width(T.buttonsize - 1)
+				--btname:Width(C.actionbar.button_size - 1)
 			else
 				btname:Kill()
 			end
@@ -57,7 +57,7 @@ FlyoutButtonSkin:SetScript("OnEvent", function(self, event, addon)
 			hotkey:Point("TOPRIGHT", 0, 0)
 			hotkey:SetFont(C.font.action_bars_font, C.font.action_bars_font_size, C.font.action_bars_font_style)
 			hotkey:SetShadowOffset(C.font.action_bars_font_shadow and 1 or 0, C.font.action_bars_font_shadow and -1 or 0)
-			hotkey:Width(T.buttonsize - 1)
+			hotkey:Width(C.actionbar.button_size - 1)
 			hotkey.ClearAllPoints = T.dummy
 			hotkey.SetPoint = T.dummy
 		else
@@ -65,8 +65,8 @@ FlyoutButtonSkin:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		if not _G[name.."Panel"] then
-			if self:GetHeight() ~= T.buttonsize and not InCombatLockdown() then
-				self:Size(T.buttonsize)
+			if self:GetHeight() ~= C.actionbar.button_size and not InCombatLockdown() then
+				self:Size(C.actionbar.button_size)
 			end
 
 			local panel = CreateFrame("Frame", name.."Panel", self)

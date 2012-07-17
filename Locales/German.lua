@@ -92,7 +92,7 @@ L_EXTRA_ZONEACHID = {
 	["Tirisfal"]						= {X =  768, A =    0, H =    0},
 	["Westliche Pestländer"]			= {X =  770, A = 4893, H = 4893},
 	["Westfall"]						= {X =  802, A = 4903, H =    0},
-	["Sumpfland"]						= {X =  841, A =    0, H =    0},
+	["Sumpfland"]						= {X =  841, A = 4899, H =    0},
 	-- Kalimdor
 	["Eschental"]						= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},

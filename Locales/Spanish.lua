@@ -93,7 +93,7 @@ L_EXTRA_ZONEACHID = {
 	["Claros de Tirisfal"]				= {X =  768, A =    0, H =    0},
 	["Tierras de la Peste del Oeste"]	= {X =  770, A = 4893, H = 4893},
 	["Páramos de Poniente"]				= {X =  802, A = 4903, H =    0},
-	["Los Humedales"]					= {X =  841, A =    0, H =    0},
+	["Los Humedales"]					= {X =  841, A = 4899, H =    0},
 	-- Kalimdor
 	["Vallefresno"]						= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},
@@ -189,7 +189,7 @@ L_EXTRA_ZONEACHID = {
 	["Claros de Tirisfal"]				= {X =  768, A =    0, H =    0},
 	["Tierras de la Peste del Oeste"]	= {X =  770, A = 4893, H = 4893},
 	["Páramos de Poniente"]				= {X =  802, A = 4903, H =    0},
-	["Los Humedales"]					= {X =  841, A =    0, H =    0},
+	["Los Humedales"]					= {X =  841, A = 4899, H =    0},
 	-- Kalimdor
 	["Vallefresno"]						= {X =  845, A = 4925, H = 4976},
 	["Azshara"]							= {X =  852, A =    0, H = 4927},

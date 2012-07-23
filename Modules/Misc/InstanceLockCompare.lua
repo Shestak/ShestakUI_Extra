@@ -71,7 +71,7 @@ local function ILockCompare(frame, link, ...)
 	end
 end
 
-ItemRefTooltip:HookScript("OnDragStop", function(self, button) 
+ItemRefTooltip:HookScript("OnDragStop", function(self, button)
 	if myTip:IsVisible() and (myTip:GetParent():GetName() == self:GetName()) then
 		local side = "left"
 		local rightDist = 0

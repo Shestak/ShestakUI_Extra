@@ -56,7 +56,7 @@ local function CreateModule()
 		else
 			hCalcButton[i]:SetPoint("LEFT", hCalcButton[i-1], "RIGHT", buttonSpacing, 0)
 		end
-		
+
 		hCalcButton[i]:HookScript("OnEnter", T.SetModifiedBackdrop)
 		hCalcButton[i]:HookScript("OnLeave", T.SetOriginalBackdrop)
 	end

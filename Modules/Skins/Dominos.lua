@@ -52,7 +52,7 @@ DominosSkin:SetScript("OnEvent", function(self, event, addon)
 		if not _G[name.."Panel"] then
 			local panel = CreateFrame("Frame", name.."Panel", self)
 			panel:CreatePanel("Transparent", button:GetWidth(), button:GetHeight(), "CENTER", self, "CENTER", 0, 0)
-	 
+
 			icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			icon:SetPoint("TOPLEFT", button, 2, -2)
 			icon:SetPoint("BOTTOMRIGHT", button, -2, 2)

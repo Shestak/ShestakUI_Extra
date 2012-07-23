@@ -117,7 +117,7 @@ function XLM_UD(self, elapsed)
 			GameTooltip:AddLine(line1)
 			GameTooltip:AddLine(line2)
 			GameTooltip:Show()
-		else 
+		else
 			GameTooltip:Hide()
 		end
 		GameTooltip:FadeOut()

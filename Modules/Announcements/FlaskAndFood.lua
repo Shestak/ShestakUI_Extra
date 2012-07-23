@@ -2,7 +2,7 @@
 if C.extra_announce.flask_food ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Checks the usage of flasks and food of your party/raid members(ffCheck by Silverwind) 
+--	Checks the usage of flasks and food of your party/raid members(ffCheck by Silverwind)
 ----------------------------------------------------------------------------------------
 local noFood, noFlask, unitBuffs = {}, {}, {}
 

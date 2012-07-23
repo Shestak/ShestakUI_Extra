@@ -200,7 +200,7 @@ SpellBinder.OpenButton:SetScript("OnClick", function(self)
 	if SpellBinder:IsVisible() then
 		SpellBinder:Hide()
 		SpellBinder.sbOpen = false
-	else 
+	else
 		SpellBinder:Show()
 		SpellBinder.sbOpen = true
 	end

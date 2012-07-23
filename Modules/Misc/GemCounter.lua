@@ -20,10 +20,10 @@ addon.f = CreateFrame("Frame", "GCmain", CharacterFrame)
 addon.f:SetScript("OnShow", function(self)
 	addon.GetGems()
 end)
-addon.f:SetScript("OnEvent", function(self, event, ...) 
-	if addon[event] then 
-		return addon[event](addon, event, ...) 
-	end 
+addon.f:SetScript("OnEvent", function(self, event, ...)
+	if addon[event] then
+		return addon[event](addon, event, ...)
+	end
 end)
 addon.f:RegisterEvent("UNIT_INVENTORY_CHANGED")
 addon.f:RegisterEvent("PLAYER_LOGIN")
@@ -102,10 +102,10 @@ function addon.GetGems()
 			addon.GetPrismatic(gem6)
 		end
 	end
-	addon.button1.text:SetText(BlueGems) 
+	addon.button1.text:SetText(BlueGems)
 	addon.button2.text:SetText(RedGems)
 	addon.button3.text:SetText(YellowGems)
-	addon.button4.text:SetText(GreenGems) 
+	addon.button4.text:SetText(GreenGems)
 	addon.button5.text:SetText(PurpleGems)
 	addon.button6.text:SetText(OrangeGems)
 	if PrismaticGems == 0 then

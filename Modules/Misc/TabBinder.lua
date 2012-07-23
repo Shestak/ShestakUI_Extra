@@ -49,7 +49,7 @@ TabBinder:SetScript("OnEvent", function(self, event, ...)
 			if RTB_CurrentBind ~= "TARGETNEARESTENEMYPLAYER" then
 				if RTB_TargetKey == nil then
 					RTB_Success = 1
-				else 
+				else
 					RTB_Success = SetBinding(RTB_TargetKey, "TARGETNEARESTENEMYPLAYER")
 				end
 				if RTB_LastTargetKey ~= nil then

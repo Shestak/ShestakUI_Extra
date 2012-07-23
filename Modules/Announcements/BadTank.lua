@@ -314,7 +314,7 @@ function BadGroup.Command(str, editbox)
 	elseif str == "private" then
 		ExtraTanksDB.SocialOutput = false
 		BadGroup:Print("Output set to "..yellowColor.."private|r.")
-	elseif str == "status" then 
+	elseif str == "status" then
 		BadGroup:Print(ExtraTanksDB)
 	elseif str == "add" then
 		if not UnitExists("target") then

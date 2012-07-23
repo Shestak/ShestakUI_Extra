@@ -44,7 +44,7 @@ local function AL_OnShow(self, event, ...)
 end
 
 local function Nine_IsThere(Self, event, ...)
-	for i = 1, 9 do 
+	for i = 1, 9 do
 		local f = _G["AtlasLootCompareFrameSortButton_"..i]
 		f:SetWidth(44)
 	end

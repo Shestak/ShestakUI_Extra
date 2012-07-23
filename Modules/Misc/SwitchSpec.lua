@@ -93,7 +93,7 @@ spec:RegisterEvent("PLAYER_ENTERING_WORLD")
 spec:RegisterEvent("CHARACTER_POINTS_CHANGED")
 spec:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 spec:SetScript("OnEvent", OnEvent)
-spec:SetScript("OnClick", function(self) 
+spec:SetScript("OnClick", function(self)
 	local i = GetActiveSpecGroup()
 	if i == 1 then SetActiveSpecGroup(2) end
 	if i == 2 then SetActiveSpecGroup(1) end

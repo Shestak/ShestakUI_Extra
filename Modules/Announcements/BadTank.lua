@@ -496,7 +496,7 @@ end)
 InfoButton.text = InfoButton:CreateFontString(nil, "OVERLAY")
 InfoButton.text:SetFont(C.media.pixel_font, C.media.pixel_font_size, C.media.pixel_font_style)
 InfoButton.text:SetPoint("CENTER")
-InfoButton.text:SetText(GUILD_INFORMATION)
+InfoButton.text:SetText(INFO)
 
 local b = CreateFrame("Button", nil, UIParent)
 b:SetTemplate("ClassColor")

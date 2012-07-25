@@ -14,10 +14,8 @@ local slots = {
 local function CreateButtonsText(frame)
 	for _, slot in pairs(slots) do
 		local button = _G[frame..slot]
-		local font, _, flags = NumberFontNormal:GetFont()
-		button.t = button:CreateFontString(nil, "OVERLAY")
-		button.t:SetFont(font, 12, flags)
-		button.t:SetPoint("TOP", button, "TOP", 0, -3)
+		button.t = button:CreateFontString(nil, "OVERLAY", "NumberFont_OutlineThick_Mono_Small")
+		button.t:SetPoint("TOP", button, "TOP", 0, -15)
 		button.t:SetText("")
 	end
 end

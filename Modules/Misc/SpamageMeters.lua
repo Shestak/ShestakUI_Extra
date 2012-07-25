@@ -17,7 +17,12 @@ local firstLines = {
 	"^Skada战斗报告：(.*)的(.*), (.*)到(.*):$",				-- Skada zhCN
 	"^Skada:(.*)來自(.*)，(.*) - (.*):$",					-- Skada zhTW
 	"^(.*) Done for (.*)$"	,								-- TinyDPS
-	"^Numeration: (.*) for (.*)$"							-- Numeration
+	"^Numeration: (.*) for (.*)$",							-- Numeration
+	--DAMAGE..":",											-- alDamageMeter
+	--SHOW_COMBAT_HEALING..":",								-- alDamageMeter
+	--COMBAT_TEXT_ABSORB..":",								-- alDamageMeter
+	--DISPELS..":",											-- alDamageMeter
+	--INTERRUPTS..":",										-- alDamageMeter
 }
 
 local nextLines = {

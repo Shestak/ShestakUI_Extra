@@ -45,8 +45,6 @@ end
 if T.author == true then
 	C["extra_general"].disenchanting = true
 	C["extra_general"].item_level = true
-	C["extra_general"].skip_cinematic = true
-	C["extra_general"].auto_role = true
 	C["extra_general"].tab_binder = true
 	C["extra_general"].map_boss_count = true
 	C["extra_general"].instance_lock = true
@@ -106,7 +104,6 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].align = true
 	C["extra_general"].color_picker = true
-	C["extra_general"].skip_cinematic = true
 	C["extra_general"].item_level = true
 	C["extra_general"].disenchanting = true
 	C["extra_general"].tab_binder = true
@@ -125,7 +122,6 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Мейнрейн" or T.name == "Мейнгрейв" then
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true
-		C["extra_general"].auto_role = true
 		C["extra_general"].buff_automator = true
 	elseif T.name == "Виринеа" then
 		C["extra_announce"].lightwell = true

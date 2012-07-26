@@ -62,11 +62,11 @@ L_EXTRA_EXPLORED = "Explored: " -- Needs review
 L_EXTRA_ZONEACHID = {
 	-- http://www.wowhead.com/achievement=*
 	-- e(X)plore achievement id, (Q)uest achievement id
-	["Royaumes de l'Est"]				= {X =   42, A =    0, H =    0},
+	["Royaumes de l'est"]				= {X =   42, A =    0, H =    0},
 	["Kalimdor"]						= {X =   43, A =    0, H =    0},
 	["Outreterre"]						= {X =   44, A =    0, H =    0},
 	["Norfendre"]						= {X =   45, A =    0, H =    0},
-	["Pandaria"]						= {X = 6974, A =    0, H =    0}, -- Needs review
+	["Pandarie"]						= {X = 6974, A =    0, H =    0},
 	["Carte du monde"]					= {X =  nil, A =    0, H =    0},
 	-- Eastern Kingdoms
 	["Hautes-terres Arathies"]			= {X =  761, A = 4896, H = 4896},
@@ -76,8 +76,8 @@ L_EXTRA_ZONEACHID = {
 	["Défilé de Deuillevent"]			= {X =  777, A =    0, H =    0},
 	["Dun Morogh"]						= {X =  627, A =    0, H =    0},
 	["Bois de la Pénombre"]				= {X =  778, A = 4903, H =    0},
-	["Maleterres de l'Est"]				= {X =  771, A = 4892, H = 4892},
-	["Forêt d'Elwynn"]					= {X =  776, A =    0, H =    0},
+	["Maleterres de l’Est"]				= {X =  771, A = 4892, H = 4892},
+	["Forêt d’Elwynn"]					= {X =  776, A =    0, H =    0},
 	["Bois des Chants éternels"]		= {X =  859, A =    0, H =    0},
 	["Les terres Fantômes"]				= {X =  858, A =    0, H = 4908},
 	["Contreforts de Hautebrande"]		= {X =  772, A =    0, H = 4895},
@@ -90,8 +90,8 @@ L_EXTRA_ZONEACHID = {
 	["Cap Strangleronce"]				= {X = 4995, A = 4905, H = 4905},
 	["Les Hinterlands"]					= {X =  773, A = 4897, H = 4897},
 	["Clairières de Tirisfal"]			= {X =  768, A =    0, H =    0},
-	["Maleterres de l'Ouest"]			= {X =  770, A = 4893, H = 4893},
-	["Marche de l'Ouest"]				= {X =  802, A = 4903, H =    0},
+	["Maleterres de l’Ouest"]			= {X =  770, A = 4893, H = 4893},
+	["Marche de l’Ouest"]				= {X =  802, A = 4903, H =    0},
 	["Les Paluns"]						= {X =  841, A = 4899, H =    0},
 	-- Kalimdor
 	["Orneval"]							= {X =  845, A = 4925, H = 4976},
@@ -101,7 +101,7 @@ L_EXTRA_ZONEACHID = {
 	["Sombrivage"]						= {X =  844, A = 4928, H = 4928},
 	["Désolace"]						= {X =  848, A = 4930, H = 4930},
 	["Durotar"]							= {X =  728, A =    0, H =    0},
-	["Marécage d'Âprefange"]			= {X =  850, A = 4929, H = 4978},
+	["Marécage d’Âprefange"]			= {X =  850, A = 4929, H = 4978},
 	["Gangrebois"]						= {X =  853, A = 4931, H = 4931},
 	["Féralas"]							= {X =  849, A = 4932, H = 4979},
 	["Reflet-de-Lune"]					= {X =  855, A =    0, H =    0},
@@ -113,8 +113,8 @@ L_EXTRA_ZONEACHID = {
 	["Tanaris"]							= {X =  851, A = 4935, H = 4935},
 	["Teldrassil"]						= {X =  842, A =    0, H =    0},
 	["Mille pointes"]					= {X =  846, A = 4938, H = 4938},
-	["Cratère d'Un'Goro"]				= {X =  854, A = 4939, H = 4939},
-	["Berceau-de-l'Hiver"]				= {X =  857, A = 4940, H = 4940},
+	["Cratère d’Un’Goro"]				= {X =  854, A = 4939, H = 4939},
+	["Berceau-de-l’Hiver"]				= {X =  857, A = 4940, H = 4940},
 	-- Outland
 	["Les Tranchantes"]					= {X =  865, A = 1193, H = 1193},
 	["Péninsule des Flammes infernales"]= {X =  862, A = 1189, H = 1271},
@@ -132,7 +132,7 @@ L_EXTRA_ZONEACHID = {
 	["La Couronne de glace"]			= {X = 1270, A =   40, H =   40},
 	["Bassin de Sholazar"]				= {X = 1268, A =   39, H =   39},
 	["Les pics Foudroyés"]				= {X = 1269, A =   38, H =   38},
-	["Zul'Drak"]						= {X = 1267, A =   36, H =   36},
+	["Zul’Drak"]						= {X = 1267, A =   36, H =   36},
 	-- Cataclysm
 	["Le Tréfonds"]						= {X = 4864, A = 4871, H = 4871},
 	["Mont Hyjal"]						= {X = 4863, A = 4870, H = 4870},
@@ -142,13 +142,13 @@ L_EXTRA_ZONEACHID = {
 	["Tol Barad"]						= {X =    0, A = 4874, H = 4874},
 	["Péninsule de Tol Barad"]			= {X =    0, A = 4874, H = 4874},
 	-- Pandaria
-	["The Jade Forest"]					= {X = 6351, A = 6300, H = 6534}, -- Needs review
-	["Valley of the Four Winds"]		= {X = 6969, A = 6301, H = 6301}, -- Needs review
-	--["Krasarang Wilds"]					= {X = 6975, A = 6535, H = 6536}, -- Needs review
-	["Kun-Lai Summit"]					= {X = 6976, A = 6537, H = 6538}, -- Needs review
-	["Townlong Steppes"]				= {X = 6977, A = 6539, H = 6539}, -- Needs review
-	["Dread Wastes"]					= {X = 6978, A = 6540, H = 6540}, -- Needs review
-	["Vale of Eternal Blossoms"]		= {X = 6979, A =    0, H =    0}, -- Needs review
+	["La forêt de Jade"]				= {X = 6351, A = 6300, H = 6534},
+	["Vallée des Quatre vents"]			= {X = 6969, A = 6301, H = 6301},
+	--["Étendues sauvages de Krasaran"]	= {X = 6975, A = 6535, H = 6536},
+	["Sommet de Kun-Lai"]				= {X = 6976, A = 6537, H = 6538},
+	["Steppes de Tanglong"]				= {X = 6977, A = 6539, H = 6539},
+	["Terres de l’Angoisse"]			= {X = 6978, A = 6540, H = 6540},
+	["Val de l’Éternel printemps"]		= {X = 6979, A =    0, H =    0},
 	-- Boolean Explores
 	["Île de Quel'Danas"]				= {X =  868, A =    0, H =    0},
 	["Ahn'Qiraj : le royaume Déchu"]	= {X =    0, A =    0, H =    0},

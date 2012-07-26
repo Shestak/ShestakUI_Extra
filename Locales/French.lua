@@ -138,7 +138,7 @@ L_EXTRA_ZONEACHID = {
 	["Mont Hyjal"]						= {X = 4863, A = 4870, H = 4870},
 	["Hautes-terres du Crépuscule"]		= {X = 4866, A = 4873, H = 5501},
 	["Uldum"]							= {X = 4865, A = 4872, H = 4872},
-	["Vashj'ir"]						= {X = 4825, A = 4869, H = 4982},
+	["Vashj’ir"]						= {X = 4825, A = 4869, H = 4982},
 	["Tol Barad"]						= {X =    0, A = 4874, H = 4874},
 	["Péninsule de Tol Barad"]			= {X =    0, A = 4874, H = 4874},
 	-- Pandaria

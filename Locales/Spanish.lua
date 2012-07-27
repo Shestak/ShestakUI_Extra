@@ -12,7 +12,7 @@ L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
 L_EXTRA_ANNOUNCE_FPS = "Mis FPS actuales son "
 
 -- Click2Cast
-L_EXTRA_BINDER_OPEN = "Abrir encuadernador de hechizos"
+L_EXTRA_BINDER_OPEN = "Mouse Bindings" -- Needs review
 
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "Ataque ligero llega a "

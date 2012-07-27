@@ -12,7 +12,7 @@ L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
 L_EXTRA_ANNOUNCE_FPS = "我目前的 FPS 是 "
 
 -- Click2Cast
-L_EXTRA_BINDER_OPEN = "打开点击施法绑定页面"
+L_EXTRA_BINDER_OPEN = "Mouse Bindings" -- Needs review
 
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "敌方小型攻击部队来到 "

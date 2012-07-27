@@ -12,7 +12,7 @@ L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
 L_EXTRA_ANNOUNCE_FPS = "Meine FPS sind "
 
 -- Click2Cast
-L_EXTRA_BINDER_OPEN = "Öffne spell binder"
+L_EXTRA_BINDER_OPEN = "Mouse Bindings" -- Needs review
 
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "wenig Schaden auf "

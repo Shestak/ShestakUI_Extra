@@ -88,7 +88,9 @@ SpellBinder.makeSpellsList = function(self, scroll, delete)
 			bf.icon.tex = _G[i.."_texture"] or bf.icon:CreateTexture(i.."_texture", "OVERLAY")
 			bf.icon.tex:SetAllPoints()
 			bf.icon.tex:SetTexture(spell.texture)
-			bf.icon.tex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			if IsAddOnLoaded("Aurora") or C.skins.blizzard_frames == true then
+				bf.icon.tex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+			end
 
 			bf.delete = _G[i.."_delete"] or CreateFrame("Button", i.."_delete", bf)
 			bf.delete:SetSize(16, 16)

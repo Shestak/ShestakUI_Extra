@@ -3,7 +3,7 @@
 ## Notes: Extra mods for ShestakUI
 ## Author: Shestak
 ## Version: 4.0.0.09
-## Credits: Fernir, Gsuz, Hydra, fraz0816, Slushe, Elv22, Tukz, Epic, Smelly, Jaslm, Safturento, Cowmonster, Azmara, Villiv, Egingell, Camealion, Sara.Festung, Pigmonkey, MrRuben5, Veev, AcidWeb, CrusaderHeimdall, Rainrider, Magdain, Kraftman, Nathanyel, Driizt, MrLulz, Wrug, Cybey, Ailae, Killakhan
+## Credits: Fernir, Gsuz, Hydra, fraz0816, Slushe, Elv22, Tukz, Epic, Smelly, Jaslm, Safturento, Cowmonster, Azmara, Villiv, Egingell, Camealion, Sara.Festung, Pigmonkey, MrRuben5, Veev, AcidWeb, Rainrider, Kraftman, Nathanyel, Driizt, MrLulz, Wrug, Cybey, Ailae, Killakhan
 ## RequiredDeps: ShestakUI
 ## SavedVariables: ExtraOptionsDB
 ## SavedVariablesPerCharacter: ExtraTanksDB, ExtraArchyDB

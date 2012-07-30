@@ -46,7 +46,6 @@ if T.author == true then
 	C["extra_general"].disenchanting = true
 	C["extra_general"].item_level = true
 	C["extra_general"].tab_binder = true
-	C["extra_general"].map_boss_count = true
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
@@ -63,9 +62,6 @@ if T.author == true then
 	if T.class == "PALADIN" then
 		C["extra_announce"].bad_tank = true
 	end
-	if T.level ~= MAX_PLAYER_LEVEL then
-		C["extra_general"].explore_map = true
-	end
 end
 
 ----------------------------------------------------------------------------------------
@@ -78,7 +74,6 @@ if T.name == "Oz" then
 	C["extra_general"].align = true
 	C["extra_general"].item_level = true
 	C["extra_general"].tab_binder = true
-	C["extra_general"].map_boss_count = true
 	C["extra_general"].gem_counter = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
@@ -102,8 +97,6 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].item_level = true
 	C["extra_general"].disenchanting = true
 	C["extra_general"].tab_binder = true
-	C["extra_general"].explore_map = true
-	C["extra_general"].map_boss_count = true
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true

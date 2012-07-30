@@ -25,24 +25,6 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "Stealthed Enemies Nearby"
 -- EnchantScroll
 L_EXTRA_SCROLL = "Scroll"
 
--- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " used my lightwell. "
-L_EXTRA_ANNOUNCE_LA_CHARGE = " charge(s))"
-L_EXTRA_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. "
-L_EXTRA_ANNOUNCE_LA_STOP = "You shouldn't have used the lightwell."
-L_EXTRA_ANNOUNCE_LA_PLACED = "Lightwell placed. "
-L_EXTRA_ANNOUNCE_LA_CHARGES = " charges."
-
--- Announce flasks and food
-L_EXTRA_ANNOUNCE_FF_NOFOOD = "No Food: "
-L_EXTRA_ANNOUNCE_FF_NOFLASK = "No Flask: "
-L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "All Buffed!"
-L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask"
-
--- Says thanks for some spells
-L_EXTRA_ANNOUNCE_SS_THANKS = "Thanks for "
-L_EXTRA_ANNOUNCE_SS_RECEIVED = " received from "
-
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Unknown command:"
 L_EXTRA_TAUNT_ADD = "Add tank"
@@ -59,7 +41,7 @@ L_EXTRA_TAUNT_ALL_REMOVED = "All custom tanks removed."
 
 -- ExploreMap
 L_EXTRA_EXPLORED = "Explored: "
-L_EXTRA_ZONEACHID = { -- Needs review
+L_EXTRA_ZONEACHID = {
 	-- http://www.wowhead.com/achievement=*
 	-- e(X)plore achievement id, (Q)uest achievement id
 	["Eastern Kingdoms"]				= {X =   42, A =    0, H =    0},

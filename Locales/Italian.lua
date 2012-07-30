@@ -25,24 +25,6 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "Nemici furtivi nei paraggi"
 -- EnchantScroll
 L_EXTRA_SCROLL = "Pergamena"
 
--- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " ha usato il mio Pozzo di Luce. "
-L_EXTRA_ANNOUNCE_LA_CHARGE = " carica (cariche)."
-L_EXTRA_ANNOUNCE_LA_USELESS = " ha usato il mio Pozzo di Luce inutilmente."
-L_EXTRA_ANNOUNCE_LA_STOP = "Non avresti dovuto utilizzare il Pozzo di Luce."
-L_EXTRA_ANNOUNCE_LA_PLACED = "Pozzo di Luce posizionato."
-L_EXTRA_ANNOUNCE_LA_CHARGES = " cariche."
-
--- Announce flasks and food
-L_EXTRA_ANNOUNCE_FF_NOFOOD = "Senza beneficio da cibo: "
-L_EXTRA_ANNOUNCE_FF_NOFLASK = "Senza beneficio da tonico: "
-L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "Tutti i benefici sono attivi!"
-L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Controllo uso cibi e tonici"
-
--- Says thanks for some spells
-L_EXTRA_ANNOUNCE_SS_THANKS = "Grazie per "
-L_EXTRA_ANNOUNCE_SS_RECEIVED = " ricevuto/a da "
-
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Comando sconociuto:"
 L_EXTRA_TAUNT_ADD = "Aggiungi difensore"

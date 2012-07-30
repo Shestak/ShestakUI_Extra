@@ -25,24 +25,6 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "Enemigos en sigilo en las inmediaciones"
 -- EnchantScroll
 L_EXTRA_SCROLL = "Pergamino"
 
--- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " usó mi Pozo de Luz. "
-L_EXTRA_ANNOUNCE_LA_CHARGE = " carga(s))"
-L_EXTRA_ANNOUNCE_LA_USELESS = " usó mi Pozo de Luz inútilmente. "
-L_EXTRA_ANNOUNCE_LA_STOP = "No deberías haber usado el Pozo de Luz."
-L_EXTRA_ANNOUNCE_LA_PLACED = "Pozo de Luz colocado. "
-L_EXTRA_ANNOUNCE_LA_CHARGES = " cargas."
-
--- Announce flasks and food
-L_EXTRA_ANNOUNCE_FF_NOFOOD = "No Food: " -- Needs review
-L_EXTRA_ANNOUNCE_FF_NOFLASK = "No Flask: " -- Needs review
-L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "All Buffed!" -- Needs review
-L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
-
--- Says thanks for some spells
-L_EXTRA_ANNOUNCE_SS_THANKS = "Thanks for " -- Needs review
-L_EXTRA_ANNOUNCE_SS_RECEIVED = " received from " -- Needs review
-
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "Unknown command:" -- Needs review
 L_EXTRA_TAUNT_ADD = "Add tank" -- Needs review

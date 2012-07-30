@@ -53,16 +53,12 @@ if T.author == true then
 	C["extra_general"].damage_meter_spam = true
 	C["extra_general"].sum_buyouts = true
 	C["extra_general"].gem_counter = true
-	C["extra_announce"].flask_food = true
-	C["extra_announce"].toy_train = true
-	C["extra_announce"].says_thanks = true
 	if T.class == "DRUID" then
 		C["extra_general"].click_cast = true
 		C["extra_general"].buff_automator = true
 	end
 	if T.class == "PRIEST" then
 		C["extra_general"].click_cast = true
-		C["extra_announce"].lightwell = true
 	end
 	if T.class == "PALADIN" then
 		C["extra_announce"].bad_tank = true
@@ -87,7 +83,6 @@ if T.name == "Oz" then
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
 	C["extra_general"].damage_meter_spam = true
-	C["extra_announce"].flask_food = true
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
 	C["extra_skins"].blood_shield_tracker = true
@@ -115,15 +110,11 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].damage_meter_spam = true
 	C["extra_general"].sum_buyouts = true
 	C["extra_general"].gem_counter = true
-	C["extra_announce"].flask_food = true
-	C["extra_announce"].flask_food_auto = true
 	C["extra_announce"].my_fps = true
 	C["extra_skins"].atlasloot = true
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Мейнрейн" or T.name == "Мейнгрейв" then
 		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
 		C["extra_general"].mark_bar = true
 		C["extra_general"].buff_automator = true
-	elseif T.name == "Виринеа" then
-		C["extra_announce"].lightwell = true
 	end
 end

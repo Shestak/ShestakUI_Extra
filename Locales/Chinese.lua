@@ -25,24 +25,6 @@ L_EXTRA_ANNOUNCE_BG_STEALTH = "敌方潜行在我们旁边"
 -- EnchantScroll
 L_EXTRA_SCROLL = "附魔卷轴"
 
--- Announce your Lightwell
-L_EXTRA_ANNOUNCE_LA_USE = " 使用我的光束泉. "
-L_EXTRA_ANNOUNCE_LA_CHARGE = " 刷新)"
-L_EXTRA_ANNOUNCE_LA_USELESS = "尽量少地使用我的光束泉. "
-L_EXTRA_ANNOUNCE_LA_STOP = "你不应该使用光束泉."
-L_EXTRA_ANNOUNCE_LA_PLACED = "光束泉位置. "
-L_EXTRA_ANNOUNCE_LA_CHARGES = "刷新."
-
--- Announce flasks and food
-L_EXTRA_ANNOUNCE_FF_NOFOOD = "No Food: " -- Needs review
-L_EXTRA_ANNOUNCE_FF_NOFLASK = "No Flask: " -- Needs review
-L_EXTRA_ANNOUNCE_FF_ALLBUFFED = "All Buffed!" -- Needs review
-L_EXTRA_ANNOUNCE_FF_CHECK_BUTTON = "Check food and flask" -- Needs review
-
--- Says thanks for some spells
-L_EXTRA_ANNOUNCE_SS_THANKS = "Thanks for " -- Needs review
-L_EXTRA_ANNOUNCE_SS_RECEIVED = " received from " -- Needs review
-
 -- Taunt announce
 L_EXTRA_TAUNT_UNKNOWN = "未知命令:"
 L_EXTRA_TAUNT_ADD = "添加坦克 "

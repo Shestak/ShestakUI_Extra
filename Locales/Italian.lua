@@ -6,13 +6,13 @@ if T.client ~= "itIT" then return end
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Barra extra"
-L_EXTRA_HEADER_MARK = "Icone dell'incursione in mouseover"
+L_EXTRA_HEADER_MARK = "Marchi d'incursione in mouseover"
 
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "I miei attuali FPS sono "
 
 -- Click2Cast
-L_EXTRA_BINDER_OPEN = "Mouse Bindings" -- Needs review
+L_EXTRA_BINDER_OPEN = "Assegnazione pulsanti mouse"
 
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "Piccolo attacco in arrivo: "
@@ -32,7 +32,7 @@ L_EXTRA_TAUNT_DEL = "Cancella difensore"
 L_EXTRA_TAUNT_DEL_ALL = "Cancella tutti i difensori"
 L_EXTRA_TAUNT_TANK_LIST = "Lista dei difensori"
 L_EXTRA_TAUNT_AURA = "Controllo delle auree"
-L_EXTRA_TAUNT_AURA_CHECK = "Cotrollo delle auree completato."
+L_EXTRA_TAUNT_AURA_CHECK = "Controllo delle auree completato."
 L_EXTRA_TAUNT_ALREADY_LIST = " è già nella lista."
 L_EXTRA_TAUNT_ADDED_TANK = "Difensore aggiunto "
 L_EXTRA_TAUNT_REMOVED_TANK = "Difensore rimosso "

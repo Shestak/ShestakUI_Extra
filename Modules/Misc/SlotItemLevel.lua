@@ -7,7 +7,7 @@ if C.extra_general.item_level ~= true then return end
 local time = 3
 local slots = {
 	"HeadSlot", "NeckSlot", "ShoulderSlot", "BackSlot", "ChestSlot", "ShirtSlot", "TabardSlot",
-	"WristSlot", "MainHandSlot", "SecondaryHandSlot", "RangedSlot", "HandsSlot", "WaistSlot",
+	"WristSlot", "MainHandSlot", "SecondaryHandSlot", "HandsSlot", "WaistSlot",
 	"LegsSlot", "FeetSlot", "Finger0Slot", "Finger1Slot", "Trinket0Slot", "Trinket1Slot"
 }
 

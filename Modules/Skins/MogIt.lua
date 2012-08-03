@@ -93,8 +93,7 @@ MISkin:SetScript("OnEvent", function(self, event, addon)
 		"LegsSlot",
 		"FeetSlot",
 		"MainHandSlot",
-		"SecondaryHandSlot",
-		"RangedSlot"
+		"SecondaryHandSlot"
 	}
 
 	for _, slot in pairs(slots) do

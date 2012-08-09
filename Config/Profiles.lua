@@ -9,7 +9,7 @@
 ----------------------------------------------------------------------------------------
 -- if T.name == "MegaChar" then
 --		C["extra_general"].click_cast = true
--- 		C["extra_general"].move_blizzard = false
+--		C["extra_general"].move_blizzard = false
 --		C["extra_bar"].enable = true
 --		C["extra_skins"].blizzard_frames = true
 --		C["extra_position"].micro_menu = {"TOPLEFT", UIParent, "TOPLEFT", 2, -2}
@@ -52,15 +52,8 @@ if T.author == true then
 	C["extra_general"].damage_meter_spam = true
 	C["extra_general"].sum_buyouts = true
 	C["extra_general"].gem_counter = true
-	if T.class == "DRUID" then
+	if T.class == "DRUID" or T.class == "PRIEST" then
 		C["extra_general"].click_cast = true
-		C["extra_general"].buff_automator = true
-	end
-	if T.class == "PRIEST" then
-		C["extra_general"].click_cast = true
-	end
-	if T.class == "PALADIN" then
-		C["extra_announce"].bad_tank = true
 	end
 end
 

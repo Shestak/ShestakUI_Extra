@@ -8,7 +8,7 @@
 --	General options
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
-	["click_cast"] = false,						-- Click2Cast mod
+	["click_cast"] = false,						-- Simple click2cast spell binder
 	["move_blizzard"] = false,					-- Move Blizzard frames
 	["arena_calc"] = false,						-- Arena calculator(/calc)
 	["align"] = false,							-- Grid on screen(/align)

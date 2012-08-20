@@ -82,17 +82,15 @@ SpellBinder.makeSpellsList = function(self, scroll, delete)
 
 			bf:EnableMouse(true)
 
-			bf.icon = _G[i.."_icon"] or CreateFrame("Button", i.."_icon", bf)
-			bf.icon:SetSize(22, 22)
-			bf.icon:SetPoint("LEFT")
-			bf.icon.tex = _G[i.."_texture"] or bf.icon:CreateTexture(i.."_texture", "OVERLAY")
-			bf.icon.tex:SetAllPoints()
-			bf.icon.tex:SetTexture(spell.texture)
+			bf.tex = bf.tex or bf:CreateTexture(i.."_texture", "OVERLAY")
+			bf.tex:SetSize(22, 22)
+			bf.tex:SetPoint("LEFT")
+			bf.tex:SetTexture(spell.texture)
 			if IsAddOnLoaded("Aurora") or C.skins.blizzard_frames == true then
-				bf.icon.tex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+				bf.tex:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			end
 
-			bf.delete = _G[i.."_delete"] or CreateFrame("Button", i.."_delete", bf)
+			bf.delete = bf.delete or CreateFrame("Button", i.."_delete", bf)
 			bf.delete:SetSize(16, 16)
 			bf.delete:SetPoint("RIGHT")
 			bf.delete:SetNormalTexture("Interface\\BUTTONS\\UI-GroupLoot-Pass-Up")
@@ -110,12 +108,10 @@ SpellBinder.makeSpellsList = function(self, scroll, delete)
 				SpellBinder.DeleteSpell()
 			end)
 
-			bf.icon:SetScript("OnEnter", function(self) GameTooltip:SetOwner(self) GameTooltip:SetSpellBookItem(spell.id, SpellBookFrame.bookType) end)
-			bf.icon:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
 			bf:SetScript("OnEnter", function(self) bf.delete:GetNormalTexture():SetVertexColor(1, 0, 0) self:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8"}) self:SetBackdropColor(0.2, 0.2, 0.2, 0.7) end)
 			bf:SetScript("OnLeave", function(self) bf.delete:GetNormalTexture():SetVertexColor(0.8, 0, 0) self:SetBackdrop(nil) end)
 
-			bf.fs = _G[i.."_fs"] or bf:CreateFontString(i.."_fs", "OVERLAY", "GameFontNormal")
+			bf.fs = bf.fs or bf:CreateFontString(i.."_fs", "OVERLAY", "GameFontNormal")
 			bf.fs:SetText(spell.modifier..spell.origbutton)
 			bf.fs:SetPoint("RIGHT", bf.delete, "LEFT", -4, 0)
 
@@ -178,7 +174,7 @@ SpellBinder.ToggleButtons = function()
 	SpellBinder:makeSpellsList(ScrollSpells.child, true)
 end
 
-hooksecurefunc("SpellBookFrame_Update", function() if SpellBinder.sbOpen then SpellBinder.ToggleButtons() end end)
+hooksecurefunc("SpellBookFrame_Update", function() if SpellBinder.sbOpen then SpellBinder:ToggleButtons() end end)
 
 SpellBinder.OpenButton = CreateFrame("CheckButton", "SpellBinderOpenButton", _G["SpellBookSkillLineTab1"], "SpellBookSkillLineTabTemplate")
 SpellBinder.OpenButton:SetNormalTexture("Interface\\ICONS\\INV_Mushroom_08")
@@ -189,7 +185,7 @@ SpellBinder.OpenButton:SetScript("OnShow", function(self)
 	local lastTab = _G["SpellBookSkillLineTab"..MAX_SKILLLINE_TABS]
 	self.id = GetNumSpellTabs() + 2
 	if not IsAddOnLoaded("Aurora") and C.skins.blizzard_frames == true then
-		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", -48, -17)
+		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", -64, -17)
 	else
 		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
 	end
@@ -206,25 +202,25 @@ SpellBinder.OpenButton:SetScript("OnClick", function(self)
 		SpellBinder:Show()
 		SpellBinder.sbOpen = true
 	end
-	SpellBinder.ToggleButtons()
+	SpellBinder:ToggleButtons()
 end)
 SpellBinder.OpenButton:Show()
 
 _G["SpellBinderCloseButton"]:SetScript("OnClick", function(self)
 	SpellBinder:Hide()
 	SpellBinder.sbOpen = false
-	SpellBinder.ToggleButtons()
+	SpellBinder:ToggleButtons()
 end)
 
 hooksecurefunc(SpellBookFrame, "Hide", function()
 	SpellBinder:Hide()
 	SpellBinder.sbOpen = false
-	SpellBinder.ToggleButtons()
+	SpellBinder:ToggleButtons()
 end)
 
 SpellBinder.DeleteSpell = function()
 	local count = table.getn(DB.spells)
-	for i,spell in ipairs(DB.spells) do
+	for i, spell in ipairs(DB.spells) do
 		if spell.checked then
 			for frame, j in pairs(ClickCastFrames) do
 				local f
@@ -279,16 +275,39 @@ local addSpell = function(self, button)
 	end
 end
 
-local eventf = CreateFrame("Frame", "SpellBinderEventFrame", UIParent)
-eventf:RegisterEvent("GROUP_ROSTER_UPDATE")
-eventf:RegisterEvent("PLAYER_ENTERING_WORLD")
-eventf:RegisterEvent("PLAYER_LOGIN")
-eventf:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-eventf:RegisterEvent("ZONE_CHANGED")
-eventf:SetScript("OnEvent", function(self, event, ...)
+SpellBinder.UpdateAll = function()
+	if InCombatLockdown() or UnitAffectingCombat("player") then
+		SpellBinder.SheduleUpdate()
+		return
+	end
+	SpellBinder:makeFramesList()
+	SpellBinder:makeSpellsList(ScrollSpells.child, true)
+end
+
+SpellBinder.SheduleUpdate = function()
+	SpellBinder.updated = false
+	if InCombatLockdown() or UnitAffectingCombat("player") then
+		SpellBinder:RegisterEvent("PLAYER_LEAVE_COMBAT")
+		SpellBinder:SetScript("OnEvent", function(self)
+			SpellBinder.UpdateAll()
+			if SpellBinder.updated then
+				SpellBinder:UnregisterEvent("PLAYER_LEAVE_COMBAT")
+			end
+		end)
+	else
+		SpellBinder.UpdateAll()
+	end
+end
+
+SpellBinder:RegisterEvent("GROUP_ROSTER_UPDATE")
+SpellBinder:RegisterEvent("PLAYER_ENTERING_WORLD")
+SpellBinder:RegisterEvent("PLAYER_LOGIN")
+SpellBinder:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+SpellBinder:RegisterEvent("ZONE_CHANGED")
+SpellBinder:SetScript("OnEvent", function(self, event, ...)
 	if event == "PLAYER_LOGIN" then
-		ExtraOptionsDB = ExtraOptionsDB or {}
-		ExtraOptionsDB[UnitName("player")] = ExtraOptionsDB[UnitName("player")] or {}
+		ExtraOptionsDB = _G.ExtraOptionsDB or {}
+		ExtraOptionsDB[UnitName("player")] = _G.ExtraOptionsDB[UnitName("player")] or {}
 		DB = ExtraOptionsDB[UnitName("player")]
 		DB.spells = DB.spells or {}
 		DB.frames = DB.frames or {}
@@ -316,8 +335,7 @@ eventf:SetScript("OnEvent", function(self, event, ...)
 
 		self:UnregisterEvent("PLAYER_LOGIN")
 	elseif event == "PLAYER_ENTERING_WORLD" or event == "GROUP_ROSTER_UPDATE" or event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then
-		SpellBinder:makeFramesList()
-		SpellBinder:makeSpellsList(ScrollSpells.child, true)
+		SpellBinder.UpdateAll()
 	end
 end)
 

@@ -35,7 +35,9 @@ for i, v in pairs({
 	-- Target and focus frames
 	"TargetFrame", "TargetFrameToT",
 	"FocusFrame", "FocusFrameToT",
+	-- Boss and arena frames
 	"Boss1TargetFrame", "Boss2TargetFrame", "Boss3TargetFrame", "Boss4TargetFrame",
+	"ArenaEnemyFrame1", "ArenaEnemyFrame2", "ArenaEnemyFrame3", "ArenaEnemyFrame4", "ArenaEnemyFrame5",
 }) do
 	if _G[v] then ClickCastFrames[_G[v]] = true end
 end
@@ -181,14 +183,12 @@ SpellBinder.OpenButton:SetNormalTexture("Interface\\ICONS\\INV_Mushroom_08")
 
 SpellBinder.OpenButton:SetScript("OnShow", function(self)
 	if SpellBinder:IsVisible() then self:SetChecked(true) end
+	local num = GetNumSpellTabs()
+	local lastTab = _G["SpellBookSkillLineTab"..num]
+
 	self:ClearAllPoints()
-	local lastTab = _G["SpellBookSkillLineTab"..MAX_SKILLLINE_TABS]
-	self.id = GetNumSpellTabs() + 2
-	if not IsAddOnLoaded("Aurora") and C.skins.blizzard_frames == true then
-		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", -64, -17)
-	else
-		self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
-	end
+	self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
+
 	self:SetScript("OnEnter", function(self) GameTooltip:ClearLines() GameTooltip:SetOwner(self, ANCHOR_TOPLEFT) GameTooltip:AddLine(L_EXTRA_BINDER_OPEN) GameTooltip:Show() end)
 	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
 end)

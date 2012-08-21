@@ -189,7 +189,7 @@ SpellBinder.OpenButton:SetScript("OnShow", function(self)
 	self:ClearAllPoints()
 	self:SetPoint("TOPLEFT", lastTab, "BOTTOMLEFT", 0, -17)
 
-	self:SetScript("OnEnter", function(self) GameTooltip:ClearLines() GameTooltip:SetOwner(self, ANCHOR_TOPLEFT) GameTooltip:AddLine(L_EXTRA_BINDER_OPEN) GameTooltip:Show() end)
+	self:SetScript("OnEnter", function(self) GameTooltip:ClearLines() GameTooltip:SetOwner(self, "ANCHOR_RIGHT") GameTooltip:AddLine(L_EXTRA_BINDER_OPEN) GameTooltip:Show() end)
 	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
 end)
 

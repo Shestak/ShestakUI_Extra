@@ -45,7 +45,6 @@ end
 if T.author == true then
 	C["extra_general"].disenchanting = true
 	C["extra_general"].item_level = true
-	C["extra_general"].tab_binder = true
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
@@ -66,7 +65,6 @@ if T.name == "Oz" then
 	C["extra_general"].arena_calc = true
 	C["extra_general"].align = true
 	C["extra_general"].item_level = true
-	C["extra_general"].tab_binder = true
 	C["extra_general"].gem_counter = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true
@@ -89,7 +87,6 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].color_picker = true
 	C["extra_general"].item_level = true
 	C["extra_general"].disenchanting = true
-	C["extra_general"].tab_binder = true
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
 	C["extra_general"].healer_icon = true

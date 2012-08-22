@@ -27,7 +27,6 @@
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
-	<Script file="Modules\Misc\CancelBadBuffs.lua"/>
 	<Script file="Modules\Misc\ChatBind.lua"/>
 	<Script file="Modules\Misc\CheckItemTransmogrify.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
@@ -44,7 +43,6 @@
 	<Script file="Modules\Misc\SpamageMeters.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
 	<Script file="Modules\Misc\SwitchSpec.lua"/>
-	<Script file="Modules\Misc\TabBinder.lua"/>
 
 	<Script file="Modules\Skins\AdiBags.lua"/>
 	<Script file="Modules\Skins\AtlasLoot.lua"/>

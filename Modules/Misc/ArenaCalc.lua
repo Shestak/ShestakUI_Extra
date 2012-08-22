@@ -2,7 +2,7 @@
 if C.extra_general.arena_calc ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Arena conquest point Calculator(by Hydra & fraz0816)
+--	Arena conquest point Calculator(by Hydra & Fraz0816)
 ----------------------------------------------------------------------------------------
 local buttonSize = 20
 local buttonSpacing = 5

@@ -2,12 +2,12 @@
 ## Title: ShestakUI Extra
 ## Notes: Extra mods for ShestakUI
 ## Author: Shestak
-## Version: 4.0.0.15
+## Version: 4.0.0.16
 ## Credits: Azmara, Camealion, Cowmonster, Driizt, Epic, Fernir, Fraz0816, Gsuz, Hydra, Jaslm, MrRuben5, Nathanyel, Rainrider, Safturento, Sara.Festung, Slushe, Smelly
 ## RequiredDeps: ShestakUI
 ## SavedVariables: ExtraOptionsDB
 ## SavedVariablesPerCharacter: ExtraTanksDB, ExtraArchyDB
-## X-Curse-Packaged-Version: 4.0.0.15
+## X-Curse-Packaged-Version: 4.0.0.16
 ## X-Curse-Project-Name: ShestakUI
 ## X-Curse-Project-ID: shestakui
 ## Website: http://shestak.org

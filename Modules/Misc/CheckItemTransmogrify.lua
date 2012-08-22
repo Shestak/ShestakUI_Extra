@@ -53,11 +53,11 @@ local WIMtooltip = function(tooltip)
 	end
 
 	if noChangeReason then
-		tooltip:AddLine(gsub(_G["ERR_TRANSMOGRIFY_"..noChangeReason] or noChangeReason, "%%s", ""), nil, nil, nil, true)
+		tooltip:AddLine(gsub("|cffff0000"..(_G["ERR_TRANSMOGRIFY_"..noChangeReason] or noChangeReason), "%%s", ""), nil, nil, nil, true)
 	end
 
 	if noSourceReason and noSourceReason ~= noChangeReason then
-		tooltip:AddLine(gsub(_G["ERR_TRANSMOGRIFY_"..noSourceReason] or noSourceReason, "%%s", ""), nil, nil, nil, true)
+		tooltip:AddLine(gsub("|cffff0000"..(_G["ERR_TRANSMOGRIFY_"..noSourceReason] or noSourceReason), "%%s", ""), nil, nil, nil, true)
 	end
 
 	tooltip:Show()

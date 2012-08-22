@@ -43,11 +43,6 @@ end
 --	Shestak Config
 ----------------------------------------------------------------------------------------
 if T.author == true then
-	C["extra_general"].disenchanting = true
-	C["extra_general"].instance_lock = true
-	C["extra_general"].item_transmogrify = true
-	C["extra_general"].damage_meter_spam = true
-	C["extra_general"].sum_buyouts = true
 	if T.class == "DRUID" or T.class == "PRIEST" then
 		C["extra_general"].click_cast = true
 	end
@@ -61,8 +56,6 @@ if T.name == "Oz" then
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].arena_calc = true
 	C["extra_general"].align = true
-	C["extra_general"].item_transmogrify = true
-	C["extra_general"].damage_meter_spam = true
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
 	C["extra_skins"].blood_shield_tracker = true
@@ -79,11 +72,6 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].align = true
 	C["extra_general"].color_picker = true
-	C["extra_general"].disenchanting = true
-	C["extra_general"].instance_lock = true
-	C["extra_general"].item_transmogrify = true
-	C["extra_general"].damage_meter_spam = true
-	C["extra_general"].sum_buyouts = true
 	C["extra_announce"].my_fps = true
 	C["extra_skins"].atlasloot = true
 	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Мейнрейн" or T.name == "Мейнгрейв" then

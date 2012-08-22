@@ -15,11 +15,6 @@ C["extra_general"] = {
 	["buff_automator"] = false,					-- Personal buff automator
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
-	["disenchanting"] = false,					-- One-click Milling, Prospecting and Disenchanting
-	["instance_lock"] = false,					-- Your instance lock status in tooltip
-	["item_transmogrify"] = false,				-- Displays items can not be transmogrified
-	["damage_meter_spam"] = false,				-- Merge damage meter spam in one line-link
-	["sum_buyouts"] = false,					-- Sum upp all current auctions
 }
 
 ----------------------------------------------------------------------------------------

@@ -6,7 +6,6 @@ if T.client ~= "itIT" then return end
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Barra aggiuntiva"
-L_EXTRA_HEADER_MARK = "Marchi d'incursione al passaggio del mouse"
 
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "I miei attuali FPS sono "

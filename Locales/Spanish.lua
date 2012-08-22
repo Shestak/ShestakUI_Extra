@@ -6,7 +6,6 @@ if T.client ~= "esES" and T.client ~= "esMX" then return end
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
-L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
 
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Mis FPS actuales son "

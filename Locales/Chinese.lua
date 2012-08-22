@@ -6,7 +6,6 @@ if T.client ~= "zhCN" then return end
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
-L_EXTRA_HEADER_MARK = "Mouseover Raid Icons" -- Needs review
 
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "我目前的 FPS 是 "

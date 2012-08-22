@@ -24,7 +24,6 @@
 	<Script file="Modules\ExtraBars\SwitchSpec.lua"/>
 
 	<Script file="Modules\Misc\Align.lua"/>
-	<Script file="Modules\Misc\AlreadyKnown.lua"/>
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>
@@ -32,14 +31,12 @@
 	<Script file="Modules\Misc\CheckItemTransmogrify.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
-	<Script file="Modules\Misc\GemCounter.lua"/>
 	<Script file="Modules\Misc\HealerIconNameplate.lua"/>
 	<Script file="Modules\Misc\InstanceLockCompare.lua"/>
 	<Script file="Modules\Misc\MouseoverMarking.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
 	<Script file="Modules\Misc\OneClickEnchantScroll.lua"/>
-	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\SpamageMeters.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
 

@@ -16,13 +16,11 @@ C["extra_general"] = {
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 	["disenchanting"] = false,					-- One-click Milling, Prospecting and Disenchanting
-	["item_level"] = false,						-- Item level on slot buttons
 	["instance_lock"] = false,					-- Your instance lock status in tooltip
 	["item_transmogrify"] = false,				-- Displays items can not be transmogrified
 	["healer_icon"] = false,					-- Show healer icon on all enemy healers nameplate in battlegrounds
 	["damage_meter_spam"] = false,				-- Merge damage meter spam in one line-link
 	["sum_buyouts"] = false,					-- Sum upp all current auctions
-	["gem_counter"] = false,					-- Displays how many red/blue/yellow gems you have
 }
 
 ----------------------------------------------------------------------------------------

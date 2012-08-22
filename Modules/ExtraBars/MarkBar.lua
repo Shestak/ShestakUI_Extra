@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.mark_bar ~= true then return end
+if C.extra_bar.mark_bar ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Mark Bar(by Smelly)

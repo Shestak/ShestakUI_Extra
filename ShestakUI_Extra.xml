@@ -20,6 +20,8 @@
 	<Script file="Modules\Announcements\NickAlert.lua"/>
 
 	<Script file="Modules\ExtraBars\ActionBar.lua"/>
+	<Script file="Modules\ExtraBars\MarkBar.lua"/>
+	<Script file="Modules\ExtraBars\SwitchSpec.lua"/>
 
 	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>
@@ -33,7 +35,6 @@
 	<Script file="Modules\Misc\GemCounter.lua"/>
 	<Script file="Modules\Misc\HealerIconNameplate.lua"/>
 	<Script file="Modules\Misc\InstanceLockCompare.lua"/>
-	<Script file="Modules\Misc\MarkBar.lua"/>
 	<Script file="Modules\Misc\MouseoverMarking.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>
 	<Script file="Modules\Misc\OneClickDisenchanting.lua"/>
@@ -41,7 +42,6 @@
 	<Script file="Modules\Misc\SlotItemLevel.lua"/>
 	<Script file="Modules\Misc\SpamageMeters.lua"/>
 	<Script file="Modules\Misc\SumAucBuyouts.lua"/>
-	<Script file="Modules\Misc\SwitchSpec.lua"/>
 
 	<Script file="Modules\Skins\AdiBags.lua"/>
 	<Script file="Modules\Skins\AtlasLoot.lua"/>

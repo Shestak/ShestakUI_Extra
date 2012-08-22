@@ -1,5 +1,5 @@
 ﻿local T, C, L = unpack(ShestakUI)
-if C.extra_general.switch_spec ~= true then return end
+if C.extra_bar.switch_spec ~= true then return end
 
 ----------------------------------------------------------------------------------------
 --	Switch spec panel(by Epic)

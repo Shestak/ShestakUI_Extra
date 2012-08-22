@@ -20,7 +20,6 @@
 	<Script file="Modules\Announcements\NickAlert.lua"/>
 
 	<Script file="Modules\ExtraBars\ActionBar.lua"/>
-	<Script file="Modules\ExtraBars\MicroMenu.lua"/>
 
 	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\AlreadyKnown.lua"/>

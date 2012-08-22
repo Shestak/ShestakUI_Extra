@@ -57,16 +57,12 @@ C["extra_announce"] = {
 --	Extra Bars options
 ----------------------------------------------------------------------------------------
 C["extra_bar"] = {
-	-- ActionBar
 	["enable"] = false,							-- Enable extra actionbar
 	["show_grid"] = true,						-- Show empty action bar buttons
 	["button_size"] = 30,						-- Buttons size
 	["button_space"] = 3,						-- Buttons space
 	["style"] = "4*3",							-- Buttons style(1*12|12*1|6*2|4*3)
 	["mouseover"] = false,						-- Show bar on mouseover
-	-- MicroMenu
-	["micro_menu"] = false,						-- Enable micro menu
-	["micro_menu_mouse"] = false,				-- Micro menu on mouseover
 }
 
 ----------------------------------------------------------------------------------------

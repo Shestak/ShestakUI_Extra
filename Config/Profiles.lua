@@ -46,7 +46,6 @@ if T.author == true then
 	C["extra_general"].disenchanting = true
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
-	C["extra_general"].healer_icon = true
 	C["extra_general"].damage_meter_spam = true
 	C["extra_general"].sum_buyouts = true
 	if T.class == "DRUID" or T.class == "PRIEST" then
@@ -63,7 +62,6 @@ if T.name == "Oz" then
 	C["extra_general"].arena_calc = true
 	C["extra_general"].align = true
 	C["extra_general"].item_transmogrify = true
-	C["extra_general"].healer_icon = true
 	C["extra_general"].damage_meter_spam = true
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
@@ -84,7 +82,6 @@ or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Вирин
 	C["extra_general"].disenchanting = true
 	C["extra_general"].instance_lock = true
 	C["extra_general"].item_transmogrify = true
-	C["extra_general"].healer_icon = true
 	C["extra_general"].damage_meter_spam = true
 	C["extra_general"].sum_buyouts = true
 	C["extra_announce"].my_fps = true

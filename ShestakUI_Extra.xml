@@ -31,7 +31,6 @@
 	<Script file="Modules\Misc\CheckItemTransmogrify.lua"/>
 	<Script file="Modules\Misc\ClickCast.lua"/>
 	<Script file="Modules\Misc\ColorPicker.lua"/>
-	<Script file="Modules\Misc\HealerIconNameplate.lua"/>
 	<Script file="Modules\Misc\InstanceLockCompare.lua"/>
 	<Script file="Modules\Misc\MouseoverMarking.lua"/>
 	<Script file="Modules\Misc\MoveBlizzard.lua"/>

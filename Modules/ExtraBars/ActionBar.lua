@@ -93,7 +93,20 @@ for i = 13, 24 do
 	RegisterStateDriver(f, "visibility", "[petbattle] hide;show")
 end
 
-BINDING_HEADER_EXTRABAR_HEADER = L_EXTRA_HEADER_EXTRABAR
+-- Correct bindinng names
+_G["BINDING_HEADER_EXTRABAR_HEADER"] = L_EXTRA_HEADER_EXTRABAR
+_G["BINDING_NAME_CLICK ExtraBarButton1:LeftButton"] = "Extra ActionBar Button 1"
+_G["BINDING_NAME_CLICK ExtraBarButton2:LeftButton"] = "Extra ActionBar Button 2"
+_G["BINDING_NAME_CLICK ExtraBarButton3:LeftButton"] = "Extra ActionBar Button 3"
+_G["BINDING_NAME_CLICK ExtraBarButton4:LeftButton"] = "Extra ActionBar Button 4"
+_G["BINDING_NAME_CLICK ExtraBarButton5:LeftButton"] = "Extra ActionBar Button 5"
+_G["BINDING_NAME_CLICK ExtraBarButton6:LeftButton"] = "Extra ActionBar Button 6"
+_G["BINDING_NAME_CLICK ExtraBarButton7:LeftButton"] = "Extra ActionBar Button 7"
+_G["BINDING_NAME_CLICK ExtraBarButton8:LeftButton"] = "Extra ActionBar Button 8"
+_G["BINDING_NAME_CLICK ExtraBarButton9:LeftButton"] = "Extra ActionBar Button 9"
+_G["BINDING_NAME_CLICK ExtraBarButton10:LeftButton"] = "Extra ActionBar Button 10"
+_G["BINDING_NAME_CLICK ExtraBarButton11:LeftButton"] = "Extra ActionBar Button 11"
+_G["BINDING_NAME_CLICK ExtraBarButton12:LeftButton"] = "Extra ActionBar Button 12"
 
 -- Mouseover bar
 if C.extra_bar.mouseover ~= true then return end

@@ -8,7 +8,6 @@
 --	Configuration example:
 ----------------------------------------------------------------------------------------
 -- if T.name == "MegaChar" then
---		C["extra_general"].click_cast = true
 --		C["extra_general"].move_blizzard = false
 --		C["extra_bar"].enable = true
 --		C["extra_skins"].blizzard_frames = true
@@ -37,15 +36,6 @@ end
 ----------------------------------------------------------------------------------------
 if T.level ~= MAX_PLAYER_LEVEL then
 
-end
-
-----------------------------------------------------------------------------------------
---	Shestak Config
-----------------------------------------------------------------------------------------
-if T.author == true then
-	if T.class == "DRUID" or T.class == "PRIEST" then
-		C["extra_general"].click_cast = true
-	end
 end
 
 ----------------------------------------------------------------------------------------

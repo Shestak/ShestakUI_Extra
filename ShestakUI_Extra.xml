@@ -18,8 +18,8 @@
 	<Script file="Modules\Announcements\FPS.lua"/>
 	<Script file="Modules\Announcements\NickAlert.lua"/>
 
-	<Script file="Modules\ExtraBars\ActionBar.lua"/>
 	<Script file="Modules\ExtraBars\Battleground.lua"/>
+	<Script file="Modules\ExtraBars\CustomActionBar.lua"/>
 	<Script file="Modules\ExtraBars\MarkBar.lua"/>
 	<Script file="Modules\ExtraBars\SwitchSpec.lua"/>
 

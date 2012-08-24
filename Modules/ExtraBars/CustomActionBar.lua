@@ -2,7 +2,7 @@
 if C.extra_bar.enable ~= true or C.actionbar.enable ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Extra ActionBar(ExtraBar by Cowmonster)
+--	Custom ActionBar(ExtraBar by Cowmonster)
 ----------------------------------------------------------------------------------------
 local bar = CreateFrame("Frame", "ExtraBarAnchor", UIParent)
 bar:CreatePanel("Invisible", 1, 1, unpack(C.extra_position.extra_bar))

@@ -54,7 +54,7 @@ ScrollSpells:SetScrollChild(ScrollSpells.child)
 SpellBinder.makeSpellsList = function(self, scroll, delete)
 	local oldb
 	scroll:SetPoint("TOPLEFT")
-	scroll:SetSize(ScrollSpells:GetWidth(), ScrollSpells:GetHeight())
+	scroll:SetSize(270, 300)
 
 	if delete then
 		i = 1
@@ -162,7 +162,7 @@ end
 SpellBinder.ToggleButtons = function()
 	for i = 1, SPELLS_PER_PAGE do
 		SpellBinder.spellbuttons[i]:Hide()
-		if SpellBinder.sbOpen then
+		if SpellBinder.sbOpen and SpellBookFrame.bookType ~= BOOKTYPE_PROFESSION then
 			local slot = SpellBook_GetSpellBookSlot(SpellBinder.spellbuttons[i]:GetParent())
 			if slot then
 				local spellname, subtype = GetSpellBookItemName(slot, SpellBookFrame.bookType)
@@ -174,6 +174,7 @@ SpellBinder.ToggleButtons = function()
 	end
 	SpellBinder:makeFramesList()
 	SpellBinder:makeSpellsList(ScrollSpells.child, true)
+	if SpellBinder:IsVisible() then SpellBinder.OpenButton:SetChecked(true) else SpellBinder.OpenButton:SetChecked(false) end
 end
 
 hooksecurefunc("SpellBookFrame_Update", function() if SpellBinder.sbOpen then SpellBinder:ToggleButtons() end end)
@@ -254,8 +255,8 @@ local addSpell = function(self, button)
 
 		if spellname ~= 0 and ((SpellBookFrame.bookType == BOOKTYPE_PET) or (SpellBookFrame.selectedSkillLine > 1)) then
 			local originalbutton = button
-
 			local modifier = ""
+
 			if IsShiftKeyDown() then modifier = "Shift-"..modifier end
 			if IsControlKeyDown() then modifier = "Ctrl-"..modifier end
 			if IsAltKeyDown() then modifier = "Alt-"..modifier end
@@ -267,7 +268,7 @@ local addSpell = function(self, button)
 				button = SecureButton_GetButtonSuffix(button)
 			end
 
-			for i,v in pairs(DB.spells) do if v.spell == spellname then return end end
+			for i, v in pairs(DB.spells) do if v.spell == spellname then return end end
 
 			tinsert(DB.spells, {["id"] = slot, ["modifier"] = modifier, ["button"] = button, ["spell"] = spellname, ["rank"] = rank, ["texture"] = texture, ["origbutton"] = originalbutton,})
 			SpellBinder:makeSpellsList(ScrollSpells.child, false)

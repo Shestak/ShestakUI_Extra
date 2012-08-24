@@ -2,6 +2,7 @@
 
 ----------------------------------------------------------------------------------------
 --	ShestakUI_Extra main configuration file
+--	BACKUP THIS FILE BEFORE UPDATING!
 ----------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------
@@ -17,9 +18,10 @@ C["extra_general"] = {
 }
 
 ----------------------------------------------------------------------------------------
---	Chat options
+--	Announce options
 ----------------------------------------------------------------------------------------
-C["extra_chat"] = {
+C["extra_announce"] = {
+	-- Nick Alert
 	["nick_alert_enable"] = false,				-- Enable nick alert warning sound
 	["nick_alert_names"] = {					-- Abbreviations and nicks of your name(full name of your character does not need to enter)
 		UnitName("player"),						-- You do not need to make all the exact names of your characters
@@ -27,16 +29,6 @@ C["extra_chat"] = {
 		--"YourNickOrName2",
 		--"YourNickOrName3",
 	},
-	["nick_alert_sound"] = "Sound\\Event Sounds\\Wisp\\WispPissed1.wav",
-}
-
-----------------------------------------------------------------------------------------
---	Announce options
-----------------------------------------------------------------------------------------
-C["extra_announce"] = {
-	-- Battleground
-	["battleground"] = false,					-- Battleground defence announce
-	["battleground_two_row"] = true,			-- Two row for BG panel
 	-- Other
 	["my_fps"] = false,							-- Announce fps in guild chat(!fps)
 	["bad_tank"] = false,						-- Announce taunt from not tanks
@@ -53,9 +45,12 @@ C["extra_bar"] = {
 	["button_space"] = 3,						-- Buttons space
 	["style"] = "4*3",							-- Buttons style(1*12|12*1|6*2|4*3)
 	["mouseover"] = false,						-- Show bar on mouseover
+	-- Battleground
+	["battleground"] = false,					-- Battleground defence bar for for announce
+	["battleground_two_row"] = true,			-- Two row for BG bar
 	-- Other
 	["mark_bar"] = false,						-- Mark bar
-	["switch_spec"] = false,					-- Talent spec panel
+	["switch_spec"] = false,					-- Talent spec bar
 }
 
 ----------------------------------------------------------------------------------------

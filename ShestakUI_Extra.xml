@@ -15,11 +15,11 @@
 	<Script file="Config\Profiles.lua"/>
 
 	<Script file="Modules\Announcements\BadTank.lua"/>
-	<Script file="Modules\Announcements\Battleground.lua"/>
 	<Script file="Modules\Announcements\FPS.lua"/>
 	<Script file="Modules\Announcements\NickAlert.lua"/>
 
 	<Script file="Modules\ExtraBars\ActionBar.lua"/>
+	<Script file="Modules\ExtraBars\Battleground.lua"/>
 	<Script file="Modules\ExtraBars\MarkBar.lua"/>
 	<Script file="Modules\ExtraBars\SwitchSpec.lua"/>
 

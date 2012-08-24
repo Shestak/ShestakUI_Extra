@@ -92,7 +92,13 @@ local PullTargetButton = CreateFrame("Frame", "PullTargetButton", MarkBarAnchor)
 PullTargetButton:CreatePanel("Transparent", button_size, button_size, "TOP", WorldMarkButton, "BOTTOM", 0, -3)
 PullTargetButton:SetScript("OnEnter", T.SetModifiedBackdrop)
 PullTargetButton:SetScript("OnLeave", T.SetOriginalBackdrop)
-PullTargetButton:SetScript("OnMouseUp", function() if C.announcements.pull_countdown then PullCountdown.Pull(3) end end)
+PullTargetButton:SetScript("OnMouseUp", function()
+	if C.announcements.pull_countdown then
+		PullCountdown.Pull(3)
+	else
+		print("|cffffff00Enable 'Pull countdown announce' option.|r")
+	end
+end)
 
 local PullTargetButtonTexture = PullTargetButton:CreateTexture(nil, "OVERLAY")
 PullTargetButtonTexture:SetTexture("Interface\\Icons\\Ability_Hunter_Beastcall")

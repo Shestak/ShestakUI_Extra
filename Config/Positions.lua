@@ -2,6 +2,7 @@
 
 ----------------------------------------------------------------------------------------
 --	Position options
+--	BACKUP THIS FILE BEFORE UPDATING!
 ----------------------------------------------------------------------------------------
 C["extra_position"] = {
 	["arena_calc"] = {"CENTER", UIParent, "CENTER", 0, 0},			-- Arena calculator

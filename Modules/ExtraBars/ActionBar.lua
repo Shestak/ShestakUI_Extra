@@ -37,7 +37,6 @@ for i = 13, 24 do
 		f:SetAttribute("showgrid", 1)
 	end
 	f:SetID(i)
-
 	f:ClearAllPoints()
 	if C.extra_bar.style == "1*12" then
 		if i == 13 then
@@ -91,6 +90,7 @@ for i = 13, 24 do
 
 	f:StyleButton()
 	f:Show()
+	RegisterStateDriver(f, "visibility", "[petbattle] hide;show")
 end
 
 BINDING_HEADER_EXTRABAR_HEADER = L_EXTRA_HEADER_EXTRABAR

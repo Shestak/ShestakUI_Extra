@@ -10,9 +10,6 @@ L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "我目前的 FPS 是 "
 
--- Click2Cast
-L_EXTRA_BINDER_OPEN = "Mouse Bindings" -- Needs review
-
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "敌方小型攻击部队来到 "
 L_EXTRA_ANNOUNCE_BG_MEDIUM = "敌方中型攻击部队来到 "

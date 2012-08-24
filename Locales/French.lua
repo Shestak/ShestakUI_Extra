@@ -10,9 +10,6 @@ L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review
 -- Announce fps
 L_EXTRA_ANNOUNCE_FPS = "Mon FPS actuel : "
 
--- Click2Cast
-L_EXTRA_BINDER_OPEN = "Mouse Bindings" -- Needs review
-
 -- BG announce
 L_EXTRA_ANNOUNCE_BG_LIGHT = "Attaque mineure venant sur "
 L_EXTRA_ANNOUNCE_BG_MEDIUM = "Attaque moyenne venant sur "

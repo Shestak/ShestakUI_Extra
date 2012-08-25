@@ -75,6 +75,7 @@ C["extra_skins"] = {
 	["nug_running"] = false,					-- NugRunning skin
 	["overachiever"] = false,					-- Overachiever skin(Not Ready)
 	["preform_av"] = false,						-- PreformAVEnabler skin
+	["quartz"] = false,							-- Quartz skin
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin(Not Ready)

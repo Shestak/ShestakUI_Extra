@@ -4,9 +4,9 @@ if C.actionbar.enable ~= true or C.extra_skins.flyout_button ~= true then return
 ----------------------------------------------------------------------------------------
 --	FlyoutButtonCustom skin
 ----------------------------------------------------------------------------------------
-local FlyoutButtonSkin = CreateFrame("Frame")
-FlyoutButtonSkin:RegisterEvent("PLAYER_LOGIN")
-FlyoutButtonSkin:SetScript("OnEvent", function(self, event, addon)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_LOGIN")
+frame:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("FlyoutButtonCustom") then return end
 
 	FlyoutButtonCustom_Settings.Highlight = false

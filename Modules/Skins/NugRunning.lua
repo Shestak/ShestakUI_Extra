@@ -4,9 +4,9 @@ if C.extra_skins.nug_running ~= true then return end
 ----------------------------------------------------------------------------------------
 --	NugRunning skin(by MrRuben5)
 ----------------------------------------------------------------------------------------
-local NRSkin = CreateFrame("Frame")
-NRSkin:RegisterEvent("ADDON_LOADED")
-NRSkin:SetScript("OnEvent", function(self, event, addon)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("ADDON_LOADED")
+frame:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("NugRunning") then return end
 
 	local NugRunning = NugRunning

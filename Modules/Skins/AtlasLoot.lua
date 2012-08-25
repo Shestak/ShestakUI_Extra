@@ -86,9 +86,9 @@ local function Compare_OnShow(self, event, ...)
 	end
 end
 
-local SkinAL = CreateFrame("Frame")
-SkinAL:RegisterEvent("PLAYER_ENTERING_WORLD")
-SkinAL:SetScript("OnEvent", function(self, event)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:SetScript("OnEvent", function(self, event)
 	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 	if IsAddOnLoaded("Skinner") or IsAddOnLoaded("Aurora") then return end
 	if not IsAddOnLoaded("AtlasLoot") then return end

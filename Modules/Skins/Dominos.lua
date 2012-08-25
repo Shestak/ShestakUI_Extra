@@ -4,13 +4,10 @@ if C.extra_skins.dominos ~= true then return end
 ----------------------------------------------------------------------------------------
 --	Dominos skin
 ----------------------------------------------------------------------------------------
-local DominosSkin = CreateFrame("Frame")
-DominosSkin:RegisterEvent("PLAYER_LOGIN")
-DominosSkin:SetScript("OnEvent", function(self, event, addon)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_LOGIN")
+frame:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("Dominos") then return end
-
-	--DominosConfigHelperDialog:StripTextures()
-	--DominosConfigHelperDialog:SetTemplate("Transparent")
 
 	local function CreateBorder(self)
 		local name = self:GetName()

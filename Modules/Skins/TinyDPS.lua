@@ -4,9 +4,9 @@ if C.extra_skins.tiny_dps ~= true then return end
 ----------------------------------------------------------------------------------------
 --	TinyDPS skin
 ----------------------------------------------------------------------------------------
-local TDPSSkin = CreateFrame("Frame")
-TDPSSkin:RegisterEvent("ADDON_LOADED")
-TDPSSkin:SetScript("OnEvent", function(self, event, addon)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("ADDON_LOADED")
+frame:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("TinyDPS") then return end
 
 	tdps.width = 221

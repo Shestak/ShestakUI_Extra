@@ -4,9 +4,9 @@ if C.extra_skins.blood_shield_tracker ~= true or T.class ~= "DEATHKNIGHT" then r
 ----------------------------------------------------------------------------------------
 --	BloodShieldTracker skin
 ----------------------------------------------------------------------------------------
-local BSTSkin = CreateFrame("Frame")
-BSTSkin:RegisterEvent("PLAYER_LOGIN")
-BSTSkin:SetScript("OnEvent", function(self, event, addon)
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_LOGIN")
+frame:SetScript("OnEvent", function(self, event, addon)
 	if not IsAddOnLoaded("BloodShieldTracker") then return end
 
 	if not BloodShieldTrackerDB["profiles"]["Default"]["bars"] then BloodShieldTrackerDB["profiles"]["Default"]["bars"] = {} end
@@ -36,7 +36,7 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"]["texture"] = "Smooth"
 	BloodShieldTrackerDB["profiles"]["Default"]["bars"]["TotalAbsorbsBar"]["scale"] = 1
 
-	local frames = {
+	local bars = {
 		"BloodShieldTracker_PWSBar",
 		"BloodShieldTracker_EstimateBar",
 		"BloodShieldTracker_ShieldBar",
@@ -45,17 +45,17 @@ BSTSkin:SetScript("OnEvent", function(self, event, addon)
 		"BloodShieldTracker_HealthBar"
 	}
 
-	for i = 1, getn(frames) do
-		local frame = _G[frames[i]]
-		if frame then
-			frame:CreateBackdrop("Default")
+	for i = 1, getn(bars) do
+		local bar = _G[bars[i]]
+		if bar then
+			bar:CreateBackdrop("Default")
 
-			frame.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-			frame.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+			bar.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+			bar.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
 
-			if frame.time then
-				frame.time:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
-				frame.time:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+			if bar.time then
+				bar.time:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+				bar.time:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
 			end
 		end
 	end

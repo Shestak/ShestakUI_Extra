@@ -4,9 +4,9 @@ if C.extra_skins.mage_nuggets ~= true then return end
 ----------------------------------------------------------------------------------------
 --	MageNuggets skin /run ShowConfigFrames()
 ----------------------------------------------------------------------------------------
-local MNSkin = CreateFrame("Frame")
-MNSkin:RegisterEvent("PLAYER_LOGIN")
-MNSkin:SetScript("OnEvent", function()
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_LOGIN")
+frame:SetScript("OnEvent", function()
 	if not IsAddOnLoaded("MageNuggets") then return end
 
 	MageNugz.cautSize = 3
@@ -594,22 +594,4 @@ MNSkin:SetScript("OnEvent", function()
 
 	MageNugSSProcFrameText2:ClearAllPoints()
 	MageNugSSProcFrameText2:Point("RIGHT", MageNugSSProcFrame_ProcBar, "RIGHT", 0, 0)
-
-	-- MageNugWE_Frame
-	--MageNugWE_FrameTexture1
-	--MageNugWE_Frame_MIText
-	--MageNugWE_Frame_WEText1
-	--MageNugWE_Frame_WeBar
-
-	-- MageNugCD1_Frame
-	--_Texture
-	--_Text
-	--_Text2
-	--_Bar
-
-	-- MageNugCD2_Frame
-	-- MageNugCD3_Frame
-	-- MageNugCD4_Frame
-	-- MageNugCD5_Frame
-	-- MageNugCD6_Frame
 end)

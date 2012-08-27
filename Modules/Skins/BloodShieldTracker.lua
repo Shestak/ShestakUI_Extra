@@ -53,6 +53,11 @@ frame:SetScript("OnEvent", function(self, event, addon)
 			bar.value:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
 			bar.value:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
 
+			if bar.stacks then
+				bar.stacks:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
+				bar.stacks:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)
+			end
+
 			if bar.time then
 				bar.time:SetFont(C.font.stylization_font, C.font.stylization_font_size, C.font.stylization_font_style)
 				bar.time:SetShadowOffset(C.font.stylization_font_shadow and 1 or 0, C.font.stylization_font_shadow and -1 or 0)

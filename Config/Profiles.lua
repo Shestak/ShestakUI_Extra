@@ -48,7 +48,6 @@ if T.name == "Oz" then
 	C["extra_general"].align = true
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
-	C["extra_skins"].blood_shield_tracker = true
 	C["extra_skins"].my_role_play = true
 	C["extra_skins"].npcscan = true
 end

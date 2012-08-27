@@ -2,7 +2,7 @@
 if C.extra_skins.quartz ~= true then return end
 
 ----------------------------------------------------------------------------------------
---	Quartz skin
+--	Quartz skin(Not Ready)
 ----------------------------------------------------------------------------------------
 if not IsAddOnLoaded("Quartz") then return end
 local Q3 = LibStub("AceAddon-3.0"):GetAddon("Quartz3")

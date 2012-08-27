@@ -80,4 +80,5 @@ C["extra_skins"] = {
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin(Not Ready)
 	["tiny_dps"] = false,						-- TinyDPS skin
+	["vanaskos"] = false,						-- VanasKoS skin(Not Ready)
 }

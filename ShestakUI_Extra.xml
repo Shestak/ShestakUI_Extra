@@ -47,10 +47,12 @@
 	<Script file="Modules\Skins\MyRolePlay.lua"/>
 	<Script file="Modules\Skins\NPCScan.lua"/>
 	<Script file="Modules\Skins\NugRunning.lua"/>
+	<Script file="Modules\Skins\Overachiever.lua"/>
 	<Script file="Modules\Skins\PreformAVEnabler.lua"/>
 	<Script file="Modules\Skins\Quartz.lua"/>
 	<Script file="Modules\Skins\RollTracker.lua"/>
 	<Script file="Modules\Skins\ShieldMonitor.lua"/>
 	<Script file="Modules\Skins\Skada.lua"/>
 	<Script file="Modules\Skins\TinyDPS.lua"/>
+	<Script file="Modules\Skins\VanasKoS.lua"/>
 </Ui>

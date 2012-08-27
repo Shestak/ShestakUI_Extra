@@ -14,7 +14,7 @@ frame:SetScript("OnEvent", function(self, event, addon)
 	FlyoutButtonCustom_Settings.ButtonsScale = 1
 	FBC_BUTTON_PLACE_SIZE = C.actionbar.button_size
 	FBC_BUTTON_PLACE_OFFSET = C.actionbar.button_space
-	FBC_FRAME_OFFSET = C.actionbar.button_space - 6
+	FBC_FRAME_OFFSET = C.actionbar.button_space - 7
 
 	local function CreateBorder(self)
 		local name = self:GetName()
@@ -64,17 +64,22 @@ frame:SetScript("OnEvent", function(self, event, addon)
 			hotkey:Kill()
 		end
 
-		if not _G[name.."Panel"] then
+		if not button.isSkinned then
 			if self:GetHeight() ~= C.actionbar.button_size and not InCombatLockdown() then
 				self:Size(C.actionbar.button_size)
 			end
 
-			local panel = CreateFrame("Frame", name.."Panel", self)
-			panel:CreatePanel("Transparent", button:GetWidth(), button:GetHeight(), "CENTER", self, "CENTER", 0, 0)
+			button:CreateBackdrop("Transparent")
+			button.backdrop:SetAllPoints()
+			if C.actionbar.classcolor_border == true then
+				button.backdrop:SetBackdropBorderColor(T.color.r, T.color.g, T.color.b)
+			end
 
 			icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 			icon:SetPoint("TOPLEFT", button, 2, -2)
 			icon:SetPoint("BOTTOMRIGHT", button, -2, 2)
+
+			button.isSkinned = true
 		end
 
 		if normal then

@@ -19,9 +19,9 @@ frame:SetScript("OnEvent", function(self, event, addon)
 	tdps.showMinimapButton = false
 	tdps.layout = 11
 	tdpsVisibleBars = 7
-	tdpsFont.name = C.media.pixel_font
-	tdpsFont.size = C.media.pixel_font_size
-	tdpsFont.outline = C.media.pixel_font_style
+	tdpsFont.name = C.font.stylization_font
+	tdpsFont.size = C.font.stylization_font_size
+	tdpsFont.outline = C.font.stylization_font_style
 	tdpsFont.shadow = 0
 	tdpsTextOffset = 0
 

@@ -73,6 +73,7 @@ C["extra_skins"] = {
 	["my_role_play"] = false,					-- MyRolePlay skin
 	["npcscan"] = false,						-- NPCScan skin
 	["nug_running"] = false,					-- NugRunning skin
+	["ovale"] = false,							-- Ovale Spell Priority skin
 	["overachiever"] = false,					-- Overachiever skin(Not Ready)
 	["preform_av"] = false,						-- PreformAVEnabler skin
 	["quartz"] = false,							-- Quartz skin

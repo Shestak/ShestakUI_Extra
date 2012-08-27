@@ -47,6 +47,7 @@
 	<Script file="Modules\Skins\MyRolePlay.lua"/>
 	<Script file="Modules\Skins\NPCScan.lua"/>
 	<Script file="Modules\Skins\NugRunning.lua"/>
+	<Script file="Modules\Skins\Ovale.lua"/>
 	<Script file="Modules\Skins\Overachiever.lua"/>
 	<Script file="Modules\Skins\PreformAVEnabler.lua"/>
 	<Script file="Modules\Skins\Quartz.lua"/>

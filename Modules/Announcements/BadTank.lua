@@ -180,7 +180,7 @@ end
 
 function BadGroup:ClassColoredName(srcName)
 	local _, playerClass = UnitClass(srcName)
-	local classColor = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[playerClass] or RAID_CLASS_COLORS[playerClass]
+	local classColor = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[playerClass]
 	if classColor then
 		return string.format("|cff%02x%02x%02x%s|r", classColor.r * 255, classColor.g * 255, classColor.b * 255, srcName)
 	else

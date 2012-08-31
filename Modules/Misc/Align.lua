@@ -1,4 +1,4 @@
-﻿local T, C, L = unpack(ShestakUI)
+﻿local T, C, L, _ = unpack(ShestakUI)
 if C.extra_general.align ~= true then return end
 
 ----------------------------------------------------------------------------------------

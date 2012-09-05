@@ -33,8 +33,6 @@
 
 	<Script file="Modules\Skins\AdiBags.lua"/>
 	<Script file="Modules\Skins\AtlasLoot.lua"/>
-	<Script file="Modules\Skins\Capping.lua"/>
-	<Script file="Modules\Skins\CoolLine.lua"/>
 	<Script file="Modules\Skins\EPGP.lua"/>
 	<Script file="Modules\Skins\FaceShooter.lua"/>
 	<Script file="Modules\Skins\MageManaBar.lua"/>

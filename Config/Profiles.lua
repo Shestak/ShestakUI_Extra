@@ -45,7 +45,6 @@ if T.name == "Oz" then
 	C["extra_position"].extra_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -237, 24}
 	C["extra_general"].move_blizzard = true
 	C["extra_general"].arena_calc = true
-	C["extra_general"].align = true
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
 	C["extra_skins"].my_role_play = true
@@ -59,7 +58,6 @@ if (T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name =
 or T.name == "Виринейка" or T.name == "Вирин" or T.name == "Вириней" or T.name == "Виринеа"
 or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Виринка") and T.realm == "Азурегос" then
 	C["extra_general"].move_blizzard = true
-	C["extra_general"].align = true
 	C["extra_general"].color_picker = true
 	C["extra_announce"].my_fps = true
 	C["extra_skins"].atlasloot = true

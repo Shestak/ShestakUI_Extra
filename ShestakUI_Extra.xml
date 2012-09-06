@@ -23,7 +23,6 @@
 	<Script file="Modules\ExtraBars\MarkBar.lua"/>
 	<Script file="Modules\ExtraBars\SwitchSpec.lua"/>
 
-	<Script file="Modules\Misc\Align.lua"/>
 	<Script file="Modules\Misc\Archaeology.lua"/>
 	<Script file="Modules\Misc\ArenaCalc.lua"/>
 	<Script file="Modules\Misc\BuffAutomator.lua"/>

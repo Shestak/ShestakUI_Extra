@@ -11,7 +11,6 @@
 C["extra_general"] = {
 	["move_blizzard"] = false,					-- Move Blizzard frames
 	["arena_calc"] = false,						-- Arena calculator(/calc)
-	["align"] = false,							-- Grid on screen(/align)
 	["buff_automator"] = false,					-- Personal buff automator
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown

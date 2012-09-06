@@ -2,7 +2,8 @@
 if T.client ~= "zhTW" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for zhTW client(Thanks to tat2dawn for the translation)
+--	Localization for zhTW client
+--	Translation: Tat2dawn
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review

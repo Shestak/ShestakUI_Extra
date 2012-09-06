@@ -2,7 +2,8 @@
 if T.client ~= "deDE" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for deDE client(Thanks to Vienchen for the translation)
+--	Localization for deDE client
+--	Translation: Vienchen
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Extra Bar" -- Needs review

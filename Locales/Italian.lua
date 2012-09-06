@@ -2,7 +2,8 @@
 if T.client ~= "itIT" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for itIT client(Thanks to Oz for the translation)
+--	Localization for itIT client
+--	Translation: Oz
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Barra aggiuntiva"

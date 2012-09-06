@@ -2,7 +2,8 @@
 if T.client ~= "koKR" then return end
 
 ----------------------------------------------------------------------------------------
---	Localization for koKR client(Need full translation)
+--	Localization for koKR client
+--	Translation: Need full translation
 ----------------------------------------------------------------------------------------
 -- Key binding Header Name
 L_EXTRA_HEADER_EXTRABAR = "Extra Bar"

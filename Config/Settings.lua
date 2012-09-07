@@ -10,7 +10,6 @@
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
 	["move_blizzard"] = false,					-- Move Blizzard frames
-	["arena_calc"] = false,						-- Arena calculator(/calc)
 	["buff_automator"] = false,					-- Personal buff automator
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
@@ -20,15 +19,6 @@ C["extra_general"] = {
 --	Announce options
 ----------------------------------------------------------------------------------------
 C["extra_announce"] = {
-	-- Nick Alert
-	["nick_alert_enable"] = false,				-- Enable nick alert warning sound
-	["nick_alert_names"] = {					-- Abbreviations and nicks of your name(full name of your character does not need to enter)
-		UnitName("player"),						-- You do not need to make all the exact names of your characters
-		--"YourNickOrName1",
-		--"YourNickOrName2",
-		--"YourNickOrName3",
-	},
-	-- Other
 	["my_fps"] = false,							-- Announce fps in guild chat(!fps)
 	["bad_tank"] = false,						-- Announce taunt from not tanks
 }
@@ -57,7 +47,6 @@ C["extra_bar"] = {
 ----------------------------------------------------------------------------------------
 C["extra_skins"] = {
 	["adibags"] = false,						-- AdiBags skin(Not Ready)
-	["atlasloot"] = false,						-- AtlasLoot skin
 	["epgp"] = false,							-- EPGP skin(Not Ready)
 	["face_shooter"] = false,					-- FaceShooter skin
 	["mage_mana_bar"] = false,					-- MageManaBar skin
@@ -72,6 +61,5 @@ C["extra_skins"] = {
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin(Not Ready)
-	["tiny_dps"] = false,						-- TinyDPS skin
 	["vanaskos"] = false,						-- VanasKoS skin(Not Ready)
 }

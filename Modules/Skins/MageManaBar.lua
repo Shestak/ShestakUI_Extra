@@ -6,7 +6,7 @@ if C.extra_skins.mage_mana_bar ~= true then return end
 ----------------------------------------------------------------------------------------
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("PLAYER_LOGIN")
-frame:SetScript("OnEvent", function(self, event, addon)
+frame:SetScript("OnEvent", function(self, event)
 	if not IsAddOnLoaded("MageManaBar") then return end
 
 	MMBTourFrame:SetTemplate("Transparent")

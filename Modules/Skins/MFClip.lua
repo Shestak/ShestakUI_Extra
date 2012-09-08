@@ -6,7 +6,7 @@ if C.extra_skins.mfclip ~= true then return end
 ----------------------------------------------------------------------------------------
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("PLAYER_LOGIN")
-frame:SetScript("OnEvent", function(self, event, addon)
+frame:SetScript("OnEvent", function(self, event)
 	if not IsAddOnLoaded("MFClip") then return end
 
 	MFClipDB["profiles"][T.name.." - "..GetRealmName()]["fLBBorder"] = 2

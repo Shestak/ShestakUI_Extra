@@ -6,7 +6,7 @@ if C.extra_skins.roll_tracker ~= true then return end
 ----------------------------------------------------------------------------------------
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("PLAYER_LOGIN")
-frame:SetScript("OnEvent", function(self, event, addon)
+frame:SetScript("OnEvent", function(self, event)
 	if not IsAddOnLoaded("RollTracker") then return end
 
 	tinsert(UISpecialFrames, "RollTrackerFrame")

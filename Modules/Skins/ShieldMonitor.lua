@@ -6,7 +6,7 @@ if C.extra_skins.shield_monitor ~= true then return end
 ----------------------------------------------------------------------------------------
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("PLAYER_LOGIN")
-frame:SetScript("OnEvent", function(self, event, addon)
+frame:SetScript("OnEvent", function(self, event)
 	if not IsAddOnLoaded("shieldmonitor") then return end
 
 	Shieldmonitor_Options.scale = 1

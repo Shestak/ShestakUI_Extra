@@ -9,7 +9,6 @@
 --	General options
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
-	["move_blizzard"] = false,					-- Move Blizzard frames
 	["buff_automator"] = false,					-- Personal buff automator
 	["color_picker"] = false,					-- Improved ColorPickerFrame
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown

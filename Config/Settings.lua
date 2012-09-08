@@ -55,7 +55,6 @@ C["extra_skins"] = {
 	["mog_it"] = false,							-- MogIt skin(Not Ready)
 	["my_role_play"] = false,					-- MyRolePlay skin
 	["npcscan"] = false,						-- NPCScan skin
-	["overachiever"] = false,					-- Overachiever skin(Not Ready)
 	["preform_av"] = false,						-- PreformAVEnabler skin
 	["quartz"] = false,							-- Quartz skin(Not Ready)
 	["roll_tracker"] = false,					-- RollTracker skin

@@ -37,7 +37,6 @@
 	<Script file="Modules\Skins\MogIt.lua"/>
 	<Script file="Modules\Skins\MyRolePlay.lua"/>
 	<Script file="Modules\Skins\NPCScan.lua"/>
-	<Script file="Modules\Skins\Overachiever.lua"/>
 	<Script file="Modules\Skins\PreformAVEnabler.lua"/>
 	<Script file="Modules\Skins\Quartz.lua"/>
 	<Script file="Modules\Skins\RollTracker.lua"/>

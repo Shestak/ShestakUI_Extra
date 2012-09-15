@@ -8,10 +8,10 @@
 --	Configuration example:
 ----------------------------------------------------------------------------------------
 -- if T.name == "MegaChar" then
---		C["extra_general"].move_blizzard = false
+--		C["extra_general"].buff_automator = true
 --		C["extra_bar"].enable = true
---		C["extra_skins"].blizzard_frames = true
---		C["extra_position"].micro_menu = {"TOPLEFT", UIParent, "TOPLEFT", 2, -2}
+--		C["extra_skins"].mfclip = true
+--		C["extra_position"].mark_bar = {"CENTER", UIParent, "CENTER", 100, 50}
 -- end
 ----------------------------------------------------------------------------------------
 
@@ -46,7 +46,6 @@ if T.name == "Oz" and T.realm == "Pozzo dell'Eternità" then
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
 	C["extra_skins"].my_role_play = true
-	C["extra_skins"].npcscan = true
 end
 
 ----------------------------------------------------------------------------------------

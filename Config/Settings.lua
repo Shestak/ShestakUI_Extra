@@ -51,10 +51,8 @@ C["extra_skins"] = {
 	["mfclip"] = false,							-- MFClip skin
 	["mog_it"] = false,							-- MogIt skin(Not Ready)
 	["my_role_play"] = false,					-- MyRolePlay skin
-	["npcscan"] = false,						-- NPCScan skin
 	["quartz"] = false,							-- Quartz skin(Not Ready)
 	["roll_tracker"] = false,					-- RollTracker skin
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 	["skada"] = false,							-- Skada skin(Not Ready)
-	["vanaskos"] = false,						-- VanasKoS skin(Not Ready)
 }

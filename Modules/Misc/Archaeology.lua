@@ -1,5 +1,5 @@
 ﻿local T, C, L, _ = unpack(ShestakUI)
---if C.extra_general.archaeology ~= true or IsAddOnLoaded("stArchaeologist") then return end
+if C.extra_general.archaeology ~= true or IsAddOnLoaded("stArchaeologist") then return end
 
 ----------------------------------------------------------------------------------------
 --	Archaeology tracker(stArchaeologist by Safturento)

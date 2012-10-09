@@ -9,7 +9,6 @@
 --	General options
 ----------------------------------------------------------------------------------------
 C["extra_general"] = {
-	["buff_automator"] = false,					-- Personal buff automator
 	["archaeology"] = false,					-- Archaeology artifacts and cooldown
 }
 

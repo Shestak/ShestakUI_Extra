@@ -3,7 +3,7 @@
 ## Notes: Extra mods for ShestakUI
 ## Author: Shestak
 ## Version: 4.17
-## Credits: Azmara, Cowmonster, Epic, Gsuz, Rainrider, Safturento, Sara.Festung, Slushe, Smelly
+## Credits: Azmara, Cowmonster, Epic, Rainrider, Safturento, Slushe, Smelly
 ## RequiredDeps: ShestakUI
 ## SavedVariablesPerCharacter: ExtraTanksDB, ExtraArchyDB
 ## X-Curse-Packaged-Version: 4.17

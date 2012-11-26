@@ -1,4 +1,4 @@
-﻿local T, C, L, _ = unpack(ShestakUI)
+local T, C, L, _ = unpack(ShestakUI)
 if C.extra_announce.bad_tank ~= true then return end
 
 ----------------------------------------------------------------------------------------
@@ -486,10 +486,10 @@ local b = CreateFrame("Button", nil, UIParent)
 b:SetTemplate("ClassColor")
 b:SetSize(19, 19)
 b:SetAlpha(0)
-if C.extra_general.archaeology == true then
-	b:SetPoint("TOP", SwitchLayout, "BOTTOM", 0, -21)
+if C.misc.archaeology == true then
+	b:SetPoint("TOP", SwitchLayout, "BOTTOM", 0, -41)
 else
-	b:SetPoint("TOP", SwitchLayout, "BOTTOM", 0, -1)
+	b:SetPoint("TOP", SwitchLayout, "BOTTOM", 0, -21)
 end
 
 local bt = b:CreateTexture(nil, "OVERLAY")

@@ -42,5 +42,4 @@ C["extra_skins"] = {
 	["my_role_play"] = false,					-- MyRolePlay skin
 	["quartz"] = false,							-- Quartz skin(Not Ready)
 	["shield_monitor"] = false,					-- ShieldMonitor skin
-	["skada"] = false,							-- Skada skin(Not Ready)
 }

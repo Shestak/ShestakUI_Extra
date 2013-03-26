@@ -39,7 +39,6 @@ C["extra_skins"] = {
 	["adibags"] = false,						-- AdiBags skin(Not Ready)
 	["epgp"] = false,							-- EPGP skin(Not Ready)
 	["mog_it"] = false,							-- MogIt skin(Not Ready)
-	["my_role_play"] = false,					-- MyRolePlay skin
 	["quartz"] = false,							-- Quartz skin(Not Ready)
 	["shield_monitor"] = false,					-- ShieldMonitor skin
 }

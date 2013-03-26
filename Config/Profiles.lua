@@ -45,7 +45,6 @@ if T.name == "Oz" and T.realm == "Pozzo dell'Eternità" then
 	C["extra_position"].extra_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -237, 24}
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
-	C["extra_skins"].my_role_play = true
 end
 
 ----------------------------------------------------------------------------------------

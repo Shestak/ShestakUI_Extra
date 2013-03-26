@@ -25,7 +25,6 @@
 	<Script file="Modules\Skins\AdiBags.lua"/>
 	<Script file="Modules\Skins\EPGP.lua"/>
 	<Script file="Modules\Skins\MogIt.lua"/>
-	<Script file="Modules\Skins\MyRolePlay.lua"/>
 	<Script file="Modules\Skins\Quartz.lua"/>
 	<Script file="Modules\Skins\ShieldMonitor.lua"/>
 </Ui>

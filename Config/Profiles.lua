@@ -46,16 +46,3 @@ if T.name == "Oz" and T.realm == "Pozzo dell'Eternità" then
 	C["extra_bar"].enable = true
 	C["extra_bar"].mouseover = true
 end
-
-----------------------------------------------------------------------------------------
---	ILF7-Virinea Config
-----------------------------------------------------------------------------------------
-if (T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Мейнрейн" or T.name == "Мейнгрейв"
-or T.name == "Виринейка" or T.name == "Вирин" or T.name == "Вириней" or T.name == "Виринеа"
-or T.name == "Лунорог" or T.name == "Вирка" or T.name == "Виринка") and T.realm == "Азурегос" then
-	C["extra_announce"].my_fps = true
-	if T.name == "Мейнстрим" or T.name == "Мейнвульф" or T.name == "Мейнрейн" or T.name == "Мейнгрейв" then
-		C["extra_position"].mark_bar = {"BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -225, 160}
-		C["extra_bar"].mark_bar = true
-	end
-end
